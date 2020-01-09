@@ -5,7 +5,7 @@
 Summary: Generic library for reporting various problems
 Name: libreport
 Version: 2.0.9
-Release: 32%{?dist}
+Release: 33%{?dist}
 License: GPLv2+
 Group: System Environment/Libraries
 URL: https://fedorahosted.org/abrt/
@@ -229,6 +229,10 @@ Patch215: 0215-rhtsupport-add-pkg_vendor-reproducer-and-reproducibl.patch
 Patch216: 0216-rhtsupport-attach-all-dump-dir-s-element-to-a-new-ca.patch
 Patch217: 0217-configure-set-version-to-2.0.9.1.patch
 # $ git format-patch 2.0.9-31.el6 -N --start-number 218 --topo-order -o /home/repos/rhel/libreport/
+Patch218: 0218-dd-add-function-dd_get_env_variable.patch
+#Patch219: 0219-testsuite-add-test-covering-of-dd_get_env_variable.patch
+#Patch220: 0220-testsuite-add-a-forgotten-proc_helper.at-file.patch
+# $ git format-patch 2.0.9-32.el6 -N --start-number 221 --topo-order -o /home/repos/rhel/libreport/
 
 
 # !!! Don't forget to add %%patch
@@ -649,6 +653,9 @@ Uploads micro-report to abrt server
 %patch215 -p1
 %patch216 -p1
 %patch217 -p1
+%patch218 -p1
+#%patch219: 0219-testsuite-add-test-covering-of-dd_get_env_variable.patch
+#%patch220: 0220-testsuite-add-a-forgotten-proc_helper.at-file.patch
 
 
 %build
@@ -847,6 +854,10 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_mandir}/man5/ureport.conf.5.gz
 
 %changelog
+* Wed Nov 02 2016 Matej Habrnal <mhabrnal@redhat.com> - 2.0.9-33
+- Avoid infinite crash loops
+- Related: #1324586
+
 * Thu Feb 25 2016 Matej Habrnal <mhabrnal@redhat.com> - 2.0.9-32
 - Rebuild because of failed rpmdiff
 - Related: #1261398
