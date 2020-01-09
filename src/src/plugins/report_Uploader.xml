@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event>
+    <name>Report uploader</name>
+    <name xml:lang="de">Bericht-Uploader</name>
+    <name xml:lang="en_GB">Report uploader</name>
+    <name xml:lang="es">Cargador del informe</name>
+    <name xml:lang="hu">Jelentés feltöltője</name>
+    <name xml:lang="it">Report uploader</name>
+    <name xml:lang="ko">업로더 보고</name>
+    <name xml:lang="nl">Uploader van rapport</name>
+    <name xml:lang="pl">Program wysyłający zgłoszenie</name>
+    <name xml:lang="sv">Rapportskickare</name>
+    <name xml:lang="tr">Rapor yükleyici</name>
+    <name xml:lang="uk">Вивантажувач звіту</name>
+    <name xml:lang="zh_CN">报告上传器</name>
+    <name xml:lang="zh_TW">回報上傳器</name>
+    <description>Upload as tar.gz file (via FTP/SCP/...)</description>
+    <description xml:lang="hu">Feltöltés tar.gz fájlként (FTP/SCP/... csatornán keresztül)</description>
+    <description xml:lang="ja">tar.gz ファイルとしてアップロードする（FTP/SCP/...経由）</description>
+    <description xml:lang="zh_CN">以 tar.gz 文件上传(通过 FTP/SCP/...)</description>
+
+    <requires-items/>
+    <exclude-items-by-default>event_log,reported_to</exclude-items-by-default>
+    <exclude-items-always/>
+    <exclude-binary-items>no</exclude-binary-items>
+    <include-items-by-default/>
+    <minimal-rating>0</minimal-rating>
+
+    <options>
+        <option type="text" name="Upload_URL">
+            <label>URL</label>
+            <label xml:lang="ar">عنوان</label>
+            <label xml:lang="bg">URL</label>
+            <label xml:lang="ca">URL</label>
+            <label xml:lang="de">URL</label>
+            <label xml:lang="en_GB">URL</label>
+            <label xml:lang="hu">URL</label>
+            <label xml:lang="it">URL</label>
+            <label xml:lang="ja">URL</label>
+            <label xml:lang="ko">URL</label>
+            <label xml:lang="nl">URL</label>
+            <label xml:lang="pt">URL</label>
+            <label xml:lang="tr">URL</label>
+            <label xml:lang="uk">Адреса</label>
+            <label xml:lang="zh_CN">URL</label>
+            <label xml:lang="zh_TW">網址</label>
+            <allow-empty>no</allow-empty>
+            <description>Where do you want to upload the tarball with report in form login:password@url</description>
+            <description xml:lang="ca">on voleu penjar el tarball amb l'informe de la forma login:password@url</description>
+            <description xml:lang="es">Donde quiere cargar el tarball con el informe en el formularios  usuario:password@url</description>
+            <description xml:lang="fi">Minne haluat lähettää pakatun raportin? Muoto: käyttäjätunnus:salasana@url</description>
+            <description xml:lang="fr">Où voulez-vous envoyer l'archive tar avec le rapport, sous la forme de login:password@url</description>
+            <description xml:lang="hu">Ahová fel kívánja feltölteni a tar csomagot a jelentéssel ebben a formában: login:password@url</description>
+            <description xml:lang="it">Dove si vuole caricare il tarball con la segnalazione nella forma login:password@url</description>
+            <description xml:lang="nl">Waar wil je de tarball met rapport naar uploaden in de vorm login:password@url</description>
+            <description xml:lang="pl">Gdzie wysłać plik archiwum tar ze zgłoszeniem, w formie login:hasło@url</description>
+            <description xml:lang="pt">Para onde deseja enviar o tarball com o relatório no formato utilizador:senha@url</description>
+            <description xml:lang="pt_BR">Onde você deseja enviar o arquivo tar com o relatório na forma login:passoword@url</description>
+            <description xml:lang="sv">Vart vill du skicka tar-arkivet med rapporten i formatet inloggning:lösenord@url</description>
+            <description xml:lang="uk">Місце, куди ви бажаєте вивантажити архів з даними звіту у форматі користувач:пароль@адреса</description>
+            <description xml:lang="zh_CN">以用户名:密码@URL 的格式指定压缩包的上传位置</description>
+            <note-html>Examples: ftp://[user[:pass]@]host/dir/[file.tar.gz], scp://[user[:pass]@]host/dir/[file.tar.gz], file:///dir/[file.tar.gz]</note-html>
+            <note-html xml:lang="es">Ejemplos: ftp://[user[:pass]@]host/dir/[file.tar.gz], scp://[user[:pass]@]host/dir/[file.tar.gz], file:///dir/[file.tar.gz]</note-html>
+            <note-html xml:lang="hu">Például: ftp://[user[:pass]@]host/dir/[file.tar.gz], scp://[user[:pass]@]host/dir/[file.tar.gz], file:///dir/[file.tar.gz]</note-html>
+            <note-html xml:lang="ja">例: ftp://[user[:pass]@]host/dir/[file.tar.gz], scp://[user[:pass]@]host/dir/[file.tar.gz], file:///dir/[file.tar.gz]</note-html>
+            <note-html xml:lang="nl">Voorbeelden: ftp://[gebruiker[:wachtwoord]@]host/dir/[file.tar.gz], scp://[gebruiker[:wachtwoord]@]host/dir/[file.tar.gz], file:///dir/[file.tar.gz]</note-html>
+            <note-html xml:lang="uk">Приклади: ftp://[користувач[:пароль]@]вузол/каталог/[файл.tar.gz], scp://[користувач[:пароль]@]вузол/каталог/[файл.tar.gz], file:///каталог/[файл.tar.gz]</note-html>
+            <note-html xml:lang="zh_CN">样例： ftp://[user[:pass]@]host/dir/[file.tar.gz], scp://[user[:pass]@]host/dir/[file.tar.gz], file:///dir/[file.tar.gz]</note-html>
+            <default-value/>
+        </option>
+    </options>
+</event>

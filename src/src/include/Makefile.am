@@ -1,0 +1,11 @@
+libreport_includedir = $(includedir)/libreport
+libreport_include_HEADERS = \
+    client.h \
+    dump_dir.h \
+    event_config.h \
+    problem_data.h \
+    report.h \
+    run_event.h \
+    \
+    internal_libreport.h \
+    internal_abrt_dbus.h

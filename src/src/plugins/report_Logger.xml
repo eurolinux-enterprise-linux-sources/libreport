@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event>
+    <name>Logger</name>
+    <name xml:lang="de">Logger</name>
+    <name xml:lang="en_GB">Logger</name>
+    <name xml:lang="es">Registrador de datos</name>
+    <name xml:lang="fr">Journalisation</name>
+    <name xml:lang="hu">Logger</name>
+    <name xml:lang="it">Logger</name>
+    <name xml:lang="ja">ロガー</name>
+    <name xml:lang="pl">Dziennik</name>
+    <name xml:lang="pt">Registos</name>
+    <name xml:lang="pt_BR">Logger</name>
+    <name xml:lang="sv">Loggare</name>
+    <name xml:lang="uk">Ведення журналу</name>
+    <name xml:lang="zh_CN">日志记录器</name>
+    <description>Save as text file</description>
+    <description xml:lang="ar">احفظ كملف نصي</description>
+    <description xml:lang="es">Guardar como archivo de texto</description>
+    <description xml:lang="hu">Mentés szöveges fájlként</description>
+    <description xml:lang="ja">テキストファイルとして保存する</description>
+    <description xml:lang="pl">Zapisz jako plik tekstowy</description>
+    <description xml:lang="pt_BR">Salvar como arquivo de texto</description>
+    <description xml:lang="uk">Зберегти як текстовий файл</description>
+    <description xml:lang="zh_CN">保存为文本文件</description>
+
+    <requires-items/>
+    <exclude-items-by-default>count,event_log,reported_to</exclude-items-by-default>
+    <exclude-items-always>coredump,vmcore</exclude-items-always>
+    <exclude-binary-items>yes</exclude-binary-items>
+    <include-items-by-default/>
+    <minimal-rating>0</minimal-rating>
+
+    <options>
+        <option type="text" name="Logger_Log_File">
+            <label>Log File</label>
+            <label xml:lang="ar">ملف سجلّ</label>
+            <label xml:lang="bg">Журнален файл</label>
+            <label xml:lang="ca">Fitxer de registre</label>
+            <label xml:lang="cs">Protokolovací soubor</label>
+            <label xml:lang="de">Logdatei</label>
+            <label xml:lang="en_GB">Log File</label>
+            <label xml:lang="es">Archivo de registro</label>
+            <label xml:lang="fi">Lokitiedosto</label>
+            <label xml:lang="fr">Fichier journal</label>
+            <label xml:lang="hu">Logfájl</label>
+            <label xml:lang="it">Log file</label>
+            <label xml:lang="ja">ログファイル</label>
+            <label xml:lang="ko">로그 파일</label>
+            <label xml:lang="pl">Plik dziennika</label>
+            <label xml:lang="pt">Ficheiro de Registo</label>
+            <label xml:lang="pt_BR">Arquivo log.</label>
+            <label xml:lang="sv">Logg_fil</label>
+            <label xml:lang="tr">Günlük dosyası</label>
+            <label xml:lang="uk">Файл журналу</label>
+            <label xml:lang="zh_CN">日志文件</label>
+            <allow-empty>no</allow-empty>
+            <description>Name of the logfile</description>
+            <description xml:lang="ca">Nom del fitxer de registre</description>
+            <description xml:lang="cs">Jméno protokolovacího souboru</description>
+            <description xml:lang="de">Name der Logdatei</description>
+            <description xml:lang="en_GB">Name of the logfile</description>
+            <description xml:lang="fi">Lokitiedoston nimi</description>
+            <description xml:lang="fr">Nom du journal</description>
+            <description xml:lang="hu">Logfájl neve</description>
+            <description xml:lang="it">Nome del logfile</description>
+            <description xml:lang="ja">ログファイル名</description>
+            <description xml:lang="pl">Nazwa pliku dziennika</description>
+            <description xml:lang="pt">Nome do ficheiro de registo</description>
+            <description xml:lang="pt_BR">Nome do logfile</description>
+            <description xml:lang="sv">Namn på loggfilen</description>
+            <description xml:lang="uk">Назва файла журналу</description>
+            <description xml:lang="zh_CN">日志文件名</description>
+            <description xml:lang="zh_TW">logfile 的名稱</description>
+        </option>
+        <option type="bool" name="Logger_Append">
+            <label>Append</label>
+            <label xml:lang="ar">الحق</label>
+            <label xml:lang="bg">Добави</label>
+            <label xml:lang="ca">Afegeix</label>
+            <label xml:lang="de">Anfügen</label>
+            <label xml:lang="en_GB">Append</label>
+            <label xml:lang="es">Agregar</label>
+            <label xml:lang="fi">Lisää</label>
+            <label xml:lang="fr">Ajouter</label>
+            <label xml:lang="it">Aggiungi</label>
+            <label xml:lang="ja">追記</label>
+            <label xml:lang="ko">추가</label>
+            <label xml:lang="nb">Legg til</label>
+            <label xml:lang="nl">Toevoegen</label>
+            <label xml:lang="tr">Ekle</label>
+            <label xml:lang="zh_CN">添加</label>
+            <label xml:lang="zh_TW">附加</label>
+            <description>Append new reports or overwrite the old one.</description>
+            <description xml:lang="bg">Добавяне на нови доклади или заместване на стар доклад.</description>
+            <description xml:lang="ca">Afegeix nous informes o sobreescriu l'antic.</description>
+            <description xml:lang="en_GB">Append new reports or overwrite the old one.</description>
+            <description xml:lang="fi">Lisää uudet raportit vanhaan tai kirjoita vanhan yli.</description>
+            <description xml:lang="it">Aggiungi nuove segnalazioni o sovrascrivi una vecchia</description>
+            <description xml:lang="pl">Dołącza nowe zgłoszenia lub zastępuje poprzednie.</description>
+            <description xml:lang="pt_BR">Anexar novos relatos ou sobrescrever os antigos.</description>
+            <description xml:lang="sv">Lägg till nya rapporter eller skriv över den gamla.</description>
+            <description xml:lang="tr">Yeni raporları ekle yada eskisinin üzerine yaz.</description>
+            <description xml:lang="uk">Дописати нові звіти або перезаписати старий звіт.</description>
+            <description xml:lang="zh_CN">添加新报告或者覆盖旧的。</description>
+            <description xml:lang="zh_TW">附加新回報或覆寫舊回報。</description>
+            <default-value>yes</default-value>
+        </option>
+    </options>
+</event>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event>
+    <name>Bugzilla</name>
+    <name xml:lang="ar">بجزيلا</name>
+    <name xml:lang="bg">Bugzilla</name>
+    <name xml:lang="ca">Bugzilla</name>
+    <name xml:lang="de">Bugzilla</name>
+    <name xml:lang="en_GB">Bugzilla</name>
+    <name xml:lang="es">Bugzilla</name>
+    <name xml:lang="fi">Bugzilla</name>
+    <name xml:lang="fr">Bugzilla</name>
+    <name xml:lang="hu">Bugzilla</name>
+    <name xml:lang="it">Bugzilla</name>
+    <name xml:lang="ja">Bugzilla</name>
+    <name xml:lang="ko">버그질라</name>
+    <name xml:lang="nb">Bugzilla</name>
+    <name xml:lang="nl">Bugzilla</name>
+    <name xml:lang="pl">Bugzilla</name>
+    <name xml:lang="pt">Bugzilla</name>
+    <name xml:lang="pt_BR">Bugzilla</name>
+    <name xml:lang="sk">Bugzilla</name>
+    <name xml:lang="sv">Bugzilla</name>
+    <name xml:lang="tr">Bugzilla</name>
+    <name xml:lang="uk">Bugzilla</name>
+    <name xml:lang="zh_CN">Bugzilla</name>
+    <name xml:lang="zh_TW">Bugzilla</name>
+    <description>Report to Bugzilla bug tracker</description>
+    <description xml:lang="bg">Доклад към Bugzilla bug tracker</description>
+    <description xml:lang="ca">Informa a Bugzilla bug tracker</description>
+    <description xml:lang="cs">Odeslat hlášení do Bugzilly</description>
+    <description xml:lang="de">Berichte an Bugzilla-Bugtracker</description>
+    <description xml:lang="en_GB">Report to Bugzilla bug tracker</description>
+    <description xml:lang="es">Informe al rastreador de errores de Bugzilla</description>
+    <description xml:lang="fi">Raportoi Bugzillaan</description>
+    <description xml:lang="fr">Rapporter vers le suivi d'anomalie Bugzilla</description>
+    <description xml:lang="hu">Jelentse a Bugzilla nyomkövetőjébe</description>
+    <description xml:lang="it">Notifica al bug tracker di Bugzilla</description>
+    <description xml:lang="ja">Bugzilla バグトラッカーへ報告</description>
+    <description xml:lang="ko">버그질라 버그 트래커에 보고합니다</description>
+    <description xml:lang="nl">Rapporteer naar Bugzilla bug volger</description>
+    <description xml:lang="pl">Zgłasza w systemie śledzenia błędów Bugzilla</description>
+    <description xml:lang="pt">Reportar para Bugzilla bug tracker</description>
+    <description xml:lang="pt_BR">Relatar para o Bugzilla bug tracker</description>
+    <description xml:lang="sv">Rapportera till felhanteraren Bugzilla</description>
+    <description xml:lang="tr">Bugzilla hata izleyicisine raporla</description>
+    <description xml:lang="uk">Повідомити до системи стеження за вадами Bugzilla</description>
+    <description xml:lang="zh_CN">汇报给 Bugzilla 问题追踪</description>
+    <description xml:lang="zh_TW">回報至 Bugzilla 臭蟲追蹤器</description>
+
+    <requires-items>component,duphash,os_release</requires-items>
+    <exclude-items-by-default>coredump,count,event_log,reported_to,vmcore</exclude-items-by-default>
+    <exclude-items-always/>
+    <exclude-binary-items>no</exclude-binary-items>
+    <include-items-by-default/>
+    <minimal-rating>3</minimal-rating>
+
+    <options>
+        <option type="text" name="Bugzilla_BugzillaURL">
+            <label>Bugzilla URL</label>
+            <label xml:lang="ar">عنوان بجزيلا</label>
+            <label xml:lang="bg">Bugzilla URL</label>
+            <label xml:lang="ca">URL Bugzilla</label>
+            <label xml:lang="de">Bugzilla URL</label>
+            <label xml:lang="en_GB">Bugzilla URL</label>
+            <label xml:lang="es">Bugzilla URL</label>
+            <label xml:lang="fi">Bugzillan URL:</label>
+            <label xml:lang="fr">URL du Bugzilla</label>
+            <label xml:lang="hu">Bugzilla URL</label>
+            <label xml:lang="it">URL di Bugzilla</label>
+            <label xml:lang="ja">BugzillaのURL</label>
+            <label xml:lang="ko">버그질라 URL</label>
+            <label xml:lang="nb">URL til Bugzilla</label>
+            <label xml:lang="nl">Bugzilla URL</label>
+            <label xml:lang="pl">Adres URL Bugzilli</label>
+            <label xml:lang="pt">URL do Bugzilla</label>
+            <label xml:lang="pt_BR">URL do Bugzilla</label>
+            <label xml:lang="sk">Bugzilla URL</label>
+            <label xml:lang="sv">Bugzilla-URL</label>
+            <label xml:lang="tr">Bugzilla URL</label>
+            <label xml:lang="uk">Адреса Bugzilla</label>
+            <label xml:lang="zh_CN">Bugzilla URL</label>
+            <label xml:lang="zh_TW">Bugzilla 網址</label>
+            <allow-empty>no</allow-empty>
+            <description>Address of Bugzilla server</description>
+            <description xml:lang="bg">Адрес на Bugzilla сървъра</description>
+            <description xml:lang="ca">Adreça del servidor Bugzilla</description>
+            <description xml:lang="cs">Adresa Bugzilla serveru</description>
+            <description xml:lang="de">Adresse des Bugzilla-Servers</description>
+            <description xml:lang="en_GB">Address of Bugzilla server</description>
+            <description xml:lang="es">Direccion del servidor Bugzilla</description>
+            <description xml:lang="fi">Bugzilla-palvelimen osoite</description>
+            <description xml:lang="fr">Adresse du serveur Bugzilla</description>
+            <description xml:lang="hu">Buzilla kiszolgáló címe</description>
+            <description xml:lang="it">Indirizzo del server Bugzilla</description>
+            <description xml:lang="ja">Bugzillaのサーバーアドレス</description>
+            <description xml:lang="ko">버그질라 서버 주소</description>
+            <description xml:lang="nl">Adres van Bugzilla server</description>
+            <description xml:lang="pl">Adres serwera Bugzilli</description>
+            <description xml:lang="pt">Endereço do servidor Bugzilla</description>
+            <description xml:lang="pt_BR">Endereço do servidor Bugzilla</description>
+            <description xml:lang="sk">Adresa Bugzilla serveru</description>
+            <description xml:lang="sv">Adress till Bugzilla-servern</description>
+            <description xml:lang="tr">Bugzilla sunucusunun adresi</description>
+            <description xml:lang="uk">Адреса сервера Bugzilla</description>
+            <description xml:lang="zh_CN">Bugzilla 服务器地址</description>
+            <description xml:lang="zh_TW">Bugzilla 伺服器的位址</description>
+            <default-value>https://bugzilla.redhat.com</default-value>
+            <note-html>You can create bugzilla.redhat.com account &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;here&lt;/a&gt;</note-html>
+            <note-html xml:lang="bg">Можете да създадете bugzilla.redhat.com акаунт <a href="https://bugzilla.redhat.com/createaccount.cgi">ето тук</a></note-html>
+            <note-html xml:lang="ca">Podeu crear un compte de bugzilla.redhat.com &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;here&lt;/a&gt;</note-html>
+            <note-html xml:lang="cs">Můžete vytvořit bugzilla.redhat.com účet &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;here&lt;/a&gt;</note-html>
+            <note-html xml:lang="de">Sie können &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;hier&lt;/a&gt; ein bugzilla.redhat.com-Konto einrichten</note-html>
+            <note-html xml:lang="en_GB">You can create bugzilla.redhat.com account &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;here&lt;/a&gt;</note-html>
+            <note-html xml:lang="es">Puede crear una cuenta bugzilla.redhat.com &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;aqui&lt;/a&gt;</note-html>
+            <note-html xml:lang="fi">Voit luoda bugzilla.redhat.com-tilin &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;täällä&lt;/a&gt;</note-html>
+            <note-html xml:lang="fr">Vous pouvez créer un compte bugzilla.redhat.com &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;ici&lt;/a&gt;</note-html>
+            <note-html xml:lang="hu">Készíthet bugzilla.redhat.com felhasználói azonosítót &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;itt&lt;/a&gt;</note-html>
+            <note-html xml:lang="it">E' possibile creare un account bugzilla.redhat.com &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;da quì&lt;/a&gt;</note-html>
+            <note-html xml:lang="nl">Je kunt &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;hier&lt;/a&gt; een bugzilla.redhat.com account aanmken</note-html>
+            <note-html xml:lang="pl">Można utworzyć konto w witrynie bugzilla.redhat.com <a href="https://bugzilla.redhat.com/createaccount.cgi">pod tym adresem</a></note-html>
+            <note-html xml:lang="pt">Pode criar uma conta bugzilla.redhat.com &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;aqui&lt;/a&gt;</note-html>
+            <note-html xml:lang="pt_BR">Você pode criar um aconta no bugzilla.redhat.com &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;here&lt;/a&gt;</note-html>
+            <note-html xml:lang="sv">Du kan skapa ett konto på bugzilla.redhat.com &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;här&lt;/a&gt;</note-html>
+            <note-html xml:lang="tr">bugzilla.redhat.com hesabı yaratabilirsiniz &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;here&lt;/a&gt;</note-html>
+            <note-html xml:lang="uk">Створити обліковий запис bugzilla.redhat.com можна &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;тут&lt;/a&gt;</note-html>
+            <note-html xml:lang="zh_CN">您可以在 &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;这里&lt;/a&gt; 创建 bugzilla.redhat.com 账户 </note-html>
+            <note-html xml:lang="zh_TW">您可以 &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;從這裡&lt;/a&gt; 建立 bugzilla.redhat.com 帳號</note-html>
+        </option>
+        <option type="text" name="Bugzilla_Login">
+            <label>User name</label>
+            <label xml:lang="ar">اسم المستخدم</label>
+            <label xml:lang="bg">Потребителско име</label>
+            <label xml:lang="ca">Nom d'usuari</label>
+            <label xml:lang="cs">Uživatelské jméno</label>
+            <label xml:lang="de">Benutzername</label>
+            <label xml:lang="en_GB">User name</label>
+            <label xml:lang="es">Nombre de usuario</label>
+            <label xml:lang="fi">Käyttäjätunnus</label>
+            <label xml:lang="fr">Nom d'utilisateur</label>
+            <label xml:lang="hu">Felhasználói név</label>
+            <label xml:lang="it">Nome utente</label>
+            <label xml:lang="ja">ユーザー名</label>
+            <label xml:lang="ko">사용자명</label>
+            <label xml:lang="nb">Brukernavn</label>
+            <label xml:lang="nl">Gebruikersnaam</label>
+            <label xml:lang="pl">Nazwa użytkownika</label>
+            <label xml:lang="pt">Utilizador</label>
+            <label xml:lang="pt_BR">Nome de usuário</label>
+            <label xml:lang="sv">Användarnamn</label>
+            <label xml:lang="tr">Kullanıcı adı</label>
+            <label xml:lang="uk">Ім'я користувача</label>
+            <label xml:lang="zh_CN">用户名</label>
+            <label xml:lang="zh_TW">使用者名稱</label>
+            <allow-empty>no</allow-empty>
+            <description>Bugzilla account user name</description>
+            <description xml:lang="bg">Потребителско име за Bugzilla акаунта</description>
+            <description xml:lang="ca">Nom d'usuari del compte de Bugzilla</description>
+            <description xml:lang="cs">Uživatelské jméno Bugzilla účtu</description>
+            <description xml:lang="de">Benutzername des Bugzilla-Kontos</description>
+            <description xml:lang="en_GB">Bugzilla account user name</description>
+            <description xml:lang="es">Nombre de usuario de cuenta Bugzilla</description>
+            <description xml:lang="fi">Bugzilla-tilin käyttäjätunnus</description>
+            <description xml:lang="fr">Nom d'utilisateur du compte Bugzilla</description>
+            <description xml:lang="hu">Bugzilla felhasználónév</description>
+            <description xml:lang="it">Nome utente di account Bugzilla</description>
+            <description xml:lang="ja">Bugzillaのアカウント名</description>
+            <description xml:lang="ko">버그질라 계정 사용자명</description>
+            <description xml:lang="nl">Bugzilla account gebruikersnaam</description>
+            <description xml:lang="pl">Nazwa użytkownika konta Bugzilli</description>
+            <description xml:lang="pt">Nome de utilizador da conta Bugzilla</description>
+            <description xml:lang="pt_BR">Nome de usuário da conta Bugzilla</description>
+            <description xml:lang="sk">Bugzilla používateľské meno</description>
+            <description xml:lang="sv">Bugzillakontots användarnamn</description>
+            <description xml:lang="tr">Bugzilla hesabı kullanıcı adı</description>
+            <description xml:lang="uk">Ім’я користувача облікового запису Bugzilla</description>
+            <description xml:lang="zh_CN">Bugzilla 账户用户名</description>
+            <description xml:lang="zh_TW">Bugzilla 帳號的使用者名稱</description>
+        </option>
+        <option type="password" name="Bugzilla_Password">
+            <label>Password</label>
+            <label xml:lang="ar">كلمة السر</label>
+            <label xml:lang="bg">Парола</label>
+            <label xml:lang="ca">Contrasenya</label>
+            <label xml:lang="cs">Heslo</label>
+            <label xml:lang="de">Passwort</label>
+            <label xml:lang="en_GB">Password</label>
+            <label xml:lang="es">Contraseña</label>
+            <label xml:lang="fi">Salasana</label>
+            <label xml:lang="fr">Mot de passe</label>
+            <label xml:lang="hu">Jelszó</label>
+            <label xml:lang="it">Password</label>
+            <label xml:lang="ja">パスワード</label>
+            <label xml:lang="ko">암호</label>
+            <label xml:lang="nb">Passord</label>
+            <label xml:lang="nl">Wachtwoord</label>
+            <label xml:lang="pl">Hasło</label>
+            <label xml:lang="pt">Senha</label>
+            <label xml:lang="pt_BR">Senha</label>
+            <label xml:lang="sv">Lösenord</label>
+            <label xml:lang="tr">Şifre</label>
+            <label xml:lang="uk">Пароль</label>
+            <label xml:lang="zh_CN">密钥</label>
+            <label xml:lang="zh_TW">密碼</label>
+            <allow-empty>no</allow-empty>
+            <description>Bugzilla account password</description>
+            <description xml:lang="bg">Парола за Bugzilla акаунта</description>
+            <description xml:lang="ca">Contrasenya del compte Bugzilla</description>
+            <description xml:lang="cs">Heslo Bugzilla účtu</description>
+            <description xml:lang="de">Passwort des Bugzilla-Kontos</description>
+            <description xml:lang="en_GB">Bugzilla account password</description>
+            <description xml:lang="es">Contraseña de cuenta de Bugzilla</description>
+            <description xml:lang="fi">Bugzilla-tilin salasana</description>
+            <description xml:lang="fr">Mot de passe du compte Bugzilla</description>
+            <description xml:lang="hu">Bugzilla felhasználói jelszó</description>
+            <description xml:lang="it">Password di account Bugzilla</description>
+            <description xml:lang="ja">Bugzillaのパスワード</description>
+            <description xml:lang="ko">버그질라 계정 암호</description>
+            <description xml:lang="nl">Bugzilla account wachtwoord</description>
+            <description xml:lang="pl">Hasło konta Bugzilli</description>
+            <description xml:lang="pt">Senha da conta Bugzilla</description>
+            <description xml:lang="pt_BR">Senha da conta Bugzilla</description>
+            <description xml:lang="sk">Bugzilla heslo</description>
+            <description xml:lang="sv">Bugzillakontots lösenord</description>
+            <description xml:lang="tr">Bugzilla hesap şifresi</description>
+            <description xml:lang="uk">Пароль облікового запису Bugzilla</description>
+            <description xml:lang="zh_CN">Bugzilla 账户密码</description>
+            <description xml:lang="zh_TW">Bugzilla 帳號的密碼</description>
+        </option>
+        <option type="bool" name="Bugzilla_SSLVerify">
+            <label>Verify SSL</label>
+            <label xml:lang="bg">Провери SSL</label>
+            <label xml:lang="ca">Verifica SSL</label>
+            <label xml:lang="cs">Kontrola SSl</label>
+            <label xml:lang="de">SSL überprüfen</label>
+            <label xml:lang="en_GB">Verify SSL</label>
+            <label xml:lang="es">Verficar SSL</label>
+            <label xml:lang="fi">Tarkista SSL</label>
+            <label xml:lang="fr">Vérifier SSL</label>
+            <label xml:lang="hu">SSL ellenőrzése</label>
+            <label xml:lang="it">Verifica SSL</label>
+            <label xml:lang="ja">SSLの確認</label>
+            <label xml:lang="nl">Verifieer SSL</label>
+            <label xml:lang="pl">Sprawdzanie SSL</label>
+            <label xml:lang="pt">Verificar SSL</label>
+            <label xml:lang="pt_BR">Verificar SSL</label>
+            <label xml:lang="sv">Verifiera SSL</label>
+            <label xml:lang="tr">SSL'i doğrula</label>
+            <label xml:lang="uk">Перевірити SSL</label>
+            <label xml:lang="zh_CN">检验 SSL</label>
+            <label xml:lang="zh_TW">驗證 SSL</label>
+            <description>Check SSL key validity</description>
+            <description xml:lang="bg">Проверете валидността на SSL ключа</description>
+            <description xml:lang="ca">Reviseu la validesa de la clau SSL</description>
+            <description xml:lang="cs">Kontrola platnosti SSL klíče</description>
+            <description xml:lang="de">Überprüfe Gültigkeit des SSL-Schlüssels</description>
+            <description xml:lang="en_GB">Check SSL key validity</description>
+            <description xml:lang="es">Comprobar validez de clave SSL</description>
+            <description xml:lang="fi">Tarkista SSL-avaimen oikeellisuus</description>
+            <description xml:lang="fr">Vérifier la validité de la clé SSL</description>
+            <description xml:lang="hu">Ellenőrizze a SSL kulcs érvényességét</description>
+            <description xml:lang="it">Controlla validità di chiave SSL</description>
+            <description xml:lang="ja">SSLキーの有効性を確認してください</description>
+            <description xml:lang="nl">Controleer geldigheid van SSL sleutel</description>
+            <description xml:lang="pl">Sprawdzanie poprawności klucza SSL</description>
+            <description xml:lang="pt">Verificar validade da chave SSL</description>
+            <description xml:lang="pt_BR">Checar validade da chave SSL</description>
+            <description xml:lang="sv">Kontrollera SSL-nyckelns giltighet</description>
+            <description xml:lang="tr">SSL anahtarının geçerliliğini kontrol et</description>
+            <description xml:lang="uk">Перевірити чинність ключа SSL</description>
+            <description xml:lang="zh_CN">检查 SSL 密钥</description>
+            <description xml:lang="zh_TW">檢查 SSL 金鑰有效性</description>
+            <default-value>yes</default-value>
+        </option>
+        <advanced-options>
+            <option type="text" name="Bugzilla_OSRelease">
+                <label>OS release string</label>
+                <label xml:lang="es">Cadena de lanzamiento de SO</label>
+                <label xml:lang="hu">OS kiadási szöveg</label>
+                <label xml:lang="ja">OS リリース文字列</label>
+                <label xml:lang="nl">OS vrijgave string</label>
+                <label xml:lang="pl">Ciąg wydania systemu operacyjnego</label>
+                <label xml:lang="uk">Рядок випуску ОС</label>
+                <label xml:lang="zh_CN">操作系统发布版本</label>
+                <allow-empty>yes</allow-empty>
+                <note-html>Specify this only if you modified your /etc/system-release file</note-html>
+                <note-html xml:lang="es">Especifique esto sólo si ha modificado su archivo /etc/system-release</note-html>
+                <note-html xml:lang="hu">Csak akkor definiálja ezt, ha módosította a saját /etc/system-release fájlját</note-html>
+                <note-html xml:lang="nl">Specificeer dit alleen als je jouw /etc/system-release bestand veranderd hebt</note-html>
+                <note-html xml:lang="uk">Вказуйте, лише якщо вами було внесено зміни до файла /etc/system-release</note-html>
+                <note-html xml:lang="zh_CN">只需在您更改过 /etc/system-release 文件的情况下指定</note-html>
+            </option>
+        </advanced-options>
+    </options>
+</event>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event>
+    <name>Mailx</name>
+    <name xml:lang="de">Mailx</name>
+    <name xml:lang="en_GB">Mailx</name>
+    <name xml:lang="fr">Mailx</name>
+    <name xml:lang="hu">Mailx</name>
+    <name xml:lang="pl">Mailx</name>
+    <name xml:lang="pt">Mailx</name>
+    <name xml:lang="pt_BR">Mailx</name>
+    <name xml:lang="sv">Mailx</name>
+    <name xml:lang="tr">Mailx</name>
+    <name xml:lang="uk">Mailx</name>
+    <name xml:lang="zh_CN">邮件</name>
+    <name xml:lang="zh_TW">Mailx</name>
+    <description>Send via email</description>
+    <description xml:lang="bg">Изпращане с имейл</description>
+    <description xml:lang="cs">Odeslat e-mailem</description>
+    <description xml:lang="de">Über Email senden</description>
+    <description xml:lang="en_GB">Send via e-mail</description>
+    <description xml:lang="es">Enviar por email</description>
+    <description xml:lang="fi">Lähetä sähköpostilla</description>
+    <description xml:lang="fr">Envoyer par e-mail</description>
+    <description xml:lang="hu">Küldés email-on keresztül</description>
+    <description xml:lang="it">Invia via email</description>
+    <description xml:lang="ja">Eメール経由で送信</description>
+    <description xml:lang="nb">Send via e-post</description>
+    <description xml:lang="pl">Wysyłanie przez e-mail</description>
+    <description xml:lang="pt">Enviar via e-mail</description>
+    <description xml:lang="sv">Skicka via e-post</description>
+    <description xml:lang="tr">Email olarak gönder</description>
+    <description xml:lang="uk">Надіслати електронною поштою</description>
+
+    <requires-items/>
+    <exclude-items-by-default>count,event_log,reported_to,coredump,vmcore</exclude-items-by-default>
+    <exclude-items-always/>
+    <exclude-binary-items>no</exclude-binary-items>
+    <include-items-by-default/>
+    <minimal-rating>0</minimal-rating>
+
+    <options>
+        <option type="text" name="Mailx_Subject">
+            <label>Subject</label>
+            <label xml:lang="bg">Тема</label>
+            <label xml:lang="ca">Assumpte</label>
+            <label xml:lang="cs">Předmět</label>
+            <label xml:lang="fi">Otsikko</label>
+            <label xml:lang="fr">Sujet</label>
+            <label xml:lang="hu">Tárgy</label>
+            <label xml:lang="it">Oggetto</label>
+            <label xml:lang="ja">件名</label>
+            <label xml:lang="ko">제목</label>
+            <label xml:lang="nb">Emne</label>
+            <label xml:lang="nl">Onderwerp</label>
+            <label xml:lang="pt">Assunto</label>
+            <label xml:lang="pt_BR">Assunto</label>
+            <label xml:lang="sv">Ämne</label>
+            <label xml:lang="tr">Konu</label>
+            <label xml:lang="zh_CN">主题</label>
+            <allow-empty>no</allow-empty>
+            <description>Message subject</description>
+            <description xml:lang="bg">Тема на съобщението</description>
+            <description xml:lang="ca">Assumpte del missatge</description>
+            <description xml:lang="de">Nachrichtenbetreff</description>
+            <description xml:lang="en_GB">Message subject</description>
+            <description xml:lang="es">Asunto del mensaje</description>
+            <description xml:lang="fi">Viestin aihe</description>
+            <description xml:lang="hu">Üzenet tárgya</description>
+            <description xml:lang="it">Oggetto del messaggio </description>
+            <description xml:lang="ja">メッセージの件名</description>
+            <description xml:lang="ko">메시지 제목</description>
+            <description xml:lang="nl">Boodschaponderwerp</description>
+            <description xml:lang="pt">Assunto da mensagem</description>
+            <description xml:lang="pt_BR">Assunto da mensagem</description>
+            <description xml:lang="sv">Meddelandets ämne</description>
+            <description xml:lang="uk">Тема повідомлення</description>
+            <description xml:lang="zh_CN">消息主题</description>
+            <description xml:lang="zh_TW">訊息主旨</description>
+            <default-value>[abrt] detected a crash</default-value>
+        </option>
+        <option type="text" name="Mailx_EmailFrom">
+            <label>Sender</label>
+            <label xml:lang="bg">Подател</label>
+            <label xml:lang="ca">Remitent</label>
+            <label xml:lang="cs">Odesílatel</label>
+            <label xml:lang="de">Absender</label>
+            <label xml:lang="hu">Feladó</label>
+            <label xml:lang="it">Mittente</label>
+            <label xml:lang="ko">발신자</label>
+            <label xml:lang="pt">Remetente</label>
+            <label xml:lang="pt_BR">Remetente</label>
+            <label xml:lang="tr">Gönderen</label>
+            <label xml:lang="uk">Відправник</label>
+            <label xml:lang="zh_CN">发件人</label>
+            <label xml:lang="zh_TW">寄件者</label>
+            <allow-empty>no</allow-empty>
+            <description>Sender's email</description>
+            <description xml:lang="ar">البريد اﻹلكتروني المرسل</description>
+            <description xml:lang="bg">Имейл на подателя</description>
+            <description xml:lang="ca">Correu electrònic del remitent</description>
+            <description xml:lang="cs">E-mail odesílatele</description>
+            <description xml:lang="en_GB">Sender's e-mail</description>
+            <description xml:lang="es">Correo del Emisor</description>
+            <description xml:lang="fi">Lähettäjän sähköpostiosoite</description>
+            <description xml:lang="fr">E-mail de l'expéditeur</description>
+            <description xml:lang="hu">Feladó email címe</description>
+            <description xml:lang="it">Email del mittente</description>
+            <description xml:lang="ko">발신자 이메일</description>
+            <description xml:lang="nl">Email van afzender</description>
+            <description xml:lang="pl">Adres e-mail nadawcy</description>
+            <description xml:lang="pt">E-mail do remetente</description>
+            <description xml:lang="pt_BR">Email do remetente</description>
+            <description xml:lang="zh_CN">发件人邮件</description>
+            <description xml:lang="zh_TW">寄件者的電子郵件</description>
+        </option>
+        <option type="text" name="Mailx_EmailTo">
+            <label>Recipient</label>
+            <label xml:lang="bg">Получател</label>
+            <label xml:lang="ca">Destinatari</label>
+            <label xml:lang="cs">Příjemce</label>
+            <label xml:lang="de">Empfänger</label>
+            <label xml:lang="en_GB">Recipient</label>
+            <label xml:lang="es">Receptor</label>
+            <label xml:lang="fr">Destinataire</label>
+            <label xml:lang="it">Destinatario</label>
+            <label xml:lang="ja">送信先</label>
+            <label xml:lang="ko">수신자</label>
+            <label xml:lang="nb">Mottaker</label>
+            <label xml:lang="pt">Destinatário</label>
+            <label xml:lang="sv">Mottagare</label>
+            <label xml:lang="tr">Alıcı</label>
+            <label xml:lang="uk">Отримувач</label>
+            <label xml:lang="zh_CN">收件人</label>
+            <allow-empty>no</allow-empty>
+            <description>Recipient's email</description>
+            <description xml:lang="ca">Correu electrònic del destinatari</description>
+            <description xml:lang="cs">E-mail příjemce</description>
+            <description xml:lang="de">Empfängeradresse</description>
+            <description xml:lang="en_GB">Recipient's e-mail</description>
+            <description xml:lang="es">Correo del Receptor</description>
+            <description xml:lang="fi">Vastaanottajan sähköpostiosoite</description>
+            <description xml:lang="fr">Adresse e-mail du destinataire</description>
+            <description xml:lang="hu">Címzett email címe</description>
+            <description xml:lang="ja">送信先のEメールアドレス</description>
+            <description xml:lang="ko">수신자 이메일</description>
+            <description xml:lang="nl">Email van ontvanger</description>
+            <description xml:lang="pl">Adres e-mail odbiorcy</description>
+            <description xml:lang="pt">E-mail do destinatário</description>
+            <description xml:lang="sv">Mottagarens e-post</description>
+            <description xml:lang="tr">Alıcının maili</description>
+            <description xml:lang="zh_CN">收件人邮件</description>
+            <description xml:lang="zh_TW">收件者的電子郵件</description>
+        </option>
+        <option type="bool" name="Mailx_SendBinaryData">
+            <label>Send Binary Data</label>
+            <label xml:lang="bg">Изпращане на двоични данни</label>
+            <label xml:lang="cs">Odeslat binární data</label>
+            <label xml:lang="en_GB">Send Binary Data</label>
+            <label xml:lang="es">Enviar datos binarios</label>
+            <label xml:lang="fi">Lähetä binääridata</label>
+            <label xml:lang="fr">Envoyer des données binaires</label>
+            <label xml:lang="hu">Bináris fájlok küldése</label>
+            <label xml:lang="it">Invia Dati Binari</label>
+            <label xml:lang="ja">バイナリデータの送信</label>
+            <label xml:lang="nl">Stuur binaire data</label>
+            <label xml:lang="pt">Enviar dados binários</label>
+            <label xml:lang="pt_BR">Enviar dados binários</label>
+            <label xml:lang="tr">İkili veriyi gönder</label>
+            <label xml:lang="uk">Надіслати бінарні дані</label>
+            <label xml:lang="zh_CN">发送二进制数据</label>
+            <description>Send binary files like coredump</description>
+            <description xml:lang="bg">Изпращане на двоични файлове като coredump</description>
+            <description xml:lang="ca">Envia els fitxers binari com coredump</description>
+            <description xml:lang="de">Binärdaten wie coredump senden</description>
+            <description xml:lang="en_GB">Send binary files like coredump</description>
+            <description xml:lang="es">Envíe archivos binarios como volcados del núcleo</description>
+            <description xml:lang="fi">Lähetä binaaritiedostoja kuten muistivedos</description>
+            <description xml:lang="it">Invia file binari come coredump</description>
+            <description xml:lang="ja">コアダンプをバイナリファイルとして送信</description>
+            <description xml:lang="ko">코어 덤프와 같은 이진 파일 전송</description>
+            <description xml:lang="nl">Stuur binaire bestanden zoals een coredimp</description>
+            <description xml:lang="pl">Wysyła pliki binarne, takie jak zrzuty core</description>
+            <description xml:lang="pt_BR">Enviar binários como despejo de memória</description>
+            <description xml:lang="tr">coredump benzeri ikili dosyaları gönder</description>
+            <description xml:lang="uk">Надіслати бінарні файли як дамп ядра (coredump)</description>
+            <description xml:lang="zh_CN">发送二进制文件，如内核转储</description>
+            <default-value>no</default-value>
+        </option>
+    </options>
+</event>

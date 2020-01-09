@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event>
+    <name>Red Hat Customer Support</name>
+    <name xml:lang="bg">Red Hat Поддръжка на потребители</name>
+    <name xml:lang="ca">Suport del client Red Hat</name>
+    <name xml:lang="de">Red Hat Kunden-Support</name>
+    <name xml:lang="hu">Red Hat ügyfélszolgálat</name>
+    <name xml:lang="ja">Red Hat カスタマーサポート</name>
+    <name xml:lang="nl">Red Hat Customer Support</name>
+    <name xml:lang="pl">Wsparcie klienta firmy Red Hat</name>
+    <name xml:lang="pt">Suporte Red Hat ao cliente</name>
+    <name xml:lang="pt_BR">Suporte ao cliente Red Hat</name>
+    <name xml:lang="sv">Red Hats kund-support</name>
+    <name xml:lang="tr">Red Hat müşteri desteği</name>
+    <name xml:lang="zh_CN">红帽消费者支持</name>
+    <name xml:lang="zh_TW">Red Hat 客戶支援</name>
+    <description>Report to Red Hat support</description>
+    <description xml:lang="cs">Nahlásit problém na podporu Red Hatu</description>
+    <description xml:lang="fi">Raportoi Red Hat:n tukeen</description>
+    <description xml:lang="hu">Jelentés a Red Hat ügyfélszolgálatának</description>
+    <description xml:lang="ja">Red Hat サポートへ報告</description>
+    <description xml:lang="ko">Red Hat 지원에 보고</description>
+    <description xml:lang="pl">Zgłasza we wsparciu firmy Red Hat</description>
+    <description xml:lang="pt">Reportar para suporte Red Hat</description>
+    <description xml:lang="pt_BR">Relatar ao suporte da Red Hat</description>
+    <description xml:lang="sv">Rapportera till Red Hats support</description>
+    <description xml:lang="tr">Red Hat desteğini raporla</description>
+    <description xml:lang="uk">Повідомити до служби підтримки Red Hat</description>
+    <description xml:lang="zh_CN">报告给红帽支持</description>
+    <description xml:lang="zh_TW">回報至 Red Hat 支援</description>
+
+    <requires-items>package</requires-items>
+    <exclude-items-by-default>count,event_log,reported_to,vmcore</exclude-items-by-default>
+    <exclude-items-always/>
+    <exclude-binary-items>no</exclude-binary-items>
+    <include-items-by-default/>
+    <minimal-rating>0</minimal-rating>
+
+    <options>
+        <option type="text" name="RHTSupport_URL">
+            <label>RH Portal URL</label>
+            <label xml:lang="ca">Url del protal RH</label>
+            <label xml:lang="es">URL del PORTAL RH</label>
+            <label xml:lang="fi">RH Portalin URL</label>
+            <label xml:lang="fr">URL du portail RH</label>
+            <label xml:lang="hu">RH Portál URL</label>
+            <label xml:lang="it">URL del portale RH</label>
+            <label xml:lang="pl">Adres URL portalu firmy Red Hat</label>
+            <label xml:lang="pt">URL do Portal RH</label>
+            <label xml:lang="pt_BR">URL do Portal RH</label>
+            <label xml:lang="sv">RH:s portal-URL</label>
+            <label xml:lang="tr">RH Portal URL</label>
+            <label xml:lang="uk">Адреса порталу RH</label>
+            <label xml:lang="zh_TW">RH 入口網址</label>
+            <allow-empty>no</allow-empty>
+            <description>Address of the Red Hat support portal</description>
+            <description xml:lang="bg">Адрес на Red Hat портала за поддръжка</description>
+            <description xml:lang="ca">Adreça del portal de suport Red Hat</description>
+            <description xml:lang="de">Adresse des Red Hat Support-Portals</description>
+            <description xml:lang="en_GB">Address of the Red Hat support portal</description>
+            <description xml:lang="es">Dirección del portal de ayuda de Red Hat</description>
+            <description xml:lang="fi">Red Hatin tukiportaalin osoite</description>
+            <description xml:lang="fr">Adresse du portail de support de Red Hat</description>
+            <description xml:lang="hu">Red Hat ügyfélszolgálat címe</description>
+            <description xml:lang="it">Indirizzo del portale di supporto RedHat</description>
+            <description xml:lang="ko">레드햇 지원 포털 주소</description>
+            <description xml:lang="nl">Adres van het Red Hat support portaal</description>
+            <description xml:lang="pl">Adres portalu wsparcia firmy Red Hat</description>
+            <description xml:lang="pt">Endereço do portal de suporte da Red Hat</description>
+            <description xml:lang="uk">Адреса порталу підтримки користувачів Red Hat</description>
+            <description xml:lang="zh_CN">红帽支持站点地址</description>
+            <description xml:lang="zh_TW">Red Hat 支援入口的位址</description>
+            <default-value>https://api.access.redhat.com/rs</default-value>
+        </option>
+        <option type="text" name="RHTSupport_Login">
+            <label>Username</label>
+            <label xml:lang="ar">إسم المستخدم</label>
+            <label xml:lang="ca">Nom d'usuari</label>
+            <label xml:lang="de">Benutzername</label>
+            <label xml:lang="fi">Käyttäjätunnus</label>
+            <label xml:lang="it">Nome utente</label>
+            <label xml:lang="ja">ユーザ名</label>
+            <label xml:lang="nl">Gebruikersnaam</label>
+            <label xml:lang="pl">Nazwa użytkownika</label>
+            <label xml:lang="pt">Nome de Utilizador</label>
+            <description>Red Hat customer user name</description>
+            <description xml:lang="ar">اسم مستخدم عميل ردهات</description>
+            <description xml:lang="bg">Red Hat име на потребителя</description>
+            <description xml:lang="ca">nom d'usuari del client Red Hat</description>
+            <description xml:lang="en_GB">Red Hat customer user name</description>
+            <description xml:lang="es">Nombre de usuario de Red Hat</description>
+            <description xml:lang="fr">Nom d'utilisateur client Red Hat</description>
+            <description xml:lang="hu">Red Hat ügyfélnév</description>
+            <description xml:lang="ja">Red Hat カスタマーユーザー名</description>
+            <description xml:lang="ko">Red Hat 고객 사용자명</description>
+            <description xml:lang="nl">Red Hat customer gebruikersnaam</description>
+            <description xml:lang="pl">Nazwa użytkownika klienta firmy Red Hat</description>
+            <description xml:lang="pt">Nome de utilizador do cliente Red Hat</description>
+            <description xml:lang="pt_BR">Nome de usuário do cliente Red Hat</description>
+            <description xml:lang="sv">Red Hats kundanvändarnamn</description>
+            <description xml:lang="tr">Red Hat müşteri kullanıcı adı</description>
+            <description xml:lang="uk">Ім’я користувача Red Hat</description>
+            <description xml:lang="zh_CN">红帽客户用户名</description>
+            <description xml:lang="zh_TW">Red Hat 客戶使用者名稱</description>
+            <allow-empty>no</allow-empty>
+        </option>
+        <option type="password" name="RHTSupport_Password">
+            <label>Password</label>
+            <label xml:lang="ar">كلمة السر</label>
+            <label xml:lang="bg">Парола</label>
+            <label xml:lang="cs">Heslo</label>
+            <label xml:lang="de">Passwort</label>
+            <label xml:lang="en_GB">Password</label>
+            <label xml:lang="es">Contraseña</label>
+            <label xml:lang="fi">Salasana</label>
+            <label xml:lang="fr">Mot de passe</label>
+            <label xml:lang="hu">Jelszó</label>
+            <label xml:lang="it">Password</label>
+            <label xml:lang="ko">암호</label>
+            <label xml:lang="nb">Passord</label>
+            <label xml:lang="nl">Wachtwoord</label>
+            <label xml:lang="pl">Hasło</label>
+            <label xml:lang="pt">Senha</label>
+            <label xml:lang="pt_BR">Senha</label>
+            <label xml:lang="sv">Lösenord</label>
+            <label xml:lang="tr">Şifre</label>
+            <label xml:lang="uk">Пароль</label>
+            <description>Red Hat customer password</description>
+            <description xml:lang="ar">كلمة سر عميل ردهات</description>
+            <description xml:lang="bg">Red Hat парола на потребителя</description>
+            <description xml:lang="ca">Contrasenya del client Red Hat</description>
+            <description xml:lang="de">Red Hat Kundenpasswort</description>
+            <description xml:lang="es">Contraseña de Cliente de Red Hat</description>
+            <description xml:lang="fi">Red Hat -asiakkaan salasana</description>
+            <description xml:lang="fr">Mot de passe client Red Hat</description>
+            <description xml:lang="ja">Red Hat カスタマーパスワード</description>
+            <description xml:lang="ko">Red Hat 고객 암호</description>
+            <description xml:lang="nl">Red Hat cunstomer wachtwoord</description>
+            <description xml:lang="pl">Hasło klienta firmy Red Hat</description>
+            <description xml:lang="pt">Senha do cliente Red Hat</description>
+            <description xml:lang="pt_BR">Senha do cliente Red Hat</description>
+            <description xml:lang="tr">Red Hat müşteri şifresi</description>
+            <description xml:lang="uk">Пароль користувача Red Hat</description>
+            <description xml:lang="zh_CN">红帽支持密码</description>
+            <allow-empty>no</allow-empty>
+        </option>
+        <option type="bool" name="RHTSupport_SSLVerify">
+            <label>Verify SSL</label>
+            <label xml:lang="bg">Провери SSL</label>
+            <label xml:lang="ca">Verifica SSL</label>
+            <label xml:lang="cs">Kontrola SSl</label>
+            <label xml:lang="de">SSL überprüfen</label>
+            <label xml:lang="en_GB">Verify SSL</label>
+            <label xml:lang="fi">Tarkista SSL</label>
+            <label xml:lang="hu">SSL ellenőrzése</label>
+            <label xml:lang="it">Verifica SSL</label>
+            <label xml:lang="nl">Verifieer SSL</label>
+            <label xml:lang="pl">Sprawdzanie SSL</label>
+            <label xml:lang="pt">Verificar SSL</label>
+            <label xml:lang="sv">Verifiera SSL</label>
+            <label xml:lang="tr">SSL'i doğrula</label>
+            <label xml:lang="uk">Перевірити SSL</label>
+            <description>Check SSL key validity</description>
+            <description xml:lang="cs">Kontrola platnosti SSL klíče</description>
+            <description xml:lang="en_GB">Check SSL key validity</description>
+            <description xml:lang="fr">Vérifier la validité de la clé SSL</description>
+            <description xml:lang="hu">Ellenőrizze a SSL kulcs érvényességét</description>
+            <description xml:lang="it">Controlla validità di chiave SSL</description>
+            <description xml:lang="ja">SSLキーの有効性を確認してください</description>
+            <description xml:lang="nl">Controleer geldigheid van SSL sleutel</description>
+            <description xml:lang="pl">Sprawdzanie poprawności klucza SSL</description>
+            <description xml:lang="pt">Verificar validade da chave SSL</description>
+            <description xml:lang="pt_BR">Checar validade da chave SSL</description>
+            <description xml:lang="uk">Перевірити чинність ключа SSL</description>
+            <description xml:lang="zh_CN">检查 SSL 密钥</description>
+            <default-value>yes</default-value>
+        </option>
+    </options>
+</event>
