@@ -5,7 +5,7 @@
 Summary: Generic library for reporting various problems
 Name: libreport
 Version: 2.0.9
-Release: 33%{?dist}
+Release: 34%{?dist}
 License: GPLv2+
 Group: System Environment/Libraries
 URL: https://fedorahosted.org/abrt/
@@ -233,6 +233,13 @@ Patch218: 0218-dd-add-function-dd_get_env_variable.patch
 #Patch219: 0219-testsuite-add-test-covering-of-dd_get_env_variable.patch
 #Patch220: 0220-testsuite-add-a-forgotten-proc_helper.at-file.patch
 # $ git format-patch 2.0.9-32.el6 -N --start-number 221 --topo-order -o /home/repos/rhel/libreport/
+Patch221: 0221-workflow-Preventing-of-creating-a-customer-case-with.patch
+Patch222: 0222-augeas-trim-spaces-before-key-value.patch
+Patch223: 0223-reporter-mailx-rely-on-configured-email.patch
+Patch224: 0224-problem_data-fix-segfault-if-last_occurrence-doesn-t.patch
+Patch225: 0225-reporter-ureport-change-default-URL-to-FAF.patch
+# $ git format-patch 2.0.9-33.el6 -N --start-number 226 --topo-order -o /home/repos/rhel/libreport/
+
 
 
 # !!! Don't forget to add %%patch
@@ -656,6 +663,11 @@ Uploads micro-report to abrt server
 %patch218 -p1
 #%patch219: 0219-testsuite-add-test-covering-of-dd_get_env_variable.patch
 #%patch220: 0220-testsuite-add-a-forgotten-proc_helper.at-file.patch
+%patch221 -p1
+%patch222 -p1
+%patch223 -p1
+%patch224 -p1
+%patch225 -p1
 
 
 %build
@@ -854,6 +866,14 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_mandir}/man5/ureport.conf.5.gz
 
 %changelog
+* Tue Jan 23 2018 Martin Kutlak <mkutlak@redhat.com> - 2.0.9-34
+- Correctly trim spaces before values with augeas
+- Prevent creating of customer case without reproducing knowledge
+- Rely on configurated email
+- Change URL in config for bug-report server
+- Fix segfaulting abrt-cli
+- Related #1422030, #1328768, #1323625, #1463316, #1421754
+
 * Wed Nov 02 2016 Matej Habrnal <mhabrnal@redhat.com> - 2.0.9-33
 - Avoid infinite crash loops
 - Related: #1324586
