@@ -5,7 +5,7 @@
 Summary: Generic library for reporting various problems
 Name: libreport
 Version: 2.0.9
-Release: 25%{?dist}
+Release: 32%{?dist}
 License: GPLv2+
 Group: System Environment/Libraries
 URL: https://fedorahosted.org/abrt/
@@ -200,7 +200,38 @@ Patch193: 0193-dd-user-the-group-abrt-instead-of-the-user.patch
 Patch194: 0194-dd-add-missing-return-statement.patch
 # $ git format-patch 2.0.9-24.el6 -N --start-number 195 --topo-order -o /home/repos/rhel/libreport/
 Patch195: 0195-wizard-fix-save-users-changes-after-reviewing-dump-d.patch
-# $ git format-patch 2.0.9-25.el6 -N --start-number 196 --topo-order -o /home/repos/rhel/libreport/
+# $ git format-patch 2.0.9-25.el6_7 -N --start-number 196 --topo-order -o /home/repos/rhel/libreport/
+Patch196: 0196-augeas-trim-spaces-arround.patch
+# $ git format-patch 2.0.9-26.el6 -N --start-number 197 --topo-order -o /home/repos/rhel/libreport/
+Patch197: 0197-curl-add-possibility-to-configure-SSH-keys.patch
+Patch198: 0198-uploader-add-possibility-to-set-SSH-keyfiles.patch
+#Patch199: 0199-spec-add-uploader-config-files-and-related-man-page.patch
+# $ git format-patch 2.0.9-27.el6 -N --start-number 200 --topo-order -o /home/repos/rhel/libreport/
+Patch200: 0200-dd-make-function-uid_in_group-public.patch
+#Patch201: 0201-testsuite-add-test-for-uid_in_group.patch
+Patch202: 0202-Bugzilla-private-bugs.patch
+# $ git format-patch 2.0.9-28.el6 -N --start-number 203 --topo-order -o /home/repos/rhel/libreport/
+Patch203: 0203-Add-uReport-reporter.patch
+Patch204: 0204-report-gtk-Require-Reproducer-for-RHTSupport.patch
+Patch205: 0205-Discourage-users-from-opening-one-shot-crashes.patch
+Patch206: 0206-Discourage-users-from-reporting-problems-in-non-Red-.patch
+Patch207: 0207-testsuite-add-problem-data-tests.patch
+#Patch208: 0208-update-.gitignore.patch
+#Patch209: 0209-spec-add-Problem-Format-API.patch
+Patch210: 0210-lib-add-Problem-Format-API.patch
+Patch211: 0211-rhtsupport-use-problem-report-API-to-create-descript.patch
+Patch212: 0212-lib-problem-report-API-check-fseek-return-code.patch
+# $ git format-patch 2.0.9-29.el6 -N --start-number 212 --topo-order -o /home/repos/rhel/libreport/
+Patch213: 0213-ureport-attach-URL-of-uploaded-problem-data-to-uRepo.patch
+Patch214: 0214-uploader-fix-compare-tmp-var-before-it-is-freed.patch
+# $ git format-patch 2.0.9-30.el6 -N --start-number 215 --topo-order -o /home/repos/rhel/libreport/
+Patch215: 0215-rhtsupport-add-pkg_vendor-reproducer-and-reproducibl.patch
+Patch216: 0216-rhtsupport-attach-all-dump-dir-s-element-to-a-new-ca.patch
+Patch217: 0217-configure-set-version-to-2.0.9.1.patch
+# $ git format-patch 2.0.9-31.el6 -N --start-number 218 --topo-order -o /home/repos/rhel/libreport/
+
+
+# !!! Don't forget to add %%patch
 
 
 BuildRequires: dbus-devel
@@ -596,6 +627,28 @@ Uploads micro-report to abrt server
 %patch193 -p1
 %patch194 -p1
 %patch195 -p1
+%patch196 -p1
+%patch197 -p1
+%patch198 -p1
+#%patch199 -p1
+%patch200 -p1
+#%patch201 -p1 0201-testsuite-add-test-for-uid_in_group.patch
+%patch202 -p1
+%patch203 -p1
+%patch204 -p1
+%patch205 -p1
+%patch206 -p1
+%patch207 -p1
+#Patch208: 0208-update-.gitignore.patch
+#Patch209: 0209-spec-add-Problem-Format-API.patch
+%patch210 -p1
+%patch211 -p1
+%patch212 -p1
+%patch213 -p1
+%patch214 -p1
+%patch215 -p1
+%patch216 -p1
+%patch217 -p1
 
 
 %build
@@ -609,7 +662,8 @@ aclocal
 libtoolize
 autoconf
 automake --add-missing --force --copy
-%configure
+%configure --with-redhatbugzillacreateprivate=yes \
+           --with-redhatbugzillaprivategroups=redhat
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 CFLAGS="-fno-strict-aliasing"
@@ -685,6 +739,7 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_includedir}/libreport/dump_dir.h
 %{_includedir}/libreport/event_config.h
 %{_includedir}/libreport/problem_data.h
+%{_includedir}/libreport/problem_report.h
 %{_includedir}/libreport/report.h
 %{_includedir}/libreport/run_event.h
 %{_includedir}/libreport/file_obj.h
@@ -692,6 +747,7 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 # Private api headers:
 %{_includedir}/libreport/internal_abrt_dbus.h
 %{_includedir}/libreport/internal_libreport.h
+%{_includedir}/libreport/global_configuration.h
 %{_libdir}/libreport.so
 %{_libdir}/libabrt_dbus.so
 %{_libdir}/pkgconfig/libreport.pc
@@ -776,20 +832,57 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %config %{_sysconfdir}/libreport/events/report_Uploader.xml
 %config(noreplace) %{_sysconfdir}/libreport/events.d/tarball_event.conf
 %config(noreplace) %{_sysconfdir}/libreport/events.d/uploader_event.conf
+%config(noreplace) %{_sysconfdir}/libreport/plugins/upload.conf
+%{_mandir}/man5/upload.conf.5.*
+%config(noreplace) %{_sysconfdir}/libreport/events/report_Uploader.conf
+%{_mandir}/man5/report_Uploader.conf.5.*
+
 
 %files plugin-ureport
 %defattr(-,root,root,-)
 %config(noreplace) %{_sysconfdir}/libreport/plugins/ureport.conf
-%config %{_sysconfdir}/libreport/events/submit_uReport.xml
+%config %{_sysconfdir}/libreport/events/report_uReport.xml
 %{_bindir}/reporter-ureport
 %{_mandir}/man1/reporter-ureport.1.gz
 %{_mandir}/man5/ureport.conf.5.gz
 
 %changelog
+* Thu Feb 25 2016 Matej Habrnal <mhabrnal@redhat.com> - 2.0.9-32
+- Rebuild because of failed rpmdiff
+- Related: #1261398
+
+* Wed Feb 24 2016 Matej Habrnal <mhabrnal@redhat.com> - 2.0.9-31
+- Add pkg_vendor, reproducer and reproducible to description
+- Attach all dump dir's element to a new case
+- Change libreport-version to 2.0.9.1
+- Resolves: #1261398
+
+* Fri Jan 29 2016 Matej Habrnal <mhabrnal@redhat.com> - 2.0.9-30
+- Attach URL of uploaded problem data to uReport
+- Resolves: #1300777
+
+* Fri Jan 22 2016 Matej Habrnal <mhabrnal@redhat.com> - 2.0.9-29
+- Change reporting workflow to enhance the quality of opened customer cases
+- Limit the description section for ABRT reported cases
+- Resolves: #1258474, #1261398
+
+* Mon Jan 11 2016 Matej Habrnal <mhabrnal@redhat.com> - 2.0.9-28
+- Make function uid_in_group() public
+- Bugzilla private bugs
+- Resolves: #1279454, #803769
+
+* Tue Dec 8 2015 Jakub Filak <jfilak@redhat.com> - 2.0.9-27
+- Enable configuration of SSH keys in report-upload
+- Resolves: #1261120
+
+* Thu Nov 19 2015 Jakub Filak <jfilak@redhat.com> - 2.0.9-26
+- Correct augeas configuration parser
+- Resolves: #1262246
+
 * Sun Nov 15 2015 Jakub Filak <jfilak@redhat.com> - 2.0.9-25
 - save all files changed by the reporter in the reporting GUI
 - Fixes CVE-2015-5302
-- Resolves: #1282143
+- Resolves: #1282144
 
 * Fri May 22 2015 Jakub Filak <jfilak@redhat.com> - 2.0.9-24
 - switch ownership of new directories from "abrt:user" to "user:abrt"
