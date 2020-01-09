@@ -1,0 +1,24 @@
+--- libreport.spec.orig	2018-06-22 11:12:36.634063198 -0500
++++ libreport.spec	2018-06-22 11:13:17.384336490 -0500
+@@ -312,9 +312,9 @@ Requires: libreport = %{version}-%{relea
+ Provides: report = 0.18-11
+ Obsoletes: report < 0.18-11
+ # in report the rhtsupport is in the main package, so we need to install it too
+-%if 0%{?rhel} >= 6
+-Requires: libreport-plugin-rhtsupport = %{version}-%{release}
+-%endif
++#%if 0%{?rhel} >= 6
++#Requires: libreport-plugin-rhtsupport = %{version}-%{release}
++#%endif
+ 
+ %description python
+ Python bindings for report-libs.
+@@ -419,7 +419,7 @@ Group: System Environment/Libraries
+ # bz should not be in the default configuration
+ #Requires: %%{name}-plugin-bugzilla = %%{version}-%%{release}
+ Requires: libreport = %{version}-%{release}
+-Requires: %{name}-plugin-rhtsupport = %{version}-%{release}
++#Requires: %{name}-plugin-rhtsupport = %{version}-%{release}
+ 
+ %description compat
+ Provides 'report' command-line tool.

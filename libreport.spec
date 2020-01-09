@@ -10,6 +10,8 @@ License: GPLv2+
 Group: System Environment/Libraries
 URL: https://fedorahosted.org/abrt/
 Source: https://fedorahosted.org/released/abrt/%{name}-%{version}.tar.gz
+Source2:	libreport-spec_norhtsupport.patch
+Source3:	libreport.ini
 Patch0: 0001-bugzilla-exclude-appending-package-name-for-kernel-o.patch
 Patch1: 0002-debuginfo-downloader-minor-fix.patch
 Patch2: 0003-make-descr-don-t-include-superfluous-FILENAME_REASON.patch
@@ -312,9 +314,9 @@ Requires: libreport = %{version}-%{release}
 Provides: report = 0.18-11
 Obsoletes: report < 0.18-11
 # in report the rhtsupport is in the main package, so we need to install it too
-%if 0%{?rhel} >= 6
-Requires: libreport-plugin-rhtsupport = %{version}-%{release}
-%endif
+#%if 0%{?rhel} >= 6
+#Requires: libreport-plugin-rhtsupport = %{version}-%{release}
+#%endif
 
 %description python
 Python bindings for report-libs.
@@ -419,7 +421,7 @@ Group: System Environment/Libraries
 # bz should not be in the default configuration
 #Requires: %%{name}-plugin-bugzilla = %%{version}-%%{release}
 Requires: libreport = %{version}-%{release}
-Requires: %{name}-plugin-rhtsupport = %{version}-%{release}
+#Requires: %{name}-plugin-rhtsupport = %{version}-%{release}
 
 %description compat
 Provides 'report' command-line tool.
@@ -866,6 +868,12 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_mandir}/man5/ureport.conf.5.gz
 
 %changelog
+* Fri Jun 22 2018 Scientific Linux Auto Patch Process <SCIENTIFIC-LINUX-DEVEL@LISTSERV.FNAL.GOV>
+- Added Source: libreport.ini
+-->  Config file for automated patch script
+- Added Source: libreport-spec_norhtsupport.patch
+-->  Don't open upstream support cases
+
 * Tue Jan 23 2018 Martin Kutlak <mkutlak@redhat.com> - 2.0.9-34
 - Correctly trim spaces before values with augeas
 - Prevent creating of customer case without reproducing knowledge
