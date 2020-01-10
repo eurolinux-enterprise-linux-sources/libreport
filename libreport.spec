@@ -7,7 +7,7 @@
 Summary: Generic library for reporting various problems
 Name: libreport
 Version: 2.1.11
-Release: 10%{?dist}
+Release: 9%{?dist}
 License: GPLv2+
 Group: System Environment/Libraries
 URL: https://fedorahosted.org/abrt/
@@ -49,7 +49,6 @@ Patch33: 0033-Translation-updates.patch
 Patch34: 0034-remove-invalid-bytes-from-sv-strings.patch
 Patch35: 0035-config-do-not-export-empty-environment-variables.patch
 Patch36: 0036-Translation-updates.patch
-Patch37: 0037-Bugzilla-pass-Bugzilla_token-in-all-XML-RPC-calls.patch
 
 # git is need for '%%autosetup -S git' which automatically applies all the
 # patches above. Please, be aware that the patches must be generated
@@ -667,10 +666,6 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 
 %changelog
-* Wed Apr 30 2014 Jakub Filak <jfilak@redhat.com> - 2.1.11-10
-- update due to Bugzilla RPC changes
-- Resolves: #1090465
-
 * Mon Mar 10 2014 Jakub Filak <jfilak@redhat.com> - 2.1.11-9
 - do not export empty configuration options as environment variables
 - translation updates
