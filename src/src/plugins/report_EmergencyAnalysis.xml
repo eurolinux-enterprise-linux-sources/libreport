@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event>
+    <name>Emergency analysis</name>
+    <name xml:lang="as">আপাতকালীন বিশ্লেষণ</name>
+    <name xml:lang="es">Análisis de emergencia</name>
+    <name xml:lang="hi">आपात काल विश्लेषण</name>
+    <name xml:lang="hu">Vészhelyzeti analízis</name>
+    <name xml:lang="it">Analisi d'emergenza</name>
+    <name xml:lang="ja">緊急分析</name>
+    <name xml:lang="ka">საგანგები ანალიზი</name>
+    <name xml:lang="or">ଜରୁରୀକାଳୀନ ବିଶ୍ଳେଷଣ</name>
+    <name xml:lang="pl">Analiza awaryjna</name>
+    <name xml:lang="pt_BR">Análise de emergência</name>
+    <name xml:lang="ru">Экстренный анализ</name>
+    <name xml:lang="sk">Núdzová analýza</name>
+    <name xml:lang="uk">Критичний аналіз</name>
+    <name xml:lang="zh_CN">紧急分析</name>
+    <name xml:lang="zh_TW">緊急分析</name>
+    <description>Upload the problem data for further analysis</description>
+    <description xml:lang="es">Cargando datos del problema para futuro análisis</description>
+    <description xml:lang="gl">Enviar os datos do problema para análises posteriores</description>
+    <description xml:lang="hi">प्रोब्लेम डेटा का और विश्लेषण करने के लिए अपलोड कीजिए</description>
+    <description xml:lang="hu">A probléma adatainak feltöltése a kiszolgálóra további elemzésre</description>
+    <description xml:lang="it">Caricare i dati del problema per un'analisi ulteriore</description>
+    <description xml:lang="ja">さらなる分析のために問題データをアップロードする</description>
+    <description xml:lang="pl">Wysyła dane problemu do dalszej analizy</description>
+    <description xml:lang="pt_BR">Enviar os dados do problema para análise adicional</description>
+    <description xml:lang="ru">Загружаются сведения об ошибке для дальнейшего изучения</description>
+    <description xml:lang="uk">Вивантажити дані проблеми для подальшого аналізу</description>
+    <description xml:lang="zh_CN">提交问题数据用于深度分析</description>
+    <description xml:lang="zh_TW">上傳問題資料以供進一步分析</description>
+
+    <requires-items/>
+    <exclude-items-by-default/>
+    <exclude-items-always/>
+    <exclude-binary-items/>
+    <include-items-by-default/>
+    <minimal-rating>0</minimal-rating>
+    <gui-review-elements>no</gui-review-elements>
+
+    <options>
+        <option type="text" name="Upload_URL">
+            <label>URL</label>
+            <label xml:lang="ar">عنوان</label>
+            <label xml:lang="as">URL</label>
+            <label xml:lang="bg">URL</label>
+            <label xml:lang="cs">URL</label>
+            <label xml:lang="de">URL</label>
+            <label xml:lang="en_GB">URL</label>
+            <label xml:lang="es">URL </label>
+            <label xml:lang="eu">URLa</label>
+            <label xml:lang="fr">URL</label>
+            <label xml:lang="gl">URL</label>
+            <label xml:lang="gu">URL</label>
+            <label xml:lang="hi">URL</label>
+            <label xml:lang="ia">URL</label>
+            <label xml:lang="it">URL</label>
+            <label xml:lang="ka">URL</label>
+            <label xml:lang="kn">URL</label>
+            <label xml:lang="ko">URL </label>
+            <label xml:lang="ml">യുആര്‍എല്‍</label>
+            <label xml:lang="mr">URL</label>
+            <label xml:lang="nb">URL</label>
+            <label xml:lang="or">URL</label>
+            <label xml:lang="pa">URL</label>
+            <label xml:lang="pl">Adres URL</label>
+            <label xml:lang="pt">URL</label>
+            <label xml:lang="pt_BR">URL</label>
+            <label xml:lang="ru">URL</label>
+            <label xml:lang="sk">URL</label>
+            <label xml:lang="sv">URL</label>
+            <label xml:lang="te">URL</label>
+            <label xml:lang="uk">Адреса</label>
+            <label xml:lang="zh_TW">URL</label>
+            <allow-empty>no</allow-empty>
+            <default-value>https://retrace.fedoraproject.org/faf/dumpdirs/new/</default-value>
+        </option>
+        <advanced-options>
+            <option type="text" name="http_proxy">
+                <label>HTTP Proxy</label>
+                <label xml:lang="as">HTTP প্ৰক্সি</label>
+                <label xml:lang="de">HTTP-Proxy</label>
+                <label xml:lang="es">Proxy HTTP</label>
+                <label xml:lang="fr">Mandataire HTTP</label>
+                <label xml:lang="gl">Proxy de HTTP</label>
+                <label xml:lang="it">Proxy HTTP</label>
+                <label xml:lang="ja">HTTP プロキシ</label>
+                <label xml:lang="nl">HTTP proxy</label>
+                <label xml:lang="pl">Pośrednik HTTP</label>
+                <label xml:lang="pt">HTTP Proxy</label>
+                <label xml:lang="pt_BR">Proxy HTTP</label>
+                <label xml:lang="sk">HTTP Proxy</label>
+                <label xml:lang="sv">HTTP-proxy</label>
+                <label xml:lang="uk">HTTP-проксі</label>
+                <allow-empty>yes</allow-empty>
+                <note-html>Sets the proxy server to use for HTTP</note-html>
+                <note-html xml:lang="as">HTTP ৰ বাবে ব্যৱহাৰ কৰিবলে প্ৰক্সি চাৰ্ভাৰ সংহতি কৰে</note-html>
+                <note-html xml:lang="de">Proxy-Server für HTTP festlegen</note-html>
+                <note-html xml:lang="es">Fija el servidor proxy para ser usado por HTTP</note-html>
+                <note-html xml:lang="fr">Configure le serveur mandataire à utiliser pour HTTP</note-html>
+                <note-html xml:lang="gl">Indica o servidor de proxy que se desexa empregar para o HTTP</note-html>
+                <note-html xml:lang="hu">HTTP használathoz egy proxy szervert állít be</note-html>
+                <note-html xml:lang="it">Imposta il server proxy da usare per HTTP</note-html>
+                <note-html xml:lang="ja">HTTP のために使用するプロキシサーバーを設定する</note-html>
+                <note-html xml:lang="or">HTTP ପାଇଁ ବ୍ୟବହାର କରିବାକୁ ପ୍ରୋକ୍ସି ସର୍ଭର ସେଟ କରିଥାଏ</note-html>
+                <note-html xml:lang="pl">Ustawia serwer pośrednika do użycia dla HTTP</note-html>
+                <note-html xml:lang="pt_BR">Configura o servidor proxy para usar HTTP</note-html>
+                <note-html xml:lang="sk">Nastaví proxy server na použitie pre HTTP</note-html>
+                <note-html xml:lang="sv">Anger proxyservern som skall användas för HTTP</note-html>
+                <note-html xml:lang="zh_CN">设定用于 HTTP 的代理服务器</note-html>
+                <note-html xml:lang="zh_TW">設定 HTTP 所要使用的代理伺服器</note-html>
+            </option>
+            <option type="text" name="HTTPS_PROXY">
+                <label>HTTPS Proxy</label>
+                <label xml:lang="as">HTTPS প্ৰক্সি</label>
+                <label xml:lang="de">HTTPS-Proxy</label>
+                <label xml:lang="es">Proxy HTTPS</label>
+                <label xml:lang="fr">Mandataire HTTPS</label>
+                <label xml:lang="gl">Proxy de HTTPS</label>
+                <label xml:lang="hi">HTTPS प्रॉक्सी</label>
+                <label xml:lang="it">Proxy HTTPS</label>
+                <label xml:lang="ja">HTTPS プロキシ</label>
+                <label xml:lang="pl">Pośrednik HTTPS</label>
+                <label xml:lang="pt">HTTPS Proxy</label>
+                <label xml:lang="pt_BR">Proxy HTTPS</label>
+                <label xml:lang="sk">HTTPS Proxy</label>
+                <label xml:lang="sv">HTTPS-proxy</label>
+                <label xml:lang="zh_CN">HTTPS 代理</label>
+                <allow-empty>yes</allow-empty>
+                <note-html>Sets the proxy server to use for HTTPS</note-html>
+                <note-html xml:lang="as">HTTPS ৰ বাবে ব্যৱহাৰ কৰিবলে প্ৰক্সি চাৰ্ভাৰ সংহতি কৰে</note-html>
+                <note-html xml:lang="de">Proxy-Server für HTTPS festlegen</note-html>
+                <note-html xml:lang="gl">Indica o servidor de proxy que se desexa empregar para o HTTPS</note-html>
+                <note-html xml:lang="hi">प्रॉक्सी सर्वर को सेट किया गया है HTTPS के इस्तेमाल के लिए</note-html>
+                <note-html xml:lang="hu">HTTPS használatához egy proxy szervert állít be</note-html>
+                <note-html xml:lang="it">Imposta il server proxy da usare per HTTPS</note-html>
+                <note-html xml:lang="ja">HTTPS のために使用するプロキシサーバーを設定する</note-html>
+                <note-html xml:lang="nl">Stelt de proxyserver in om te gebruiken voor HTTPS</note-html>
+                <note-html xml:lang="or">HTTPS ପାଇଁ ବ୍ୟବହାର କରିବାକୁ ପ୍ରୋକ୍ସି ସର୍ଭର ସେଟ କରିଥାଏ</note-html>
+                <note-html xml:lang="pt_BR">Configura o servidor proxy para usar HTTPS</note-html>
+                <note-html xml:lang="ru">Выбирает прокси-сервер для использования с HTTPS</note-html>
+                <note-html xml:lang="sk">Nastaví proxy server na použitie pre HTTPS</note-html>
+                <note-html xml:lang="sv">Anger proxyservern som skall användas för HTTPS</note-html>
+                <note-html xml:lang="zh_CN">设定用于 HTTPS 的代理服务器</note-html>
+                <note-html xml:lang="zh_TW">設定 HTTPS 所要使用的代理伺服器</note-html>
+            </option>
+            <option type="text" name="FTP_PROXY">
+                <label>FTP Proxy</label>
+                <label xml:lang="de">FTP-Proxy</label>
+                <label xml:lang="es">Proxy FTP</label>
+                <label xml:lang="fr">Mandataire FTP</label>
+                <label xml:lang="gl">Proxy de FTP</label>
+                <label xml:lang="hi">FTP प्रॉक्सी</label>
+                <label xml:lang="hu">FTP Proxy</label>
+                <label xml:lang="ia">Proxy FTP</label>
+                <label xml:lang="ja">FTP プロキシ</label>
+                <label xml:lang="ka">FTP პროქსი</label>
+                <label xml:lang="nl">FTP proxy</label>
+                <label xml:lang="pl">Pośrednik FTP</label>
+                <label xml:lang="pt">FTP Proxy</label>
+                <label xml:lang="pt_BR">Proxy FTP</label>
+                <label xml:lang="ru">FTP-прокси</label>
+                <label xml:lang="sk">FTP Proxy</label>
+                <label xml:lang="zh_TW">FTP 代理</label>
+                <allow-empty>yes</allow-empty>
+                <note-html>Sets the proxy server to use for FTP</note-html>
+                <note-html xml:lang="de">Proxy-Server für FTP festlegen</note-html>
+                <note-html xml:lang="gl">Indica o servidor de proxy que se desexa empregar para o FTP</note-html>
+                <note-html xml:lang="hi">प्रॉक्सी सर्वर को सेट किया गया है FTP के इस्तेमाल के लिए</note-html>
+                <note-html xml:lang="ja">FTP のために使用するプロキシサーバーを設定する</note-html>
+                <note-html xml:lang="nl">Stelt de proxyserver in om te gebruiken voor FTP</note-html>
+                <note-html xml:lang="ru">Выбирает прокси-сервер для использования с FTP</note-html>
+                <note-html xml:lang="sv">Anger proxyservern som skall användas för FTP</note-html>
+                <note-html xml:lang="uk">Встановити проксі-сервер, який слід використовувати для FTP</note-html>
+                <note-html xml:lang="zh_CN">设定用于 FTP 的代理服务器</note-html>
+                <note-html xml:lang="zh_TW">設定 FTP 所要使用的代理伺服器</note-html>
+            </option>
+        </advanced-options>
+    </options>
+</event>

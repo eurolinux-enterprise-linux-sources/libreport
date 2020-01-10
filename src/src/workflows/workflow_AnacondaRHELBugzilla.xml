@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+    <name>Report a bug to Red Hat Bugzilla</name>
+    <description>Process the report using the Red Hat infrastructure</description>
+    <description xml:lang="ja">Red Hat インフラストラクチャーを使用して報告を処理する</description>
+    <description xml:lang="pl">Przetwarza zgłoszenie używając infrastruktury firmy Red Hat</description>
+    <description xml:lang="sv">Bearbeta rapporten med Red Hats infrastruktur</description>
+    <description xml:lang="uk">Обробити звіт за допомогою інфраструктури Red Hat</description>
+    <description xml:lang="zh_TW">使用 Red Hat 基礎設施處理回報</description>
+
+    <events>
+        <event>report_Bugzilla</event>
+    </events>
+</workflow>

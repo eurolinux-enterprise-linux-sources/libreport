@@ -1,0 +1,2042 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Yuri Chornoivan <yurchor@ukr.net>, 2011-2013
+# Yuri Chornoivan <yurchor@ukr.net>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: libreport\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-07 22:48+0100\n"
+"PO-Revision-Date: 2014-01-07 21:48+0000\n"
+"Last-Translator: Jakub Filak <jfilak@redhat.com>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/projects/p/fedora/language/uk/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../src/cli/cli.c:63
+msgid ""
+"& [-vsp] -L[PREFIX] [PROBLEM_DIR]\n"
+"   or: & [-vspy] -e EVENT PROBLEM_DIR\n"
+"   or: & [-vspy] -d PROBLEM_DIR\n"
+"   or: & [-vspy] -x PROBLEM_DIR"
+msgstr "& [-vsp] -L[ПРЕФІКС] [КАТАЛОГ_ПРОБЛЕМИ]\n   або & [-vspy] -e ПОДІЯ КАТАЛОГ_ПРОБЛЕМИ\n   або & [-vspy] -d КАТАЛОГ_ПРОБЛЕМИ\n   або & [-vspy] -x КАТАЛОГ_ПРОБЛЕМИ"
+
+#. short_name long_name  value    parameter_name  help
+#: ../src/cli/cli.c:86
+msgid "List possible events [which start with PREFIX]"
+msgstr "Список записів можливих подій [що починаються з ПРЕФІКС]"
+
+#: ../src/cli/cli.c:87 ../src/gui-wizard-gtk/main.c:123
+msgid "Run only these events"
+msgstr "Запустити лише ці події"
+
+#: ../src/cli/cli.c:88 ../src/gui-wizard-gtk/main.c:122
+msgid "Remove PROBLEM_DIR after reporting"
+msgstr "Вилучити КАТАЛОГ_ПРОБЛЕМИ після створення звіту"
+
+#: ../src/cli/cli.c:89 ../src/gui-wizard-gtk/main.c:124
+msgid "Expert mode"
+msgstr "Режим експерта"
+
+#: ../src/cli/cli.c:90 ../src/report-newt/report-newt.c:393
+msgid "Display version and exit"
+msgstr "Показати номер версії і вийти"
+
+#: ../src/cli/cli.c:91
+msgid "Noninteractive: don't ask questions, assume 'yes'"
+msgstr "Неінтерактивний режим: не задавати питань, на всі питання відповідати «так»"
+
+#: ../src/cli/cli.c:93
+msgid "Log to syslog"
+msgstr "Записувати до журналу syslog"
+
+#: ../src/cli/cli.c:94 ../src/gui-wizard-gtk/main.c:121
+msgid "Add program names to log"
+msgstr "Додати назви програм до журналу"
+
+#: ../src/cli/cli-report.c:132
+#, c-format
+msgid "# This field is read only\n"
+msgstr "# Значення у цьому полі не можна змінювати\n"
+
+#: ../src/cli/cli-report.c:152
+msgid "# Describe the circumstances of this crash below"
+msgstr "# Опишіть обставини цього збою нижче"
+
+#: ../src/cli/cli-report.c:154
+msgid ""
+"# Backtrace\n"
+"# Check that it does not contain any sensitive data (passwords, etc.)"
+msgstr "# Зворотне трасування\n# Не забудьте вилучити з цих даних будь-які конфіденційні дані (паролі тощо)"
+
+#: ../src/cli/cli-report.c:156
+msgid "# Architecture"
+msgstr "# Архітектура"
+
+#: ../src/cli/cli-report.c:157
+msgid "# Command line"
+msgstr "# Командний рядок"
+
+#: ../src/cli/cli-report.c:158
+msgid "# Component"
+msgstr "# Компонент"
+
+#: ../src/cli/cli-report.c:159
+msgid "# Core dump"
+msgstr "# Дамп ядра"
+
+#: ../src/cli/cli-report.c:160
+msgid "# Executable"
+msgstr "# Виконуваний файл"
+
+#: ../src/cli/cli-report.c:161
+msgid "# Kernel version"
+msgstr "# Версія ядра"
+
+#: ../src/cli/cli-report.c:162
+msgid "# Package"
+msgstr "# Пакунок"
+
+#: ../src/cli/cli-report.c:163
+msgid "# Reason of crash"
+msgstr "# Причина збою"
+
+#: ../src/cli/cli-report.c:170
+msgid "# os-release configuration file from root dir"
+msgstr "# файл налаштувань os-release з кореневого каталогу"
+
+#: ../src/cli/cli-report.c:175
+msgid "# Release string of the operating system from root dir"
+msgstr "# Рядок з даними щодо випуску операційної системи з кореневого каталогу"
+
+#: ../src/cli/cli-report.c:183
+msgid "# os-release configuration file"
+msgstr "# файл налаштувань"
+
+#: ../src/cli/cli-report.c:188
+msgid "# Release string of the operating system"
+msgstr "# Рядок з даними щодо випуску операційної системи"
+
+#: ../src/cli/cli-report.c:319
+msgid "Cannot run vi: $TERM, $VISUAL and $EDITOR are not set"
+msgstr "Не вдалося запустити vi: не встановлено значень змінних $TERM, $VISUAL і $EDITOR"
+
+#: ../src/cli/cli-report.c:403
+msgid ""
+"\n"
+"The report has been updated"
+msgstr "\nЗвіт було оновлено"
+
+#: ../src/cli/cli-report.c:405
+msgid ""
+"\n"
+"No changes were detected in the report"
+msgstr "\nНе виявлено жодних змін у звіті"
+
+#: ../src/cli/cli-report.c:491
+msgid "Your input is not valid, because of:"
+msgstr "Вказані вами дані є некоректними. Причини:"
+
+#: ../src/cli/cli-report.c:495
+#, c-format
+msgid "Bad value for '%s': %s"
+msgstr "Помилкове значення «%s»: %s"
+
+#: ../src/cli/cli-report.c:693
+#, c-format
+msgid ""
+"Event '%s' requires permission to send possibly sensitive data. Do you want "
+"to continue?"
+msgstr "Події «%s» потрібні права доступу для надсилання можливо конфіденційних даних. Продовжити процедуру надсилання?"
+
+#: ../src/cli/cli-report.c:744
+msgid "You have chosen number out of range"
+msgstr "Вибрано номер поза діапазоном можливих"
+
+#: ../src/cli/cli-report.c:747
+msgid "Invalid input, exiting."
+msgstr "Некоректні вхідні дані, програма завершує роботу."
+
+#: ../src/cli/cli-report.c:768
+msgid "Select an event to run: "
+msgstr "Виберіть подію для запуску: "
+
+#: ../src/cli/cli-report.c:876
+msgid "Select a workflow to run: "
+msgstr ""
+
+#: ../src/client-python/debuginfo.py:87
+msgid "Extracting cpio from {0}"
+msgstr "Видобування cpio з {0}"
+
+#: ../src/client-python/debuginfo.py:92
+msgid "Can't write to '{0}': {1}"
+msgstr "Не вдалося виконати запис до «{0}»: {1}"
+
+#: ../src/client-python/debuginfo.py:107
+msgid "Can't extract package '{0}'"
+msgstr "Не вдалося видобути пакунок «{0}»"
+
+#: ../src/client-python/debuginfo.py:115
+msgid "Caching files from {0} made from {1}"
+msgstr "Кешування файлів з {0}, створених на основі {1}"
+
+#: ../src/client-python/debuginfo.py:134
+msgid "Can't extract files from '{0}'"
+msgstr "Не вдалося видобути файли з «{0}»"
+
+#: ../src/client-python/debuginfo.py:147
+msgid "Can't remove '{0}': {1}"
+msgstr "Не вдалося вилучити «{0}»: {1}"
+
+#. print (_("Downloading (%i of %i) %s: %3u%%")
+#. % (self.downloaded_pkgs + 1, self.total_pkgs, name, pct)
+#. )
+#: ../src/client-python/debuginfo.py:194 ../src/client-python/debuginfo.py:205
+msgid "Downloading ({0} of {1}) {2}: {3:3}%"
+msgstr "Звантаження ({0} з {1}) {2}: {3:3}%"
+
+#: ../src/client-python/debuginfo.py:220
+msgid ""
+"Problem '{0!s}' occured while downloading from mirror: '{1!s}'. Trying next "
+"one"
+msgstr "Під час отримання даних з дзеркала «{1!s}» виникла проблема «{0!s}». Намагаємося скористатися наступним."
+
+#. self.conf.cache = os.geteuid() != 0
+#. Setup yum (Ts, RPM db, Repo & Sack)
+#. doConfigSetup() takes some time, let user know what we are doing
+#: ../src/client-python/debuginfo.py:246
+msgid "Initializing yum"
+msgstr "Ініціалізація yum"
+
+#: ../src/client-python/debuginfo.py:254
+msgid "Error initializing yum (YumBase.doConfigSetup): '{0!s}'"
+msgstr "Помилка під час спроби ініціалізації yum (YumBase.doConfigSetup): '{0!s}'"
+
+#: ../src/client-python/debuginfo.py:325
+msgid "Error: can't make cachedir, exiting"
+msgstr "Помилка: не вдалося створити каталог кешування, завершуємо роботу"
+
+#: ../src/client-python/debuginfo.py:334
+msgid "Can't disable repository '{0!s}': {1!s}"
+msgstr "Не вдалося вимкнути сховище «{0!s}»: {1!s}"
+
+#. This takes some time, let user know what we are doing
+#: ../src/client-python/debuginfo.py:337
+msgid "Setting up yum repositories"
+msgstr "Налаштовування сховищ yum"
+
+#: ../src/client-python/debuginfo.py:354
+msgid "Can't disable async download, the output might contain artifacts!"
+msgstr "Неможливо вимкнути асинхронне отримання даних, виведені дані може бути пошкоджено!"
+
+#: ../src/client-python/debuginfo.py:356
+msgid "Can't setup {0}: {1}, disabling"
+msgstr "Не вдалося налаштувати {0}: {1}, вимикаємо"
+
+#. This is somewhat "magic", it unpacks the metadata making it usable.
+#. Looks like this is the moment when yum talks to remote servers,
+#. which takes time (sometimes minutes), let user know why
+#. we have "paused":
+#: ../src/client-python/debuginfo.py:363
+msgid "Looking for needed packages in repositories"
+msgstr "Пошук потрібних пакунків у сховищах"
+
+#: ../src/client-python/debuginfo.py:367
+msgid "Error retrieving metadata: '{0!s}'"
+msgstr "Помилка під час спроби отримання метаданих: «{0!s}»"
+
+#: ../src/client-python/debuginfo.py:380
+msgid "Error retrieving filelists: '{0!s}'"
+msgstr "Помилка під час спроби отримання списків файлів: «{0!s}»"
+
+#: ../src/client-python/debuginfo.py:416
+msgid "Can't find packages for {0} debuginfo files"
+msgstr "Не вдалося знайти пакунки з файлами діагностичних даних для {0}"
+
+#: ../src/client-python/debuginfo.py:418
+msgid "Packages to download: {0}"
+msgstr "Пакунки, які слід звантажити: {0}"
+
+#: ../src/client-python/debuginfo.py:419
+msgid "Downloading {0:.2f}Mb, installed size: {1:.2f}Mb. Continue?"
+msgstr "Звантаження {0:.2f} МБ, об’єм встановлених пакунків: {1:.2f} МБ. Продовжувати?"
+
+#: ../src/client-python/debuginfo.py:424 ../src/client-python/debuginfo.py:438
+#: ../src/client-python/debuginfo.py:447
+msgid "Download cancelled by user"
+msgstr "Звантаження скасовано користувачем"
+
+#: ../src/client-python/debuginfo.py:434
+msgid ""
+"Warning: Not enough free space in tmp dir '{0}' ({1:.2f}Mb left). Continue?"
+msgstr "Попередження: у тимчасовому каталозі «{0}» недостатньо місця (залишилося {1:.2f} МБ). Продовжити виконання дії?"
+
+#: ../src/client-python/debuginfo.py:443
+msgid ""
+"Warning: Not enough free space in cache dir '{0}' ({1:.2f}Mb left). "
+"Continue?"
+msgstr "Попередження: у каталозі кешування «{0}» недостатньо місця (залишилося {1:.2f} МБ). Продовжити виконання дії?"
+
+#: ../src/client-python/debuginfo.py:469
+msgid "Cannot copy file '{0}': {1}"
+msgstr "Не вдалося скопіювати файл «{0}»: {1}"
+
+#: ../src/client-python/debuginfo.py:487
+msgid "Downloading package {0} failed"
+msgstr "Помилка під час спроби звантаження пакунка {0}"
+
+#. recursively delete the temp dir on failure
+#: ../src/client-python/debuginfo.py:494
+msgid "Unpacking failed, aborting download..."
+msgstr "Помилка розпакування, звантаження перервано…"
+
+#. Was: "All downloaded packages have been extracted, removing..."
+#. but it was appearing even if no packages were in fact extracted
+#. (say, when there was one package, and it has download error).
+#: ../src/client-python/debuginfo.py:504
+msgid "Removing {0}"
+msgstr "Вилучення {0}"
+
+#: ../src/client-python/debuginfo.py:508
+#, python-format
+msgid "Can't remove %s, probably contains an error log"
+msgstr "Не вдалося вилучити %s, ймовірно містить журнал обробки помилки"
+
+#: ../src/gtk-helpers/ask_dialogs.c:82
+msgid "_Yes"
+msgstr "_Так"
+
+#: ../src/gtk-helpers/ask_dialogs.c:83
+msgid "_No"
+msgstr "_Ні"
+
+#: ../src/gtk-helpers/ask_dialogs.c:89
+msgid "Don't ask me again"
+msgstr "Більше не питати"
+
+#. if event has no xml description
+#: ../src/gtk-helpers/config_dialog.c:153
+msgid "No description available"
+msgstr "Немає опису"
+
+#: ../src/gtk-helpers/config_dialog.c:274
+msgid "Configuration"
+msgstr "Налаштовування"
+
+#. we can't use this, because we want the workflows first and hashtable
+#. * doesn't return the items in the order they were added
+#. 
+#. g_hash_table_foreach(configs, (GHFunc)add_config_tabs, config_nb);
+#: ../src/gtk-helpers/config_dialog.c:297
+#: ../src/gtk-helpers/config_dialog.c:299
+#: ../src/gtk-helpers/config_dialog.c:350
+msgid "Workflows"
+msgstr "Способи роботи"
+
+#: ../src/gtk-helpers/config_dialog.c:301
+#: ../src/gtk-helpers/config_dialog.c:303
+#: ../src/gtk-helpers/config_dialog.c:353
+msgid "Events"
+msgstr "Події"
+
+#: ../src/gtk-helpers/config_dialog.c:307
+msgid "C_onfigure"
+msgstr "На_лаштувати"
+
+#: ../src/gtk-helpers/config_dialog.c:309 ../src/gui-wizard-gtk/wizard.c:3312
+msgid "_Close"
+msgstr "_Закрити"
+
+#: ../src/gtk-helpers/event_config_dialog.c:136
+msgid "Show password"
+msgstr "Показувати пароль"
+
+#: ../src/gtk-helpers/event_config_dialog.c:221
+msgid "Advanced"
+msgstr "Додатково"
+
+#: ../src/gtk-helpers/event_config_dialog.c:241
+msgid "Don't store passwords"
+msgstr "Не зберігати паролів"
+
+#: ../src/gtk-helpers/event_config_dialog.c:264
+msgid "Secret Service is not available, your settings won't be saved!"
+msgstr "Служба реєстраційних даних недоступна, ваші параметри не буде збережено!"
+
+#: ../src/gtk-helpers/event_config_dialog.c:299
+#: ../src/gtk-helpers/event_config_dialog.c:351
+#: ../src/gtk-helpers/workflow_config_dialog.c:76
+#: ../src/gui-wizard-gtk/wizard.c:769 ../src/gui-wizard-gtk/wizard.c:2913
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: ../src/gtk-helpers/event_config_dialog.c:301
+#: ../src/gtk-helpers/event_config_dialog.c:353
+#: ../src/gtk-helpers/workflow_config_dialog.c:78
+msgid "_OK"
+msgstr "_Гаразд"
+
+#: ../src/gtk-helpers/secrets.c:171
+#, c-format
+msgid "Can't connect over DBus to name '%s' path '%s' interface '%s': %s"
+msgstr "Не вдалося встановити з’єднання за допомогою DBus з назвою «%s», шлях «%s», інтерфейс «%s»: %s"
+
+#: ../src/gtk-helpers/secrets.c:191
+#, c-format
+msgid "Can't call method '%s' over DBus on path '%s' interface '%s': %s"
+msgstr "Не вдалося викликати метод «%s» за допомогою D-Bus для шляху «%s», інтерфейс «%s»: %s"
+
+#: ../src/gtk-helpers/secrets.c:549
+msgid ""
+"A timeout was reached while waiting for a prompt result from the DBus Secret"
+" Service."
+msgstr "Під час очікування на дані щодо запиту від служби реєстраційних даних DBus перевищено граничний час очікування."
+
+#: ../src/gtk-helpers/secrets.c:552
+msgid ""
+"Do you want to stop waiting and continue in reporting without properly "
+"loaded configuration?"
+msgstr "Бажаєте припинити очікування і продовжити звітування без завантажених належних налаштувань?"
+
+#: ../src/gtk-helpers/secrets.c:862
+#, c-format
+msgid "D-Bus Secrets Service ReadAlias('%s') method failed: %s"
+msgstr "Помилка методу ReadAlias(«%s») D-Bus служби зберігання реєстраційних даних: %s"
+
+#. if the error wasn't about invalid properties we have an another problem
+#: ../src/gtk-helpers/secrets.c:1104
+#, c-format
+msgid "Can't create a secret item for event '%s': %s"
+msgstr "Не вдалося створити запис реєстраційних даних для події «%s»: %s"
+
+#: ../src/gtk-helpers/secrets.c:1286
+#, c-format
+msgid "can't get secret value of '%s': %s"
+msgstr "не вдалося отримати значення ключа «%s»: %s"
+
+#: ../src/gui-wizard-gtk/main.c:105
+msgid ""
+"& [-vpdx] [-e EVENT]... [-g GUI_FILE] PROBLEM_DIR\n"
+"\n"
+"GUI tool to analyze and report problem saved in specified PROBLEM_DIR"
+msgstr "& [-vpdx] [-e ПОДІЯ]... [-g ФАЙЛ_ІНТЕРФЕЙСУ] КАТАЛОГ_ПРОБЛЕМИ\n\nГрафічний інструмент для аналізу і звітування щодо проблеми у вказаному каталозі КАТАЛОГ_ПРОБЛЕМИ"
+
+#: ../src/gui-wizard-gtk/main.c:120
+msgid "Alternate GUI file"
+msgstr "Альтернативний файл графічного інтерфейсу"
+
+#: ../src/gui-wizard-gtk/wizard.c:301
+#, c-format
+msgid ""
+"%s is not properly configured. You can configure it now or provide the required information later.\n"
+"\n"
+"Read more about the configuration at: https://fedorahosted.org/abrt/wiki/AbrtConfiguration"
+msgstr "Виявлено помилкові параметри налаштування %s. Ви можете змінити налаштування зараз або надати потрібні дані пізніше.\n\nДокладний опис налаштувань можна знайти на сторінці https://fedorahosted.org/abrt/wiki/AbrtConfiguration\n\nДокладніше про налаштовування: https://fedorahosted.org/abrt/wiki/AbrtConfiguration"
+
+#: ../src/gui-wizard-gtk/wizard.c:304
+#, c-format
+msgid ""
+"<b>%s</b> is not properly configured. You can configure it now or provide the required information later.\n"
+"\n"
+"<a href=\"https://fedorahosted.org/abrt/wiki/AbrtConfiguration\">Read more about the configuration</a>"
+msgstr "Виявлено помилкові параметри <b>%s</b>. Ви можете змінити їх зараз або надати потрібні дані пізніше.\n\n<a href=\"https://fedorahosted.org/abrt/wiki/AbrtConfiguration\">Докладніше про налаштовування</a>"
+
+#: ../src/gui-wizard-gtk/wizard.c:320
+#, c-format
+msgid "Con_figure %s"
+msgstr "_Налаштувати %s"
+
+#: ../src/gui-wizard-gtk/wizard.c:347
+#, c-format
+msgid ""
+"Need writable directory, but '%s' is not writable. Move it to '%s' and "
+"operate on the moved data?"
+msgstr "Потрібен придатний до запису каталог. Каталог «%s» непридатний до запису. Пересунути файли до «%s» ви працювати з пересунутими даними?"
+
+#: ../src/gui-wizard-gtk/wizard.c:760
+msgid "View/edit a text file"
+msgstr "Перегляд/Редагування текстового файла"
+
+#: ../src/gui-wizard-gtk/wizard.c:768
+msgid "_Save"
+msgstr "З_берегти"
+
+#: ../src/gui-wizard-gtk/wizard.c:987
+msgid ""
+"No reporting targets are defined for this problem. Check configuration in "
+"/etc/libreport/*"
+msgstr "Для цієї проблеми не визначено призначень для звітів. Перевірити це можна за допомогою налаштувань у /etc/libreport/*"
+
+#: ../src/gui-wizard-gtk/wizard.c:1024
+#, c-format
+msgid "(requires: %s)"
+msgstr "(потребує %s)"
+
+#: ../src/gui-wizard-gtk/wizard.c:1038
+#, c-format
+msgid "(not needed, data already exist: %s)"
+msgstr "(непотрібне, дані вже існують: %s)"
+
+#: ../src/gui-wizard-gtk/wizard.c:1199
+msgid "(click here to view/edit)"
+msgstr "(натисніть для перегляду або редагування)"
+
+#: ../src/gui-wizard-gtk/wizard.c:1210
+#, c-format
+msgid "(binary file, %llu bytes)"
+msgstr "(бінарний файл, %llu байтів)"
+
+#: ../src/gui-wizard-gtk/wizard.c:1317 ../src/report-newt/report-newt.c:334
+msgid "(no description)"
+msgstr "(без опису)"
+
+#: ../src/gui-wizard-gtk/wizard.c:1325
+#, c-format
+msgid "%llu bytes, %u files"
+msgstr "%llu байтів, %u файлів"
+
+#: ../src/gui-wizard-gtk/wizard.c:1554
+msgid "Processing was canceled"
+msgstr "Обробку скасовано"
+
+#: ../src/gui-wizard-gtk/wizard.c:1718
+msgid ""
+"Processing of the problem failed. This can have many reasons but there are two most common:\n"
+"\t▫ <b>network connection problems</b>\n"
+"\t▫ <b>corrupted problem data</b>\n"
+msgstr "Спроба обробки проблеми зазнала невдачі. Причин у проблеми може бути декілька, але найпоширенішими є ці дві:\n\t▫ <b>проблеми зі з’єднанням з мережею</b>\n\t▫ <b>пошкоджені дані щодо проблеми</b>\n"
+
+#: ../src/gui-wizard-gtk/wizard.c:1723
+msgid ""
+"If you want to help us, please click on the upload button and provide all problem data for a deep analysis.\n"
+"<i>Before you do that, please consider the security risks. Problem data may contain sensitive information like passwords.\n"
+"The uploaded data are stored in a protected storage and only a limited number of persons can read them.</i>"
+msgstr "Якщо ви хочете нам допомогти, будь ласка, натисніть кнопку вивантаження і надайте всі дані щодо проблеми для поглибленого аналізу.\n<i>Перш ніж ви це зробите, будь ласка, зважте на ризик розкриття конфіденційних даних. У даних можуть міститися конфіденційні дані, зокрема паролі.\nВивантажені дані зберігаються у захищеному сховищі, доступ до їхнього читання матиме лише обмежене коло розробників.</i>"
+
+#: ../src/gui-wizard-gtk/wizard.c:1841
+msgid "Processing was interrupted because the problem is not reportable."
+msgstr "Обробку було перервано, оскільки проблема не є придатною до звітування."
+
+#: ../src/gui-wizard-gtk/wizard.c:1851 ../src/gui-wizard-gtk/wizard.c:1918
+msgid "Processing failed."
+msgstr "Спроба обробки завершилася невдало."
+
+#. No next event, go to progress page and finish
+#: ../src/gui-wizard-gtk/wizard.c:1858 ../src/gui-wizard-gtk/wizard.c:2619
+msgid "Processing finished."
+msgstr "Обробку завершено."
+
+#: ../src/gui-wizard-gtk/wizard.c:1859
+msgid "Processing finished, please proceed to the next step."
+msgstr "Обробку завершено, будь ласка, перейдіть до наступного кроку."
+
+#. TODO: better msg?
+#: ../src/gui-wizard-gtk/wizard.c:1915
+#, c-format
+msgid "No processing for event '%s' is defined"
+msgstr "Обробки для події «%s» не визначено"
+
+#: ../src/gui-wizard-gtk/wizard.c:1929
+msgid "Processing interrupted: can't continue without writable directory."
+msgstr "Обробку перервано, продовження неможливе без придатного для запису каталогу."
+
+#: ../src/gui-wizard-gtk/wizard.c:1966
+msgid "Processing..."
+msgstr "Обробка…"
+
+#: ../src/gui-wizard-gtk/wizard.c:2055
+msgid "Cannot check backtrace rating because of invalid event name"
+msgstr "Не вдалося визначити оцінку зворотного трасування, оскільки назва події є некоректною"
+
+#: ../src/gui-wizard-gtk/wizard.c:2639
+#, c-format
+msgid ""
+"Event '%s' requires permission to send possibly sensitive data.\n"
+"Do you want to continue?"
+msgstr "Події «%s» потрібні права доступу для надсилання можливо конфіденційних даних.\nПродовжити процедуру надсилання?"
+
+#: ../src/gui-wizard-gtk/wizard.c:2687
+#, c-format
+msgid "This problem should not be reported (it is likely a known problem). %s"
+msgstr "Про цю проблему не варто повідомляти (ймовірно, про цю проблему вже відомо). %s"
+
+#: ../src/gui-wizard-gtk/wizard.c:2914
+msgid "_Open"
+msgstr "_Відкрити"
+
+#: ../src/gui-wizard-gtk/wizard.c:2936
+#, c-format
+msgid "'%s' is not an ordinary file"
+msgstr "«%s» не є звичайним файлом"
+
+#: ../src/gui-wizard-gtk/wizard.c:2950
+msgid "You are trying to copy a file onto itself"
+msgstr "Ви намагаєтеся скопіювати файл до цього ж файла"
+
+#: ../src/gui-wizard-gtk/wizard.c:2957
+#, c-format
+msgid "Can't copy '%s': %s"
+msgstr "Не вдалося скопіювати «%s»: %s"
+
+#: ../src/gui-wizard-gtk/wizard.c:2972
+#, c-format
+msgid "Item '%s' already exists and is not modifiable"
+msgstr "Пункт «%s» вже існує, його не можна змінювати"
+
+#: ../src/gui-wizard-gtk/wizard.c:3164
+msgid "Include"
+msgstr "Включення"
+
+#: ../src/gui-wizard-gtk/wizard.c:3175
+msgid "Name"
+msgstr "Назва"
+
+#: ../src/gui-wizard-gtk/wizard.c:3185
+msgid "Value"
+msgstr "Значення"
+
+#: ../src/gui-wizard-gtk/wizard.c:3219
+msgid "Problem description"
+msgstr "Опис проблеми"
+
+#: ../src/gui-wizard-gtk/wizard.c:3220
+msgid "Select how to report this problem"
+msgstr "Виберіть спосіб звітування про цю проблему"
+
+#: ../src/gui-wizard-gtk/wizard.c:3221
+msgid "Provide additional information"
+msgstr "Надання додаткових даних"
+
+#: ../src/gui-wizard-gtk/wizard.c:3222
+msgid "Review the data"
+msgstr "Переглянути дані"
+
+#: ../src/gui-wizard-gtk/wizard.c:3223
+msgid "Confirm data to report"
+msgstr "Підтвердження даних звіту"
+
+#: ../src/gui-wizard-gtk/wizard.c:3224
+msgid "Processing"
+msgstr "Обробка"
+
+#: ../src/gui-wizard-gtk/wizard.c:3225
+msgid "Processing done"
+msgstr "Обробку завершено"
+
+#: ../src/gui-wizard-gtk/wizard.c:3314
+msgid "_Stop"
+msgstr "З_упинити"
+
+#. else gtk_widget_hide won't work
+#: ../src/gui-wizard-gtk/wizard.c:3317
+msgid "Upload for analysis"
+msgstr "Вивантажити для аналізу"
+
+#. else gtk_widget_hide won't work
+#: ../src/gui-wizard-gtk/wizard.c:3320
+msgid "_Forward"
+msgstr "_Далі"
+
+#: ../src/gui-wizard-gtk/wizard.c:3409
+msgid ""
+"In order to enable the built-in screencasting functionality the package recordmydesktop has to be installed. Please run the following command if you want to install it.\n"
+"\n"
+"<b>su -c \"yum install recordmydesktop\"</b>"
+msgstr "З метою вмикання вбудованих можливостей зі створення відеодемонстрацій слід встановити пакунок recordmydesktop. Будь ласка, віддайте вказану нижче команду, щоб встановити цей пакунок.\n\n<b>su -c \"yum install recordmydesktop\"</b>"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:1
+msgid "Possible sensitive data detected"
+msgstr "Виявлено ймовірно конфіденційні дані"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:2
+msgid "Restrict access to the report"
+msgstr "Обмежити доступ до звіту"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:3
+msgid ""
+"No one except Red Hat employees will be allowed to see the report with "
+"restricted access (not even you)"
+msgstr ""
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:4
+msgid "Read more about reports with restricted access"
+msgstr "Докладніше про звіти з обмеженим доступом"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:5
+msgid ""
+"On the following screens, you will be asked to describe how the problem "
+"occurred, to choose how to analyze the problem (if needed), to review "
+"collected data, and to choose where the problem should be reported. Click "
+"'Forward' to proceed."
+msgstr "На наступних сторінках майстра вам слід буде описати проблему, вибрати спосіб її обробки (якщо це потрібно), переглянути зібрані дані і вибрати адресу, за якою слід повідомити про проблему. Натисніть кнопку «Далі», щоб продовжити процес звітування."
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:6
+msgid "Details"
+msgstr "Подробиці"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:7
+msgid ""
+"How did this problem happen (step-by-step)? How can it be reproduced? Any "
+"additional comments useful for diagnosing the problem? Please use English if"
+" possible."
+msgstr "Які дії призвели до виникнення проблеми (покроково)? Як можна відтворити проблему? Маєте додаткові коментарі, які будуть корисними для діагностування причин проблеми? Будь ласка, надайте ці дані англійською мовою."
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:8
+msgid "You need to fill the how to before you can proceed..."
+msgstr "Вам слід вказати настанови з відтворення, щоб обробку було продовжено…"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:9
+msgid ""
+"<b>Your comments are not private.</b> They may be included into publicly "
+"visible problem reports."
+msgstr "<b>Ваші коментарі не будуть конфіденційними.</b> Їх може бути включено до відкритих до перегляду звітів про вади."
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:10
+msgid "If you don't know how to describe it, you can"
+msgstr "Якщо ви не знаєте, як описати проблему, ви можете:"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:11
+msgid "add a screencast"
+msgstr "додати відеодемонстрацію"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:12
+msgid "I don't know what caused this problem"
+msgstr "Причина проблеми мені не відома"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:13
+msgid ""
+"Use this button to generate more informative backtrace after you installed "
+"additional debug packages"
+msgstr "Скористайтеся цієї кнопкою для створення повніших даних зворотного трасування після встановлення додаткових діагностичних пакунків"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:14
+msgid ""
+"Please review the data before it gets reported. Depending on reporter "
+"chosen, it may end up publicly visible."
+msgstr "Будь ласка, ознайомтеся з даними, перш ніж звіт з ними буде надіслано. Ваші дані, залежно від вибраного призначення, можуть стати загальнодоступними."
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:15
+msgid "Size:"
+msgstr "Розмір:"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:16
+msgid "Attach a file"
+msgstr "Долучити файл"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:17
+msgid "I reviewed the data and _agree with submitting it"
+msgstr "Дані переглянуто, я по_годжуюся з їхнім надсиланням"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:18
+msgid ""
+"If you are reporting to a remote server, make sure you removed all private "
+"data (such as usernames and passwords). Backtrace, command line, environment"
+" variables are the typical items in need of examining."
+msgstr "Якщо ви надсилаєте звіт на віддалений сервер, переконайтеся, що з нього вилучено всі особисті дані (зокрема імена користувачів і паролі). Подібні дані можуть зберігатися у зворотному трасуванні, записах командного рядка, змінних середовища."
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:19
+msgid "Processing did not start yet"
+msgstr "Обробку ще не почато"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:20
+msgid "Show log"
+msgstr "Показати журнал"
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:21
+msgid "Reporting has finished. You can close this window now."
+msgstr "Звітування завершено. Тепер це вікно можна закрити."
+
+#: ../src/gui-wizard-gtk/wizard.glade.h:22
+msgid ""
+"If you want to report the problem to a different destination, collect "
+"additional information, or provide a better problem description and repeat "
+"reporting process, press 'Forward'."
+msgstr "Якщо ви бажаєте створити звіт щодо проблеми за іншою адресою, зібрати додаткові дані або надати кращий опис проблеми і повторити процедуру звітування, натисніть кнопку «Далі»."
+
+#: ../src/include/internal_libreport.h:969
+msgid "Be verbose"
+msgstr "Докладні повідомлення"
+
+#: ../src/include/internal_libreport.h:970
+#: ../src/plugins/reporter-bugzilla.c:929
+#: ../src/plugins/reporter-kerneloops.c:166
+#: ../src/plugins/reporter-mailx.c:198 ../src/plugins/reporter-print.c:56
+#: ../src/plugins/reporter-rhtsupport.c:254
+#: ../src/plugins/reporter-upload.c:227
+msgid "Problem directory"
+msgstr "Каталог проблеми"
+
+#: ../src/lib/abrt_sock.c:158
+#, c-format
+msgid "Can't delete: '%s'"
+msgstr "Не вдалося вилучити «%s»"
+
+#: ../src/lib/abrt_sock.c:194
+msgid "locked by another process"
+msgstr "заблоковано іншим процесом"
+
+#: ../src/lib/abrt_sock.c:203
+msgid "permission denied"
+msgstr "відмовлено у доступі"
+
+#: ../src/lib/abrt_sock.c:206
+msgid "not a problem directory"
+msgstr "не є каталогом проблеми"
+
+#: ../src/lib/abrt_sock.c:215
+#, c-format
+msgid "Can't delete '%s': %s"
+msgstr "Не вдалося вилучити «%s»: %s"
+
+#: ../src/lib/client.c:56 ../src/lib/client.c:89
+msgid "y"
+msgstr "y"
+
+#: ../src/lib/client.c:57 ../src/lib/client.c:90
+msgid "N"
+msgstr "N"
+
+#: ../src/lib/client.c:91
+msgid "f"
+msgstr "f"
+
+#: ../src/lib/create_dump_dir.c:39
+#, c-format
+msgid "Missing required item: '%s'"
+msgstr "Не вистачає обов’язкового елемента: «%s»"
+
+#: ../src/lib/create_dump_dir.c:54
+#, c-format
+msgid "uid value is not valid: '%s'"
+msgstr "значення uid є некоректним: «%s»"
+
+#: ../src/lib/curl.c:226
+#, c-format
+msgid "Uploaded: %llu of %llu kbytes"
+msgstr "Вивантажено: %llu з %llu кілобайтів"
+
+#: ../src/lib/curl.c:591
+#, c-format
+msgid "Sending %s to %s"
+msgstr "Надсилання %s до %s"
+
+#. This ends up a "reporting status message" in abrtd
+#: ../src/lib/curl.c:623
+#, c-format
+msgid "Successfully sent %s to %s"
+msgstr "Успішно надіслано %s до %s"
+
+#: ../src/lib/event_config.c:309
+msgid "Missing mandatory value"
+msgstr "Не вистачає обов’язкового значення"
+
+#: ../src/lib/event_config.c:317
+#, c-format
+msgid "Invalid utf8 character '%c'"
+msgstr "Некоректний символ utf8 «%c»"
+
+#: ../src/lib/event_config.c:330
+#, c-format
+msgid "Invalid number '%s'"
+msgstr "Некоректне число «%s»"
+
+#: ../src/lib/event_config.c:345
+#, c-format
+msgid "Invalid boolean value '%s'"
+msgstr "Некоректне значення булевого типу «%s»"
+
+#: ../src/lib/event_config.c:351
+msgid "Unsupported option type"
+msgstr "Непідтримуваний тип параметра"
+
+#: ../src/lib/event_config.c:420
+msgid "Reporting disabled because the rating does not contain a number."
+msgstr "Звітування вимкнено через те, що у оцінці не міститься числа."
+
+#: ../src/lib/event_config.c:421
+msgid "Please report this problem to ABRT project developers."
+msgstr "Будь ласка, повідомте про цю проблему розробникам проекту ABRT."
+
+#: ../src/lib/event_config.c:427
+msgid ""
+"The backtrace is incomplete, please make sure you provide the steps to "
+"reproduce."
+msgstr "Неповні відомості трасування. Вам доведеться вказати чіткі кроки з відтворення помилки."
+
+#: ../src/lib/event_config.c:428
+msgid "The backtrace probably can't help developer to diagnose the bug."
+msgstr "Ймовірно, дані зворотного трасування не будуть корисними для діагностування вади."
+
+#: ../src/lib/event_config.c:434
+msgid "Reporting disabled because the backtrace is unusable."
+msgstr "Звітування вимкнено, оскільки зворотне трасування є непридатним."
+
+#: ../src/lib/event_config.c:438
+#, c-format
+msgid ""
+"Please try to install debuginfo manually using the command: \"debuginfo-"
+"install %s\" and try again."
+msgstr "Спробуйте встановити debuginfo вручну: «debuginfo-install %s», потім повторіть спробу\n."
+
+#: ../src/lib/event_config.c:440
+msgid "A proper debuginfo is probably missing or the coredump is corrupted."
+msgstr "Ймовірно, не вистачає належних даних debuginfo або пошкоджено дані дампу core."
+
+#: ../src/lib/make_descr.c:110
+msgid "Reported:"
+msgstr ""
+
+#: ../src/lib/parse_options.c:58
+msgid "Usage: "
+msgstr "Використання: "
+
+#: ../src/lib/problem_data.c:212
+#, c-format
+msgid "Essential element '%s' is missing, can't continue"
+msgstr "Не вистачає важливого елемента «%s», продовження обробки неможливе…"
+
+#: ../src/lib/run_event.c:761
+#, c-format
+msgid "('%s' was killed by signal %u)\n"
+msgstr "(роботу «%s» було перервано сигналом %u)\n"
+
+#: ../src/lib/run_event.c:763
+#, c-format
+msgid "('%s' completed successfully)\n"
+msgstr "(«%s» успішно завершено)\n"
+
+#: ../src/lib/run_event.c:765
+#, c-format
+msgid "('%s' exited with %u)\n"
+msgstr "(«%s» завершено роботу з кодом %u)\n"
+
+#: ../src/plugins/abrt_rh_support.c:356
+#, c-format
+msgid "Error in case creation at '%s': %s"
+msgstr "Помилка під час створення запису випадку у «%s»: %s"
+
+#: ../src/plugins/abrt_rh_support.c:365
+#, c-format
+msgid "Error in case creation at '%s', HTTP code: %d, server says: '%s'"
+msgstr "Помилка під час створення запису випадку у «%s», код HTTP: %d, повідомлення сервера: «%s»"
+
+#: ../src/plugins/abrt_rh_support.c:369
+#, c-format
+msgid "Error in case creation at '%s', HTTP code: %d"
+msgstr "Помилка під час створення запису випадку у «%s», код HTTP: %d"
+
+#: ../src/plugins/abrt_rh_support.c:420
+#, c-format
+msgid "Error in case creation at '%s': no Location URL, HTTP code: %d"
+msgstr "Помилка під час створення запису випадку у «%s»: не вказано адреси, код HTTP: %d"
+
+#: ../src/plugins/abrt_rh_support.c:524
+#, c-format
+msgid "Error in comment creation at '%s': %s"
+msgstr "Помилка під час створення коментаря у «%s»: %s"
+
+#: ../src/plugins/abrt_rh_support.c:533
+#, c-format
+msgid "Error in comment creation at '%s', HTTP code: %d, server says: '%s'"
+msgstr "Помилка під час створення коментаря у «%s», код HTTP: %d, повідомлення сервера: «%s»"
+
+#: ../src/plugins/abrt_rh_support.c:537
+#, c-format
+msgid "Error in comment creation at '%s', HTTP code: %d"
+msgstr "Помилка під час створення коментаря у «%s», код HTTP: %d"
+
+#: ../src/plugins/abrt_rh_support.c:583
+#, c-format
+msgid "Error in comment creation at '%s': no Location URL, HTTP code: %d"
+msgstr "Помилка під час створення коментаря у «%s»: не вказано адреси, код HTTP: %d"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:1
+msgid "Bugzilla"
+msgstr "Bugzilla"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:2
+msgid "Report to Bugzilla bug tracker"
+msgstr "Повідомити до системи стеження за вадами Bugzilla"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:3
+msgid "Bugzilla URL"
+msgstr "Адреса Bugzilla"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:4
+msgid "Address of Bugzilla server"
+msgstr "Адреса сервера Bugzilla"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:5
+msgid ""
+"You can create bugzilla.redhat.com account &lt;a "
+"href=\"https://bugzilla.redhat.com/createaccount.cgi\"&gt;here&lt;/a&gt;"
+msgstr "Створити обліковий запис bugzilla.redhat.com можна &lt;a href=\"https://bugzilla.redhat.com/createaccount.cgi\"&gt;тут&lt;/a&gt;"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:6
+msgid "User name"
+msgstr "Ім'я користувача"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:7
+msgid "Bugzilla account user name"
+msgstr "Ім’я користувача облікового запису Bugzilla"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:8
+#: ../src/plugins/report_RHTSupport.xml.in.h:7
+msgid "Password"
+msgstr "Пароль"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:9
+msgid "Bugzilla account password"
+msgstr "Пароль облікового запису Bugzilla"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:10
+#: ../src/plugins/report_RHTSupport.xml.in.h:9
+#: ../src/plugins/report_uReport.xml.in.h:5
+msgid "Verify SSL"
+msgstr "Перевірити SSL"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:11
+#: ../src/plugins/report_RHTSupport.xml.in.h:10
+#: ../src/plugins/report_uReport.xml.in.h:6
+msgid "Check SSL key validity"
+msgstr "Перевірити чинність ключа SSL"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:12
+msgid "Restrict access"
+msgstr "Обмежити доступ"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:13
+msgid ""
+"Restrict access to the created bugzilla ticket allowing only users from "
+"specified groups to view it (see advanced settings for more details)"
+msgstr "Обмежити доступ до запису у системі стеження за вадами так, щоб переглядати його могли лише користувачів з певних груп (див. додаткові параметри, щоб дізнатися більше)"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:14
+msgid "Bugzilla product"
+msgstr "Продукт у Bugzilla"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:15
+msgid ""
+"Specify this only if you needed different product than specified in /etc/os-"
+"release"
+msgstr "Вкажіть, лише якщо вам слід вказати інший продукт, який не вказано у /etc/os-release"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:16
+msgid "Bugzilla product version"
+msgstr "Версія продукту у Bugzilla"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:17
+msgid ""
+"Specify this only if you needed different product version than specified in "
+"/etc/os-release"
+msgstr "Вкажіть, лише якщо вам слід вказати іншу версію продукту, яку не вказано у /etc/os-release"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:18
+#: ../src/plugins/report_Kerneloops.xml.in.h:5
+#: ../src/plugins/report_RHTSupport.xml.in.h:11
+#: ../src/plugins/report_Uploader.xml.in.h:6
+#: ../src/plugins/report_uReport.xml.in.h:7
+#: ../src/plugins/report_EmergencyAnalysis.xml.in.h:4
+msgid "HTTP Proxy"
+msgstr "HTTP-проксі"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:19
+#: ../src/plugins/report_Kerneloops.xml.in.h:6
+#: ../src/plugins/report_RHTSupport.xml.in.h:12
+#: ../src/plugins/report_Uploader.xml.in.h:7
+#: ../src/plugins/report_uReport.xml.in.h:8
+#: ../src/plugins/report_EmergencyAnalysis.xml.in.h:5
+msgid "Sets the proxy server to use for HTTP"
+msgstr "Встановити проксі-сервер, який слід використовувати для HTTP"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:20
+#: ../src/plugins/report_Kerneloops.xml.in.h:7
+#: ../src/plugins/report_RHTSupport.xml.in.h:13
+#: ../src/plugins/report_Uploader.xml.in.h:8
+#: ../src/plugins/report_uReport.xml.in.h:9
+#: ../src/plugins/report_EmergencyAnalysis.xml.in.h:6
+msgid "HTTPS Proxy"
+msgstr "HTTPS-проксі"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:21
+#: ../src/plugins/report_Kerneloops.xml.in.h:8
+#: ../src/plugins/report_RHTSupport.xml.in.h:14
+#: ../src/plugins/report_Uploader.xml.in.h:9
+#: ../src/plugins/report_uReport.xml.in.h:10
+#: ../src/plugins/report_EmergencyAnalysis.xml.in.h:7
+msgid "Sets the proxy server to use for HTTPS"
+msgstr "Встановити проксі-сервер, який слід використовувати для HTTPS"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:22
+msgid "Groups"
+msgstr "Групи"
+
+#: ../src/plugins/report_Bugzilla.xml.in.h:23
+msgid ""
+"Restrict the access to specified groups &lt;a "
+"href=\"https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-"
+"tickets\"&gt;?&lt;/a&gt;"
+msgstr "Обмежити доступ так, щоб його мали лише вказані групи &lt;a href=\"https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets\"&gt;?&lt;/a&gt;"
+
+#: ../src/plugins/report.c:37
+msgid ""
+"& [-v] --target TARGET --ticket ID FILE...\n"
+"\n"
+"Uploads FILEs to specified ticket on TARGET.\n"
+"\n"
+"This tool is provided to ease transition of users of report package\n"
+"to libreport. Recognized TARGETs are 'strata' and 'bugzilla',\n"
+"first one invokes upload to RHTSupport and second - to Bugzilla.\n"
+"\n"
+"Configuration (such as login data) can be supplied via files\n"
+msgstr "& [-v] --target ПРИЗНАЧЕННЯ --ticket ІД ФАЙЛ...\n\nВивантажує ФАЙЛи до вказаного запиту (квитка) на ПРИЗНАЧЕННІ.\n\nЦей засіб призначено для полегшення переходу користувачів\nз пакунка report на libreport. Передбачено ПРИЗНАЧЕННЯ 'strata' і\n'bugzilla', у разі використання першого дані буде вивантажено до\nRHTSupport, другого — до Bugzilla.\n\nНалаштування (зокрема дані для входу до системи) може бути надано у\nокремих файлах.\n"
+
+#: ../src/plugins/report.c:59
+msgid "'strata' or 'bugzilla'"
+msgstr "'strata' або 'bugzilla'"
+
+#: ../src/plugins/report.c:60
+msgid "Ticket/case ID"
+msgstr "Ідентифікатор квитка/випадку"
+
+#: ../src/plugins/reporter-bugzilla.c:355
+#, c-format
+msgid "Can't parse backtrace: %s"
+msgstr "Не вдалося обробити дані зворотного трасування: %s"
+
+#: ../src/plugins/reporter-bugzilla.c:366
+msgid "Can't generate stacktrace description (no crash thread?)"
+msgstr "Не вдалося створити опис трасування стека (немає аварійного потоку виконання?)"
+
+#: ../src/plugins/reporter-bugzilla.c:764
+msgid ""
+"Warning, private ticket groups already specified as cmdline argument, "
+"ignoring the env variable and configuration"
+msgstr "Попередження: групи закритих квитків вже вказано у аргументі командного рядка, ігноруємо значення змінної середовища та запис налаштувань."
+
+#: ../src/plugins/reporter-bugzilla.c:775
+#: ../src/plugins/reporter-rhtsupport.c:178
+msgid "Can't continue without login"
+msgstr "Продовження неможливе без зазначення облікового запису"
+
+#: ../src/plugins/reporter-bugzilla.c:788
+#: ../src/plugins/reporter-rhtsupport.c:191
+msgid "Can't continue without password"
+msgstr "Продовження неможливе без зазначення пароля"
+
+#: ../src/plugins/reporter-bugzilla.c:797
+#, c-format
+msgid "Logging into Bugzilla at %s"
+msgstr "Вхід до Bugzilla від імені %s"
+
+#: ../src/plugins/reporter-bugzilla.c:801
+msgid "Invalid password or login. Please enter your BZ login:"
+msgstr "Некоректний пароль або ім’я користувача. Будь ласка, вкажіть назву вашого облікового запису у системі стеження за вадами:"
+
+#: ../src/plugins/reporter-bugzilla.c:804
+#, c-format
+msgid "Invalid password or login. Please enter the password for '%s':"
+msgstr "Некоректний пароль або помилкова назва облікового запису. Будь ласка, вкажіть пароль для «%s»:"
+
+#: ../src/plugins/reporter-bugzilla.c:839
+msgid "Bug.search(quicksearch) return value did not contain member 'bugs'"
+msgstr "Bug.search(quicksearch) повернуто значення, у якому не містилося елемента «bugs»"
+
+#: ../src/plugins/reporter-bugzilla.c:857
+msgid ""
+"\n"
+"& [-vbf] [-g GROUP-NAME]... [-c CONFFILE]... [-F FMTFILE] [-A FMTFILE2] -d DIR\n"
+"or:\n"
+"& [-v] [-c CONFFILE]... [-d DIR] -t[ID] FILE...\n"
+"or:\n"
+"& [-v] [-c CONFFILE]... [-d DIR] -t[ID] -w\n"
+"or:\n"
+"& [-v] [-c CONFFILE]... -h DUPHASH\n"
+"\n"
+"Reports problem to Bugzilla.\n"
+"\n"
+"The tool reads DIR. Then it logs in to Bugzilla and tries to find a bug\n"
+"with the same abrt_hash:HEXSTRING in 'Whiteboard'.\n"
+"\n"
+"If such bug is not found, then a new bug is created. Elements of DIR\n"
+"are stored in the bug as part of bug description or as attachments,\n"
+"depending on their type and size.\n"
+"\n"
+"Otherwise, if such bug is found and it is marked as CLOSED DUPLICATE,\n"
+"the tool follows the chain of duplicates until it finds a non-DUPLICATE bug.\n"
+"The tool adds a new comment to found bug.\n"
+"\n"
+"The URL to new or modified bug is printed to stdout and recorded in\n"
+"'reported_to' element.\n"
+"\n"
+"Option -t uploads FILEs to the already created bug on Bugzilla site.\n"
+"The bug ID is retrieved from directory specified by -d DIR.\n"
+"If problem data in DIR was never reported to Bugzilla, upload will fail.\n"
+"\n"
+"Option -tID uploads FILEs to the bug with specified ID on Bugzilla site.\n"
+"-d DIR is ignored.\n"
+"\n"
+"Option -w adds bugzilla user to bug's CC list.\n"
+"\n"
+"Option -r sets the last url from reporter_to element which is prefixed with\n"
+"TRACKER_NAME to URL field. This option is applied only when a new bug is to be\n"
+"filed. The default value is 'ABRT Server'\n"
+"\n"
+"If not specified, CONFFILE defaults to "
+msgstr "\n& [-vbf] [-g НАЗВА-ГРУПИ]... [-c ФАЙЛ_НАЛАШТУВАНЬ]... [-F ФАЙЛ_ФОРМАТУВАННЯ] [-A ФАЙЛ_ФОРМАТУВАННЯ2] -d КАТАЛОГ\nабо\n& [-v] [-c ФАЙЛ_НАЛАШТУВАНЬ]... [-d КАТАЛОГ] -t[ІД] ФАЙЛ...\nабо\n& [-v] [-c ФАЙЛ_НАЛАШТУВАНЬ]... [-d КАТАЛОГ] -t[ІД] -w\nабо\n& [-v] [-c ФАЙЛ_НАЛАШТУВАНЬ]... -h DUPHASH\n\nСповістити про проблему за допомогою Bugzilla.\n\nПрограма виконує читання даних з каталогу КАТАЛОГ. Після цього входить\nдо Bugzilla і намагається знайти ваду з тим самим значенням\nabrt_hash:ШІСТНАДЦЯТКОВИЙ_РЯДОК у полі «Whiteboard».\n\nЯкщо такої вади виявлено не буде, буде створено нове повідомлення щодо вади.\nДані з каталогу КАТАЛОГ буде збережено у повідомленні як частину опису або\nдолучення, залежно від типу і розміру даних.\n\nЯкщо ж ваду буде знайдено, а повідомлення щодо неї буде позначено\nміткою CLOSED DUPLICATE, програма спробує пройти ланцюжком дублікатів, аж\nдоки не знайде ваду без позначки DUPLICATE.\nПісля цього до знайденого повідомлення буде додано новий коментар.\n\nАдресну нового або зміненого повідомлення про ваду буде виведено до stdout\nі записано у елементі «reported_to».\n\nУ разі використання параметра -t ФАЙЛИ буде вивантажено до вже створеного\nповідомлення про ваду на сайті Bugzilla.\nІдентифікатор (ІД) вади буде отримано з каталогу, вказаного за допомогою\n-d КАТАЛОГ.\nЯкщо дані щодо проблеми у каталозі КАТАЛОГ ще ніколи не повідомлялися за\nдопомогою Bugzilla, вивантаження зазнає невдачі.\n\nВикористання параметра -tІД надає змогу вивантажити ФАЙЛИ до повідомлення\nпро ваду з вказаним ідентифікатором Bugzilla ІД.\n-d КАТАЛОГ у цьому випадку буде проігноровано.\n\nЗа допомогою параметра -w можна додати користувача до списку обміну\nповідомленнями щодо вади.\n\nЗа допомогою параметра -r можна встановити у полі адреси останню адресу з елемента\nreporter_to, до якої буде додано вміст TRACKER_NAME. Цей параметр застосовується\nлише під час створення нових звітів щодо вад. Типовим значенням є «ABRT Server».\n\nЯкщо не вказано явно, типовим значенням параметра ФАЙЛ_НАЛАШТУВАНЬ є "
+
+#: ../src/plugins/reporter-bugzilla.c:930
+#: ../src/plugins/reporter-rhtsupport.c:255
+msgid "Configuration file (may be given many times)"
+msgstr "Файл налаштувань (можна вказувати декілька файлів)"
+
+#: ../src/plugins/reporter-bugzilla.c:931
+msgid "Formatting file for initial comment"
+msgstr "Файл форматування для початкового коментаря"
+
+#: ../src/plugins/reporter-bugzilla.c:932
+msgid "Formatting file for duplicates"
+msgstr "Файл форматування для дублікатів"
+
+#: ../src/plugins/reporter-bugzilla.c:933
+msgid "Attach FILEs [to bug with this ID]"
+msgstr "Долучити ФАЙЛи [до вади з вказаним ідентифікатором]"
+
+#: ../src/plugins/reporter-bugzilla.c:934
+msgid "When creating bug, attach binary files too"
+msgstr "Долучити до звіту щодо вади бінарні файли"
+
+#: ../src/plugins/reporter-bugzilla.c:935
+#: ../src/plugins/reporter-rhtsupport.c:257
+msgid "Force reporting even if this problem is already reported"
+msgstr "Створити звіт, навіть якщо про цю проблему вже було повідомлено"
+
+#: ../src/plugins/reporter-bugzilla.c:936
+msgid "Add bugzilla user to CC list [of bug with this ID]"
+msgstr "Додати користувача до списку обміну повідомленнями щодо вади [з цим ідентифікатором]"
+
+#: ../src/plugins/reporter-bugzilla.c:937
+msgid "Print BUG_ID which has given DUPHASH"
+msgstr "Вивести BUG_ID за вказаним DUPHASH"
+
+#: ../src/plugins/reporter-bugzilla.c:938
+msgid "A name of bug tracker for an additional URL from 'reported_to'"
+msgstr "Назва системи стеження за вадами для додаткової адреси з «reported_to»"
+
+#: ../src/plugins/reporter-bugzilla.c:939
+msgid "Restrict access to this group only"
+msgstr "Обмежити доступ лише учасниками цієї групи"
+
+#: ../src/plugins/reporter-bugzilla.c:940
+msgid "Debug"
+msgstr "Діагностика"
+
+#: ../src/plugins/reporter-bugzilla.c:982
+msgid "Looking for similar problems in bugzilla"
+msgstr "Шукаємо схожі проблеми у системі стеження за вадами"
+
+#: ../src/plugins/reporter-bugzilla.c:1009
+msgid "Login is not provided by configuration. Please enter your BZ login:"
+msgstr "У налаштуваннях не вказано облікового запису користувача. Будь ласка, вкажіть ім’я вашого користувача Bugzilla:"
+
+#: ../src/plugins/reporter-bugzilla.c:1015
+#: ../src/plugins/reporter-rhtsupport.c:291
+#, c-format
+msgid ""
+"Password is not provided by configuration. Please enter the password for "
+"'%s':"
+msgstr "У налаштуваннях не вказано пароля. Будь ласка, вкажіть пароль для «%s»:"
+
+#: ../src/plugins/reporter-bugzilla.c:1034
+msgid ""
+"Can't get Bugzilla ID because this problem has not yet been reported to "
+"Bugzilla."
+msgstr "Не вдалося отримати ідентифікатор Bugzilla, оскільки про цю проблему ще не було повідомлено у Bugzilla."
+
+#: ../src/plugins/reporter-bugzilla.c:1041
+#, c-format
+msgid ""
+"This problem has been reported to Bugzilla '%s' which differs from the "
+"configured Bugzilla '%s'."
+msgstr "Про цю проблему було складено звіт у Bugzilla «%s», тобто до Bugzilla, відмінної від налаштованої «%s»."
+
+#: ../src/plugins/reporter-bugzilla.c:1045
+#, c-format
+msgid "Malformed url to Bugzilla '%s'."
+msgstr "Помилкове форматування адреси Bugzilla «%s»."
+
+#: ../src/plugins/reporter-bugzilla.c:1049
+#, c-format
+msgid "Using Bugzilla ID '%s'"
+msgstr "Використовуємо ідентифікатор Bugzilla «%s»"
+
+#: ../src/plugins/reporter-bugzilla.c:1083
+#: ../src/plugins/reporter-bugzilla.c:1354
+msgid "Logging out"
+msgstr "Завершення сеансу"
+
+#: ../src/plugins/reporter-bugzilla.c:1134
+msgid "Can't determine Bugzilla Product from problem data."
+msgstr "Не вдалося визначити продукт для Bugzilla для даних проблеми."
+
+#: ../src/plugins/reporter-bugzilla.c:1185
+msgid "Checking for duplicates"
+msgstr "Пошук дублікатів"
+
+#. Create new bug
+#: ../src/plugins/reporter-bugzilla.c:1231
+msgid "Creating a new bug"
+msgstr "Створення нового повідомлення про ваду"
+
+#: ../src/plugins/reporter-bugzilla.c:1252
+msgid "Failed to create a new bug."
+msgstr "Не вдалося створити повідомлення про ваду."
+
+#: ../src/plugins/reporter-bugzilla.c:1263
+#, c-format
+msgid "Adding External URL to bug %i"
+msgstr "Додаємо зовнішню адресу до вади %i"
+
+#: ../src/plugins/reporter-bugzilla.c:1269
+#, c-format
+msgid "Adding attachments to bug %i"
+msgstr "Додавання долучень до повідомлення про ваду %i"
+
+#: ../src/plugins/reporter-bugzilla.c:1288
+#, c-format
+msgid "Bug is already reported: %i"
+msgstr "Запит вже існує: %i"
+
+#: ../src/plugins/reporter-bugzilla.c:1309
+#, c-format
+msgid "Adding %s to CC list"
+msgstr "Додавання %s до списку CC"
+
+#: ../src/plugins/reporter-bugzilla.c:1326
+#, c-format
+msgid "Adding new comment to bug %d"
+msgstr "Додавання коментаря до запиту (%d)"
+
+#: ../src/plugins/reporter-bugzilla.c:1340
+msgid "Attaching better backtrace"
+msgstr "Долучення кращого зворотного трасування"
+
+#: ../src/plugins/reporter-bugzilla.c:1348
+msgid "Found the same comment in the bug history, not adding a new one"
+msgstr "У журналі вади виявлено тотожний коментар, новий не буде додано"
+
+#: ../src/plugins/reporter-bugzilla.c:1357
+#, c-format
+msgid "Status: %s%s%s %s/show_bug.cgi?id=%u"
+msgstr "Стан: %s%s%s %s/show_bug.cgi?id=%u"
+
+#: ../src/plugins/reporter-kerneloops.c:105
+#, c-format
+msgid "Submitting oops report to %s"
+msgstr "Надсилання звіту про збій до %s"
+
+#: ../src/plugins/reporter-kerneloops.c:147
+msgid ""
+"& [-v] [-c CONFFILE]... -d DIR\n"
+"\n"
+"Reports kernel oops to kerneloops.org (or similar) site.\n"
+"\n"
+"Files with names listed in $EXCLUDE_FROM_REPORT are not included\n"
+"into the tarball.\n"
+"\n"
+"CONFFILE lines should have 'PARAM = VALUE' format.\n"
+"Recognized string parameter: SubmitURL.\n"
+"Parameter can be overridden via $KerneloopsReporter_SubmitURL."
+msgstr "& [-v] [-c ФАЙЛ_НАЛАШТУВАНЬ]... -d КАТАЛОГ\n\nПовідомляє про ваду у ядрі на сайт kerneloops.org (або подібний).\n\nФайли, назви яких вказано у $EXCLUDE_FROM_REPORT, не буде включено\nдо архіву.\n\nРядки ФАЙЛА_НАЛАШТУВАНЬ має бути записано у форматі\n«ПАРАМЕТР = ЗНАЧЕННЯ».\nРядковий параметр: SubmitURL.\nПараметр може бути перевизначено за допомогою $KerneloopsReporter_SubmitURL."
+
+#: ../src/plugins/reporter-kerneloops.c:167 ../src/plugins/ureport.c:379
+msgid "Configuration file"
+msgstr "Файл налаштувань"
+
+#: ../src/plugins/reporter-mailx.c:59
+#, c-format
+msgid ""
+"Email address of %s was not specified. Would you like to do so now? If not, "
+"'%s' is to be used"
+msgstr "Не вказано адреси електронної пошти %s. Хочете вказати цю адресу зараз? Якщо адресу не буде вказано, буде використано адресу «%s»."
+
+#: ../src/plugins/reporter-mailx.c:66
+#, c-format
+msgid "Please, type email address of %s:"
+msgstr "Будь ласка, вкажіть адресу електронної пошти %s:"
+
+#: ../src/plugins/reporter-mailx.c:73
+#, c-format
+msgid "Can't continue without email address of %s"
+msgstr "Без адреси електронної пошти %s продовжити звітування не вдасться"
+
+#: ../src/plugins/reporter-mailx.c:135
+msgid "Sending an email..."
+msgstr "Надсилання пошти…"
+
+#: ../src/plugins/reporter-mailx.c:158
+#, c-format
+msgid "Email was sent to: %s"
+msgstr "Повідомлення було надіслано: %s"
+
+#: ../src/plugins/reporter-mailx.c:178
+msgid ""
+"& [-v] -d DIR [-c CONFFILE]\n"
+"\n"
+"Sends contents of a problem directory DIR via email\n"
+"\n"
+"If not specified, CONFFILE defaults to "
+msgstr "& [-v] -d КАТАЛОГ [-c ФАЙЛ_НАЛАШТУВАНЬ]\n\nНадіслати дані з каталогу проблеми КАТАЛОГ електронною поштою.\n\nЯкщо значення ФАЙЛ_НАЛАШТУВАНЬ не вказано, типовим файлом буде "
+
+#: ../src/plugins/reporter-mailx.c:199 ../src/plugins/reporter-upload.c:228
+msgid "Config file"
+msgstr "Файл налаштувань"
+
+#: ../src/plugins/reporter-mailx.c:200
+msgid "Notify only (Do not mark the report as sent)"
+msgstr "Лише сповістити (не позначати звіт як надісланий)"
+
+#: ../src/plugins/reporter-print.c:42
+msgid ""
+"& [-v] -d DIR [-o FILE] [-a yes/no] [-r]\n"
+"\n"
+"Prints problem information to standard output or FILE"
+msgstr "& [-b [-v] [-o ФАЙЛ] -d КАТАЛОГ [-o ФАЙЛ] [-a yes/no] [-r]\n\nВивести дані щодо проблеми до стандартного виводу або файла ФАЙЛ"
+
+#: ../src/plugins/reporter-print.c:57
+msgid "Output file"
+msgstr "Вихідний файл"
+
+#: ../src/plugins/reporter-print.c:58
+msgid "Append to, or overwrite FILE"
+msgstr "Дописати або перезаписати ФАЙЛ"
+
+#: ../src/plugins/reporter-print.c:59
+msgid "Create reported_to in DIR"
+msgstr "Створити reported_to у КАТАЛОЗІ"
+
+#: ../src/plugins/reporter-print.c:98
+msgid "Cancelled by user."
+msgstr "Скасовано користувачем."
+
+#: ../src/plugins/reporter-print.c:108
+#, c-format
+msgid "Can't open '%s' for writing. Please select another file:"
+msgstr "Не вдалося відкрити «%s» для виконання запису. Будь ласка, виберіть інший файл:"
+
+#: ../src/plugins/reporter-print.c:143
+#, c-format
+msgid "The report was appended to %s"
+msgstr "Звіт було долучено до %s"
+
+#: ../src/plugins/reporter-print.c:143
+#, c-format
+msgid "The report was stored to %s"
+msgstr "Звіт було збережено до %s"
+
+#: ../src/plugins/reporter-rhtsupport.c:223
+msgid ""
+"\n"
+"& [-v] [-c CONFFILE] -d DIR\n"
+"or:\n"
+"& [-v] [-c CONFFILE] [-d DIR] -t[ID] FILE...\n"
+"\n"
+"Reports a problem to RHTSupport.\n"
+"\n"
+"If not specified, CONFFILE defaults to "
+msgstr "\n& [-v] [-c ФАЙЛ_НАЛАШТУВАНЬ] -d КАТАЛОГ\nабо:\n& [-v] [-c ФАЙЛ_НАЛАШТУВАНЬ] [-d КАТАЛОГ] -t[ІД] ФАЙЛ...\n\nНадсилає звіт щодо вади до RHTSupport.\n\nЯкщо не вказано ФАЙЛ_НАЛАШТУВАНЬ, типові значення буде взято з "
+
+#: ../src/plugins/reporter-rhtsupport.c:256
+msgid "Upload FILEs [to case with this ID]"
+msgstr "Вивантажити ФАЙЛи [до запису випадку з вказаним ідентифікатором]"
+
+#: ../src/plugins/reporter-rhtsupport.c:285
+msgid "Login is not provided by configuration. Please enter your RHTS login:"
+msgstr "У налаштуваннях не вказано облікового запису користувача. Будь ласка, вкажіть ім’я вашого користувача у RHTS:"
+
+#: ../src/plugins/reporter-rhtsupport.c:341
+#, c-format
+msgid "Attaching '%s' to case '%s'"
+msgstr "Долучення «%s» до випадку «%s»"
+
+#. Gzipping e.g. 0.5gig coredump takes a while. Let user know what we are
+#. doing
+#. error msg is already logged by dd_opendir
+#. Gzipping e.g. 0.5gig coredump takes a while. Let client know what we are
+#. doing
+#: ../src/plugins/reporter-rhtsupport.c:378
+#: ../src/plugins/reporter-upload.c:52
+msgid "Compressing data"
+msgstr "Стискання даних"
+
+#: ../src/plugins/reporter-rhtsupport.c:413
+msgid "Can't create a temporary directory in "
+msgstr "Не вдалося створити тимчасовий каталог у"
+
+#: ../src/plugins/reporter-rhtsupport.c:422
+msgid "Can't create temporary file in "
+msgstr "Не вдалося створити тимчасовий файл у"
+
+#. Check for hints and show them if we have something
+#: ../src/plugins/reporter-rhtsupport.c:431
+msgid "Checking for hints"
+msgstr "Шукаємо підказки"
+
+#: ../src/plugins/reporter-rhtsupport.c:473
+msgid "Do you still want to create a RHTSupport ticket?"
+msgstr "Хочете створити повідомлення для RHTSupport?"
+
+#: ../src/plugins/reporter-rhtsupport.c:487
+msgid "Creating a new case"
+msgstr "Створення нового випадку"
+
+#. How can we help user sorting out this problem?
+#: ../src/plugins/reporter-rhtsupport.c:498
+msgid "Can't determine RH Support Product from problem data."
+msgstr "Не вдалося визначити продукт для служби підтримки RH для даних проблеми."
+
+#: ../src/plugins/reporter-rhtsupport.c:573
+#, c-format
+msgid "Adding comment to case '%s'"
+msgstr "Додаємо коментар до запису випадку «%s»"
+
+#. Attach the tarball of -d DIR
+#: ../src/plugins/reporter-rhtsupport.c:593
+#, c-format
+msgid "Attaching problem data to case '%s'"
+msgstr "Долучаємо дані проблеми до запису випадку «%s»"
+
+#: ../src/plugins/reporter-rhtsupport-parse.c:202
+msgid "Documentation which might be relevant: "
+msgstr "Документація, яка може допомогти: "
+
+#: ../src/plugins/reporter-rhtsupport-parse.c:210
+msgid "Updates which possibly help: "
+msgstr "Оновлення, які можуть допомогти:"
+
+#: ../src/plugins/reporter-upload.c:30
+msgid "Can't continue without URL"
+msgstr "Продовжити звітування без адреси не вдасться"
+
+#: ../src/plugins/reporter-upload.c:61
+msgid "Upload URL is not provided by configuration. Please enter upload URL:"
+msgstr "У налаштуваннях не вказано адреси для вивантаження даних. Будь ласка, вкажіть адресу для вивантаження даних:"
+
+#. success
+#: ../src/plugins/reporter-upload.c:159
+#, c-format
+msgid "Archive is created: '%s'"
+msgstr "Створено архів: «%s»"
+
+#: ../src/plugins/reporter-upload.c:200
+msgid ""
+"& [-v] -d DIR [-c CONFFILE] [-u URL]\n"
+"\n"
+"Uploads compressed tarball of problem directory DIR to URL.\n"
+"If URL is not specified, creates tarball in "
+msgstr "& [-v] -d КАТАЛОГ [-c ФАЙЛ_НАЛАШТУВАНЬ] [-u АДРЕСА]\n\nВивантажити архів даних у каталозі проблеми КАТАЛОГ за адресою АДРЕСА.\n\nЯкщо адресу не вказано, буде створено архів у"
+
+#: ../src/plugins/reporter-upload.c:229
+msgid "Base URL to upload to"
+msgstr "Базова адреса для вивантаження даних"
+
+#: ../src/plugins/report_Kerneloops.xml.in.h:1
+msgid "Kerneloops.org"
+msgstr "Kerneloops.org"
+
+#: ../src/plugins/report_Kerneloops.xml.in.h:2
+msgid "Send to kernel oops tracker"
+msgstr "Надіслати до системи стеження за вадами у ядрі"
+
+#: ../src/plugins/report_Kerneloops.xml.in.h:3
+msgid "Kerneloops URL"
+msgstr "Адреса Kerneloops"
+
+#: ../src/plugins/report_Kerneloops.xml.in.h:4
+msgid "Oops server url"
+msgstr "Адреса сервера некритичних помилок"
+
+#: ../src/plugins/report_Logger.xml.in.h:1
+msgid "Logger"
+msgstr "Ведення журналу"
+
+#: ../src/plugins/report_Logger.xml.in.h:2
+msgid "Save as text file"
+msgstr "Зберегти як текстовий файл"
+
+#: ../src/plugins/report_Logger.xml.in.h:3
+msgid "Log File"
+msgstr "Файл журналу"
+
+#: ../src/plugins/report_Logger.xml.in.h:4
+msgid "Name of the logfile"
+msgstr "Назва файла журналу"
+
+#: ../src/plugins/report_Logger.xml.in.h:5
+msgid "Append"
+msgstr "Дописати"
+
+#: ../src/plugins/report_Logger.xml.in.h:6
+msgid "Append new reports or overwrite the old one."
+msgstr "Дописати нові звіти або перезаписати старий звіт."
+
+#: ../src/plugins/report_Mailx.xml.in.h:1
+msgid "Mailx"
+msgstr "Mailx"
+
+#: ../src/plugins/report_Mailx.xml.in.h:2
+msgid "Send via email"
+msgstr "Надіслати електронною поштою"
+
+#: ../src/plugins/report_Mailx.xml.in.h:3
+msgid "Subject"
+msgstr "Тема"
+
+#: ../src/plugins/report_Mailx.xml.in.h:4
+msgid "Message subject"
+msgstr "Тема повідомлення"
+
+#: ../src/plugins/report_Mailx.xml.in.h:5
+msgid "Sender"
+msgstr "Відправник"
+
+#: ../src/plugins/report_Mailx.xml.in.h:6
+msgid "Sender's email"
+msgstr "Адреса відправника"
+
+#: ../src/plugins/report_Mailx.xml.in.h:7
+msgid "Recipient"
+msgstr "Отримувач"
+
+#: ../src/plugins/report_Mailx.xml.in.h:8
+msgid "Recipient's email"
+msgstr "Ел. пошта отримувача"
+
+#: ../src/plugins/report_Mailx.xml.in.h:9
+msgid "Send Binary Data"
+msgstr "Надіслати бінарні дані"
+
+#: ../src/plugins/report_Mailx.xml.in.h:10
+msgid "Send binary files like coredump"
+msgstr "Надіслати бінарні файли як дамп ядра (coredump)"
+
+#: ../src/plugins/report_RHTSupport.xml.in.h:1
+msgid "Red Hat Customer Support"
+msgstr "Підтримка користувачів Red Hat"
+
+#: ../src/plugins/report_RHTSupport.xml.in.h:2
+msgid "Report to Red Hat support"
+msgstr "Повідомити до служби підтримки Red Hat"
+
+#: ../src/plugins/report_RHTSupport.xml.in.h:3
+msgid "RH Portal URL"
+msgstr "Адреса порталу RH"
+
+#: ../src/plugins/report_RHTSupport.xml.in.h:4
+msgid "Address of the Red Hat support portal"
+msgstr "Адреса порталу підтримки користувачів Red Hat"
+
+#: ../src/plugins/report_RHTSupport.xml.in.h:5
+msgid "Username"
+msgstr "Користувач"
+
+#: ../src/plugins/report_RHTSupport.xml.in.h:6
+msgid "Red Hat customer user name"
+msgstr "Ім’я користувача Red Hat"
+
+#: ../src/plugins/report_RHTSupport.xml.in.h:8
+msgid "Red Hat customer password"
+msgstr "Пароль користувача Red Hat"
+
+#: ../src/plugins/report_Uploader.xml.in.h:1
+msgid "Report uploader"
+msgstr "Вивантажувач звіту"
+
+#: ../src/plugins/report_Uploader.xml.in.h:2
+msgid "Upload as tar.gz file (via FTP/SCP/...)"
+msgstr "Вивантажити як файл tar.gz (за допомогою FTP/SCP/...)"
+
+#: ../src/plugins/report_Uploader.xml.in.h:3
+#: ../src/plugins/report_EmergencyAnalysis.xml.in.h:3
+msgid "URL"
+msgstr "Адреса"
+
+#: ../src/plugins/report_Uploader.xml.in.h:4
+msgid ""
+"Where do you want to upload the tarball with report in form "
+"login:password@url"
+msgstr "Місце, куди ви бажаєте вивантажити архів з даними звіту у форматі користувач:пароль@адреса"
+
+#: ../src/plugins/report_Uploader.xml.in.h:5
+msgid ""
+"Examples:&#xA;ftp://[user[:pass]@]host/dir/[file.tar.gz]&#xA;scp://[user[:pass]@]host/dir/[file.tar.gz]&#xA;file:///dir/[file.tar.gz]"
+msgstr "Приклади:&#xA;ftp://[користувач[:пароль]@]вузол/каталог/[файл.tar.gz]&#xA;scp://[користувач[:пароль]@]вузол/каталог/[файл.tar.gz]&#xA;file:///каталог/[файл.tar.gz]"
+
+#: ../src/plugins/report_Uploader.xml.in.h:10
+#: ../src/plugins/report_EmergencyAnalysis.xml.in.h:8
+msgid "FTP Proxy"
+msgstr "FTP-проксі"
+
+#: ../src/plugins/report_Uploader.xml.in.h:11
+#: ../src/plugins/report_EmergencyAnalysis.xml.in.h:9
+msgid "Sets the proxy server to use for FTP"
+msgstr "Встановити проксі-сервер, який слід використовувати для FTP"
+
+#: ../src/plugins/report_uReport.xml.in.h:1
+msgid "uReport"
+msgstr "uReport"
+
+#: ../src/plugins/report_uReport.xml.in.h:2
+msgid "Sends ureports to FAF server"
+msgstr "Надсилає звіти ureport на сервер FAF"
+
+#: ../src/plugins/report_uReport.xml.in.h:3
+msgid "uReport Server URL"
+msgstr "Адреса сервера uReport"
+
+#: ../src/plugins/report_uReport.xml.in.h:4
+msgid "Address of uReport webservice"
+msgstr "Адреса вебслужби uReport"
+
+#: ../src/plugins/report_EmergencyAnalysis.xml.in.h:1
+msgid "Emergency analysis"
+msgstr "Критичний аналіз"
+
+#: ../src/plugins/report_EmergencyAnalysis.xml.in.h:2
+msgid "Upload the problem data for further analysis"
+msgstr "Вивантажити дані проблеми для подальшого аналізу"
+
+#: ../src/plugins/rhbz.c:409
+#, c-format
+msgid "Looks like corrupted xml response, because '%s' member is missing."
+msgstr "Відповідь у форматі XML пошкоджено, оскільки у ній не вистачає елемента «%s»."
+
+#: ../src/plugins/rhbz.c:497
+#, c-format
+msgid "Bug %i is CLOSED, but it has no RESOLUTION"
+msgstr "Обробку вади %i завершено (CLOSED), але не вказано способу її усування (RESOLUTION)"
+
+#: ../src/plugins/rhbz.c:505
+#, c-format
+msgid "Bug %i is CLOSED as DUPLICATE, but it has no DUP_ID"
+msgstr "Обробку вади %i завершено (CLOSED), оскільки її визнано дублікатом (DUPLICATE), але не вказано номера повідомлення-дубліката (DUP_ID)"
+
+#: ../src/plugins/rhbz.c:621
+msgid ""
+"A private ticket creation has been requested, but no groups were specified, "
+"please see https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-"
+"tickets for more info"
+msgstr "Програмі наказано створити закрите повідомлення про ваду, але не вказано групи користувачів, які матимуть доступ до повідомлення, див. https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets for more info"
+
+#: ../src/plugins/rhbz.c:642
+#, c-format
+msgid "New bug id: %i"
+msgstr "Новий ідентифікатор запиту: %i"
+
+#: ../src/plugins/rhbz.c:757
+#, c-format
+msgid "Bugzilla couldn't find parent of bug %d"
+msgstr "Bugzilla не вдалося знайти батьківський запит для %d"
+
+#: ../src/plugins/ureport.c:79
+#, c-format
+msgid ""
+"Your problem seems to be caused by %s\n"
+"\n"
+"%s\n"
+msgstr "Здається, вашу проблему спричинено %s\n\n%s\n"
+
+#: ../src/plugins/ureport.c:82
+msgid "Your problem seems to be caused by one of the following:\n"
+msgstr "Здається, вашу проблему спричинено однією з таких причин:\n"
+
+#: ../src/plugins/ureport.c:248
+#, c-format
+msgid "Failed to upload uReport to the server '%s' with curl: %s"
+msgstr "Не вдалося вивантажити uReport на сервер «%s» за допомогою curl: %s"
+
+#: ../src/plugins/ureport.c:254
+#, c-format
+msgid "The URL '%s' does not exist (got error 404 from server)"
+msgstr "Сторінки з адресою «%s» не існує (отримано повідомлення про помилку 404 від сервера)"
+
+#: ../src/plugins/ureport.c:260
+#, c-format
+msgid "The server at '%s' encountered an internal error (got error 500)"
+msgstr "На сервері за адресою «%s» сталася внутрішня помилка (отримано повідомлення про помилку 500)"
+
+#: ../src/plugins/ureport.c:266
+#, c-format
+msgid ""
+"The server at '%s' is currently can't handle the request (got error 503)"
+msgstr "Сервер за адресою «%s» зараз не здатен обробити запит (отримано повідомлення про помилку 503)"
+
+#. can't print better error message
+#: ../src/plugins/ureport.c:275
+#, c-format
+msgid "Unexpected HTTP response from '%s': %d"
+msgstr ""
+
+#: ../src/plugins/ureport.c:284
+#, c-format
+msgid "Unable to parse response from ureport server at '%s"
+msgstr ""
+
+#: ../src/plugins/ureport.c:294
+#, c-format
+msgid "The response from '%s' has invalid format"
+msgstr "Відповідь від «%s» створено у некоректному форматі"
+
+#. HTTP CODE 202 means that call was successful but the response
+#. has an error message
+#: ../src/plugins/ureport.c:300
+#, c-format
+msgid "Type mismatch has been detected in the response from '%s'"
+msgstr "У відповіді від «%s» виявлено невідповідність типів"
+
+#: ../src/plugins/ureport.c:331
+#, c-format
+msgid "The server at '%s' responded with an error: '%s'"
+msgstr "Сервер за адресою «%s» повідомив про помилку: «%s»"
+
+#: ../src/plugins/ureport.c:376
+msgid "Specify server URL"
+msgstr "Вказати адресу сервера"
+
+#: ../src/plugins/ureport.c:378
+msgid "Allow insecure connection to ureport server"
+msgstr "Дозволити незахищені з’єднання з сервером ureport"
+
+#: ../src/plugins/ureport.c:381
+msgid "bthash of uReport to attach (conflicts with -A)"
+msgstr ""
+
+#: ../src/plugins/ureport.c:383
+msgid "attach to a bthash from reported_to (conflicts with -a)"
+msgstr ""
+
+#: ../src/plugins/ureport.c:385
+msgid "contact e-mail address (requires -a|-A, conflicts with -E)"
+msgstr ""
+
+#: ../src/plugins/ureport.c:387
+msgid ""
+"contact e-mail address from environment or configuration file (requires "
+"-a|-A, conflicts with -e)"
+msgstr ""
+
+#: ../src/plugins/ureport.c:389
+msgid "attach RHBZ bug (requires -a|-A, conflicts with -B)"
+msgstr ""
+
+#: ../src/plugins/ureport.c:391
+msgid ""
+"attach last RHBZ bug from reported_to (requires -a|-A, conflicts with -b)"
+msgstr ""
+
+#: ../src/plugins/ureport.c:396
+msgid ""
+"& [-v] [-c FILE] [-u URL] [-k] [-A -a bthash -B -b bug-id -E -e email] [-d DIR]\n"
+"\n"
+"Upload micro report or add an attachment to a micro report\n"
+"\n"
+"Reads the default configuration from "
+msgstr ""
+
+#: ../src/plugins/ureport.c:440
+msgid "This problem does not have an uReport assigned."
+msgstr "До цього сповіщення про проблему не долучено даних uReport."
+
+#: ../src/plugins/ureport.c:453
+msgid "This problem has not been reported to Bugzilla."
+msgstr "У Bugzilla немає повідомлень щодо цієї вади."
+
+#: ../src/plugins/ureport.c:457
+#, c-format
+msgid "Unable to find bug ID in bugzilla URL '%s'"
+msgstr "Не вдалося знайти ідентифікатор вади у адресі на bugzilla, «%s»"
+
+#: ../src/plugins/ureport.c:462
+#, c-format
+msgid "Unable to parse bug ID from bugzilla URL '%s'"
+msgstr "Не вдалося визначити ідентифікатор вади за адресою у bugzilla «%s»"
+
+#: ../src/plugins/ureport.c:475
+msgid ""
+"Neither environment variable 'uReport_ContactEmail' nor configuration option"
+" 'ContactEmail' is set"
+msgstr ""
+
+#: ../src/plugins/ureport.c:481
+msgid "You need to specify bug ID, contact email or both"
+msgstr ""
+
+#: ../src/plugins/ureport.c:499
+msgid "You need to specify bthash of the uReport to attach."
+msgstr "Вам слід вказати хеш_bugzilla uReport для долучення."
+
+#: ../src/plugins/ureport.c:509
+msgid "Not uploading an empty uReport"
+msgstr "Порожній uReport не вивантажуємо"
+
+#: ../src/plugins/ureport.c:518
+msgid "Failed on submitting the problem"
+msgstr "Не вдалося надіслати дані проблеми"
+
+#: ../src/plugins/ureport.c:563
+msgid "This problem has already been reported."
+msgstr "Про цю проблему вже було повідомлено."
+
+#: ../src/plugins/ureport.c:572
+#, c-format
+msgid "Server responded with an error: '%s'"
+msgstr "Сервер повідомив про помилку: «%s»"
+
+#: ../src/report-newt/report-newt.c:55
+msgid "How would you like to report the problem?"
+msgstr "У який спосіб ви бажаєте створити звіт щодо проблеми?"
+
+#: ../src/report-newt/report-newt.c:68 ../src/report-newt/report-newt.c:146
+#: ../src/report-newt/report-newt.c:169 ../src/report-newt/report-newt.c:259
+#: ../src/report-newt/report-newt.c:337 ../src/report-newt/report-newt.c:352
+msgid "Ok"
+msgstr "Гаразд"
+
+#: ../src/report-newt/report-newt.c:68 ../src/report-newt/report-newt.c:146
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: ../src/report-newt/report-newt.c:169 ../src/report-newt/report-newt.c:337
+msgid "Error"
+msgstr "Помилка"
+
+#: ../src/report-newt/report-newt.c:256
+msgid "Reporting"
+msgstr "Звітування"
+
+#: ../src/report-newt/report-newt.c:276
+#, c-format
+msgid "--- Running %s ---"
+msgstr "--- Виконання %s ---"
+
+#: ../src/report-newt/report-newt.c:352
+msgid "No reporters available"
+msgstr "Засобів звітування не виявлено"
+
+#: ../src/report-newt/report-newt.c:382
+msgid ""
+"& [-d] DIR\n"
+"\n"
+"newt tool to report problem saved in specified DIR"
+msgstr "& [-d] КАТАЛОГ\n\nЗасіб newt для створення звітів на сонові даних, що зберігаються у вказаному КАТАЛОЗІ"
+
+#: ../src/report-newt/report-newt.c:392
+msgid "Remove DIR after reporting"
+msgstr "Вилучити КАТАЛОГ після звітування"
+
+#: ../src/workflows/workflow_AnacondaFedora.xml.in.h:1
+msgid "Report a bug to Fedora maintainers"
+msgstr "Повідомити про помилку супровідникам Fedora"
+
+#: ../src/workflows/workflow_AnacondaFedora.xml.in.h:2
+msgid "Process the report using the Fedora infrastructure"
+msgstr "Обробити звіт за допомогою інфраструктури Fedora"
+
+#: ../src/workflows/workflow_AnacondaRHEL.xml.in.h:1
+msgid "Report a bug to Red Hat Support Tool"
+msgstr "Створити звіт щодо вади у системі Red Hat Support Tool"
+
+#: ../src/workflows/workflow_AnacondaRHEL.xml.in.h:2
+#: ../src/workflows/workflow_AnacondaRHELBugzilla.xml.in.h:2
+msgid "Process the report using the Red Hat infrastructure"
+msgstr "Обробити звіт за допомогою інфраструктури Red Hat"
+
+#: ../src/workflows/workflow_AnacondaRHELBugzilla.xml.in.h:1
+msgid "Report a bug to Red Hat Bugzilla"
+msgstr ""
+
+#: ../src/workflows/workflow_AnacondaUpload.xml.in.h:1
+#: ../src/workflows/workflow_Upload.xml.in.h:1
+msgid "Upload the problem data to a server"
+msgstr "Вивантажити дані щодо проблеми на сервер"
+
+#: ../src/workflows/workflow_AnacondaUpload.xml.in.h:2
+#: ../src/workflows/workflow_Upload.xml.in.h:2
+msgid "Analyze the problem locally and upload the data via scp or ftp"
+msgstr "Проаналізувати проблему локально і вивантажити дані за допомогою scp або ftp"
+
+#: ../src/workflows/workflow_FedoraCCpp.xml.in.h:1
+#: ../src/workflows/workflow_FedoraKerneloops.xml.in.h:1
+#: ../src/workflows/workflow_FedoraPython.xml.in.h:1
+#: ../src/workflows/workflow_FedoraVmcore.xml.in.h:1
+#: ../src/workflows/workflow_FedoraXorg.xml.in.h:1
+msgid "Report to Fedora"
+msgstr "Повідомити до Fedora"
+
+#: ../src/workflows/workflow_FedoraCCpp.xml.in.h:2
+msgid "Process the C/C++ crash using the Fedora infrastructure"
+msgstr "Обробити аварійне завершення у коді C/C++ за допомогою інфраструктури Fedora"
+
+#: ../src/workflows/workflow_FedoraKerneloops.xml.in.h:2
+msgid "Process the kerneloops using the Fedora infrastructure"
+msgstr "Обробити дані щодо помилки ядра за допомогою інфраструктури Fedora"
+
+#: ../src/workflows/workflow_FedoraPython.xml.in.h:2
+msgid "Process the python exception using the Fedora infrastructure"
+msgstr "Обробити дані щодо виключення Python за допомогою інфраструктури Fedora"
+
+#: ../src/workflows/workflow_FedoraVmcore.xml.in.h:2
+msgid "Process the kernel crash using the Fedora infrastructure"
+msgstr "Обробити дані щодо аварії ядра за допомогою інфраструктури Fedora"
+
+#: ../src/workflows/workflow_FedoraXorg.xml.in.h:2
+msgid "Process the X Server problem using the Fedora infrastructure"
+msgstr "Обробити дані щодо проблеми з графічним сервером за допомогою інфраструктури Fedora"
+
+#: ../src/workflows/workflow_RHELCCpp.xml.in.h:1
+#: ../src/workflows/workflow_RHELKerneloops.xml.in.h:1
+#: ../src/workflows/workflow_RHELPython.xml.in.h:1
+#: ../src/workflows/workflow_RHELvmcore.xml.in.h:1
+#: ../src/workflows/workflow_RHELxorg.xml.in.h:1
+msgid "Report to Red Hat Customer Portal"
+msgstr ""
+
+#: ../src/workflows/workflow_RHELCCpp.xml.in.h:2
+#: ../src/workflows/workflow_RHELBugzillaCCpp.xml.in.h:2
+msgid "Process the C/C++ crash using the Red Hat infrastructure"
+msgstr "Обробити дані C/C++ щодо аварії за допомогою інфраструктури Red Hat"
+
+#: ../src/workflows/workflow_RHELKerneloops.xml.in.h:2
+#: ../src/workflows/workflow_RHELBugzillaKerneloops.xml.in.h:2
+msgid "Process the kerneloops using the Red Hat infrastructure"
+msgstr "Обробити дані щодо помилки ядра за допомогою інфраструктури Red Hat"
+
+#: ../src/workflows/workflow_RHELPython.xml.in.h:2
+#: ../src/workflows/workflow_RHELBugzillaPython.xml.in.h:2
+msgid "Process the python exception using the Red Hat infrastructure"
+msgstr "Обробити дані щодо виключення Python за допомогою інфраструктури Red Hat"
+
+#: ../src/workflows/workflow_RHELvmcore.xml.in.h:2
+#: ../src/workflows/workflow_RHELBugzillaVmcore.xml.in.h:2
+msgid "Process the kernel crash using the Red Hat infrastructure"
+msgstr "Обробити дані щодо аварії ядра за допомогою інфраструктури Red Hat"
+
+#: ../src/workflows/workflow_RHELxorg.xml.in.h:2
+#: ../src/workflows/workflow_RHELBugzillaXorg.xml.in.h:2
+msgid "Process the X Server problem using the Red Hat infrastructure"
+msgstr "Обробити дані щодо проблеми з графічним сервером за допомогою інфраструктури Red Hat"
+
+#: ../src/workflows/workflow_RHELBugzillaCCpp.xml.in.h:1
+#: ../src/workflows/workflow_RHELBugzillaKerneloops.xml.in.h:1
+#: ../src/workflows/workflow_RHELBugzillaPython.xml.in.h:1
+#: ../src/workflows/workflow_RHELBugzillaVmcore.xml.in.h:1
+#: ../src/workflows/workflow_RHELBugzillaXorg.xml.in.h:1
+msgid "Report to Red Hat Bugzilla"
+msgstr ""

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+    <name>Report to Red Hat Customer Portal</name>
+    <description>Process the kerneloops using the Red Hat infrastructure</description>
+    <description xml:lang="as">Red Hat আন্তঃগাথনি ব্যৱহাৰ কৰি কাৰনেললুপসমূহ প্ৰক্ৰিয়া কৰক</description>
+    <description xml:lang="de">Kernel-Absturzmeldung mit Hilfe der Red Hat-Infrastruktur verarbeiten</description>
+    <description xml:lang="es">Procesar el kerneloops usando la infraestructura Red Hat</description>
+    <description xml:lang="hi">Red Hat infrastructure का इस्तेमाल करके kerneloops को प्रोसेस कीजिए</description>
+    <description xml:lang="hu">Kernelhiba feldolgozása a Red Hat infrastruktúra alkalmazásával</description>
+    <description xml:lang="it">Analizza i kerneloop usando l'infrastruttura di Red Hat</description>
+    <description xml:lang="ja">Red Hat インフラストラクチャーを使用して kerneloops を処理する</description>
+    <description xml:lang="nl">Verwerk de kerneloops met gebruik van de Red Hat infrastructuur</description>
+    <description xml:lang="pl">Przetwarza awarię oops jądra używając infrastruktury firmy Red Hat</description>
+    <description xml:lang="pt_BR">Processar o kerneloops utilizando a infraestrutura da Red Hat</description>
+    <description xml:lang="ru">Проанализировать kerneloops с использованием средств Red Hat</description>
+    <description xml:lang="sk">Spracovávať kerneloops za použitia infraštruktúry Red Hat-u</description>
+    <description xml:lang="sv">Bearbeta kerneloops:en med Red Hats infrastruktur</description>
+    <description xml:lang="uk">Обробити дані щодо помилки ядра за допомогою інфраструктури Red Hat</description>
+    <description xml:lang="zh_TW">使用 Red Hat 基礎架構處理 kerneloops 回報</description>
+
+    <events>
+        <event>collect_*</event>
+        <event>report_RHTSupport</event>
+    </events>
+</workflow>

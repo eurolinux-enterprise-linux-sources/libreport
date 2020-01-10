@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+    <name>Upload the problem data to a server</name>
+    <name xml:lang="fr">Téléverser les données de l'incident sur un serveur</name>
+    <name xml:lang="gl">Enviar os datos do problema a un servidor</name>
+    <name xml:lang="it">Carica i dati del problema in un server</name>
+    <name xml:lang="ja">問題データをサーバーにアップロードする</name>
+    <name xml:lang="nl">Upload de probleemdata naar een server</name>
+    <name xml:lang="pl">Wysyła dane problemu na serwer</name>
+    <name xml:lang="ru">Загрузить сведения об ошибке на сервер</name>
+    <name xml:lang="sk">Odoslať údaje o probléme na server</name>
+    <name xml:lang="sv">Skicka problemdata till en server</name>
+    <name xml:lang="uk">Вивантажити дані щодо проблеми на сервер</name>
+    <description>Analyze the problem locally and upload the data via scp or ftp</description>
+    <description xml:lang="bg">Анализиране на проблема локално и качване на данните чрез scp или ftp</description>
+    <description xml:lang="fr">Analyser l'incident localement et téléverser les données via scp ou ftp</description>
+    <description xml:lang="gl">Analizar o problema localmente e enviar os datos mediante scp ou ftp</description>
+    <description xml:lang="hu">Elemezze a problémát helyben és töltse fel az adatokat scp vagy ftp segítségével</description>
+    <description xml:lang="it">Analizzare localmente il problema e caricare i dati via scp o ftp</description>
+    <description xml:lang="ja">問題をローカルに分析し、SCP または FTP 経由でデータをアップロードする</description>
+    <description xml:lang="nl">Analyseer het probleem lokaal en upload de data met scp of ftp </description>
+    <description xml:lang="pl">Analizuje problem lokalnie i wysyła dane przez SCP lub FTP</description>
+    <description xml:lang="pt_BR">Analisar o problema localmente e enviar os dados via scp ou ftp</description>
+    <description xml:lang="ru">Проанализировать сведения на этом компьютере и загрузить данные посредством scp или ftp</description>
+    <description xml:lang="sk">Analyzovať problém lokálne a odoslať data použitím scp alebo ftp</description>
+    <description xml:lang="uk">Проаналізувати проблему локально і вивантажити дані за допомогою scp або ftp</description>
+    <description xml:lang="zh_CN">本地分析问题并通过 scp 或 ftp 上传数据</description>
+
+    <events>
+        <event>collect_*</event>
+        <event>analyze_CCpp</event>
+        <event>report_Uploader</event>
+    </events>
+</workflow>

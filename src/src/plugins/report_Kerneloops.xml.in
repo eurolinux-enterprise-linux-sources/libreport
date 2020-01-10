@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<event>
+    <_name>Kerneloops.org</_name>
+    <_description>Send to kernel oops tracker</_description>
+
+    <requires-items>backtrace</requires-items>
+    <exclude-items-by-default></exclude-items-by-default>
+    <exclude-items-always>*</exclude-items-always>
+    <exclude-binary-items>yes</exclude-binary-items>
+    <include-items-by-default></include-items-by-default>
+    <minimal-rating>0</minimal-rating>
+    <gui-review-elements>yes</gui-review-elements>
+
+    <options>
+        <option type="text" name="KerneloopsReporter_SubmitURL">
+            <_label>Kerneloops URL</_label>
+            <allow-empty>no</allow-empty>
+            <_description>Oops server url</_description>
+            <default-value>http://oops.kernel.org/submitoops.php</default-value>
+        </option>
+        <advanced-options>
+            <option type="text" name="http_proxy">
+                <_label>HTTP Proxy</_label>
+                <allow-empty>yes</allow-empty>
+                <_note-html>Sets the proxy server to use for HTTP</_note-html>
+            </option>
+            <option type="text" name="HTTPS_PROXY">
+                <_label>HTTPS Proxy</_label>
+                <allow-empty>yes</allow-empty>
+                <_note-html>Sets the proxy server to use for HTTPS</_note-html>
+            </option>
+        </advanced-options>
+    </options>
+</event>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflow>
+    <name>Report to Fedora</name>
+    <name xml:lang="as">Fedora লৈ সংবাদন কৰক</name>
+    <name xml:lang="bg">Рапорт към Fedora</name>
+    <name xml:lang="de">An Fedora melden</name>
+    <name xml:lang="es">Enviar a Fedora</name>
+    <name xml:lang="fr">Rapporter à Fedora</name>
+    <name xml:lang="hi">Fedora को  रिपोर्ट कीजिए</name>
+    <name xml:lang="hu">Jelentse a Fedorának</name>
+    <name xml:lang="it">Riportare a Fedora</name>
+    <name xml:lang="ja">Fedora に報告</name>
+    <name xml:lang="nl">Rapporteer aan Fedora</name>
+    <name xml:lang="pl">Zgłasza Projektowi Fedora</name>
+    <name xml:lang="pt">Reportar ao Fedora</name>
+    <name xml:lang="pt_BR">Relatar para o Fedora</name>
+    <name xml:lang="ru">Сообщить в Fedora</name>
+    <name xml:lang="sv">Rapportera till Fedora</name>
+    <name xml:lang="uk">Повідомити до Fedora</name>
+    <name xml:lang="zh_CN">汇报至 Fedora</name>
+    <name xml:lang="zh_TW">回報至 Fedora</name>
+    <description>Process the kerneloops using the Fedora infrastructure</description>
+    <description xml:lang="es">Procese el oops del kernel usando la infraestructura de Fedora</description>
+    <description xml:lang="fr">Traitez la boucle noyau (kerneloops) en utilisant l'infrastructure Fedora</description>
+    <description xml:lang="it">Processa i kerneloops utilizzando l'infrastruttura di Fedora</description>
+    <description xml:lang="ja">Fedora インフラストラクチャーを使用して kerneloops を処理する</description>
+    <description xml:lang="pl">Przetwarza awarię oops jądra używając infrastruktury Projektu Fedora</description>
+    <description xml:lang="pt_BR">Processar o Kerneloops utilizando a infraestrutura do Fedora</description>
+    <description xml:lang="sv">Berarbeta kerneloops:en med Fedoras infrastruktur</description>
+    <description xml:lang="uk">Обробити дані щодо помилки ядра за допомогою інфраструктури Fedora</description>
+    <description xml:lang="zh_CN">使用 Fedora 基础设施处理内核异常（Oops）</description>
+    <description xml:lang="zh_TW">使用 Fedora 基礎設施處理 kerneloops</description>
+
+    <events>
+        <event>report_uReport</event>
+        <event>collect_*</event>
+        <event>report_Bugzilla</event>
+        <event>post_report</event>
+    </events>
+</workflow>

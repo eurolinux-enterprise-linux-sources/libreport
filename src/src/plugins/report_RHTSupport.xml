@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event>
+    <name>Red Hat Customer Support</name>
+    <name xml:lang="ar">دعم عميل ردهات</name>
+    <name xml:lang="ca">Suport del client Red Hat</name>
+    <name xml:lang="cs">Podpora zákazníků Red Hat</name>
+    <name xml:lang="de">Red Hat Kunden-Support</name>
+    <name xml:lang="fi">Red Hat -asiakastuki</name>
+    <name xml:lang="fr">Support client de Red Hat</name>
+    <name xml:lang="gu">Red Hat કસ્ટમર આધાર</name>
+    <name xml:lang="it">Supporto clienti di Red Hat</name>
+    <name xml:lang="ja">Red Hat カスタマーサポート</name>
+    <name xml:lang="ka">Red Hat-ის მომხმარებელთა მხარდაჭერა</name>
+    <name xml:lang="kn">Red Hat ಕಸ್ಟಮರ್ ಸಪೋರ್ಟ್</name>
+    <name xml:lang="ko">Red Hat 고객 지원 </name>
+    <name xml:lang="mr">Red Hat कस्टमर सपोर्ट</name>
+    <name xml:lang="nl">Red Hat Customer Support</name>
+    <name xml:lang="pa">Red Hat ਗਾਹਕ ਸਹਿਯੋਗ</name>
+    <name xml:lang="pl">Wsparcie klienta firmy Red Hat</name>
+    <name xml:lang="pt">Suporte Red Hat ao cliente</name>
+    <name xml:lang="ru">Служба поддержки Red Hat</name>
+    <name xml:lang="ta">Red Hat வாடிக்கையாளர் துணை</name>
+    <name xml:lang="te">Red Hat వినియోగదారి తోడ్పాటు</name>
+    <name xml:lang="tr">Red Hat müşteri desteği</name>
+    <name xml:lang="uk">Підтримка користувачів Red Hat</name>
+    <name xml:lang="zh_CN">红帽客户支持</name>
+    <name xml:lang="zh_TW">Red Hat 客戶支援服務</name>
+    <description>Report to Red Hat support</description>
+    <description xml:lang="as">Red Hat সমৰ্থনলে সংবাদন কৰক</description>
+    <description xml:lang="bg">Доклад към Red Hat поддръжката</description>
+    <description xml:lang="bn_IN">Red Hat সহায়তা ব্যবস্থায় রিপোর্ট দায়ের করুন</description>
+    <description xml:lang="ca">Informa al suport Red Hat</description>
+    <description xml:lang="cs">Nahlásit problém na podporu Red Hatu</description>
+    <description xml:lang="de">An Red Hat Support berichten</description>
+    <description xml:lang="en_GB">Report to Red Hat support</description>
+    <description xml:lang="fr">Rapporter au support de Red Hat</description>
+    <description xml:lang="gl">Informar á axuda da Red Hat</description>
+    <description xml:lang="hi">Red Hat में रिपोर्ट करें</description>
+    <description xml:lang="ja">Red Hat サポートに報告する</description>
+    <description xml:lang="ka">Red Hat-ის მხარდაჭერისთვის შეტყობინება</description>
+    <description xml:lang="kn">Red Hat ಸಪೋರ್ಟಿಗೆ ವರದಿ ಮಾಡಿ</description>
+    <description xml:lang="ko">Red Hat 지원팀에 보고 </description>
+    <description xml:lang="ml">Red Hat സപ്പോര്‍ട്ടിലേക്കു് സമര്‍പ്പിയ്ക്കുക</description>
+    <description xml:lang="mr">Red Hat सपोर्टकरीता अहवाल पाठवा</description>
+    <description xml:lang="nl">Rapporteer aan Red Hat support</description>
+    <description xml:lang="or">Red Hat ସହାୟତା ପୃଷ୍ଠାରେ ଖବର କରନ୍ତୁ</description>
+    <description xml:lang="pl">Zgłasza we wsparciu firmy Red Hat</description>
+    <description xml:lang="pt">Reportar para suporte Red Hat</description>
+    <description xml:lang="pt_BR">Relatar ao suporte Red Hat</description>
+    <description xml:lang="sk">Nahlásiť problém na Red Hat podporu</description>
+    <description xml:lang="sv">Rapportera till Red Hats support</description>
+    <description xml:lang="ta">Red Hat துணைக்கான அறிக்கை</description>
+    <description xml:lang="tr">Red Hat desteğini raporla</description>
+    <description xml:lang="uk">Повідомити до служби підтримки Red Hat</description>
+    <description xml:lang="zh_CN">汇报至红帽全球支持</description>
+    <description xml:lang="zh_TW">向 Red Hat 支援部門回報</description>
+
+    <requires-items>package</requires-items>
+    <exclude-items-by-default>count,event_log,reported_to,vmcore</exclude-items-by-default>
+    <exclude-items-always/>
+    <exclude-binary-items>no</exclude-binary-items>
+    <include-items-by-default/>
+    <minimal-rating>0</minimal-rating>
+    <gui-review-elements>yes</gui-review-elements>
+
+    <options>
+        <option type="text" name="RHTSupport_URL">
+            <label>RH Portal URL</label>
+            <label xml:lang="as">RH পোৰ্টেল URL</label>
+            <label xml:lang="bg">URL на RH портал</label>
+            <label xml:lang="bn_IN">RH Portal URL</label>
+            <label xml:lang="ca">Url del protal RH</label>
+            <label xml:lang="cs">URL RH Portálu</label>
+            <label xml:lang="de">RH Portal URL</label>
+            <label xml:lang="en_GB">RH Portal URL</label>
+            <label xml:lang="fi">RH Portalin URL</label>
+            <label xml:lang="fr">URL du portail RH</label>
+            <label xml:lang="hi">RH पोर्टल URL</label>
+            <label xml:lang="it">URL del portale di RH</label>
+            <label xml:lang="ja">RH ポータルの URL</label>
+            <label xml:lang="ka">RH-ის პორტალის URL</label>
+            <label xml:lang="kn">RH ಪೋರ್ಟಲ್‌ URL</label>
+            <label xml:lang="ko">RH 포털 URL </label>
+            <label xml:lang="mr">RH पोर्टल URL</label>
+            <label xml:lang="nl">RH portaal URL</label>
+            <label xml:lang="or">RH ପୃଷ୍ଠା URL</label>
+            <label xml:lang="pa">RH ਪੋਰਟਲ URL</label>
+            <label xml:lang="pl">Adres URL portalu firmy Red Hat</label>
+            <label xml:lang="pt">URL do Portal RH</label>
+            <label xml:lang="pt_BR">URL do Portal Red Hat</label>
+            <label xml:lang="ru">URL портала RH</label>
+            <label xml:lang="sk">RH Portal URL</label>
+            <label xml:lang="sv">RH:s portal-URL</label>
+            <label xml:lang="te">RH పోర్టల్ URL</label>
+            <label xml:lang="tr">RH Portal URL</label>
+            <label xml:lang="uk">Адреса порталу RH</label>
+            <label xml:lang="zh_CN">红帽门户网站 URL</label>
+            <label xml:lang="zh_TW">RH 入口 URL</label>
+            <allow-empty>no</allow-empty>
+            <description>Address of the Red Hat support portal</description>
+            <description xml:lang="as">Red Hat সমৰ্থন পোৰ্টেলৰ ঠিকনা</description>
+            <description xml:lang="bg">Адрес на Red Hat портала за поддръжка</description>
+            <description xml:lang="bn_IN">Red Hat-র সহায়তা পোর্ট্যালের ঠিকানা</description>
+            <description xml:lang="ca">Adreça del portal de suport Red Hat</description>
+            <description xml:lang="de">Adresse des Red Hat Support-Portals</description>
+            <description xml:lang="en_GB">Address of the Red Hat support portal</description>
+            <description xml:lang="es">Dirección del portal de soporte de Red Hat</description>
+            <description xml:lang="fr">Adresse du portail de support Red Hat</description>
+            <description xml:lang="gl">Enderezo do portal de axuda da Red Hat</description>
+            <description xml:lang="gu">Red Hat આધાર પોર્ટલનું સરનામું</description>
+            <description xml:lang="hu">Red Hat ügyfélszolgálat címe</description>
+            <description xml:lang="it">Indirizzo del portale di supporto di Red Hat</description>
+            <description xml:lang="ja">Red Hat サポートポータルのアドレス</description>
+            <description xml:lang="ka">Red Hat-ის მხარდაჭერის პორტალის მისამართი</description>
+            <description xml:lang="kn">Red Hat ಸಪೋರ್ಟ್ ಪೋರ್ಟಲ್‌ನ ವಿಳಾಸ</description>
+            <description xml:lang="ko">Red Hat 지원 포털 주소 </description>
+            <description xml:lang="ml">Red Hat സപ്പോര്‍ട്ട് പോര്‍ട്ടിന്റെ വിലാസം</description>
+            <description xml:lang="mr">Red Hat सपोर्ट पोर्टलचा पत्ता</description>
+            <description xml:lang="nl">Adres van het Red Hat support portaal</description>
+            <description xml:lang="or">Red Hat ସହାୟତା ପୃଷ୍ଠାର ଠିକଣା</description>
+            <description xml:lang="pa">Red Hat ਸਹਿਯੋਗ ਪੋਰਟਲ ਦਾ ਐਡਰੈੱਸ</description>
+            <description xml:lang="pl">Adres portalu wsparcia firmy Red Hat</description>
+            <description xml:lang="sk">Adresa Red Hat portálu podpory</description>
+            <description xml:lang="sv">Adress till Red Hats support-portal</description>
+            <description xml:lang="ta">Red Hat துணை போர்டலின் முகவரி</description>
+            <description xml:lang="zh_TW">Red Hat 支援入口的電子郵件地址</description>
+            <default-value>https://api.access.redhat.com/rs</default-value>
+        </option>
+        <option type="text" name="RHTSupport_Login">
+            <label>Username</label>
+            <label xml:lang="ar">إسم المستخدم</label>
+            <label xml:lang="as">ব্যৱহাৰকাৰীৰ নাম</label>
+            <label xml:lang="bn_IN">ব্যবহারকারীর নাম</label>
+            <label xml:lang="cs">Uživatelské jméno</label>
+            <label xml:lang="de">Benutzername</label>
+            <label xml:lang="en_GB">Username</label>
+            <label xml:lang="es">Nombre de usuario</label>
+            <label xml:lang="fi">Käyttäjätunnus</label>
+            <label xml:lang="fr">Nom d'utilisateur</label>
+            <label xml:lang="gu">વપરાશકર્તાનામ</label>
+            <label xml:lang="hi">उपयोक्तानाम</label>
+            <label xml:lang="it">Nome utente</label>
+            <label xml:lang="ja">ユーザー名</label>
+            <label xml:lang="ka">მომხმარებელი</label>
+            <label xml:lang="kn">ಬಳಕೆದಾರಹೆಸರು</label>
+            <label xml:lang="ko">사용자이름 </label>
+            <label xml:lang="ml">ഉപയോക്തൃനാമം</label>
+            <label xml:lang="nb">Brukernavn</label>
+            <label xml:lang="or">ଚାଳକ ନାମ</label>
+            <label xml:lang="pa">ਯੂਜ਼ਰ-ਨਾਂ</label>
+            <label xml:lang="pl">Nazwa użytkownika</label>
+            <label xml:lang="pt">Nome de Utilizador</label>
+            <label xml:lang="ru">Имя пользователя</label>
+            <label xml:lang="sk">Používateľské meno</label>
+            <label xml:lang="sv">Användarnamn</label>
+            <label xml:lang="ta">பயனர்பெயர்</label>
+            <label xml:lang="te">వాడుకరిపేరు</label>
+            <label xml:lang="tr">Kullanıcı adı</label>
+            <label xml:lang="uk">Користувач</label>
+            <label xml:lang="zh_CN">用户名</label>
+            <label xml:lang="zh_TW">使用者名稱</label>
+            <description>Red Hat customer user name</description>
+            <description xml:lang="ar">اسم مستخدم عميل ردهات</description>
+            <description xml:lang="bg">Red Hat име на потребителя</description>
+            <description xml:lang="bn_IN">Red Hat গ্রাহকের অ্যাকাউন্টের নাম</description>
+            <description xml:lang="ca">nom d'usuari del client Red Hat</description>
+            <description xml:lang="cs">Red Hat uživatelské jméno zákazníka</description>
+            <description xml:lang="de">Red Hat Kunden-Benutzername</description>
+            <description xml:lang="en_GB">Red Hat customer user name</description>
+            <description xml:lang="es">Nombre de usuario de Red Hat</description>
+            <description xml:lang="fr">Nom d'utilisateur du client Red Hat</description>
+            <description xml:lang="gl">Nome de usuario de cliente de Red Hat</description>
+            <description xml:lang="gu">Red Hat કસ્ટમર વપરાશકર્તા નામ</description>
+            <description xml:lang="it">Nome utente del cliente Red Hat</description>
+            <description xml:lang="ja">Red Hat カスタマーユーザー名</description>
+            <description xml:lang="ka">Red Hat-ის მომხმარებლის სახელი</description>
+            <description xml:lang="kn">Red Hat ಕಸ್ಟಮರ್ ಬಳಕೆದಾರ ಹೆಸರು</description>
+            <description xml:lang="ml">Red Hat ഉപഭോക്താവിന്റെ ഉപയോക്തൃനാമം</description>
+            <description xml:lang="mr">Red Hat ग्राहक वापरकर्ता नाव</description>
+            <description xml:lang="nl">Red Hat customer gebruikersnaam</description>
+            <description xml:lang="or">Red Hat ଗ୍ରାହକ ଚାଳକ ନାମ</description>
+            <description xml:lang="pa">Red Hat ਗਾਹਕ ਯੂਜ਼ਰ ਨਾਂ</description>
+            <description xml:lang="pl">Nazwa użytkownika klienta firmy Red Hat</description>
+            <description xml:lang="pt_BR">Nome de usuário de cliente Red Hat</description>
+            <description xml:lang="ru">Имя пользователя Red Hat</description>
+            <description xml:lang="sk">Red Hat používateľské meno zákazníka</description>
+            <description xml:lang="sv">Red Hats kundanvändarnamn</description>
+            <description xml:lang="ta">Red Hat வாடிக்கையாளர் பயனர் பெயர்</description>
+            <description xml:lang="te">Red Hat వినియోగదారి వాడుకరి పేరు</description>
+            <description xml:lang="zh_CN">红帽客户用户名</description>
+            <allow-empty>no</allow-empty>
+        </option>
+        <option type="password" name="RHTSupport_Password">
+            <label>Password</label>
+            <label xml:lang="ar">كلمة السر</label>
+            <label xml:lang="bg">Парола</label>
+            <label xml:lang="bn_IN">পাসওয়ার্ড</label>
+            <label xml:lang="ca">Contrasenya</label>
+            <label xml:lang="de">Passwort</label>
+            <label xml:lang="es">Contraseña</label>
+            <label xml:lang="eu">Pasahitza</label>
+            <label xml:lang="fi">Salasana</label>
+            <label xml:lang="fr">Mot de passe</label>
+            <label xml:lang="gl">Contrasinal</label>
+            <label xml:lang="gu">પાસવર્ડ</label>
+            <label xml:lang="hi">कूटशब्द</label>
+            <label xml:lang="hu">Jelszó</label>
+            <label xml:lang="ia">Contrasigno</label>
+            <label xml:lang="it">Password</label>
+            <label xml:lang="ja">パスワード</label>
+            <label xml:lang="ka">პაროლი</label>
+            <label xml:lang="kn">ಗುಪ್ತಪದ</label>
+            <label xml:lang="ko">암호 </label>
+            <label xml:lang="lv">Parole</label>
+            <label xml:lang="ml">രഹസ്യവാക്ക്</label>
+            <label xml:lang="mr">पासवर्ड</label>
+            <label xml:lang="nb">Passord</label>
+            <label xml:lang="nl">Wachtwoord</label>
+            <label xml:lang="or">ପ୍ରବେଶ ସଙ୍କେତ</label>
+            <label xml:lang="pa">ਪਾਸਵਰਡ</label>
+            <label xml:lang="pl">Hasło</label>
+            <label xml:lang="pt_BR">Senha</label>
+            <label xml:lang="ru">Пароль</label>
+            <label xml:lang="sk">Heslo</label>
+            <label xml:lang="ta">கடவுச்சொல்</label>
+            <label xml:lang="te">సంకేతపదం</label>
+            <label xml:lang="tr">Şifre</label>
+            <label xml:lang="uk">Пароль</label>
+            <label xml:lang="zh_CN">密码</label>
+            <label xml:lang="zh_TW">密碼</label>
+            <description>Red Hat customer password</description>
+            <description xml:lang="ar">كلمة سر عميل ردهات</description>
+            <description xml:lang="as">Red Hat গ্ৰাহক পাছৱাৰ্ড</description>
+            <description xml:lang="bg">Red Hat парола на потребителя</description>
+            <description xml:lang="bn_IN">Red Hat গ্রাহকের পাসওয়ার্ড</description>
+            <description xml:lang="ca">Contrasenya del client Red Hat</description>
+            <description xml:lang="cs">Red Hat  heslo zákazníka</description>
+            <description xml:lang="de">Red Hat Kunden-Passwort</description>
+            <description xml:lang="en_GB">Red Hat customer password</description>
+            <description xml:lang="es">Contraseña de cliente de Red Hat</description>
+            <description xml:lang="fi">Red Hat -asiakkaan salasana</description>
+            <description xml:lang="gl">Contrasinal de cliente da Red Hat</description>
+            <description xml:lang="gu">Red Hat કસ્ટમર પાસવર્ડ</description>
+            <description xml:lang="hi">Red Hat ग्राहक कूटशब्द</description>
+            <description xml:lang="hu">Red Hat ügyfél jelszó</description>
+            <description xml:lang="it">Password cliente Red Hat</description>
+            <description xml:lang="ka">Red Hat-ის მომხმარებლის პაროლი</description>
+            <description xml:lang="kn">Red Hat ಕಸ್ಟಮರ್ ಗುಪ್ತಪದ</description>
+            <description xml:lang="ko">Red Hat 고객 암호 </description>
+            <description xml:lang="ml">Red Hat ഉപഭോക്താവിനുള്ള രഹസ്യവാക്ക്</description>
+            <description xml:lang="mr">Red Hat ग्राहक पासवर्ड</description>
+            <description xml:lang="nl">Red Hat cunstomer wachtwoord</description>
+            <description xml:lang="pa">Red Hat ਗਾਹਕ ਪਾਸਵਰਡ</description>
+            <description xml:lang="pl">Hasło klienta firmy Red Hat</description>
+            <description xml:lang="ru">Пароль пользователя Red Hat</description>
+            <description xml:lang="ta">Red Hat வாடிக்கையாளர் கடவுச்சொல்</description>
+            <description xml:lang="te">Red Hat వినియోగదారి సంకేతపదం</description>
+            <description xml:lang="tr">Red Hat müşteri şifresi</description>
+            <description xml:lang="uk">Пароль користувача Red Hat</description>
+            <description xml:lang="zh_CN">红帽客户密码</description>
+            <description xml:lang="zh_TW">Red Hat 客戶密碼</description>
+            <allow-empty>no</allow-empty>
+        </option>
+        <option type="bool" name="RHTSupport_SSLVerify">
+            <label>Verify SSL</label>
+            <label xml:lang="as">SSL সতাসত্য নিৰূপণ কৰক</label>
+            <label xml:lang="bg">Провери SSL</label>
+            <label xml:lang="bn_IN">SSL যাচাই করুন</label>
+            <label xml:lang="ca">Verifica SSL</label>
+            <label xml:lang="cs">Kontrola SSL</label>
+            <label xml:lang="en_GB">Verify SSL</label>
+            <label xml:lang="es">Verificar SSL </label>
+            <label xml:lang="gl">Comprobar o SSL</label>
+            <label xml:lang="gu">SSL ને ચકાસો</label>
+            <label xml:lang="hi">SSL जाँचें</label>
+            <label xml:lang="hu">SSL ellenőrzése</label>
+            <label xml:lang="it">Verifica SSL</label>
+            <label xml:lang="ja">SSL を照合する</label>
+            <label xml:lang="ka">SSL-ის შემოწმება</label>
+            <label xml:lang="kn">SSL ಅನ್ನು ಪರಿಶೀಲಿಸು</label>
+            <label xml:lang="mr">SSL ची तापसणी करा</label>
+            <label xml:lang="nl">Verifieer SSL</label>
+            <label xml:lang="or">SSL କୁ ଯାଞ୍ଚ କରନ୍ତୁ</label>
+            <label xml:lang="pl">Sprawdzanie SSL</label>
+            <label xml:lang="pt">Verificar SSL</label>
+            <label xml:lang="pt_BR">Verificar o SSL</label>
+            <label xml:lang="ru">Проверить SSL</label>
+            <label xml:lang="sk">Overiť SSL</label>
+            <label xml:lang="sv">Verifiera SSL</label>
+            <label xml:lang="te">SSL నిర్థారించు</label>
+            <label xml:lang="tr">SSL'i doğrula</label>
+            <label xml:lang="uk">Перевірити SSL</label>
+            <label xml:lang="zh_TW">驗證 SSL</label>
+            <description>Check SSL key validity</description>
+            <description xml:lang="as">SSL কি বৈধতা নিৰীক্ষণ কৰক</description>
+            <description xml:lang="bg">Проверете валидността на SSL ключа</description>
+            <description xml:lang="bn_IN">SSL-কির বৈধতা যাচাই করা হবে</description>
+            <description xml:lang="ca">Reviseu la validesa de la clau SSL</description>
+            <description xml:lang="cs">Kontrola platnosti SSL klíče</description>
+            <description xml:lang="de">Gültigkeit des SSL-Schlüssels überprüfen</description>
+            <description xml:lang="en_GB">Check SSL key validity</description>
+            <description xml:lang="es">Revisar la validez de la llave SSL</description>
+            <description xml:lang="fi">Tarkista SSL-avaimen oikeellisuus</description>
+            <description xml:lang="gl">Comprobar a validez da chave de SSL</description>
+            <description xml:lang="hu">Ellenőrizze a SSL kulcs érvényességét</description>
+            <description xml:lang="it">Controlla la validità della chiave SSL</description>
+            <description xml:lang="ja">SSL キーの妥当性をチェックする</description>
+            <description xml:lang="ko">SSL 키 유효성 확인 </description>
+            <description xml:lang="ml">എസ്എസ്എല്‍ കീയുടെ സാധുത പരിശോധിയ്ക്കുക</description>
+            <description xml:lang="mr">SSL कि वैधता तपासा</description>
+            <description xml:lang="or">SSL କି ବୈଧତାକୁ ଯାଞ୍ଚ କରନ୍ତୁ</description>
+            <description xml:lang="pa">SSL ਕੁੰਜੀ ਯੋਗਤਾ ਚੈੱਕ ਕਰੋ</description>
+            <description xml:lang="pt">Verificar validade da chave SSL</description>
+            <description xml:lang="pt_BR">Verifique a validade da chave SSL</description>
+            <description xml:lang="sk">Kontrolovať validnosť SSL kľúča</description>
+            <description xml:lang="ta">SSL விசை சரிபார்த்தலுக்கு சரிபார்க்கிறது</description>
+            <description xml:lang="tr">SSL anahtarının geçerliliğini kontrol et</description>
+            <description xml:lang="uk">Перевірити чинність ключа SSL</description>
+            <description xml:lang="zh_CN">查看 SSL 密钥是否可用</description>
+            <description xml:lang="zh_TW">檢查 SSL 金鑰是否有效</description>
+            <default-value>yes</default-value>
+        </option>
+        <advanced-options>
+            <option type="text" name="http_proxy">
+                <label>HTTP Proxy</label>
+                <label xml:lang="as">HTTP প্ৰক্সি</label>
+                <label xml:lang="de">HTTP-Proxy</label>
+                <label xml:lang="es">Proxy HTTP</label>
+                <label xml:lang="fr">Mandataire HTTP</label>
+                <label xml:lang="gl">Proxy de HTTP</label>
+                <label xml:lang="it">Proxy HTTP</label>
+                <label xml:lang="ja">HTTP プロキシ</label>
+                <label xml:lang="nl">HTTP proxy</label>
+                <label xml:lang="pl">Pośrednik HTTP</label>
+                <label xml:lang="pt">HTTP Proxy</label>
+                <label xml:lang="pt_BR">Proxy HTTP</label>
+                <label xml:lang="sk">HTTP Proxy</label>
+                <label xml:lang="sv">HTTP-proxy</label>
+                <label xml:lang="uk">HTTP-проксі</label>
+                <allow-empty>yes</allow-empty>
+                <note-html>Sets the proxy server to use for HTTP</note-html>
+                <note-html xml:lang="as">HTTP ৰ বাবে ব্যৱহাৰ কৰিবলে প্ৰক্সি চাৰ্ভাৰ সংহতি কৰে</note-html>
+                <note-html xml:lang="de">Proxy-Server für HTTP festlegen</note-html>
+                <note-html xml:lang="es">Fija el servidor proxy para ser usado por HTTP</note-html>
+                <note-html xml:lang="fr">Configure le serveur mandataire à utiliser pour HTTP</note-html>
+                <note-html xml:lang="gl">Indica o servidor de proxy que se desexa empregar para o HTTP</note-html>
+                <note-html xml:lang="hu">HTTP használathoz egy proxy szervert állít be</note-html>
+                <note-html xml:lang="it">Imposta il server proxy da usare per HTTP</note-html>
+                <note-html xml:lang="ja">HTTP のために使用するプロキシサーバーを設定する</note-html>
+                <note-html xml:lang="or">HTTP ପାଇଁ ବ୍ୟବହାର କରିବାକୁ ପ୍ରୋକ୍ସି ସର୍ଭର ସେଟ କରିଥାଏ</note-html>
+                <note-html xml:lang="pl">Ustawia serwer pośrednika do użycia dla HTTP</note-html>
+                <note-html xml:lang="pt_BR">Configura o servidor proxy para usar HTTP</note-html>
+                <note-html xml:lang="sk">Nastaví proxy server na použitie pre HTTP</note-html>
+                <note-html xml:lang="sv">Anger proxyservern som skall användas för HTTP</note-html>
+                <note-html xml:lang="zh_CN">设定用于 HTTP 的代理服务器</note-html>
+                <note-html xml:lang="zh_TW">設定 HTTP 所要使用的代理伺服器</note-html>
+            </option>
+            <option type="text" name="HTTPS_PROXY">
+                <label>HTTPS Proxy</label>
+                <label xml:lang="as">HTTPS প্ৰক্সি</label>
+                <label xml:lang="de">HTTPS-Proxy</label>
+                <label xml:lang="es">Proxy HTTPS</label>
+                <label xml:lang="fr">Mandataire HTTPS</label>
+                <label xml:lang="gl">Proxy de HTTPS</label>
+                <label xml:lang="hi">HTTPS प्रॉक्सी</label>
+                <label xml:lang="it">Proxy HTTPS</label>
+                <label xml:lang="ja">HTTPS プロキシ</label>
+                <label xml:lang="pl">Pośrednik HTTPS</label>
+                <label xml:lang="pt">HTTPS Proxy</label>
+                <label xml:lang="pt_BR">Proxy HTTPS</label>
+                <label xml:lang="sk">HTTPS Proxy</label>
+                <label xml:lang="sv">HTTPS-proxy</label>
+                <label xml:lang="zh_CN">HTTPS 代理</label>
+                <allow-empty>yes</allow-empty>
+                <note-html>Sets the proxy server to use for HTTPS</note-html>
+                <note-html xml:lang="as">HTTPS ৰ বাবে ব্যৱহাৰ কৰিবলে প্ৰক্সি চাৰ্ভাৰ সংহতি কৰে</note-html>
+                <note-html xml:lang="de">Proxy-Server für HTTPS festlegen</note-html>
+                <note-html xml:lang="gl">Indica o servidor de proxy que se desexa empregar para o HTTPS</note-html>
+                <note-html xml:lang="hi">प्रॉक्सी सर्वर को सेट किया गया है HTTPS के इस्तेमाल के लिए</note-html>
+                <note-html xml:lang="hu">HTTPS használatához egy proxy szervert állít be</note-html>
+                <note-html xml:lang="it">Imposta il server proxy da usare per HTTPS</note-html>
+                <note-html xml:lang="ja">HTTPS のために使用するプロキシサーバーを設定する</note-html>
+                <note-html xml:lang="nl">Stelt de proxyserver in om te gebruiken voor HTTPS</note-html>
+                <note-html xml:lang="or">HTTPS ପାଇଁ ବ୍ୟବହାର କରିବାକୁ ପ୍ରୋକ୍ସି ସର୍ଭର ସେଟ କରିଥାଏ</note-html>
+                <note-html xml:lang="pt_BR">Configura o servidor proxy para usar HTTPS</note-html>
+                <note-html xml:lang="ru">Выбирает прокси-сервер для использования с HTTPS</note-html>
+                <note-html xml:lang="sk">Nastaví proxy server na použitie pre HTTPS</note-html>
+                <note-html xml:lang="sv">Anger proxyservern som skall användas för HTTPS</note-html>
+                <note-html xml:lang="zh_CN">设定用于 HTTPS 的代理服务器</note-html>
+                <note-html xml:lang="zh_TW">設定 HTTPS 所要使用的代理伺服器</note-html>
+            </option>
+        </advanced-options>
+    </options>
+</event>
