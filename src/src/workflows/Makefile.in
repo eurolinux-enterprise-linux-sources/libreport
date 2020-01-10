@@ -81,28 +81,15 @@ host_triplet = @host@
 @BUILD_BUGZILLA_TRUE@am__append_1 = \
 @BUILD_BUGZILLA_TRUE@    workflow_AnacondaFedora.xml \
 @BUILD_BUGZILLA_TRUE@    workflow_AnacondaRHEL.xml \
-@BUILD_BUGZILLA_TRUE@    workflow_AnacondaRHELBugzilla.xml \
-@BUILD_BUGZILLA_TRUE@    workflow_AnacondaUpload.xml \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaCCpp.xml \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaKerneloops.xml \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaPython.xml \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaVmcore.xml \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaXorg.xml
+@BUILD_BUGZILLA_TRUE@    workflow_AnacondaUpload.xml
 
 @BUILD_BUGZILLA_TRUE@am__append_2 = \
-@BUILD_BUGZILLA_TRUE@    anaconda_event.conf \
-@BUILD_BUGZILLA_TRUE@    report_rhel_bugzilla.conf
+@BUILD_BUGZILLA_TRUE@    anaconda_event.conf
 
 @BUILD_BUGZILLA_TRUE@am__append_3 = \
 @BUILD_BUGZILLA_TRUE@    workflow_AnacondaFedora.xml.in \
 @BUILD_BUGZILLA_TRUE@    workflow_AnacondaRHEL.xml.in \
-@BUILD_BUGZILLA_TRUE@    workflow_AnacondaRHELBugzilla.xml.in \
-@BUILD_BUGZILLA_TRUE@    workflow_AnacondaUpload.xml.in \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaCCpp.xml.in \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaKerneloops.xml.in \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaPython.xml.in \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaVmcore.xml.in \
-@BUILD_BUGZILLA_TRUE@    workflow_RHELBugzillaXorg.xml.in
+@BUILD_BUGZILLA_TRUE@    workflow_AnacondaUpload.xml.in
 
 subdir = src/workflows
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
@@ -150,11 +137,7 @@ am__dist_workflows_DATA_DIST = workflow_FedoraCCpp.xml \
 	workflow_RHELKerneloops.xml workflow_RHELPython.xml \
 	workflow_RHELvmcore.xml workflow_RHELxorg.xml \
 	workflow_AnacondaFedora.xml workflow_AnacondaRHEL.xml \
-	workflow_AnacondaRHELBugzilla.xml workflow_AnacondaUpload.xml \
-	workflow_RHELBugzillaCCpp.xml \
-	workflow_RHELBugzillaKerneloops.xml \
-	workflow_RHELBugzillaPython.xml \
-	workflow_RHELBugzillaVmcore.xml workflow_RHELBugzillaXorg.xml
+	workflow_AnacondaUpload.xml
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -185,7 +168,7 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(workflowsdir)" \
 	"$(DESTDIR)$(workflowsdefdir)"
 am__dist_workflowsdef_DATA_DIST = report_fedora.conf report_rhel.conf \
-	anaconda_event.conf report_rhel_bugzilla.conf
+	anaconda_event.conf
 DATA = $(dist_workflows_DATA) $(dist_workflowsdef_DATA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -195,10 +178,6 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 AR = @AR@
 ASCIIDOC = @ASCIIDOC@
-AUGEAS_CFLAGS = @AUGEAS_CFLAGS@
-AUGEAS_LENS_LIB_DIR = @AUGEAS_LENS_LIB_DIR@
-AUGEAS_LIBS = @AUGEAS_LIBS@
-AUGPARSE = @AUGPARSE@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOM4TE = @AUTOM4TE@
@@ -262,8 +241,6 @@ INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
 INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
 INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
-JOURNAL_CFLAGS = @JOURNAL_CFLAGS@
-JOURNAL_LIBS = @JOURNAL_LIBS@
 JSON_C_CFLAGS = @JSON_C_CFLAGS@
 JSON_C_LIBS = @JSON_C_LIBS@
 JSON_C_PACKAGE = @JSON_C_PACKAGE@

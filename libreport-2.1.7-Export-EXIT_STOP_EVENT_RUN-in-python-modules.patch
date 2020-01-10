@@ -1,0 +1,37 @@
+From 0ee556879c77020f1d1147e9ae9f231271f15333 Mon Sep 17 00:00:00 2001
+From: Jakub Filak <jfilak@redhat.com>
+Date: Tue, 12 Nov 2013 19:58:17 +0100
+Subject: [LIBREPORT PATCH 35/36] Export EXIT_STOP_EVENT_RUN in python modules
+
+Signed-off-by: Jakub Filak <jfilak@redhat.com>
+---
+ src/client-python/__init__.py    | 2 ++
+ src/report-python/reportmodule.c | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/src/client-python/__init__.py b/src/client-python/__init__.py
+index ccbe03f..53f5f92 100644
+--- a/src/client-python/__init__.py
++++ b/src/client-python/__init__.py
+@@ -26,6 +26,8 @@ RETURN_OK = 0
+ RETURN_FAILURE = 2
+ # user canceled processing
+ from report import EXIT_CANCEL_BY_USER as RETURN_CANCEL_BY_USER
++# event canceled processing
++from report import EXIT_STOP_EVENT_RUN as RETURN_STOP_EVENT_RUN
+ 
+ 
+ GETTEXT_PROGNAME = "abrt"
+diff --git a/src/report-python/reportmodule.c b/src/report-python/reportmodule.c
+index 0edfd5f..b8154ae 100644
+--- a/src/report-python/reportmodule.c
++++ b/src/report-python/reportmodule.c
+@@ -99,4 +99,5 @@ init_pyreport(void)
+     PyModule_AddObject(m, "LIBREPORT_RUN_CLI"    , Py_BuildValue("i", LIBREPORT_RUN_CLI    ));
+     PyModule_AddObject(m, "LIBREPORT_RUN_NEWT"   , Py_BuildValue("i", LIBREPORT_RUN_NEWT  ));
+     PyModule_AddObject(m, "EXIT_CANCEL_BY_USER", Py_BuildValue("i", EXIT_CANCEL_BY_USER));
++    PyModule_AddObject(m, "EXIT_STOP_EVENT_RUN", Py_BuildValue("i", EXIT_STOP_EVENT_RUN));
+ }
+-- 
+1.8.3.1
+

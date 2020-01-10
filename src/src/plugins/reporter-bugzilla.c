@@ -534,7 +534,7 @@ int attach_text_item(struct abrt_xmlrpc *ax, const char *bug_id,
 {
     if (!(item->flags & CD_FLAG_TXT))
         return 0;
-    log_debug("attaching '%s' as text", item_name);
+    VERB3 log("attaching '%s' as text", item_name);
     int r = rhbz_attach_blob(ax, bug_id,
                 item_name, item->content, strlen(item->content),
                 RHBZ_NOMAIL_NOTIFY
@@ -543,7 +543,7 @@ int attach_text_item(struct abrt_xmlrpc *ax, const char *bug_id,
 }
 
 static
-int attach_file_item(struct abrt_xmlrpc *ax, const char *bug_id,
+int attach_binary_item(struct abrt_xmlrpc *ax, const char *bug_id,
                 const char *item_name, struct problem_item *item)
 {
     if (!(item->flags & CD_FLAG_BIN))
@@ -564,11 +564,8 @@ int attach_file_item(struct abrt_xmlrpc *ax, const char *bug_id,
         close(fd);
         return 0;
     }
-    log_debug("attaching '%s' as file", item_name);
-    int flag = RHBZ_NOMAIL_NOTIFY;
-    if (!(item->flags & CD_FLAG_BIGTXT))
-        flag |= RHBZ_BINARY_ATTACHMENT;
-    int r = rhbz_attach_fd(ax, bug_id, item_name, fd, flag);
+    VERB3 log("attaching '%s' as binary", item_name);
+    int r = rhbz_attach_fd(ax, bug_id, item_name, fd, RHBZ_NOMAIL_NOTIFY | RHBZ_BINARY_ATTACHMENT);
     close(fd);
     return (r == 0);
 }
@@ -585,7 +582,7 @@ int attach_item(struct abrt_xmlrpc *ax, const char *bug_id,
         if (item->flags & CD_FLAG_TXT)
             return attach_text_item(ax, bug_id, item_name, item);
         if (item->flags & CD_FLAG_BIN)
-            return attach_file_item(ax, bug_id, item_name, item);
+            return attach_binary_item(ax, bug_id, item_name, item);
         return 0;
     }
 
@@ -602,7 +599,7 @@ int attach_item(struct abrt_xmlrpc *ax, const char *bug_id,
         return 0;
     }
 
-    log_debug("Special item_name '%s', iterating for attach...", item_name);
+    VERB3 log("Special item_name '%s', iterating for attach...", item_name);
     int done = 0;
 
     /* Iterate over _sorted_ items */
@@ -630,13 +627,13 @@ int attach_item(struct abrt_xmlrpc *ax, const char *bug_id,
                 done |= attach_text_item(ax, bug_id, name, item);
         }
         if ((item->flags & CD_FLAG_BIN) && binary)
-            done |= attach_file_item(ax, bug_id, name, item);
+            done |= attach_binary_item(ax, bug_id, name, item);
     }
 
     g_list_free(sorted_names); /* names themselves are not freed */
 
 
-    log_debug("...Done iterating over '%s' for attach", item_name);
+    VERB3 log("...Done iterating over '%s' for attach", item_name);
 
     return done;
 }
@@ -749,14 +746,14 @@ static void set_settings(struct bugzilla_struct *b, map_string_t *settings)
         environ = getenv("Bugzilla_CreatePrivate");
         b->b_create_private = string_to_bool(environ ? environ : get_map_string_item_or_empty(settings, "Bugzilla_CreatePrivate"));
     }
-    log_notice("create private bz ticket: '%s'", b->b_create_private ? "YES": "NO");
+    VERB1 log("create private bz ticket: '%s'", b->b_create_private ? "YES": "NO");
 
     environ = getenv("Bugzilla_PrivateGroups");
     GList *groups = parse_list(environ ? environ : get_map_string_item_or_empty(settings, "Bugzilla_PrivateGroups"));
     if (b->b_private_groups == NULL)
     {
         b->b_private_groups = groups;
-        log_notice("groups: '%p'", b->b_private_groups);
+        VERB1 log("groups: '%p'", b->b_private_groups);
     }
     else if (groups)
     {
@@ -828,7 +825,7 @@ xmlrpc_value *rhbz_search_duphash(struct abrt_xmlrpc *ax,
         strbuf_append_strf(query, " component:\"%s\"", component);
 
     char *s = strbuf_free_nobuf(query);
-    log_debug("search for '%s'", s);
+    VERB3 log("search for '%s'", s);
     xmlrpc_value *search = abrt_xmlrpc_call(ax, "Bug.search", "({s:s})",
                                          "quicksearch", s);
     free(s);
@@ -887,10 +884,6 @@ int main(int argc, char **argv)
         "\n"
         "\nOption -w adds bugzilla user to bug's CC list."
         "\n"
-        "\nOption -r sets the last url from reporter_to element which is prefixed with"
-        "\nTRACKER_NAME to URL field. This option is applied only when a new bug is to be"
-        "\nfiled. The default value is 'ABRT Server'"
-        "\n"
         "\nIf not specified, CONFFILE defaults to "CONF_DIR"/plugins/bugzilla.conf"
         "\nIts lines should have 'PARAM = VALUE' format."
         "\nRecognized string parameters: BugzillaURL, Login, Password, OSRelease."
@@ -910,9 +903,8 @@ int main(int argc, char **argv)
         OPT_f = 1 << 7,
         OPT_w = 1 << 8,
         OPT_h = 1 << 9,
-        OPT_r = 1 << 10,
-        OPT_g = 1 << 11,
-        OPT_D = 1 << 12,
+        OPT_g = 1 << 10,
+        OPT_D = 1 << 11,
     };
     const char *dump_dir_name = ".";
     GList *conf_file = NULL;
@@ -920,7 +912,6 @@ int main(int argc, char **argv)
     const char *fmt_file2 = fmt_file;
     char *abrt_hash = NULL;
     char *ticket_no = NULL;
-    const char *tracker_str = "ABRT Server";
     char *debug_str = NULL;
     struct bugzilla_struct rhbz = { 0 };
     /* Keep enum above and order of options below in sync! */
@@ -935,7 +926,6 @@ int main(int argc, char **argv)
         OPT_BOOL(     'f', NULL, NULL,                       _("Force reporting even if this problem is already reported")),
         OPT_BOOL(     'w', NULL, NULL,                       _("Add bugzilla user to CC list [of bug with this ID]")),
         OPT_STRING(   'h', "duphash", &abrt_hash, "DUPHASH", _("Print BUG_ID which has given DUPHASH")),
-        OPT_STRING(   'r', "tracker", &tracker_str, "TRACKER_NAME", _("A name of bug tracker for an additional URL from 'reported_to'")),
         OPT_LIST(     'g', "group", &rhbz.b_private_groups , "GROUP"  , _("Restrict access to this group only")),
         OPT_OPTSTRING('D', "debug", &debug_str  , "STR"    , _("Debug")),
         OPT_END()
@@ -953,9 +943,9 @@ int main(int argc, char **argv)
         while (conf_file)
         {
             char *fn = (char *)conf_file->data;
-            log_notice("Loading settings from '%s'", fn);
+            VERB1 log("Loading settings from '%s'", fn);
             load_conf_file(fn, settings, /*skip key w/o values:*/ false);
-            log_debug("Loaded '%s'", fn);
+            VERB3 log("Loaded '%s'", fn);
             conf_file = g_list_delete_link(conf_file, conf_file);
         }
         set_settings(&rhbz, settings);
@@ -965,7 +955,7 @@ int main(int argc, char **argv)
         /*free_map_string(settings);*/
     }
 
-    log_notice("Initializing XML-RPC library");
+    VERB1 log("Initializing XML-RPC library");
     xmlrpc_env env;
     xmlrpc_env_init(&env);
     xmlrpc_client_setup_global_const(&env);
@@ -1027,7 +1017,7 @@ int main(int argc, char **argv)
             struct dump_dir *dd = dd_opendir(dump_dir_name, /*flags:*/ 0);
             if (!dd)
                 xfunc_die();
-            report_result_t *reported_to = find_in_reported_to(dd, "Bugzilla");
+            report_result_t *reported_to = find_in_reported_to(dd, "Bugzilla:");
             dd_close(dd);
 
             if (!reported_to || !reported_to->url)
@@ -1058,7 +1048,7 @@ int main(int argc, char **argv)
             while (*argv)
             {
                 const char *filename = *argv++;
-                log_notice("Attaching file '%s' to bug %s", filename, ticket_no);
+                VERB1 log("Attaching file '%s' to bug %s", filename, ticket_no);
 
                 int fd = open(filename, O_RDONLY);
                 if (fd < 0)
@@ -1096,7 +1086,7 @@ int main(int argc, char **argv)
         struct dump_dir *dd = dd_opendir(dump_dir_name, /*flags:*/ 0);
         if (!dd)
             xfunc_die();
-        report_result_t *reported_to = find_in_reported_to(dd, "Bugzilla");
+        report_result_t *reported_to = find_in_reported_to(dd, "Bugzilla:");
         dd_close(dd);
 
         if (reported_to && reported_to->url)
@@ -1199,7 +1189,7 @@ int main(int argc, char **argv)
             xmlrpc_value *crossver_bugs = rhbz_search_duphash(client, rhbz.b_product, /*version:*/ NULL,
                             component_substitute, duphash);
             unsigned crossver_bugs_count = rhbz_array_size(crossver_bugs);
-            log_debug("Bugzilla has %i reports with duphash '%s' including cross-version ones",
+            VERB3 log("Bugzilla has %i reports with duphash '%s' including cross-version ones",
                     crossver_bugs_count, duphash);
             if (crossver_bugs_count > 0)
                 crossver_id = rhbz_get_bug_id_from_array0(crossver_bugs, rhbz_ver);
@@ -1217,7 +1207,7 @@ int main(int argc, char **argv)
                 xmlrpc_value *dup_bugs = rhbz_search_duphash(client, rhbz.b_product,
                                 rhbz.b_product_version, component_substitute, duphash);
                 unsigned dup_bugs_count = rhbz_array_size(dup_bugs);
-                log_debug("Bugzilla has %i reports with duphash '%s'",
+                VERB3 log("Bugzilla has %i reports with duphash '%s'",
                         dup_bugs_count, duphash);
                 if (dup_bugs_count > 0)
                     existing_id = rhbz_get_bug_id_from_array0(dup_bugs, rhbz_ver);
@@ -1250,20 +1240,6 @@ int main(int argc, char **argv)
             if (new_id == -1)
             {
                 error_msg_and_die(_("Failed to create a new bug."));
-            }
-
-            struct dump_dir *dd = dd_opendir(dump_dir_name, /*flags:*/ 0);
-            if (dd)
-            {
-                report_result_t *reported_to = find_in_reported_to(dd, tracker_str);
-                dd_close(dd);
-
-                if (reported_to && reported_to->url)
-                {
-                    log(_("Adding External URL to bug %i"), new_id);
-                    rhbz_set_url(client, new_id, reported_to->url, RHBZ_NOMAIL_NOTIFY);
-                    free_report_result(reported_to);
-                }
             }
 
             log(_("Adding attachments to bug %i"), new_id);

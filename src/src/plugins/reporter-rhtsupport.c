@@ -30,7 +30,7 @@ static report_result_t *get_reported_to(const char *dump_dir_name)
     struct dump_dir *dd = dd_opendir(dump_dir_name, /*flags:*/ 0);
     if (!dd)
         xfunc_die();
-    report_result_t *reported_to = find_in_reported_to(dd, "RHTSupport");
+    report_result_t *reported_to = find_in_reported_to(dd, "RHTSupport:");
     dd_close(dd);
     return reported_to;
 }
@@ -87,8 +87,7 @@ int create_tarball(const char *tempfile, problem_data_t *problem_data)
                         /*on_disk_filename */ content,
                         /*binding_name     */ name,
                         /*recorded_filename*/ xml_name,
-                        /*binary           */ !(value->flags & CD_FLAG_BIGTXT)
-                );
+                        /*binary           */ 1);
                 if (tar_append_file(tar, (char*)content, xml_name) != 0)
                 {
                     free(xml_name);
@@ -169,32 +168,6 @@ ret_clean:
 }
 
 static
-char *ask_rh_login(const char *message)
-{
-    char *login = ask(message);
-    if (login == NULL || login[0] == '\0')
-    {
-        set_xfunc_error_retval(EXIT_CANCEL_BY_USER);
-        error_msg_and_die(_("Can't continue without login"));
-    }
-
-    return login;
-}
-
-static
-char *ask_rh_password(const char *message)
-{
-    char *password = ask_password(message);
-    if (password == NULL || password[0] == '\0')
-    {
-        set_xfunc_error_retval(EXIT_CANCEL_BY_USER);
-        error_msg_and_die(_("Can't continue without password"));
-    }
-
-    return password;
-}
-
-static
 char *get_param_string(const char *name, map_string_t *settings, const char *dflt)
 {
     char *envname = xasprintf("RHTSupport_%s", name);
@@ -269,30 +242,17 @@ int main(int argc, char **argv)
     while (conf_file)
     {
         const char *fn = (char *)conf_file->data;
-        log_notice("Loading settings from '%s'", fn);
+        VERB1 log("Loading settings from '%s'", fn);
         load_conf_file(fn, settings, /*skip key w/o values:*/ false);
-        log_debug("Loaded '%s'", fn);
+        VERB3 log("Loaded '%s'", fn);
         conf_file = g_list_remove(conf_file, fn);
     }
     char *url      = get_param_string("URL"       , settings, "https://api.access.redhat.com/rs");
     char *login    = get_param_string("Login"     , settings, "");
     char *password = get_param_string("Password"  , settings, "");
     char *bigurl   = get_param_string("BigFileURL", settings, "ftp://dropbox.redhat.com/incoming/");
-
-    if (login[0] == '\0')
-    {
-        free(login);
-        login = ask_rh_login(_("Login is not provided by configuration. Please enter your RHTS login:"));
-    }
-
-    if (password[0] == '\0')
-    {
-        free(password);
-        char *question = xasprintf(_("Password is not provided by configuration. Please enter the password for '%s':"), login);
-        password = ask_rh_password(question);
-        free(question);
-    }
-
+    if (!login[0] || !password[0])
+        error_msg_and_die(_("Empty RHTS login or password"));
     char* envvar;
     envvar = getenv("RHTSupport_SSLVerify");
     bool ssl_verify = string_to_bool(

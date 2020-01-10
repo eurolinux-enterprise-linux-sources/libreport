@@ -1,0 +1,60 @@
+From 2648eb9e983e1b0792f94f3b70920a1fb0225aac Mon Sep 17 00:00:00 2001
+From: Jakub Filak <jfilak@redhat.com>
+Date: Fri, 8 Nov 2013 17:08:05 +0100
+Subject: [LIBREPORT PATCH 36/36] Load a config file from several directories
+
+Related to abrt/abrt#752
+---
+ src/include/internal_libreport.h |   3 +
+ src/lib/load_plugin_settings.c   |  23 +++++
+ 8 files changed, 240 insertions(+), 2 deletions(-)
+
+diff --git a/src/include/internal_libreport.h b/src/include/internal_libreport.h
+index db2ffd8..30458c3 100644
+--- a/src/include/internal_libreport.h
++++ b/src/include/internal_libreport.h
+@@ -715,6 +715,9 @@ void parse_release_for_rhts(const char *pRelease, char **product, char **version
+ #define load_conf_file libreport_load_conf_file
+ bool load_conf_file(const char *pPath, map_string_t *settings, bool skipKeysWithoutValue);
+ 
++#define load_conf_file_from_dirs libreport_load_conf_file_from_dirs
++bool load_conf_file_from_dirs(const char *base_name, const char *const *directories, map_string_t *settings, bool skipKeysWithoutValue);
++
+ #define save_conf_file libreport_save_conf_file
+ bool save_conf_file(const char *path, map_string_t *settings);
+ 
+diff --git a/src/lib/load_plugin_settings.c b/src/lib/load_plugin_settings.c
+index 84ebd63..b56ba7f 100644
+--- a/src/lib/load_plugin_settings.c
++++ b/src/lib/load_plugin_settings.c
+@@ -103,3 +103,26 @@ bool load_conf_file(const char *path, map_string_t *settings, bool skipKeysWitho
+ 
+     return true;
+ }
++
++bool load_conf_file_from_dirs(const char *base_name, const char *const *directories, map_string_t *settings, bool skipKeysWithoutValue)
++{
++    if (NULL == directories || NULL == *directories)
++    {
++        error_msg("No configuration directory specified");
++        return false;
++    }
++
++    bool result = true;
++    for (const char *const *dir = directories; *dir != NULL; ++dir)
++    {
++        char *conf_file = concat_path_file(*dir, base_name);
++        if (!load_conf_file(conf_file, settings, skipKeysWithoutValue))
++        {
++            perror_msg("Can't open '%s'", conf_file);
++            result = false;
++        }
++        free(conf_file);
++    }
++
++    return result;
++}
++m4_include([configuration_files.at])
+-- 
+1.8.3.1
+

@@ -122,7 +122,7 @@ static time_t parse_time_file(const char *filename)
     int fd = open(filename, O_RDONLY | O_NOFOLLOW);
     if (fd < 0)
     {
-        VERB2 pwarn_msg("Can't open '%s'", filename);
+        VERB2 perror_msg("Can't open '%s'", filename);
         return -1;
     }
 
@@ -135,7 +135,7 @@ static time_t parse_time_file(const char *filename)
 
     if (rdsz == -1)
     {
-        VERB2 pwarn_msg("Can't read from '%s'", filename);
+        VERB2 perror_msg("Can't read from '%s'", filename);
         return -1;
     }
     /* approximate maximal number of digits in timestamp is sizeof(time_t)*3 */
@@ -144,8 +144,8 @@ static time_t parse_time_file(const char *filename)
     /* than string representing maximal time stamp */
     if (rdsz == sizeof(time_buf))
     {
-        VERB2 warn_msg("File '%s' is too long to be valid unix "
-                       "time stamp (max size %u)", filename, (int)sizeof(time_buf));
+        VERB2 error_msg("File '%s' is too long to be valid unix "
+                        "time stamp (max size %u)", filename, (int)sizeof(time_buf));
         return -1;
     }
 
@@ -166,11 +166,11 @@ static time_t parse_time_file(const char *filename)
     /* Check for various possible errors */
     if (errno
      || (*endptr != '\0')
-     || val >= MAX_TIME_T
+     || val > MAX_TIME_T
      || !isdigit_str(time_buf) /* this filters out "-num", "   num", "" */
     ) {
-        VERB2 pwarn_msg("File '%s' doesn't contain valid unix "
-                        "time stamp ('%s')", filename, time_buf);
+        VERB2 perror_msg("File '%s' doesn't contain valid unix "
+                         "time stamp ('%s')", filename, time_buf);
         return -1;
     }
 
@@ -238,7 +238,7 @@ int create_symlink_lockfile(const char* lock_file, const char* pid)
         }
     }
 
-    log_info("Locked '%s'", lock_file);
+    VERB1 log("Locked '%s'", lock_file);
     return 1;
 }
 
@@ -251,7 +251,7 @@ static const char *dd_check(struct dump_dir *dd)
     dd->dd_time = parse_time_file(filename_buf);
     if (dd->dd_time < 0)
     {
-        log_warning("Missing file: "FILENAME_TIME);
+        VERB1 log("Missing file: "FILENAME_TIME);
         return FILENAME_TIME;
     }
 
@@ -259,7 +259,7 @@ static const char *dd_check(struct dump_dir *dd)
     dd->dd_type = load_text_file(filename_buf, DD_LOAD_TEXT_RETURN_NULL_ON_FAILURE);
     if (!dd->dd_type || (strlen(dd->dd_type) == 0))
     {
-        log_warning("Missing or empty file: "FILENAME_TYPE);
+        VERB1 log("Missing or empty file: "FILENAME_TYPE);
         return FILENAME_TYPE;
     }
 
@@ -305,7 +305,7 @@ static int dd_lock(struct dump_dir *dd, unsigned sleep_usec, int flags)
         if (missing_file)
         {
             xunlink(lock_buf);
-            log_warning("Unlocked '%s' (no or corrupted '%s' file)", lock_buf, missing_file);
+            VERB1 log("Unlocked '%s' (no or corrupted '%s' file)", lock_buf, missing_file);
             if (--count == 0 || flags & DD_DONT_WAIT_FOR_LOCK)
             {
                 errno = EISDIR; /* "this is an ordinary dir, not dump dir" */
@@ -332,7 +332,7 @@ static void dd_unlock(struct dump_dir *dd)
         strcpy(lock_buf + dirname_len, "/.lock");
         xunlink(lock_buf);
 
-        log_info("Unlocked '%s'", lock_buf);
+        VERB1 log("Unlocked '%s'", lock_buf);
     }
 }
 
@@ -886,7 +886,7 @@ int dd_chown(struct dump_dir *dd, uid_t new_uid)
         char *full_name;
         while (chown_res == 0 && dd_get_next_file(dd, /*short_name*/ NULL, &full_name))
         {
-            log_debug("chowning %s", full_name);
+            VERB3 log("chowning %s", full_name);
             chown_res = lchown(full_name, owners_uid, groups_gid);
             if (chown_res)
                 perror_msg("lchown('%s')", full_name);
@@ -1138,39 +1138,112 @@ void add_reported_to(struct dump_dir *dd, const char *line)
         error_msg_and_die("dump_dir is not opened"); /* bug */
 
     char *reported_to = dd_load_text_ext(dd, FILENAME_REPORTED_TO, DD_FAIL_QUIETLY_ENOENT | DD_LOAD_TEXT_RETURN_NULL_ON_FAILURE);
-    if (add_reported_to_data(&reported_to, line))
-        dd_save_text(dd, FILENAME_REPORTED_TO, reported_to);
-
+    if (reported_to)
+    {
+        unsigned len_line = strlen(line);
+        char *p = reported_to;
+        while (*p)
+        {
+            if (strncmp(p, line, len_line) == 0 && (p[len_line] == '\n' || p[len_line] == '\0'))
+                goto ret;
+            p = strchrnul(p, '\n');
+            if (!*p)
+                break;
+            p++;
+        }
+        if (p != reported_to && p[-1] != '\n')
+            reported_to = append_to_malloced_string(reported_to, "\n");
+        reported_to = append_to_malloced_string(reported_to, line);
+        reported_to = append_to_malloced_string(reported_to, "\n");
+    }
+    else
+        reported_to = xasprintf("%s\n", line);
+    dd_save_text(dd, FILENAME_REPORTED_TO, reported_to);
+ ret:
     free(reported_to);
 }
 
-report_result_t *find_in_reported_to(struct dump_dir *dd, const char *report_label)
+void free_report_result(struct report_result *result)
+{
+    if (!result)
+        return;
+    free(result->url);
+    free(result->msg);
+    free(result->bthash);
+    free(result);
+}
+
+static report_result_t *parse_reported_line(const char *line)
+{
+    report_result_t *result = xzalloc(sizeof(*result));
+
+    //result->whole_line = xstrdup(line);
+    for (;;)
+    {
+        line = skip_whitespace(line);
+        if (!*line)
+            break;
+        const char *end = skip_non_whitespace(line);
+        if (prefixcmp(line, "MSG=") == 0)
+        {
+            result->msg = xstrdup(line + 4);
+            /* MSG=... eats entire line: exiting the loop */
+            break;
+        }
+        if (prefixcmp(line, "URL=") == 0)
+        {
+            free(result->url);
+            result->url = xstrndup(line + 4, end - (line + 4));
+        }
+        if (prefixcmp(line, "BTHASH=") == 0)
+        {
+            free(result->bthash);
+            result->bthash = xstrndup(line + 7, end - (line + 7));
+        }
+        //else
+        //if (strncmp(line, "TIME=", 5) == 0)
+        //{
+        //    free(result->time);
+        //    result->time = foo(line + 5, end - (line + 5));
+        //}
+        //...
+        line = end;
+        continue;
+    }
+
+    return result;
+}
+
+report_result_t *find_in_reported_to(struct dump_dir *dd, const char *prefix)
 {
     char *reported_to = dd_load_text_ext(dd, FILENAME_REPORTED_TO,
                 DD_FAIL_QUIETLY_ENOENT | DD_LOAD_TEXT_RETURN_NULL_ON_FAILURE);
     if (!reported_to)
         return NULL;
 
-    report_result_t *result = find_in_reported_to_data(reported_to, report_label);
+    /* Find *last* (most recent) line with this prefix */
+    unsigned prefix_len = strlen(prefix);
+    char *found = NULL;
+    char *p = reported_to;
+    while (*p)
+    {
+        if (strncmp(p, prefix, prefix_len) == 0)
+            found = p + prefix_len;
+        p = strchrnul(p, '\n');
+        if (*p)
+        {
+            *p = '\0'; /* EOL marker for parse_reported_line() below */
+            p++;
+        }
+    }
+
+    report_result_t *result = NULL;
+    if (found)
+        result = parse_reported_line(found);
 
     free(reported_to);
     return result;
 }
-
-GList *read_entire_reported_to(struct dump_dir *dd)
-{
-    char *reported_to = dd_load_text_ext(dd, FILENAME_REPORTED_TO,
-                DD_FAIL_QUIETLY_ENOENT | DD_LOAD_TEXT_RETURN_NULL_ON_FAILURE);
-    if (!reported_to)
-        return NULL;
-
-    GList *result = read_entire_reported_to_data(reported_to);
-
-    free(reported_to);
-    return result;
-}
-
-/* reported_to handling end */
 
 int dd_rename(struct dump_dir *dd, const char *new_path)
 {
@@ -1220,12 +1293,12 @@ static bool uid_in_group(uid_t uid, gid_t gid)
     {
         if (g_strcmp0(*tmp, pwd->pw_name) == 0)
         {
-            log_debug("user %s belongs to group: %s",  pwd->pw_name, grp->gr_name);
+            VERB3 log("user %s belongs to group: %s",  pwd->pw_name, grp->gr_name);
             return TRUE;
         }
     }
 
-    log_info("user %s DOESN'T belong to group: %s",  pwd->pw_name, grp->gr_name);
+    VERB2 log("user %s DOESN'T belong to group: %s",  pwd->pw_name, grp->gr_name);
     return FALSE;
 }
 #endif
@@ -1235,7 +1308,7 @@ int dump_dir_stat_for_uid(const char *dirname, uid_t uid)
     struct stat statbuf;
     if (stat(dirname, &statbuf) != 0 || !S_ISDIR(statbuf.st_mode))
     {
-        log_debug("can't get stat of '%s': not a problem directory", dirname);
+        VERB3 log("can't get stat of '%s': not a problem directory", dirname);
         errno = ENOTDIR;
         return -1;
     }
@@ -1245,7 +1318,7 @@ int dump_dir_stat_for_uid(const char *dirname, uid_t uid)
     int ddstat = 0;
     if (uid == 0 || (statbuf.st_mode & S_IROTH))
     {
-        log_debug("directory '%s' is accessible by %ld uid", dirname, (long)uid);
+        VERB3 log("directory '%s' is accessible by %ld uid", dirname, (long)uid);
         ddstat |= DD_STAT_ACCESSIBLE_BY_UID;
     }
 
@@ -1255,7 +1328,7 @@ int dump_dir_stat_for_uid(const char *dirname, uid_t uid)
     if (uid_in_group(uid, statbuf.st_gid))
 #endif
     {
-        log_debug("%ld uid owns directory '%s'", (long)uid, dirname);
+        VERB3 log("%ld uid owns directory '%s'", (long)uid, dirname);
         ddstat |= DD_STAT_ACCESSIBLE_BY_UID;
         ddstat |= DD_STAT_OWNED_BY_UID;
     }
@@ -1270,7 +1343,7 @@ int dump_dir_accessible_by_uid(const char *dirname, uid_t uid)
     if (ddstat >= 0)
         return ddstat & DD_STAT_ACCESSIBLE_BY_UID;
 
-    VERB3 pwarn_msg("can't determine accessibility of '%s' by %ld uid", dirname, (long)uid);
+    VERB3 perror_msg("can't determine accessibility of '%s' by %ld uid", dirname, (long)uid);
 
     return 0;
 }

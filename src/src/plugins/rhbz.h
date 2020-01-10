@@ -72,8 +72,6 @@ void rhbz_mail_to_cc(struct abrt_xmlrpc *ax, int bug_id, const char *mail, int f
 void rhbz_add_comment(struct abrt_xmlrpc *ax, int bug_id, const char *comment,
                       int flags);
 
-void rhbz_set_url(struct abrt_xmlrpc *ax, int bug_id, const char *url, int flags);
-
 void *rhbz_bug_read_item(const char *memb, xmlrpc_value *xml, int flags);
 
 void rhbz_logout(struct abrt_xmlrpc *ax);

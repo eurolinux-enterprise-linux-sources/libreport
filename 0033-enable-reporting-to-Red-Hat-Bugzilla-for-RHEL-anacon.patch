@@ -1,0 +1,76 @@
+From 85cfaa9fb36757ae1bd4fe9df998a76515b5fcd1 Mon Sep 17 00:00:00 2001
+From: Jakub Filak <jfilak@redhat.com>
+Date: Thu, 7 Nov 2013 14:52:54 +0100
+Subject: [LIBREPORT PATCH 33/33] enable reporting to Red Hat Bugzilla for RHEL
+ anaconda bugs
+
+Related to rhbz#1015554
+
+Signed-off-by: Jakub Filak <jfilak@redhat.com>
+---
+ libreport.spec.in                                  | 5 +++--
+ po/POTFILES.in                                     | 1 +
+ src/workflows/Makefile.am                          | 2 ++
+ src/workflows/anaconda_event.conf                  | 1 +
+ src/workflows/workflow_AnacondaRHELBugzilla.xml.in | 9 +++++++++
+ 5 files changed, 16 insertions(+), 2 deletions(-)
+ create mode 100644 src/workflows/workflow_AnacondaRHELBugzilla.xml.in
+
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+index 97d7d4d..8cd54f8 100644
+--- a/po/POTFILES.in
++++ b/po/POTFILES.in
+@@ -45,6 +45,7 @@ src/plugins/ureport.c
+ src/report-newt/report-newt.c
+ src/workflows/workflow_AnacondaFedora.xml.in
+ src/workflows/workflow_AnacondaRHEL.xml.in
++src/workflows/workflow_AnacondaRHELBugzilla.xml.in
+ src/workflows/workflow_AnacondaUpload.xml.in
+ src/workflows/workflow_FedoraCCpp.xml.in
+ src/workflows/workflow_FedoraKerneloops.xml.in
+diff --git a/src/workflows/Makefile.am b/src/workflows/Makefile.am
+index 7f1e676..29b09b4 100644
+--- a/src/workflows/Makefile.am
++++ b/src/workflows/Makefile.am
+@@ -17,6 +17,7 @@ if BUILD_BUGZILLA
+ dist_workflows_DATA += \
+     workflow_AnacondaFedora.xml \
+     workflow_AnacondaRHEL.xml \
++    workflow_AnacondaRHELBugzilla.xml \
+     workflow_AnacondaUpload.xml
+ endif
+ 
+@@ -50,5 +51,6 @@ if BUILD_BUGZILLA
+ EXTRA_DIST += \
+     workflow_AnacondaFedora.xml.in \
+     workflow_AnacondaRHEL.xml.in \
++    workflow_AnacondaRHELBugzilla.xml.in \
+     workflow_AnacondaUpload.xml.in
+ endif
+diff --git a/src/workflows/anaconda_event.conf b/src/workflows/anaconda_event.conf
+index 5828b5a..f9ade8e 100644
+--- a/src/workflows/anaconda_event.conf
++++ b/src/workflows/anaconda_event.conf
+@@ -1,3 +1,4 @@
+ EVENT=workflow_AnacondaFedora component=anaconda
+ #EVENT=workflow_AnacondaRHEL component=anaconda
++EVENT=workflow_AnacondaRHELBugzilla component=anaconda
+ EVENT=workflow_AnacondaUpload component=anaconda
+diff --git a/src/workflows/workflow_AnacondaRHELBugzilla.xml.in b/src/workflows/workflow_AnacondaRHELBugzilla.xml.in
+new file mode 100644
+index 0000000..fd7853f
+--- /dev/null
++++ b/src/workflows/workflow_AnacondaRHELBugzilla.xml.in
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8" ?>
++<workflow>
++    <_name>Report a bug to Red Hat Bugzilla</_name>
++    <_description>Process the report using the Red Hat infrastructure</_description>
++
++    <events>
++        <event>report_Bugzilla</event>
++    </events>
++</workflow>
+-- 
+1.8.3.1
+

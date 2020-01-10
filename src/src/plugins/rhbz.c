@@ -184,7 +184,7 @@ static unsigned find_best_bt_rating_in_comments(GList *comments)
         char *start_rating_line = strstr(comment_body, FILENAME_RATING": ");
         if (!start_rating_line)
         {
-            log_debug("comment does not contain rating");
+            VERB3 error_msg("comment does not contain rating");
             continue;
         }
 
@@ -224,7 +224,7 @@ bool rhbz_login(struct abrt_xmlrpc *ax, const char *login, const char *password)
         if (env.fault_code != 300)
             abrt_xmlrpc_die(&env);
 
-        log_notice("xmlrpc fault: (%d) %s", env.fault_code, env.fault_string);
+        VERB1 log("xmlrpc fault: (%d) %s", env.fault_code, env.fault_string);
         return false;
     }
 
@@ -356,7 +356,7 @@ int rhbz_get_bug_id_from_array0(xmlrpc_value* xml, unsigned ver)
     if (env.fault_occurred)
         abrt_xmlrpc_die(&env);
 
-    log_debug("found bug_id %i", bug_id);
+    VERB3 log("found bug_id %i", bug_id);
     return bug_id;
 }
 
@@ -388,7 +388,7 @@ void *rhbz_bug_read_item(const char *memb, xmlrpc_value *xml, int flags)
         if (!*string)
             goto die;
 
-        log_debug("found %s: '%s'", memb, string);
+        VERB3 log("found %s: '%s'", memb, string);
         return (void*)string;
     }
 
@@ -400,7 +400,7 @@ void *rhbz_bug_read_item(const char *memb, xmlrpc_value *xml, int flags)
         if (env.fault_occurred)
             abrt_xmlrpc_die(&env);
 
-        log_debug("found %s: '%i'", memb, *integer);
+        VERB3 log("found %s: '%i'", memb, *integer);
         return (void*)integer;
     }
 die:
@@ -425,7 +425,7 @@ GList *rhbz_bug_cc(xmlrpc_value* result_xml)
 
     unsigned array_size = rhbz_array_size(cc_member);
 
-    log_debug("count members on cc %i", array_size);
+    VERB3 log("count members on cc %i", array_size);
     GList *cc_list = NULL;
 
     for (unsigned i = 0; i < array_size; ++i)
@@ -447,7 +447,7 @@ GList *rhbz_bug_cc(xmlrpc_value* result_xml)
         if (*cc != '\0')
         {
             cc_list = g_list_append(cc_list, (char*)cc);
-            log_debug("member on cc is %s", cc);
+            VERB3 log("member on cc is %s", cc);
             continue;
         }
         free((char*)cc);
@@ -533,7 +533,7 @@ int rhbz_new_bug(struct abrt_xmlrpc *ax,
     func_entry();
 
     if (group)
-        log_debug("# of groups %d", g_list_length(group));
+        VERB3 log("# of groups %d", g_list_length(group));
 
     const char *component    = problem_data_get_content_or_NULL(problem_data,
                                                                 FILENAME_COMPONENT);
@@ -651,7 +651,7 @@ int rhbz_attach_blob(struct abrt_xmlrpc *ax, const char *bug_id,
 
     if (strlen(data) == 0)
     {
-        log_notice("not attaching an empty file: '%s'", filename);
+        VERB1 log("not attaching an empty file: '%s'", filename);
         /* Return SUCCESS */
         return 0;
     }
@@ -825,25 +825,6 @@ void rhbz_add_comment(struct abrt_xmlrpc *ax, int bug_id, const char *comment,
     result = abrt_xmlrpc_call(ax, "Bug.add_comment", "({s:i,s:s,s:b,s:i})",
                               "id", bug_id, "comment", comment,
                               "private", private, "nomail", nomail_notify);
-
-    if (result)
-        xmlrpc_DECREF(result);
-}
-
-void rhbz_set_url(struct abrt_xmlrpc *ax, int bug_id, const char *url, int flags)
-{
-    func_entry();
-
-    const int nomail_notify = !!IS_NOMAIL_NOTIFY(flags);
-    xmlrpc_value *result = abrt_xmlrpc_call(ax, "Bug.update", "({s:i,s:s,s:i})",
-                              "ids", bug_id,
-                              "url", url,
-
-                /* Undocumented argument but it works with Red Hat Bugzilla version 4.2.4-7
-                 * and version 4.4.rc1.b02
-                 */
-                              "nomail", nomail_notify
-    );
 
     if (result)
         xmlrpc_DECREF(result);

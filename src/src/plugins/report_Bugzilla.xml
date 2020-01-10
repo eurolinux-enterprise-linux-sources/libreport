@@ -13,13 +13,11 @@
     <name xml:lang="eu">Bugzilla</name>
     <name xml:lang="fi">Bugzilla</name>
     <name xml:lang="fr">Bugzilla</name>
-    <name xml:lang="gl">Bugzilla</name>
     <name xml:lang="gu">બગઝીલા</name>
     <name xml:lang="hi">बगजिला</name>
     <name xml:lang="hu">Bugzilla</name>
     <name xml:lang="it">Bugzilla</name>
     <name xml:lang="ja">Bugzilla</name>
-    <name xml:lang="ka">Bugzilla</name>
     <name xml:lang="kn">ಬಗ್‌ಝಿಲ್ಲಾ</name>
     <name xml:lang="ko">Bugzilla </name>
     <name xml:lang="ml">ബഗ്സിലാ</name>
@@ -51,11 +49,10 @@
     <description xml:lang="es">Reportar el rastreo de errores de Bugzilla</description>
     <description xml:lang="fi">Raportoi Bugzillaan</description>
     <description xml:lang="fr">Rapporter sur le suivi de bogues de Bugzilla</description>
-    <description xml:lang="gl">Informar ao xestor de fallos Bugzilla</description>
     <description xml:lang="gu">બગઝીલા ભૂલ ટ્રેકરને અહેવાલ કરો</description>
     <description xml:lang="hi">बगजिला बग ट्रैकर में रिपोर्ट करें</description>
     <description xml:lang="hu">Jelentse a Bugzilla nyomkövetőjébe</description>
-    <description xml:lang="it">Riporta sul bug tracker di Bugzilla</description>
+    <description xml:lang="it">Riporta su </description>
     <description xml:lang="ja">Bugzilla バグトラッカーに報告する</description>
     <description xml:lang="kn">ಬಗ್‌ಝಿಲ್ಲಾ ದೋಷ ಟ್ರಾಕರಿಗೆ ವರದಿ ಮಾಡು</description>
     <description xml:lang="ko">Bugzilla 버그 추적기에 보고 </description>
@@ -74,7 +71,7 @@
     <description xml:lang="te">బగ్‌జిల్లా బగ్ ట్రాకర్‌కు నివేదించు</description>
     <description xml:lang="tr">Bugzilla hata izleyicisine raporla</description>
     <description xml:lang="uk">Повідомити до системи стеження за вадами Bugzilla</description>
-    <description xml:lang="zh_CN">汇报至 Bugzilla 缺陷跟踪系统</description>
+    <description xml:lang="zh_CN">向 Bugzilla bug 跟踪程序报告</description>
     <description xml:lang="zh_TW">回報至 Bugzilla 臭蟲追蹤器</description>
 
     <requires-items>component,duphash,os_release</requires-items>
@@ -100,13 +97,11 @@
             <label xml:lang="eu">Bugzilla URLa</label>
             <label xml:lang="fi">Bugzillan URL:</label>
             <label xml:lang="fr">URL de Bugzilla</label>
-            <label xml:lang="gl">URL de Bugzilla</label>
             <label xml:lang="gu">બગઝીલા URL</label>
             <label xml:lang="hi">बगजिला URL</label>
             <label xml:lang="hu">Bugzilla URL</label>
             <label xml:lang="it">URL di Bugzilla</label>
             <label xml:lang="ja">Bugzilla URL</label>
-            <label xml:lang="ka">Bugzilla-ის URL</label>
             <label xml:lang="kn">ಬಗ್‌ಝಿಲ್ಲಾ URL</label>
             <label xml:lang="ko">Bugzilla URL </label>
             <label xml:lang="ml">ബഗ്സിലാ യുആര്‍എല്‍</label>
@@ -140,13 +135,11 @@
             <description xml:lang="eu">Bugzilla zerbitzariaren helbidea</description>
             <description xml:lang="fi">Bugzilla-palvelimen osoite</description>
             <description xml:lang="fr">Adresse du serveur Bugzilla</description>
-            <description xml:lang="gl">Enderezo do servidor de Bugzilla</description>
             <description xml:lang="gu">બગઝીલા સર્વરનું સરનામું</description>
             <description xml:lang="hi">बगजिला सर्वर का पता</description>
             <description xml:lang="hu">Buzilla kiszolgáló címe</description>
             <description xml:lang="it">Indizzo del server Bugzilla</description>
             <description xml:lang="ja">Bugzilla サーバーのアドレス</description>
-            <description xml:lang="ka">Bugzilla-ის სერვერის მისამართი</description>
             <description xml:lang="kn">ಬಗ್‌ಝಿಲ್ಲಾ ಪರಿಚಾರಕದ ವಿಳಾಸ</description>
             <description xml:lang="ko">Bugzilla 서버 주소 </description>
             <description xml:lang="ml">ബഗ്സിലാ സര്‍വറിന്റെ വിലാസം</description>
@@ -187,7 +180,6 @@ The following url is either missing from the translation or has been translated:
 copy source</note-html>
             <note-html xml:lang="fi">Voit luoda bugzilla.redhat.com-tilin &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;täällä&lt;/a&gt;</note-html>
             <note-html xml:lang="fr">Vous pouvez créer un compte bugzilla.redhat.com &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;here&lt;/a&gt;</note-html>
-            <note-html xml:lang="gl">Pódese crear unha conta en bugzilla.redhat.com &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;aquí&lt;/a&gt;</note-html>
             <note-html xml:lang="gu">તમે bugzilla.redhat.com ખાતાને બનાવી શકો છો &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;here&lt;/a&gt;</note-html>
             <note-html xml:lang="hi">आप bugzilla.redhat.com खाता बना सकते हैं &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;here&lt;/a&gt;</note-html>
             <note-html xml:lang="hu">Készíthet bugzilla.redhat.com felhasználói azonosítót &lt;a href="https://bugzilla.redhat.com/createaccount.cgi"&gt;itt&lt;/a&gt;</note-html>
@@ -227,14 +219,12 @@ copy source</note-html>
             <label xml:lang="eu">Erabiltzaile-izena</label>
             <label xml:lang="fi">Käyttäjätunnus</label>
             <label xml:lang="fr">Nom d'utilisateur</label>
-            <label xml:lang="gl">Nome do usuario</label>
             <label xml:lang="gu">વપરાશકર્તા નામ</label>
             <label xml:lang="hi">उपयोक्ता नाम</label>
             <label xml:lang="hu">Felhasználói név</label>
             <label xml:lang="ia">Nomine de usator</label>
             <label xml:lang="it">Nome utente</label>
             <label xml:lang="ja">ユーザー名</label>
-            <label xml:lang="ka">მომხმარებელი</label>
             <label xml:lang="kn">ಬಳಕೆದಾರನ ಹೆಸರು</label>
             <label xml:lang="ko">사용자 이름 </label>
             <label xml:lang="lv">Lietotājvārds</label>
@@ -269,13 +259,11 @@ copy source</note-html>
             <description xml:lang="eu">Bugzilla kontuaren erabiltzaile-izena</description>
             <description xml:lang="fi">Bugzilla-tilin käyttäjätunnus</description>
             <description xml:lang="fr">Nom d'utilisateur du compte Bugzilla</description>
-            <description xml:lang="gl">Nome do usuario da conta de Bugzilla</description>
             <description xml:lang="gu">બગઝીલા ખાતા વપરાશકર્તા નામ</description>
             <description xml:lang="hi">बगजिला खाता उपयोक्ता नाम</description>
             <description xml:lang="hu">Bugzilla felhasználónév</description>
             <description xml:lang="it">Nome utente per l'account di Bugzilla</description>
             <description xml:lang="ja">Bugzilla アカウントのユーザー名</description>
-            <description xml:lang="ka">Bugzilla-ის ანგარიშის სახელი</description>
             <description xml:lang="kn">ಬಗ್‌ಝಿಲ್ಲಾ ಖಾತೆ ಬಳಕೆದಾರ ಹೆಸರು</description>
             <description xml:lang="ko">Bugzilla 계정 사용자 이름 </description>
             <description xml:lang="ml">ബഗ്സിലയുടെ അക്കൌണ്ട്</description>
@@ -310,14 +298,12 @@ copy source</note-html>
             <label xml:lang="eu">Pasahitza</label>
             <label xml:lang="fi">Salasana</label>
             <label xml:lang="fr">Mot de passe</label>
-            <label xml:lang="gl">Contrasinal</label>
             <label xml:lang="gu">પાસવર્ડ</label>
             <label xml:lang="hi">कूटशब्द</label>
             <label xml:lang="hu">Jelszó</label>
             <label xml:lang="ia">Contrasigno</label>
             <label xml:lang="it">Password</label>
             <label xml:lang="ja">パスワード</label>
-            <label xml:lang="ka">პაროლი</label>
             <label xml:lang="kn">ಗುಪ್ತಪದ</label>
             <label xml:lang="ko">암호 </label>
             <label xml:lang="lv">Parole</label>
@@ -352,13 +338,11 @@ copy source</note-html>
             <description xml:lang="eu">Bugzilla kontuaren pasahitza</description>
             <description xml:lang="fi">Bugzilla-tilin salasana</description>
             <description xml:lang="fr">Mot de passe du compte Bugzilla</description>
-            <description xml:lang="gl">Contrasinal da conta do Bugzilla</description>
             <description xml:lang="gu">બગઝીલા ખાતા પાસવર્ડ</description>
             <description xml:lang="hi">बगजिला खाता कूटशब्द</description>
             <description xml:lang="hu">Bugzilla felhasználói jelszó</description>
             <description xml:lang="it">Password account di bugzilla</description>
             <description xml:lang="ja">Bugzilla アカウントのパスワード</description>
-            <description xml:lang="ka">Bugzilla-ის ანგარიშის პაროლი</description>
             <description xml:lang="kn">ಬಗ್‌ಝಿಲ್ಲಾ ಖಾತೆ ಗುಪ್ತಪದ</description>
             <description xml:lang="ko">Bugzilla 계정 암호 </description>
             <description xml:lang="ml">ബഗ്സിലാ അക്കൌണ്ടിന്റെ രഹസ്യവാക്ക്</description>
@@ -391,13 +375,11 @@ copy source</note-html>
             <label xml:lang="es">Verificar SSL </label>
             <label xml:lang="fi">Tarkista SSL</label>
             <label xml:lang="fr">Vérifier SSL</label>
-            <label xml:lang="gl">Comprobar o SSL</label>
             <label xml:lang="gu">SSL ને ચકાસો</label>
             <label xml:lang="hi">SSL जाँचें</label>
             <label xml:lang="hu">SSL ellenőrzése</label>
             <label xml:lang="it">Verifica SSL</label>
             <label xml:lang="ja">SSL を照合する</label>
-            <label xml:lang="ka">SSL-ის შემოწმება</label>
             <label xml:lang="kn">SSL ಅನ್ನು ಪರಿಶೀಲಿಸು</label>
             <label xml:lang="ko">SSL 확인 </label>
             <label xml:lang="ml">എസ്എസ്എല്‍ ഉറപ്പാക്കുക</label>
@@ -428,7 +410,6 @@ copy source</note-html>
             <description xml:lang="es">Revisar la validez de la llave SSL</description>
             <description xml:lang="fi">Tarkista SSL-avaimen oikeellisuus</description>
             <description xml:lang="fr">Vérifier la validité de la clé SSL</description>
-            <description xml:lang="gl">Comprobar a validez da chave de SSL</description>
             <description xml:lang="gu">SSL કી યોગ્યતાને ચકાસો</description>
             <description xml:lang="hi">SSL कुंजी वैधता जाँचें</description>
             <description xml:lang="hu">Ellenőrizze a SSL kulcs érvényességét</description>
@@ -457,36 +438,7 @@ copy source</note-html>
         </option>
         <option type="bool" name="Bugzilla_CreatePrivate">
             <label>Restrict access</label>
-            <label xml:lang="de">Zugriff einschränken</label>
-            <label xml:lang="es">Restringir acceso</label>
-            <label xml:lang="fr">Restreindre l'accès</label>
-            <label xml:lang="hu">Hozzáférés szűkítése</label>
-            <label xml:lang="it">Restringi accesso</label>
-            <label xml:lang="ja">アクセス制限</label>
-            <label xml:lang="nl">Beperk toegang</label>
-            <label xml:lang="pl">Ogranicz dostęp</label>
-            <label xml:lang="pt">Acesso restrito</label>
-            <label xml:lang="pt_BR">Acesso restrito</label>
-            <label xml:lang="ru">Ограничить доступ</label>
-            <label xml:lang="sv">Begränsa åtkomst</label>
-            <label xml:lang="uk">Обмежити доступ</label>
-            <label xml:lang="zh_CN">访问限制</label>
-            <label xml:lang="zh_TW">限制存取</label>
             <description>Restrict access to the created bugzilla ticket allowing only users from specified groups to view it (see advanced settings for more details)</description>
-            <description xml:lang="de">Zugriff auf den erstellten Bugzilla-Fehlerbericht beschränken, so dass dieser nur von Nutzern bestimmter Gruppen eingesehen werden kann (siehe erweiterte Einstellungen für weitere Details)</description>
-            <description xml:lang="es">Restringir acceso al tique de bugzilla creado permitiendo ver sólo a los usuarios de los grupos especificados (vea las configuraciones avanzadas para más detalles)</description>
-            <description xml:lang="fr">Restreindre l'accès au ticket bugzilla créé en autorisant uniquement les utilisateurs des groupes indiqués de le visualiser (voir les réglages avancés pour plus de détails)</description>
-            <description xml:lang="hu">Hozzáférés szűkítése az elkészített bugzilla tikettnél - csak meghatározott csoportoknak, vagy felhasználóknak teszi lehetővé a megtekintését (tekintse meg a bővített beállításokat a további részletekhez)</description>
-            <description xml:lang="it">Restringi l'accesso al ticket di bugzilla creato, permettendo solo agli utenti di gruppi specificati di vederlo (vedere le impostazioni avanzate per maggiori dettagli)</description>
-            <description xml:lang="ja">作成した Bugzilla チケットのアクセスを制限します。指定されたグループのユーザーのみが参照できます (詳細は高度な設定を参照してください)。</description>
-            <description xml:lang="nl">Beperk toegang tot de aangemaakt bugzilla ticket om alleen gebruikers van gespecificeerde groepen het te laten bekijken (zie de geavanceerde instellingen voor meer details)</description>
-            <description xml:lang="pl">Ogranicza dostęp do utworzonego zgłoszenia w Bugzilli, umożliwiając wyświetlanie go tylko użytkownikom z podanych grup (więcej informacji znajduje się w zaawansowanych ustawieniach)</description>
-            <description xml:lang="pt_BR">Restringir o acesso ao ticket criado no bugzilla permitindo apenas que usuários de grupos específicos o vejam (veja as configurações avançadas para mais detalhes)</description>
-            <description xml:lang="ru">Ограничить доступ к созданному в bugzilla запросу, допуская к нему для просмотра лишь пользователей из указанных групп (см. дополнительные настройки для более подробной информации)</description>
-            <description xml:lang="sv">Begränsa åtkomst till det skapade bugzilla-ärendet och tillåt endast användare från angivna grupper att se det (se avancerade inställningar för fler detaljer)</description>
-            <description xml:lang="uk">Обмежити доступ до запису у системі стеження за вадами так, щоб переглядати його могли лише користувачів з певних груп (див. додаткові параметри, щоб дізнатися більше)</description>
-            <description xml:lang="zh_CN">通过用户组限制可访问 Bug 的用户(了解更多请进入高级选项)</description>
-            <description xml:lang="zh_TW">限制所建立的 bugzilla 申請單之存取狀況，僅讓特定群組的使用者可以檢視 (請見進階設定瞭解更多細節)</description>
             <default-value>no</default-value>
         </option>
         <advanced-options>
@@ -496,10 +448,8 @@ copy source</note-html>
                 <label xml:lang="de">Bugzilla-Produkt</label>
                 <label xml:lang="es">Producto Bugzilla</label>
                 <label xml:lang="fr">Produit Bugzilla</label>
-                <label xml:lang="gl">Produto de Bugzilla</label>
                 <label xml:lang="hi">बगज़ीला प्रॉडक्ट</label>
                 <label xml:lang="hu">Bugzilla termék</label>
-                <label xml:lang="it">Prodotto Bugzilla</label>
                 <label xml:lang="ja">Bugzilla 製品</label>
                 <label xml:lang="nl">Bugzilla product</label>
                 <label xml:lang="or">Bugzilla ଉତ୍ପାଦନ</label>
@@ -507,7 +457,6 @@ copy source</note-html>
                 <label xml:lang="pt_BR">Produto Bugzilla</label>
                 <label xml:lang="ru">Разработка Bugzilla</label>
                 <label xml:lang="sk">Produkt Bugzilly</label>
-                <label xml:lang="sv">Bugzillaprodukt</label>
                 <label xml:lang="uk">Продукт у Bugzilla</label>
                 <label xml:lang="zh_CN">Bugzilla 产品</label>
                 <label xml:lang="zh_TW">Bugzilla 產品</label>
@@ -517,10 +466,8 @@ copy source</note-html>
                 <note-html xml:lang="de">Spezifizieren Sie dies nur dann, wenn Sie ein anderes Projekt benötigen, als unter /etc/os-release angegeben.</note-html>
                 <note-html xml:lang="es">Especifique esto solo si necesita un producto diferente a los especificados en /etc/os-release</note-html>
                 <note-html xml:lang="fr">N'indiquer ceci que si vous avez besoin de spécifier un autre produit que celui indiqué dans /etc/os-release</note-html>
-                <note-html xml:lang="gl">Indique isto só se precisase dun produto diferente do que se indica en /etc/os-release</note-html>
                 <note-html xml:lang="hi">अगर आपको /etc/os-release में दिए हुए प्रॉडक्ट के अलावा दूसरा प्रॉडक्ट चाहिए तो ही यहाँ बतलाए</note-html>
                 <note-html xml:lang="hu">Csak akkor definiálja ezt, ha szükséges más termékhez, mint az '/etc/os-release'-ben meghatározott </note-html>
-                <note-html xml:lang="it">Specificare questo solo se occorre un prodotto diverso da quanto specificato in /etc/os-release</note-html>
                 <note-html xml:lang="ja">/etc/os-release に指定された製品と異なる製品が必要な場合のみ指定してください</note-html>
                 <note-html xml:lang="nl">Specificeer dit alleen als je een ander product nodig hebt dan gespecificeerd in /etc/os-release</note-html>
                 <note-html xml:lang="pl">Należy to podać tylko, jeśli wymagany jest produkt inny niż podany w pliku /etc/os-release</note-html>
@@ -528,7 +475,6 @@ copy source</note-html>
                 <note-html xml:lang="ru">Укажите, только если нужно отличное от указанного в /etc/os-release</note-html>
                 <note-html xml:lang="sk">Toto uveďte len v prípade ak potrebujete rozdielny produkt od uvedeného v
 /etc/os-release</note-html>
-                <note-html xml:lang="sv">Ange detta endast om du behövde en annan produkt än som angavs i /etc/os-release</note-html>
                 <note-html xml:lang="uk">Вкажіть, лише якщо вам слід вказати інший продукт, який не вказано у /etc/os-release</note-html>
                 <note-html xml:lang="zh_CN">只当您使用的产品和 /etc/os-release 中不同时在此处特别指出</note-html>
                 <note-html xml:lang="zh_TW">若您需要的產品與 /etc/os-release 中指定的不同，才請您指定此參數</note-html>
@@ -539,19 +485,15 @@ copy source</note-html>
                 <label xml:lang="de">Bugzilla-Produkteversion</label>
                 <label xml:lang="es">Versión de producto Bugzilla</label>
                 <label xml:lang="fr">Version du produit Bugzilla</label>
-                <label xml:lang="gl">Versión do produto de Bugzilla</label>
                 <label xml:lang="hi">बगज़ीला प्रॉडक्ट वर्षन</label>
                 <label xml:lang="hu">Bugzilla termék verziója</label>
-                <label xml:lang="it">Versione del prodotto Bugzilla</label>
                 <label xml:lang="ja">Bugzilla 製品バージョン</label>
-                <label xml:lang="ka">Bugzilla-ის პროდუქტის ვერსია</label>
                 <label xml:lang="nl">Bugzilla product versie</label>
                 <label xml:lang="or">Bugzilla ଉତ୍ପାଦନ ସଂସ୍କରଣ</label>
                 <label xml:lang="pl">Wersja produktu w Bugzilli</label>
                 <label xml:lang="pt_BR">Versão do produto Bugzilla</label>
                 <label xml:lang="ru">Версия разработки Bugzilla</label>
                 <label xml:lang="sk">Verzia produktu Bugzilly</label>
-                <label xml:lang="sv">Bugzillaproduktens version</label>
                 <label xml:lang="uk">Версія продукту у Bugzilla</label>
                 <label xml:lang="zh_CN">Bugzilla 产品版本</label>
                 <label xml:lang="zh_TW">Bugzilla 產品版本</label>
@@ -561,10 +503,8 @@ copy source</note-html>
                 <note-html xml:lang="de">Spezifizieren Sie dies nur dann, wenn Sie eine andere Projektversion benötigen, als unter /etc/os-release angegeben.</note-html>
                 <note-html xml:lang="es">Especifique esto solo si necesita una versión de producto diferente a la especificada en /etc/os-release</note-html>
                 <note-html xml:lang="fr">N'indiquer ceci que si vous avez besoin de spécifier une autre version de produit que celle indiquée dans /etc/os-release</note-html>
-                <note-html xml:lang="gl">Indique isto só se precisase dunha versión do produto diferente da que se indica en /etc/os-release</note-html>
                 <note-html xml:lang="hi">अगर आपको /etc/os-release में दिए हुए प्रॉडक्ट वर्षन के अलावा दूसरा वर्षन चाहिए तो ही यहाँ बतलाए</note-html>
                 <note-html xml:lang="hu">Csak akkor definiálja ezt, ha szükséges más termékhez, mint az '/etc/os-release'-ben meghatározott </note-html>
-                <note-html xml:lang="it">Specificare questo solo se occorre una versione di prodotto diversa da quella specificata in /etc/os-release</note-html>
                 <note-html xml:lang="ja">/etc/os-release に指定された製品バージョンと異なる製品が必要な場合のみ指定してください</note-html>
                 <note-html xml:lang="nl">Specificeer dit alleen als je een andere productversie nodig hebt dan gespecificeerd in /etc/os-release</note-html>
                 <note-html xml:lang="pl">Należy to podać tylko, jeśli wymagana jest wersja produktu inna niż podana w pliku /etc/os-release</note-html>
@@ -572,7 +512,6 @@ copy source</note-html>
                 <note-html xml:lang="ru">Укажите, только если нужна версия разработки, отличная от указанной в /etc/os-release</note-html>
                 <note-html xml:lang="sk">Toto uveďte len v prípade ak potrebujete rozdielnu verziu produktu od uvedenej v
 /etc/os-release</note-html>
-                <note-html xml:lang="sv">Ange detta endast om du behövde en annan produktversion än som angavs i /etc/os-release</note-html>
                 <note-html xml:lang="uk">Вкажіть, лише якщо вам слід вказати іншу версію продукту, яку не вказано у /etc/os-release</note-html>
                 <note-html xml:lang="zh_CN">只当您所使用产品版本和 /etc/os-release 中不同时在此特别指出</note-html>
                 <note-html xml:lang="zh_TW">若您需要的產品版本與 /etc/os-release 中指定的不同，才請您指定此參數</note-html>
@@ -583,21 +522,16 @@ copy source</note-html>
                 <label xml:lang="de">HTTP-Proxy</label>
                 <label xml:lang="es">Proxy HTTP</label>
                 <label xml:lang="fr">Mandataire HTTP</label>
-                <label xml:lang="gl">Proxy de HTTP</label>
                 <label xml:lang="hi">HTTP प्रॉक्सी</label>
                 <label xml:lang="hu">HTTP Proxy</label>
                 <label xml:lang="ia">Proxy HTTP</label>
-                <label xml:lang="it">Proxy HTTP</label>
                 <label xml:lang="ja">HTTP プロキシ</label>
-                <label xml:lang="ka">HTTP პროქსი</label>
                 <label xml:lang="nl">HTTP proxy</label>
                 <label xml:lang="or">HTTP ପ୍ରକ୍ସି</label>
                 <label xml:lang="pl">Pośrednik HTTP</label>
-                <label xml:lang="pt">HTTP Proxy</label>
                 <label xml:lang="pt_BR">Proxy HTTP</label>
                 <label xml:lang="ru">HTTP-прокси</label>
                 <label xml:lang="sk">HTTP Proxy</label>
-                <label xml:lang="sv">HTTP-proxy</label>
                 <label xml:lang="uk">HTTP-проксі</label>
                 <label xml:lang="zh_CN">HTTP 代理</label>
                 <label xml:lang="zh_TW">HTTP 代理</label>
@@ -607,10 +541,8 @@ copy source</note-html>
                 <note-html xml:lang="de">Proxy-Server für HTTP festlegen</note-html>
                 <note-html xml:lang="es">Fija el servidor proxy para ser usado por HTTP</note-html>
                 <note-html xml:lang="fr">Configure le serveur mandataire à utiliser pour HTTP</note-html>
-                <note-html xml:lang="gl">Indica o servidor de proxy que se desexa empregar para o HTTP</note-html>
                 <note-html xml:lang="hi">प्रॉक्सी सर्वर को सेट किया गया है HTTP के इस्तेमाल के लिए</note-html>
                 <note-html xml:lang="hu">HTTP használathoz egy proxy szervert állít be</note-html>
-                <note-html xml:lang="it">Imposta il server proxy da usare per HTTP</note-html>
                 <note-html xml:lang="ja">HTTP のために使用するプロキシサーバーを設定する</note-html>
                 <note-html xml:lang="nl">Stelt de proxyserver in om te gebruiken voor HTTP</note-html>
                 <note-html xml:lang="or">HTTP ପାଇଁ ବ୍ୟବହାର କରିବାକୁ ପ୍ରୋକ୍ସି ସର୍ଭର ସେଟ କରିଥାଏ</note-html>
@@ -618,7 +550,6 @@ copy source</note-html>
                 <note-html xml:lang="pt_BR">Configura o servidor proxy para usar HTTP</note-html>
                 <note-html xml:lang="ru">Выбирает прокси-сервер для использования с HTTP</note-html>
                 <note-html xml:lang="sk">Nastaví proxy server na použitie pre HTTP</note-html>
-                <note-html xml:lang="sv">Anger proxyservern som skall användas för HTTP</note-html>
                 <note-html xml:lang="uk">Встановити проксі-сервер, який слід використовувати для HTTP</note-html>
                 <note-html xml:lang="zh_CN">设定用于 HTTP 的代理服务器</note-html>
                 <note-html xml:lang="zh_TW">設定 HTTP 所要使用的代理伺服器</note-html>
@@ -629,20 +560,15 @@ copy source</note-html>
                 <label xml:lang="de">HTTPS-Proxy</label>
                 <label xml:lang="es">Proxy HTTPS</label>
                 <label xml:lang="fr">Mandataire HTTPS</label>
-                <label xml:lang="gl">Proxy de HTTPS</label>
                 <label xml:lang="hi">HTTPS प्रॉक्सी</label>
                 <label xml:lang="hu">HTTPS Proxy</label>
-                <label xml:lang="it">Proxy HTTPS</label>
                 <label xml:lang="ja">HTTPS プロキシ</label>
-                <label xml:lang="ka">HTTPS პროქსი</label>
                 <label xml:lang="nl">HTTPS proxy</label>
                 <label xml:lang="or">HTTPS ପ୍ରୋକ୍ସି</label>
                 <label xml:lang="pl">Pośrednik HTTPS</label>
-                <label xml:lang="pt">HTTPS Proxy</label>
                 <label xml:lang="pt_BR">Proxy HTTPS</label>
                 <label xml:lang="ru">HTTPS-прокси</label>
                 <label xml:lang="sk">HTTPS Proxy</label>
-                <label xml:lang="sv">HTTPS-proxy</label>
                 <label xml:lang="uk">HTTPS-проксі</label>
                 <label xml:lang="zh_CN">HTTPS 代理</label>
                 <label xml:lang="zh_TW">HTTPS 代理</label>
@@ -652,10 +578,8 @@ copy source</note-html>
                 <note-html xml:lang="de">Proxy-Server für HTTPS festlegen</note-html>
                 <note-html xml:lang="es">Fija el servidor proxy para ser usado por HTTPS</note-html>
                 <note-html xml:lang="fr">Configure le serveur mandataire à utiliser pour HTTPS</note-html>
-                <note-html xml:lang="gl">Indica o servidor de proxy que se desexa empregar para o HTTPS</note-html>
                 <note-html xml:lang="hi">प्रॉक्सी सर्वर को सेट किया गया है HTTPS के इस्तेमाल के लिए</note-html>
                 <note-html xml:lang="hu">HTTPS használatához egy proxy szervert állít be</note-html>
-                <note-html xml:lang="it">Imposta il server proxy da usare per HTTPS</note-html>
                 <note-html xml:lang="ja">HTTPS のために使用するプロキシサーバーを設定する</note-html>
                 <note-html xml:lang="nl">Stelt de proxyserver in om te gebruiken voor HTTPS</note-html>
                 <note-html xml:lang="or">HTTPS ପାଇଁ ବ୍ୟବହାର କରିବାକୁ ପ୍ରୋକ୍ସି ସର୍ଭର ସେଟ କରିଥାଏ</note-html>
@@ -663,45 +587,15 @@ copy source</note-html>
                 <note-html xml:lang="pt_BR">Configura o servidor proxy para usar HTTPS</note-html>
                 <note-html xml:lang="ru">Выбирает прокси-сервер для использования с HTTPS</note-html>
                 <note-html xml:lang="sk">Nastaví proxy server na použitie pre HTTPS</note-html>
-                <note-html xml:lang="sv">Anger proxyservern som skall användas för HTTPS</note-html>
                 <note-html xml:lang="uk">Встановити проксі-сервер, який слід використовувати для HTTPS</note-html>
                 <note-html xml:lang="zh_CN">设定用于 HTTPS 的代理服务器</note-html>
                 <note-html xml:lang="zh_TW">設定 HTTPS 所要使用的代理伺服器</note-html>
             </option>
             <option type="text" name="Bugzilla_PrivateGroups">
                 <label>Groups</label>
-                <label xml:lang="de">Gruppen</label>
-                <label xml:lang="es">Grupos</label>
-                <label xml:lang="fr">Groupes</label>
-                <label xml:lang="hu">Csoportok</label>
-                <label xml:lang="it">Gruppi</label>
-                <label xml:lang="ja">グループ</label>
-                <label xml:lang="nl">Groepen</label>
-                <label xml:lang="pl">Grupy</label>
-                <label xml:lang="pt">Grupos</label>
-                <label xml:lang="pt_BR">Grupos</label>
-                <label xml:lang="ru">Группы</label>
-                <label xml:lang="sv">Grupper</label>
-                <label xml:lang="uk">Групи</label>
-                <label xml:lang="zh_CN">组</label>
-                <label xml:lang="zh_TW">群組</label>
                 <allow-empty>yes</allow-empty>
                 <default-value>private</default-value>
                 <note-html>Restrict the access to specified groups &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="de">Zugriff auf bestimmte Gruppen beschränken &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="es">Restringe el acceso a los grupos especificados &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="fr">N'autoriser l'accès qu'aux groupes indiqués &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="hu">Hozzáférés korlátozása meghatározott csoportok számára &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="it">Restringi l'accesso a gruppi specifici &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="ja">アクセス権を指定されたグループ &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt; に制限します。</note-html>
-                <note-html xml:lang="nl">Beperk de toegang tot gespecificeerde groepen &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="pl">Ogranicza dostęp do podanych grup &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="pt_BR">Restringir o acesso a grupos específicos &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="ru">Предоставить доступ лишь указанным группам &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="sv">Begränsa åtkomsten till angivna grupper &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="uk">Обмежити доступ так, щоб його мали лише вказані групи &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="zh_CN">仅限特定组访问 &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
-                <note-html xml:lang="zh_TW">限制只讓特定群組存取 &lt;a href="https://github.com/abrt/abrt/wiki/FAQ#creating-private-bugzilla-tickets"&gt;?&lt;/a&gt;</note-html>
             </option>
         </advanced-options>
     </options>

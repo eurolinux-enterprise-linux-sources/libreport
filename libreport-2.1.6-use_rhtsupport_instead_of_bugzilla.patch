@@ -1,0 +1,22 @@
+diff -ruN libreport-2.1.6/src/lib/report_event.conf libreport-2.1.6.rhel7/src/lib/report_event.conf
+--- libreport-2.1.6/src/lib/report_event.conf	2013-07-25 14:46:21.000000000 +0200
++++ libreport-2.1.6.rhel7/src/lib/report_event.conf	2013-07-29 15:57:13.683788696 +0200
+@@ -49,7 +49,7 @@
+ #EVENT=report_Dummy analyzer=libreport echo "Hello world" >> /tmp/libreport.log
+ 
+ EVENT=report-gui analyzer=libreport
+-    report-gtk -e report_Bugzilla -- "$DUMP_DIR"
++    report-gtk -e report_RHTSupport -- "$DUMP_DIR"
+ 
+ EVENT=report-cli analyzer=libreport
+-    report-cli -e report_Bugzilla -- "$DUMP_DIR"
++    report-cli -e report_RHTSupport -- "$DUMP_DIR"
+diff -ruN libreport-2.1.6/src/plugins/bugzilla_anaconda_event.conf libreport-2.1.6.rhel7/src/plugins/bugzilla_anaconda_event.conf
+--- libreport-2.1.6/src/plugins/bugzilla_anaconda_event.conf	2013-07-10 13:20:16.000000000 +0200
++++ libreport-2.1.6.rhel7/src/plugins/bugzilla_anaconda_event.conf	2013-07-29 15:56:33.003487557 +0200
+@@ -7,4 +7,4 @@
+     report-gtk -- "$DUMP_DIR"
+ 
+ EVENT=report-cli component=anaconda
+-    report-cli -e report_Bugzilla -- "$DUMP_DIR"
++    report-cli -e report_RHTSupport -- "$DUMP_DIR"

@@ -123,10 +123,6 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 AR = @AR@
 ASCIIDOC = @ASCIIDOC@
-AUGEAS_CFLAGS = @AUGEAS_CFLAGS@
-AUGEAS_LENS_LIB_DIR = @AUGEAS_LENS_LIB_DIR@
-AUGEAS_LIBS = @AUGEAS_LIBS@
-AUGPARSE = @AUGPARSE@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOM4TE = @AUTOM4TE@
@@ -190,8 +186,6 @@ INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
 INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
 INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
-JOURNAL_CFLAGS = @JOURNAL_CFLAGS@
-JOURNAL_LIBS = @JOURNAL_LIBS@
 JSON_C_CFLAGS = @JSON_C_CFLAGS@
 JSON_C_LIBS = @JSON_C_LIBS@
 JSON_C_PACKAGE = @JSON_C_PACKAGE@
@@ -332,7 +326,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-EXTRA_DIST = package.m4 $(TESTSUITE_AT) atlocal.in conf
+EXTRA_DIST = package.m4 $(TESTSUITE_AT) atlocal.in
 TESTSUITE_AT = \
   local.at \
   testsuite.at \
@@ -341,12 +335,7 @@ TESTSUITE_AT = \
   osinfo.at \
   is_text_file.at \
   taghyperlinks.at \
-  glib_helpers.at \
-  sitem.at \
-  configuration_files.at \
-  reported_to.at \
-  make_description.at \
-  libreport_types.at
+  glib_helpers.at
 
 TESTSUITE = $(srcdir)/testsuite
 MAINTAINERCLEANFILES = Makefile.in $(TESTSUITE)
@@ -572,7 +561,6 @@ atconfig: $(top_builddir)/config.status
 	(cd ${top_builddir} && ./config.status ${subdir}/atconfig)
 
 check-local: $(check_DATA)
-	export AUGEAS_LENS_LIB="$(AUGEAS_LENS_LIB_DIR):$(abs_top_builddir)/augeas"; \
 	$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS)
 
 installcheck-local: $(check_DATA)

@@ -6,7 +6,6 @@ report_gtk_SOURCES = \
     main.c \
     wizard_glade.c
 
-
 # Required for gtk_builder_connect_signals() to work correctly:
 # -g
 # -Wl,--export-dynamic
@@ -43,8 +42,7 @@ EXTRA_DIST = $(GLADE_FILES)
 
 libreportconfdir = $(CONF_DIR)
 dist_libreportconf_DATA = \
-    forbidden_words.conf \
-    ignored_words.conf
+    forbidden_words.conf
 
 # For internal glade file storage in the binary:
 wizard.c: wizard_glade.c

@@ -104,7 +104,7 @@ int main(int argc, char **argv)
             FILE *outstream = fopen(output_file, open_mode);
             if (!outstream)
             {
-                VERB1 pwarn_msg("fopen");
+                VERB1 perror_msg("fopen");
                 msg = xasprintf(_("Can't open '%s' for writing. "
                                   "Please select another file:"), output_file);
                 continue;
@@ -134,7 +134,7 @@ int main(int argc, char **argv)
             struct dump_dir *dd = dd_opendir(dump_dir_name, /*flags:*/ 0);
             if (dd)
             {
-                char *msg = xasprintf("file: URL=file://%s", output_file);
+                char *msg = xasprintf("file: %s", output_file);
                 add_reported_to(dd, msg);
                 free(msg);
                 dd_close(dd);

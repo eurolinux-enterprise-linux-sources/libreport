@@ -161,7 +161,6 @@ libreport_web_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 	$(AM_CFLAGS) $(CFLAGS) $(libreport_web_la_LDFLAGS) $(LDFLAGS) \
 	-o $@
 libreport_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
 am_libreport_la_OBJECTS = libreport_la-xfuncs.lo \
 	libreport_la-is_in_string_list.lo \
@@ -177,13 +176,12 @@ am_libreport_la_OBJECTS = libreport_la-xfuncs.lo \
 	libreport_la-iso_date_string.lo libreport_la-strbuf.lo \
 	libreport_la-xatonum.lo libreport_la-spawn.lo \
 	libreport_la-dirsize.lo libreport_la-dump_dir.lo \
-	libreport_la-reported_to.lo libreport_la-abrt_sock.lo \
-	libreport_la-get_cmdline.lo \
-	libreport_la-configuration_files.lo libreport_la-make_descr.lo \
-	libreport_la-run_event.lo libreport_la-problem_data.lo \
-	libreport_la-create_dump_dir.lo libreport_la-abrt_types.lo \
-	libreport_la-parse_release.lo libreport_la-parse_options.lo \
-	libreport_la-steal_directory.lo \
+	libreport_la-abrt_sock.lo libreport_la-get_cmdline.lo \
+	libreport_la-load_plugin_settings.lo \
+	libreport_la-make_descr.lo libreport_la-run_event.lo \
+	libreport_la-problem_data.lo libreport_la-create_dump_dir.lo \
+	libreport_la-abrt_types.lo libreport_la-parse_release.lo \
+	libreport_la-parse_options.lo libreport_la-steal_directory.lo \
 	libreport_la-event_xml_parser.lo libreport_la-event_config.lo \
 	libreport_la-report.lo libreport_la-user_settings.lo \
 	libreport_la-client.lo libreport_la-utf8.lo \
@@ -264,10 +262,6 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 AR = @AR@
 ASCIIDOC = @ASCIIDOC@
-AUGEAS_CFLAGS = @AUGEAS_CFLAGS@
-AUGEAS_LENS_LIB_DIR = @AUGEAS_LENS_LIB_DIR@
-AUGEAS_LIBS = @AUGEAS_LIBS@
-AUGPARSE = @AUGPARSE@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOM4TE = @AUTOM4TE@
@@ -331,8 +325,6 @@ INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
 INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
 INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
-JOURNAL_CFLAGS = @JOURNAL_CFLAGS@
-JOURNAL_LIBS = @JOURNAL_LIBS@
 JSON_C_CFLAGS = @JSON_C_CFLAGS@
 JSON_C_LIBS = @JSON_C_LIBS@
 JSON_C_PACKAGE = @JSON_C_PACKAGE@
@@ -507,10 +499,9 @@ libreport_la_SOURCES = \
     spawn.c \
     dirsize.c \
     dump_dir.c \
-    reported_to.c \
     abrt_sock.c \
     get_cmdline.c \
-    configuration_files.c \
+    load_plugin_settings.c \
     make_descr.c \
     run_event.c \
     problem_data.c \
@@ -548,7 +539,6 @@ libreport_la_CPPFLAGS = \
     -DLARGE_DATA_TMP_DIR=\"$(LARGE_DATA_TMP_DIR)\" \
     $(GLIB_CFLAGS) \
     $(GOBJECT_CFLAGS) \
-    $(AUGEAS_CFLAGS) \
     -D_GNU_SOURCE
 
 libreport_la_LDFLAGS = \
@@ -556,9 +546,7 @@ libreport_la_LDFLAGS = \
 
 libreport_la_LIBADD = \
     $(GLIB_LIBS) \
-    $(JOURNAL_LIBS) \
-    $(GOBJECT_LIBS) \
-    $(AUGEAS_LIBS)
+    $(GOBJECT_LIBS)
 
 libreportconfdir = $(CONF_DIR)
 dist_libreportconf_DATA = \
@@ -713,7 +701,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-client.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-concat_path_file.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-config_item_info.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-configuration_files.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-copy_file_recursive.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-copyfd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-create_dump_dir.Plo@am__quote@
@@ -730,6 +717,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-is_in_comma_separated_list.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-is_in_string_list.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-iso_date_string.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-load_plugin_settings.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-logging.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-make_descr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-overlapping_strcpy.Plo@am__quote@
@@ -738,7 +726,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-problem_data.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-read_write.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-report.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-reported_to.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-run_event.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-skip_whitespace.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_la-spawn.Plo@am__quote@
@@ -967,13 +954,6 @@ libreport_la-dump_dir.lo: dump_dir.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libreport_la-dump_dir.lo `test -f 'dump_dir.c' || echo '$(srcdir)/'`dump_dir.c
 
-libreport_la-reported_to.lo: reported_to.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libreport_la-reported_to.lo -MD -MP -MF $(DEPDIR)/libreport_la-reported_to.Tpo -c -o libreport_la-reported_to.lo `test -f 'reported_to.c' || echo '$(srcdir)/'`reported_to.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libreport_la-reported_to.Tpo $(DEPDIR)/libreport_la-reported_to.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='reported_to.c' object='libreport_la-reported_to.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libreport_la-reported_to.lo `test -f 'reported_to.c' || echo '$(srcdir)/'`reported_to.c
-
 libreport_la-abrt_sock.lo: abrt_sock.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libreport_la-abrt_sock.lo -MD -MP -MF $(DEPDIR)/libreport_la-abrt_sock.Tpo -c -o libreport_la-abrt_sock.lo `test -f 'abrt_sock.c' || echo '$(srcdir)/'`abrt_sock.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libreport_la-abrt_sock.Tpo $(DEPDIR)/libreport_la-abrt_sock.Plo
@@ -988,12 +968,12 @@ libreport_la-get_cmdline.lo: get_cmdline.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libreport_la-get_cmdline.lo `test -f 'get_cmdline.c' || echo '$(srcdir)/'`get_cmdline.c
 
-libreport_la-configuration_files.lo: configuration_files.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libreport_la-configuration_files.lo -MD -MP -MF $(DEPDIR)/libreport_la-configuration_files.Tpo -c -o libreport_la-configuration_files.lo `test -f 'configuration_files.c' || echo '$(srcdir)/'`configuration_files.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libreport_la-configuration_files.Tpo $(DEPDIR)/libreport_la-configuration_files.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='configuration_files.c' object='libreport_la-configuration_files.lo' libtool=yes @AMDEPBACKSLASH@
+libreport_la-load_plugin_settings.lo: load_plugin_settings.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libreport_la-load_plugin_settings.lo -MD -MP -MF $(DEPDIR)/libreport_la-load_plugin_settings.Tpo -c -o libreport_la-load_plugin_settings.lo `test -f 'load_plugin_settings.c' || echo '$(srcdir)/'`load_plugin_settings.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libreport_la-load_plugin_settings.Tpo $(DEPDIR)/libreport_la-load_plugin_settings.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='load_plugin_settings.c' object='libreport_la-load_plugin_settings.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libreport_la-configuration_files.lo `test -f 'configuration_files.c' || echo '$(srcdir)/'`configuration_files.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libreport_la-load_plugin_settings.lo `test -f 'load_plugin_settings.c' || echo '$(srcdir)/'`load_plugin_settings.c
 
 libreport_la-make_descr.lo: make_descr.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libreport_la-make_descr.lo -MD -MP -MF $(DEPDIR)/libreport_la-make_descr.Tpo -c -o libreport_la-make_descr.lo `test -f 'make_descr.c' || echo '$(srcdir)/'`make_descr.c

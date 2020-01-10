@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 PROJECT_BRIEF          = "A tool to inform users about various problems on the running system"
 PROJECT_NAME           = libreport
-PROJECT_NUMBER         = 2.1.11
+PROJECT_NUMBER         = 2.1.7
 PROJECT_LOGO           = "../icons/hicolor_apps_48x48_abrt.png"
 DOXYFILE_ENCODING      = UTF-8
 OUTPUT_DIRECTORY       = ../apidoc/

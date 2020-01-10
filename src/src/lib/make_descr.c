@@ -97,38 +97,6 @@ char *make_description(problem_data_t *problem_data, char **names_to_skip,
         }
     }
 
-    if (desc_flags & MAKEDESC_SHOW_URLS)
-    {
-        const char *reported_to = problem_data_get_content_or_NULL(problem_data, FILENAME_REPORTED_TO);
-        if (reported_to != NULL)
-        {
-            GList *reports = read_entire_reported_to_data(reported_to);
-
-            /* The value part begins on 17th column */
-            /*                        0123456789ABCDEF*/
-            const char *pad_prefix = "                ";
-            char *first_prefix = xasprintf("%s%*s", _("Reported:"), 16 - strlen(_("Reported:")), "");
-            const char *prefix     = first_prefix;
-            for (GList *iter = reports; iter != NULL; iter = g_list_next(iter))
-            {
-                const report_result_t *const report = (report_result_t *)iter->data;
-
-                if (report->url == NULL)
-                    continue;
-
-                strbuf_append_strf(buf_dsc, "%s%s\n", prefix, report->url);
-
-                if (prefix == first_prefix)
-                {   /* Only the first URL is prefixed by 'Reported:' */
-                    empty = false;
-                    prefix = pad_prefix;
-                }
-            }
-            free(first_prefix);
-            g_list_free_full(reports, (GDestroyNotify)free_report_result);
-        }
-    }
-
     bool append_empty_line = !empty;
     if (desc_flags & MAKEDESC_SHOW_FILES)
     {
@@ -309,24 +277,6 @@ static const char *const blacklisted_items[] = {
     NULL
 };
 
-/* Items we don't want to include in email */
-static const char *const blacklisted_items_mailx[] = {
-    CD_DUMPDIR        ,
-    FILENAME_ANALYZER ,
-    FILENAME_TYPE     ,
-    FILENAME_COREDUMP ,
-    FILENAME_DUPHASH  ,
-    FILENAME_UUID     ,
-    FILENAME_COUNT    ,
-    FILENAME_TAINTED_SHORT,
-    FILENAME_ARCHITECTURE,
-    FILENAME_PACKAGE,
-    FILENAME_OS_RELEASE,
-    FILENAME_COMPONENT,
-    FILENAME_REASON,
-    NULL
-};
-
 char* make_description_bz(problem_data_t *problem_data, unsigned max_text_size)
 {
     return make_description(
@@ -342,16 +292,6 @@ char* make_description_logger(problem_data_t *problem_data, unsigned max_text_si
     return make_description(
                 problem_data,
                 (char**)blacklisted_items,
-                max_text_size,
-                MAKEDESC_SHOW_FILES | MAKEDESC_SHOW_MULTILINE
-    );
-}
-
-char* make_description_mailx(problem_data_t *problem_data, unsigned max_text_size)
-{
-    return make_description(
-                problem_data,
-                (char**)blacklisted_items_mailx,
                 max_text_size,
                 MAKEDESC_SHOW_FILES | MAKEDESC_SHOW_MULTILINE
     );

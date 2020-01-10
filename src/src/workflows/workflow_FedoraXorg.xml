@@ -1,39 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
     <name>Report to Fedora</name>
-    <name xml:lang="as">Fedora লৈ সংবাদন কৰক</name>
-    <name xml:lang="bg">Рапорт към Fedora</name>
-    <name xml:lang="de">An Fedora melden</name>
-    <name xml:lang="es">Enviar a Fedora</name>
-    <name xml:lang="fr">Rapporter à Fedora</name>
-    <name xml:lang="hi">Fedora को  रिपोर्ट कीजिए</name>
-    <name xml:lang="hu">Jelentse a Fedorának</name>
-    <name xml:lang="it">Riportare a Fedora</name>
-    <name xml:lang="ja">Fedora に報告</name>
-    <name xml:lang="nl">Rapporteer aan Fedora</name>
-    <name xml:lang="pl">Zgłasza Projektowi Fedora</name>
-    <name xml:lang="pt">Reportar ao Fedora</name>
-    <name xml:lang="pt_BR">Relatar para o Fedora</name>
-    <name xml:lang="ru">Сообщить в Fedora</name>
-    <name xml:lang="sv">Rapportera till Fedora</name>
-    <name xml:lang="uk">Повідомити до Fedora</name>
-    <name xml:lang="zh_CN">汇报至 Fedora</name>
-    <name xml:lang="zh_TW">回報至 Fedora</name>
+    <name xml:lang="sk">Nahlásiť na Fedoru</name>
     <description>Process the X Server problem using the Fedora infrastructure</description>
-    <description xml:lang="de">X Server-Fehler mit Hilfe der Fedora-Infrastruktur verarbeiten</description>
-    <description xml:lang="es">Procese el problema del Servidor X usando la infraestructura de Fedora</description>
-    <description xml:lang="fr">Traiter l'incident du serveur X en utilisant l'infrastructure Fedora</description>
-    <description xml:lang="hu">X kiszolgáló hiba feldolgozása a Fedora infrastruktúra alkalmazásával</description>
-    <description xml:lang="it">Processa il problema del server X utilizzando l'infrastruttura di Fedora</description>
-    <description xml:lang="ja">Fedora インフラストラクチャーを使用して X サーバーの問題を処理する</description>
-    <description xml:lang="nl">Verwerk het X Server probleem met de Fedora infrastructuur</description>
-    <description xml:lang="pl">Przetwarza problem serwera X używając infrastruktury Projektu Fedora</description>
-    <description xml:lang="pt_BR">Processar o problema do Servidor X utilizando a infraestrutura do Fedora</description>
-    <description xml:lang="ru">Обработать ошибку X Server, используя средства Fedora</description>
-    <description xml:lang="sv">Bearbeta X-serverproblemet med Fedoras infrastruktur</description>
-    <description xml:lang="uk">Обробити дані щодо проблеми з графічним сервером за допомогою інфраструктури Fedora</description>
-    <description xml:lang="zh_CN">使用 Fedora 基础设施处理 X 服务器故障</description>
-    <description xml:lang="zh_TW">使用 Fedora 基礎設施處理 X 伺服器問題</description>
 
     <events>
         <event>report_Bugzilla</event>

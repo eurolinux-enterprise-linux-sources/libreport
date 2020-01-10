@@ -67,7 +67,9 @@ pid_t fork_execv_on_steroids(int flags,
 
 	/* Prepare it before fork, to avoid thread-unsafe malloc there */
 	char *prog_as_string = NULL;
-	prog_as_string = concat_str_vector(argv);
+	VERB1 {
+		prog_as_string = concat_str_vector(argv);
+	}
 	gid_t gid;
 	if (flags & EXECFLG_SETGUID) {
 		struct passwd* pw = getpwuid(uid);
@@ -116,7 +118,7 @@ pid_t fork_execv_on_steroids(int flags,
 		}
 
 		/* This should be done BEFORE stderr redirect */
-		log_notice("Executing: %s", prog_as_string);
+		VERB1 log("Executing: %s", prog_as_string);
 
 		if (flags & EXECFLG_ERR2OUT) {
 			/* Want parent to see errors in the same stream */

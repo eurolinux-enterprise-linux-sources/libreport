@@ -32,25 +32,19 @@ TESTSUITE_AT = \
   osinfo.at \
   is_text_file.at \
   taghyperlinks.at \
-  glib_helpers.at \
-  sitem.at \
-  configuration_files.at \
-  reported_to.at \
-  make_description.at \
-  libreport_types.at
+  glib_helpers.at
 
 EXTRA_DIST += $(TESTSUITE_AT)
 TESTSUITE = $(srcdir)/testsuite
 MAINTAINERCLEANFILES = Makefile.in $(TESTSUITE)
 check_DATA = atconfig atlocal $(TESTSUITE)
 DISTCLEANFILES = atconfig
-EXTRA_DIST += atlocal.in conf
+EXTRA_DIST += atlocal.in
 
 atconfig: $(top_builddir)/config.status
 	(cd ${top_builddir} && ./config.status ${subdir}/atconfig)
 
 check-local: $(check_DATA)
-	export AUGEAS_LENS_LIB="$(AUGEAS_LENS_LIB_DIR):$(abs_top_builddir)/augeas"; \
 	$(SHELL) '$(TESTSUITE)' $(TESTSUITEFLAGS)
 
 installcheck-local: $(check_DATA)

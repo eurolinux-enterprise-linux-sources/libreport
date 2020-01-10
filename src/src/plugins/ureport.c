@@ -22,15 +22,9 @@
 #include "ureport.h"
 #include "libreport_curl.h"
 
-#define CONF_FILE_PATH PLUGINS_CONF_DIR"/ureport.conf"
-
+#define SERVER_URL "https://retrace.fedoraproject.org/faf"
 #define REPORT_URL_SFX "reports/new/"
 #define ATTACH_URL_SFX "reports/attach/"
-#define BTHASH_URL_SFX "reports/bthash/"
-
-#define VALUE_FROM_CONF(opt, var, tr) do { const char *value = getenv("uReport_"opt); \
-        if (!value) { value = get_map_string_item_or_NULL(settings, opt); } if (value) { var = tr(value); } \
-    } while(0)
 
 /*
  * Loads uReport configuration from various sources.
@@ -40,10 +34,15 @@
  *
  * @param config a server configuration to be populated
  */
-static void load_ureport_server_config(struct ureport_server_config *config, map_string_t *settings)
+static void load_ureport_server_config(struct ureport_server_config *config)
 {
-    VALUE_FROM_CONF("URL", config->ur_url, (const char *));
-    VALUE_FROM_CONF("SSLVerify", config->ur_ssl_verify, string_to_bool);
+    const char *environ;
+
+    environ = getenv("uReport_URL");
+    config->ur_url = environ ? environ : config->ur_url;
+
+    environ = getenv("uReport_SSLVerify");
+    config->ur_ssl_verify = environ ? string_to_bool(environ) : config->ur_ssl_verify;
 }
 
 struct ureport_server_response {
@@ -272,8 +271,7 @@ static struct ureport_server_response *get_server_response(post_state_t *post_st
             && post_state->http_resp_code != 413)
     {
         /* can't print better error message */
-        error_msg(_("Unexpected HTTP response from '%s': %d"), config->ur_url, post_state->http_resp_code);
-        log_notice("%s", post_state->body);
+        error_msg(_("Unexpected HTTP response from '%s': %d\n%s"), config->ur_url, post_state->http_resp_code, post_state->body);
         return NULL;
     }
 
@@ -281,8 +279,7 @@ static struct ureport_server_response *get_server_response(post_state_t *post_st
 
     if (is_error(json))
     {
-        error_msg(_("Unable to parse response from ureport server at '%s"), config->ur_url);
-        log_notice("%s", post_state->body);
+        error_msg(_("Unable to parse response from ureport server at '%s':\n%s"), config->ur_url, post_state->body);
         json_object_put(json);
         return NULL;
     }
@@ -303,21 +300,12 @@ static struct ureport_server_response *get_server_response(post_state_t *post_st
     return response;
 }
 
-typedef post_state_t *(*attach_handler)(const char *, void *, struct ureport_server_config *);
-
-static post_state_t *wrp_ureport_attach_rhbz(const char *ureport_hash, int *rhbz_bug,
-        struct ureport_server_config *config)
-{
-    return ureport_attach_rhbz(ureport_hash, *rhbz_bug, config);
-}
-
-static bool perform_attach(struct ureport_server_config *config, const char *ureport_hash,
-        attach_handler handler, void *args)
+static bool perform_attach(struct ureport_server_config *config, const char *ureport_hash, int rhbz_bug)
 {
     char *dest_url = concat_path_file(config->ur_url, ATTACH_URL_SFX);
     const char *old_url = config->ur_url;
     config->ur_url = dest_url;
-    post_state_t *post_state = handler(ureport_hash, args, config);
+    post_state_t *post_state = ureport_attach_rhbz(ureport_hash, rhbz_bug, config);
     config->ur_url = old_url;
     free(dest_url);
 
@@ -347,159 +335,91 @@ int main(int argc, char **argv)
     abrt_init(argv);
 
     struct ureport_server_config config = {
-        .ur_url = NULL,
+        .ur_url = SERVER_URL,
         .ur_ssl_verify = true,
     };
 
-    enum {
-        OPT_v = 1 << 0,
-        OPT_d = 1 << 1,
-        OPT_u = 1 << 2,
-        OPT_k = 1 << 3,
-    };
-
-    int ret = 1; /* "failure" (for now) */
     bool insecure = !config.ur_ssl_verify;
-    const char *conf_file = CONF_FILE_PATH;
-    const char *arg_server_url = NULL;
+    bool attach_reported_to = false;
     const char *dump_dir_path = ".";
     const char *ureport_hash = NULL;
-    bool ureport_hash_from_rt = false;
     int rhbz_bug = -1;
-    bool rhbz_bug_from_rt = false;
-    const char *email_address = NULL;
-    bool email_address_from_env = false;
     struct dump_dir *dd = NULL;
     struct options program_options[] = {
         OPT__VERBOSE(&g_verbose),
         OPT__DUMP_DIR(&dump_dir_path),
-        OPT_STRING('u', "url", &arg_server_url, "URL", _("Specify server URL")),
+        OPT_STRING('u', "url", &config.ur_url, "URL", _("Specify server URL")),
         OPT_BOOL('k', "insecure", &insecure,
                           _("Allow insecure connection to ureport server")),
-        OPT_STRING('c', NULL, &conf_file, "FILE", _("Configuration file")),
         OPT_STRING('a', "attach", &ureport_hash, "BTHASH",
-                          _("bthash of uReport to attach (conflicts with -A)")),
-        OPT_BOOL('A', "attach-rt", &ureport_hash_from_rt,
-                          _("attach to a bthash from reported_to (conflicts with -a)")),
-        OPT_STRING('e', "email", &email_address, "EMAIL",
-                          _("contact e-mail address (requires -a|-A, conflicts with -E)")),
-        OPT_BOOL('E', "email-env", &email_address_from_env,
-                          _("contact e-mail address from environment or configuration file (requires -a|-A, conflicts with -e)")),
+                          _("bthash of uReport to attach")),
         OPT_INTEGER('b', "bug-id", &rhbz_bug,
-                          _("attach RHBZ bug (requires -a|-A, conflicts with -B)")),
-        OPT_BOOL('B', "bug-id-rt", &rhbz_bug_from_rt,
-                          _("attach last RHBZ bug from reported_to (requires -a|-A, conflicts with -b)")),
+                          _("Attach RHBZ bug (requires -a)")),
+        OPT_BOOL('r', "attach-reported-to", &attach_reported_to,
+                          _("Attach contents of reported_to")),
         OPT_END(),
     };
 
     const char *program_usage_string = _(
-        "& [-v] [-c FILE] [-u URL] [-k] [-A -a bthash -B -b bug-id -E -e email] [-d DIR]\n"
+        "& [-v] [-u URL] [-k] [-a bthash -b bug-id] [-r] [-d DIR]\n"
         "\n"
-        "Upload micro report or add an attachment to a micro report\n"
-        "\n"
-        "Reads the default configuration from "CONF_FILE_PATH
+        "Upload micro report or add an attachment to a micro report"
     );
 
-    unsigned opts = parse_opts(argc, argv, program_options, program_usage_string);
+    parse_opts(argc, argv, program_options, program_usage_string);
 
-    map_string_t *settings = new_map_string();
-    load_conf_file(conf_file, settings, /*skip key w/o values:*/ false);
-
-    load_ureport_server_config(&config, settings);
-
-    if (opts & OPT_u)
-        config.ur_url = arg_server_url;
-    if (opts & OPT_k)
-        config.ur_ssl_verify = !insecure;
-
-    if (!config.ur_url)
-        error_msg_and_die("You need to specify server URL");
-
+    config.ur_ssl_verify = !insecure;
+    load_ureport_server_config(&config);
     post_state_t *post_state = NULL;
 
-    if (ureport_hash && ureport_hash_from_rt)
-        error_msg_and_die("You need to pass either -a bthash or -A");
+    /* we either need both -b & -a or none of them */
+    if (ureport_hash && rhbz_bug > 0)
+        return perform_attach(&config, ureport_hash, rhbz_bug);
+    if (ureport_hash && rhbz_bug <= 0)
+        error_msg_and_die(_("You need to specify bug ID to attach."));
+    if (!ureport_hash && rhbz_bug > 0)
+        error_msg_and_die(_("You need to specify bthash of the uReport to attach."));
 
-    if (rhbz_bug >= 0 && rhbz_bug_from_rt)
-        error_msg_and_die("You need to pass either -b bug-id or -B");
-
-    if (email_address && email_address_from_env)
-        error_msg_and_die("You need to pass either -e bthash or -E");
-
-    if (ureport_hash_from_rt || rhbz_bug_from_rt)
+    /* -r */
+    if (attach_reported_to)
     {
         dd = dd_opendir(dump_dir_path, DD_OPEN_READONLY);
         if (!dd)
             xfunc_die();
 
-        if (ureport_hash_from_rt)
-        {
-            report_result_t *ureport_result = find_in_reported_to(dd, "uReport");
-
-            if (!ureport_result || !ureport_result->bthash)
-                error_msg_and_die(_("This problem does not have an uReport assigned."));
-
-            /* sorry, this will be leaked */
-            ureport_hash = xstrdup(ureport_result->bthash);
-
-            free_report_result(ureport_result);
-        }
-
-        if (rhbz_bug_from_rt)
-        {
-            report_result_t *bz_result = find_in_reported_to(dd, "Bugzilla");
-
-            if (!bz_result || !bz_result->url)
-                error_msg_and_die(_("This problem has not been reported to Bugzilla."));
-
-            char *bugid_ptr = strstr(bz_result->url, "show_bug.cgi?id=");
-            if (!bugid_ptr)
-                error_msg_and_die(_("Unable to find bug ID in bugzilla URL '%s'"), bz_result->url);
-            bugid_ptr += strlen("show_bug.cgi?id=");
-
-            /* we're just reading int, sscanf works fine */
-            if (sscanf(bugid_ptr, "%d", &rhbz_bug) != 1)
-                error_msg_and_die(_("Unable to parse bug ID from bugzilla URL '%s'"), bz_result->url);
-
-            free_report_result(bz_result);
-        }
+        report_result_t *ureport_result = find_in_reported_to(dd, "uReport");
+        report_result_t *bz_result = find_in_reported_to(dd, "Bugzilla");
 
         dd_close(dd);
+
+        if (!ureport_result || !ureport_result->bthash)
+            error_msg_and_die(_("This problem does not have an uReport assigned."));
+
+        if (!bz_result || !bz_result->url)
+            error_msg_and_die(_("This problem has not been reported to Bugzilla."));
+
+        char *bthash = xstrdup(ureport_result->bthash);
+        free_report_result(ureport_result);
+
+        char *bugid_ptr = strstr(bz_result->url, "show_bug.cgi?id=");
+        if (!bugid_ptr)
+            error_msg_and_die(_("Unable to find bug ID in bugzilla URL '%s'"), bz_result->url);
+        bugid_ptr += strlen("show_bug.cgi?id=");
+        int bugid;
+        /* we're just reading int, sscanf works fine */
+        if (sscanf(bugid_ptr, "%d", &bugid) != 1)
+            error_msg_and_die(_("Unable to parse bug ID from bugzilla URL '%s'"), bz_result->url);
+
+        free_report_result(bz_result);
+
+        const int result = perform_attach(&config, bthash, bugid);
+
+        free(bthash);
+        return result;
     }
-
-    if (email_address_from_env)
-    {
-        VALUE_FROM_CONF("ContactEmail", email_address, (const char *));
-
-        if (!email_address)
-            error_msg_and_die(_("Neither environment variable 'uReport_ContactEmail' nor configuration option 'ContactEmail' is set"));
-    }
-
-    if (ureport_hash)
-    {
-        if (rhbz_bug < 0 && !email_address)
-            error_msg_and_die(_("You need to specify bug ID, contact email or both"));
-
-        if (rhbz_bug >= 0)
-        {
-            if (perform_attach(&config, ureport_hash, (attach_handler)wrp_ureport_attach_rhbz, (void *)&rhbz_bug))
-                goto finalize;
-        }
-
-        if (email_address)
-        {
-            if (perform_attach(&config, ureport_hash, (attach_handler)ureport_attach_email, (void *)email_address))
-                goto finalize;
-        }
-
-        ret = 0;
-        goto finalize;
-    }
-    if (!ureport_hash && (rhbz_bug >= 0 || email_address))
-        error_msg_and_die(_("You need to specify bthash of the uReport to attach."));
 
     /* -b, -a nor -r were specified - upload uReport from dump_dir */
-    const char *server_url = config.ur_url;
+    int ret = 1; /* "failure" (for now) */
     char *dest_url = concat_path_file(config.ur_url, REPORT_URL_SFX);
     config.ur_url = dest_url;
 
@@ -526,7 +446,7 @@ int main(int argc, char **argv)
 
     if (!response->is_error)
     {
-        log_notice("is known: %s", response->value);
+        VERB1 log("is known: %s", response->value);
         ret = 0; /* "success" */
 
         dd = dd_opendir(dump_dir_path, /* flags */ 0);
@@ -538,12 +458,6 @@ int main(int argc, char **argv)
             char *msg = xasprintf("uReport: BTHASH=%s", response->bthash);
             add_reported_to(dd, msg);
             free(msg);
-
-            char *bthash_url = concat_path_file(server_url, BTHASH_URL_SFX);
-            msg = xasprintf("ABRT Server: URL=%s%s", bthash_url, response->bthash);
-            add_reported_to(dd, msg);
-            free(msg);
-            free(bthash_url);
         }
 
         if (response->reported_to_list)
@@ -577,9 +491,6 @@ int main(int argc, char **argv)
 format_err:
     free_post_state(post_state);
     free(dest_url);
-
-finalize:
-    free_map_string(settings);
 
     return ret;
 }

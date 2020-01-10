@@ -1,38 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
     <name>Report to Fedora</name>
-    <name xml:lang="as">Fedora লৈ সংবাদন কৰক</name>
-    <name xml:lang="bg">Рапорт към Fedora</name>
-    <name xml:lang="de">An Fedora melden</name>
-    <name xml:lang="es">Enviar a Fedora</name>
-    <name xml:lang="fr">Rapporter à Fedora</name>
-    <name xml:lang="hi">Fedora को  रिपोर्ट कीजिए</name>
-    <name xml:lang="hu">Jelentse a Fedorának</name>
-    <name xml:lang="it">Riportare a Fedora</name>
-    <name xml:lang="ja">Fedora に報告</name>
-    <name xml:lang="nl">Rapporteer aan Fedora</name>
-    <name xml:lang="pl">Zgłasza Projektowi Fedora</name>
-    <name xml:lang="pt">Reportar ao Fedora</name>
-    <name xml:lang="pt_BR">Relatar para o Fedora</name>
-    <name xml:lang="ru">Сообщить в Fedora</name>
-    <name xml:lang="sv">Rapportera till Fedora</name>
-    <name xml:lang="uk">Повідомити до Fedora</name>
-    <name xml:lang="zh_CN">汇报至 Fedora</name>
-    <name xml:lang="zh_TW">回報至 Fedora</name>
+    <name xml:lang="sk">Nahlásiť na Fedoru</name>
     <description>Process the python exception using the Fedora infrastructure</description>
-    <description xml:lang="de">Python-Ausnahme mit Hilfe der Fedora-Infrastruktur verarbeiten</description>
-    <description xml:lang="es">Procese la excepción de python usando la infraestructura de Fedora</description>
-    <description xml:lang="fr">Traitez l'exception Python en utilisant l'infrastructure Fedora</description>
-    <description xml:lang="hu">Python kivétel hiba feldolgozása a Fedora infrastruktúra alkalmazásával</description>
-    <description xml:lang="it">Processa l'eccezione di python utilizzando l'infrastruttura di Fedora</description>
-    <description xml:lang="ja">Fedora インフラストラクチャーを使用して Python 例外を処理する</description>
-    <description xml:lang="nl">Verwerk de python exception met de Fedora infrastructuur</description>
-    <description xml:lang="pt_BR">Processar a exceção do python utilizando a infraestrutura do Fedora</description>
-    <description xml:lang="ru">Обработать исключение Python, используя средства Fedora</description>
-    <description xml:lang="sv">Bearbeta pythonundantaget med Fedoras infrastruktur</description>
-    <description xml:lang="uk">Обробити дані щодо виключення Python за допомогою інфраструктури Fedora</description>
-    <description xml:lang="zh_CN">使用 Fedora 基础设施处理 Python 异常</description>
-    <description xml:lang="zh_TW">使用 Fedora 基礎設施處理 python 例外</description>
 
     <events>
         <event>report_uReport</event>

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
-    <name>Report to Red Hat Customer Portal</name>
+    <name>Report to Red Hat</name>
+    <name xml:lang="de">An Red Hat melden</name>
     <description>Process the kernel crash using the Red Hat infrastructure</description>
+    <description xml:lang="as">Red Hat আন্তঃগাথনি ব্যৱহাৰ কৰি কাৰনেল স্খলন প্ৰক্ৰিয়া কৰক</description>
     <description xml:lang="de">Kernel-Absturzmeldung mit Hilfe der Red Hat-Infrastruktur verarbeiten</description>
-    <description xml:lang="es">Procesar el accidente del núcleo usando la infraestructura Red Hat</description>
-    <description xml:lang="fr">Traiter le plantage du noyau en utilisant l'infrastructure Red Hat</description>
-    <description xml:lang="hi">Red Hat infrastructure का इस्तेमाल करके kernel crash को प्रोसेस कीजिए</description>
-    <description xml:lang="hu">Kernel ütközés feldolgozása a Red Hat infrastruktúra alkalmazásával</description>
-    <description xml:lang="pl">Przetwarza awarię jądra używając infrastruktury firmy Red Hat</description>
-    <description xml:lang="pt_BR">Processar a quebra do Kernel utilizando a infraestrutura da Red Hat</description>
-    <description xml:lang="ru">Проанализировать сбой ядра с использованием средств Red Hat</description>
-    <description xml:lang="sv">Bearbeta kärnkraschen med Red Hats infrastruktur</description>
-    <description xml:lang="uk">Обробити дані щодо аварії ядра за допомогою інфраструктури Red Hat</description>
-    <description xml:lang="zh_TW">使用 Red Hat 基礎架構處理內核崩潰問題</description>
+    <description xml:lang="ja">Red Hat インフラストラクチャーを使用して kernel クラッシュを処理する</description>
+    <description xml:lang="nl">Verwerk de kernel crash met gebruik van de Red Hat infrastructuur</description>
+    <description xml:lang="sk">Spracovávať pády kernel-u za použitia infraštruktúry Red Hat-u</description>
+    <description xml:lang="zh_CN">使用红帽基础架构处理内核崩溃</description>
 
     <events>
         <event>collect_*</event>

@@ -4,18 +4,11 @@ SUBDIRS = po src tests doc apidoc
 EXTRA_DIST = \
     libreport.pc.in \
     libreport-version \
-    asciidoc.conf \
-    augeas/test_libreport.aug
+    asciidoc.conf
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libreport.pc
 pkgconfig_DATA += libreport-web.pc
-
-augeasdir = $(AUGEAS_LENS_LIB_DIR)
-dist_augeas_DATA = augeas/libreport.aug
-
-check-local:
-	$(AUGPARSE) -I $(top_builddir)/augeas $(top_builddir)/augeas/test_libreport.aug
 
 RPM_DIRS = --define "_sourcedir `pwd`" \
 	   --define "_rpmdir `pwd`/build" \
@@ -70,7 +63,7 @@ release-major:
 .PHONY: release
 release:
 	echo "* $$(date +'%a %b %d %Y') $$(git config --get user.name) <$$(git config --get user.email)> $$NEW_VER-1" > /tmp/changelog.tmp; \
-	git log --oneline $$OLD_VER..HEAD | awk '{$$1=""; print "-" $$0} END {print ""}' | grep -v -e "- Merge" -e "- testsuite:" >> /tmp/changelog.tmp; \
+	git log --oneline $$OLD_VER..HEAD | awk '{$$1=""; print "-" $$0} END {print ""}' >> /tmp/changelog.tmp; \
 	sed "$$(grep -n changelog libreport.spec.in | cut -f1 -d:)"'r /tmp/changelog.tmp' -i libreport.spec.in; \
 	git add libreport.spec.in; \
 	git commit -m "New version $$NEW_VER"; \

@@ -31,10 +31,9 @@ libreport_la_SOURCES = \
     spawn.c \
     dirsize.c \
     dump_dir.c \
-    reported_to.c \
     abrt_sock.c \
     get_cmdline.c \
-    configuration_files.c \
+    load_plugin_settings.c \
     make_descr.c \
     run_event.c \
     problem_data.c \
@@ -71,15 +70,12 @@ libreport_la_CPPFLAGS = \
     -DLARGE_DATA_TMP_DIR=\"$(LARGE_DATA_TMP_DIR)\" \
     $(GLIB_CFLAGS) \
     $(GOBJECT_CFLAGS) \
-    $(AUGEAS_CFLAGS) \
     -D_GNU_SOURCE
 libreport_la_LDFLAGS = \
     -version-info 0:1:0
 libreport_la_LIBADD = \
     $(GLIB_LIBS) \
-    $(JOURNAL_LIBS) \
-    $(GOBJECT_LIBS) \
-    $(AUGEAS_LIBS)
+    $(GOBJECT_LIBS)
 
 libreportconfdir = $(CONF_DIR)
 dist_libreportconf_DATA = \

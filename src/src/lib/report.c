@@ -144,7 +144,7 @@ int report_problem_in_dir(const char *dirname, int flags)
         /* No "report-cli/gui" event found, do it old-style */
 
         path = path1;
-        log_notice("Executing: %s", path);
+        VERB1 log("Executing: %s", path);
         execv(path, args);
         /* Did not find the desired executable in the installation directory.
          * Trying to find it in PATH.
@@ -174,11 +174,11 @@ int report_problem_in_dir(const char *dirname, int flags)
 
     if (WIFEXITED(status))
     {
-        log_info("reporting finished with exitcode %d", WEXITSTATUS(status));
+        VERB2 log("reporting finished with exitcode %d", WEXITSTATUS(status));
         return WEXITSTATUS(status);
     }
     /* child died from a signal: WIFSIGNALED(status) should be true */
-    log_info("reporting killed by signal %d", WTERMSIG(status));
+    VERB2 log("reporting killed by signal %d", WTERMSIG(status));
     return WTERMSIG(status) + 128;
 }
 
@@ -190,7 +190,7 @@ int report_problem_in_memory(problem_data_t *pd, int flags)
         return -1;
     char *dir_name = xstrdup(dd->dd_dirname);
     dd_close(dd);
-    log_info("Temp problem dir: '%s'", dir_name);
+    VERB2 log("Temp problem dir: '%s'", dir_name);
 
     if (!(flags & LIBREPORT_WAIT))
         flags |= LIBREPORT_DEL_DIR;

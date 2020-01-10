@@ -49,7 +49,7 @@ static void start_element(
         int type = 0;
         for (int i = 0; attribute_names[i] != NULL; ++i)
         {
-            log_info("attr: %s:%s", attribute_names[i], attribute_values[i]);
+            VERB2 log("attr: %s:%s", attribute_names[i], attribute_values[i]);
             if (strcmp(attribute_names[i], "uri") == 0)
             {
                 uri = attribute_values[i];
@@ -129,7 +129,7 @@ static void passthrough(
                 gpointer            user_data,
                 GError              **error)
 {
-    log_debug("passthrough");
+    VERB3 log("passthrough");
 }
 
 // Called on error, including one set by other

@@ -19,19 +19,6 @@
 #include <libtar.h>
 #include "libreport_curl.h"
 #include "internal_libreport.h"
-#include "client.h"
-
-static char *ask_url(const char *message)
-{
-    char *url = ask(message);
-    if (url == NULL || url[0] == '\0')
-    {
-        set_xfunc_error_retval(EXIT_CANCEL_BY_USER);
-        error_msg_and_die(_("Can't continue without URL"));
-    }
-
-    return url;
-}
 
 static int create_and_upload_archive(
                 const char *dump_dir_name,
@@ -55,10 +42,9 @@ static int create_and_upload_archive(
 //Encrypt = yes
 //ArchiveType = .tar.bz2
 //ExcludeFiles = foo,bar*,b*z
-    const char* opt = getenv("Upload_URL");
-    if (!opt)
-        opt = get_map_string_item_or_empty(settings, "URL");
-    char *url = opt[0] != '\0' ? xstrdup(opt) : ask_url(_("Upload URL is not provided by configuration. Please enter upload URL:"));
+    char* env;
+    env = getenv("Upload_URL");
+    const char *url = (env ? env : get_map_string_item_or_empty(settings, "URL"));
 
     /* Create a child gzip which will compress the data */
     /* SELinux guys are not happy with /tmp, using /var/run/abrt */
@@ -162,7 +148,6 @@ static int create_and_upload_archive(
     }
 
  ret:
-    free(url);
     dd_close(dd);
     if (tar)
         tar_close(tar);

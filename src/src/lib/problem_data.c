@@ -144,7 +144,7 @@ void problem_data_add_current_process_data(problem_data_t *pd)
         if (read > 0)
         {
             buf[read] = '\0';
-            log_info("reporting initiated from: %s", buf);
+            VERB2 log("reporting initiated from: %s", buf);
             problem_data_add_text_noteditable(pd, FILENAME_EXECUTABLE, buf);
         }
 
@@ -266,11 +266,6 @@ static bool is_editable_file(const char *file_name)
     return is_in_string_list(file_name, (char**)editable_files);
 }
 
-/* When is_text_file() returns this special pointer value,
- * the file in question is "text, but very large".
- */
-#define HUGE_TEXT ((char*)(long)1)
-
 static const char *const always_text_files[] = {
     FILENAME_CMDLINE  ,
     FILENAME_BACKTRACE,
@@ -289,10 +284,10 @@ static char* is_text_file(const char *name, ssize_t *sz)
         return NULL; /* it's not text (because it does not exist! :) */
 
     off_t size = lseek(fd, 0, SEEK_END);
-    if (size < 0)
+    if (size < 0 || size > CD_MAX_TEXT_SIZE)
     {
         close(fd);
-        return NULL; /* it's not text (because there is an I/O error) */
+        return NULL; /* it's not a SMALL text */
     }
     lseek(fd, 0, SEEK_SET);
 
@@ -314,7 +309,7 @@ static char* is_text_file(const char *name, ssize_t *sz)
     {
         base++;
         if (is_in_string_list(base, (char**)always_text_files))
-            goto text;
+            return (char*)buf;
     }
 
     /* Every once in a while, even a text file contains a few garbled
@@ -361,18 +356,10 @@ static char* is_text_file(const char *name, ssize_t *sz)
     }
 
     if ((total_chars / bad_chars) >= RATIO)
-        goto text; /* looks like text to me */
+        return (char*)buf; /* looks like text to me */
 
     free(buf);
     return NULL; /* it's binary */
-
- text:
-    if (size > CD_MAX_TEXT_SIZE)
-    {
-        free(buf);
-        return HUGE_TEXT;
-    }
-    return (char*)buf;
 }
 
 void problem_data_load_from_dump_dir(problem_data_t *problem_data, struct dump_dir *dd, char **excluding)
@@ -397,16 +384,21 @@ void problem_data_load_from_dump_dir(problem_data_t *problem_data, struct dump_d
         }
 
         ssize_t sz = 4*1024;
-        char *text = is_text_file(full_name, &sz);
-        if (!text || text == HUGE_TEXT)
+        char *text = NULL;
+        bool editable = is_editable_file(short_name);
+
+        if (!editable)
         {
-            int flag = !text ? CD_FLAG_BIN : (CD_FLAG_BIN+CD_FLAG_BIGTXT);
-            problem_data_add(problem_data,
-                    short_name,
-                    full_name,
-                    flag + CD_FLAG_ISNOTEDITABLE
-            );
-            goto next;
+            text = is_text_file(full_name, &sz);
+            if (!text)
+            {
+                problem_data_add(problem_data,
+                        short_name,
+                        full_name,
+                        CD_FLAG_BIN + CD_FLAG_ISNOTEDITABLE
+                );
+                goto next;
+            }
         }
 
         char *content;
@@ -438,8 +430,8 @@ void problem_data_load_from_dump_dir(problem_data_t *problem_data, struct dump_d
             content = sanitized;
         }
 
-        bool editable = is_editable_file(short_name);
         int flags = 0;
+
         if (editable)
             flags |= CD_FLAG_TXT | CD_FLAG_ISEDITABLE;
         else

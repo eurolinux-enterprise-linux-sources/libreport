@@ -41,25 +41,11 @@
 #define EXCL_BINARY_ELEMENT     "exclude-binary-items"
 #define ADV_OPTIONS_ELEMENT     "advanced-options"
 
-typedef struct
-{
-    event_config_t *values;
-    bool exact_name;
-    bool exact_description;
-    bool exact_long_description;
-} parsed_event_config_t;
-
-typedef struct
-{
-    event_option_t *values;
-    bool exact_label;
-    bool exact_note_html;
-} parsed_event_option_t;
 
 struct my_parse_data
 {
-    parsed_event_config_t event_config;
-    parsed_event_option_t cur_option;
+    event_config_t *event_config;
+    event_option_t *cur_option;
     const char *cur_locale;
     char *attribute_lang;
     bool in_adv_option;
@@ -82,16 +68,16 @@ static const char *const option_types[] =
 static char *get_element_lang(struct my_parse_data *parse_data, const gchar **att_names, const gchar **att_values)
 {
     char *short_locale_end = strchr(parse_data->cur_locale, '_');
-    //log_debug("locale: %s", parse_data->cur_locale);
+    //VERB3 log("locale: %s", parse_data->cur_locale);
     int i;
     for (i = 0; att_names[i] != NULL; ++i)
     {
-        //log_debug("attr: %s:%s", att_names[i], att_values[i]);
+        //VERB3 log("attr: %s:%s", att_names[i], att_values[i]);
         if (strcmp(att_names[i], "xml:lang") == 0)
         {
             if (strcmp(att_values[i], parse_data->cur_locale) == 0)
             {
-                log_debug("found translation for: %s", parse_data->cur_locale);
+                VERB3 log("found translation for: %s", parse_data->cur_locale);
                 return xstrdup(att_values[i]);
             }
 
@@ -101,7 +87,7 @@ static char *get_element_lang(struct my_parse_data *parse_data, const gchar **at
             if (short_locale_end
              && strncmp(att_values[i], parse_data->cur_locale, short_locale_end - parse_data->cur_locale) == 0
             ) {
-                log_debug("found translation for shortlocale: %s", parse_data->cur_locale);
+                VERB3 log("found translation for shortlocale: %s", parse_data->cur_locale);
                 return xstrndup(att_values[i], short_locale_end - parse_data->cur_locale);
             }
         }
@@ -122,21 +108,21 @@ static int cmp_event_option_name_with_string(gconstpointer a, gconstpointer b)
 
 static void consume_cur_option(struct my_parse_data *parse_data)
 {
-    event_option_t *opt = parse_data->cur_option.values;
+    event_option_t *opt = parse_data->cur_option;
     if (!opt)
         return;
-    memset(&parse_data->cur_option, 0, sizeof(parse_data->cur_option));
+    parse_data->cur_option = NULL;
 
-    parsed_event_config_t *event_config = &parse_data->event_config;
+    event_config_t *event_config = parse_data->event_config;
 
     /* Example of "nameless" option: <option type="hint-html">
      * The remaining code does not like "nameless" options
      * (strcmp would segfault, etc), so provide invented name:
      */
     if (!opt->eo_name)
-        opt->eo_name = xasprintf("%u", (unsigned)g_list_length(event_config->values->options));
+        opt->eo_name = xasprintf("%u", (unsigned)g_list_length(event_config->options));
 
-    GList *elem = g_list_find_custom(event_config->values->options, opt->eo_name, cmp_event_option_name_with_string);
+    GList *elem = g_list_find_custom(event_config->options, opt->eo_name, cmp_event_option_name_with_string);
     if (elem)
     {
         /* we already have option with such name */
@@ -157,7 +143,7 @@ static void consume_cur_option(struct my_parse_data *parse_data)
     else
     {
         //log("xml: new value %s='%s'", opt->eo_name, opt->eo_value);
-        event_config->values->options = g_list_append(event_config->values->options, opt);
+        event_config->options = g_list_append(event_config->options, opt);
     }
 }
 
@@ -179,20 +165,19 @@ static void start_element(GMarkupParseContext *context,
     }
     if (strcmp(element_name, OPTION_ELEMENT) == 0)
     {
-        if (parse_data->cur_option.values)
+        if (parse_data->cur_option)
         {
             error_msg("error, option nested in option");
             return;
         }
 
-        memset(&parse_data->cur_option, 0, sizeof(parse_data->cur_option));
-        event_option_t *opt = parse_data->cur_option.values = new_event_option();
+        event_option_t *opt = parse_data->cur_option = new_event_option();
         opt->is_advanced = (parse_data->in_adv_option == true);
         int i;
 
         for (i = 0; attribute_names[i] != NULL; ++i)
         {
-            log_info("attr: %s:%s", attribute_names[i], attribute_values[i]);
+            VERB2 log("attr: %s:%s", attribute_names[i], attribute_values[i]);
             if (strcmp(attribute_names[i], "name") == 0)
             {
                 free(opt->eo_name);
@@ -255,11 +240,11 @@ static void text(GMarkupParseContext *context,
          GError             **error)
 {
     struct my_parse_data *parse_data = user_data;
-    event_config_t *ui = parse_data->event_config.values;
+    event_config_t *ui = parse_data->event_config;
 
     const gchar *inner_element = g_markup_parse_context_get_element(context);
     char *text_copy = xstrndup(text, text_len);
-    event_option_t *opt = parse_data->cur_option.values;
+    event_option_t *opt = parse_data->cur_option;
     if (opt)
     {
         if (strcmp(inner_element, LABEL_ELEMENT) == 0)
@@ -272,16 +257,10 @@ static void text(GMarkupParseContext *context,
                 if (parse_data->attribute_lang[0] != '\0'
                  || !opt->eo_label /* && parse_data->attribute_lang is "" - always true */
                 ) {
-                    if (!parse_data->cur_option.exact_label)
-                    {
-                        parse_data->cur_option.exact_label =
-                            (strcmp(parse_data->attribute_lang, parse_data->cur_locale) == 0);
-
-                        log_info("new label:'%s'", text_copy);
-                        free(opt->eo_label);
-                        opt->eo_label = text_copy;
-                        text_copy = NULL;
-                    }
+                    VERB2 log("new label:'%s'", text_copy);
+                    free(opt->eo_label);
+                    opt->eo_label = text_copy;
+                    text_copy = NULL;
                 }
             }
         }
@@ -293,7 +272,7 @@ static void text(GMarkupParseContext *context,
          */
         else if (strcmp(inner_element, DEFAULT_VALUE_ELEMENT) == 0)
         {
-            log_info("default value:'%s'", text_copy);
+            VERB2 log("default value:'%s'", text_copy);
             free(opt->eo_value);
             opt->eo_value = text_copy;
             text_copy = NULL;
@@ -308,28 +287,22 @@ static void text(GMarkupParseContext *context,
                 if (parse_data->attribute_lang[0] != '\0'
                  || !opt->eo_note_html /* && parse_data->attribute_lang is "" - always true */
                 ) {
-                    if (!parse_data->cur_option.exact_note_html)
-                    {
-                        parse_data->cur_option.exact_note_html =
-                            (strcmp(parse_data->attribute_lang, parse_data->cur_locale) == 0);
-
-                        log_info("html note:'%s'", text_copy);
-                        free(opt->eo_note_html);
-                        opt->eo_note_html = text_copy;
-                        text_copy = NULL;
-                    }
+                    VERB2 log("html note:'%s'", text_copy);
+                    free(opt->eo_note_html);
+                    opt->eo_note_html = text_copy;
+                    text_copy = NULL;
                 }
             }
         }
         else if (strcmp(inner_element, ALLOW_EMPTY_ELEMENT) == 0)
         {
-            log_info("allow-empty:'%s'", text_copy);
+            VERB2 log("allow-empty:'%s'", text_copy);
             opt->eo_allow_empty = string_to_bool(text_copy);
         }
         /*
         if (strcmp(inner_element, DESCRIPTION_ELEMENT) == 0)
         {
-            log_info("tooltip:'%s'", text_copy);
+            VERB2 log("tooltip:'%s'", text_copy);
             free(opt->eo_description);
             opt->eo_description = text_copy;
             text_copy = NULL;
@@ -342,7 +315,7 @@ static void text(GMarkupParseContext *context,
         /*
         if (strcmp(inner_element, ACTION_ELEMENT) == 0)
         {
-            log_info("action description:'%s'", text_copy);
+            VERB2 log("action description:'%s'", text_copy);
             free(ui->action);
             ui->action = text_copy;
             text_copy = NULL;
@@ -350,7 +323,7 @@ static void text(GMarkupParseContext *context,
         */
         if (strcmp(inner_element, CREATES_ELEMENT) == 0)
         {
-            log_info("ec_creates_items:'%s'", text_copy);
+            VERB2 log("ec_creates_items:'%s'", text_copy);
             free(ui->ec_creates_items);
             ui->ec_creates_items = text_copy;
             text_copy = NULL;
@@ -365,22 +338,16 @@ static void text(GMarkupParseContext *context,
                 if (parse_data->attribute_lang[0] != '\0'
                  || !ec_get_screen_name(ui) /* && parse_data->attribute_lang is "" - always true */
                 ) {
-                    if (!parse_data->event_config.exact_name)
-                    {
-                        parse_data->event_config.exact_name =
-                            (strcmp(parse_data->attribute_lang, parse_data->cur_locale) == 0);
-
-                        log_info("event name:'%s'", text_copy);
-                        ec_set_screen_name(ui, text_copy);
-                        free(text_copy);
-                        text_copy = NULL;
-                    }
+                    VERB2 log("event name:'%s'", text_copy);
+                    ec_set_screen_name(ui, text_copy);
+                    free(text_copy);
+                    text_copy = NULL;
                 }
             }
         }
         else if (strcmp(inner_element, DESCRIPTION_ELEMENT) == 0)
         {
-            log_debug("event description:'%s'", text_copy);
+            VERB3 log("event description:'%s'", text_copy);
 
             if (parse_data->attribute_lang != NULL) /* if it isn't for other locale */
             {
@@ -390,21 +357,15 @@ static void text(GMarkupParseContext *context,
                 if (parse_data->attribute_lang[0] != '\0'
                  || !ec_get_description(ui) /* && parse_data->attribute_lang is "" - always true */
                 ) {
-                    if (!parse_data->event_config.exact_description)
-                    {
-                        parse_data->event_config.exact_description =
-                            (strcmp(parse_data->attribute_lang, parse_data->cur_locale) == 0);
-
-                        ec_set_description(ui, text_copy);
-                        free(text_copy);
-                        text_copy = NULL;
-                    }
+                    ec_set_description(ui, text_copy);
+                    free(text_copy);
+                    text_copy = NULL;
                 }
             }
         }
         else if (strcmp(inner_element, LONG_DESCR_ELEMENT) == 0)
         {
-            log_debug("event long description:'%s'", text_copy);
+            VERB3 log("event long description:'%s'", text_copy);
 
             if (parse_data->attribute_lang != NULL) /* if it isn't for other locale */
             {
@@ -414,16 +375,9 @@ static void text(GMarkupParseContext *context,
                 if (parse_data->attribute_lang[0] != '\0'
                  || !ec_get_long_desc(ui) /* && parse_data->attribute_lang is "" - always true */
                 ) {
-
-                    if (!parse_data->event_config.exact_long_description)
-                    {
-                        parse_data->event_config.exact_long_description =
-                            (strcmp(parse_data->attribute_lang, parse_data->cur_locale) == 0);
-
-                        ec_set_long_desc(ui, text_copy);
-                        free(text_copy);
-                        text_copy = NULL;
-                    }
+                    ec_set_long_desc(ui, text_copy);
+                    free(text_copy);
+                    text_copy = NULL;
                 }
             }
         }
@@ -488,7 +442,7 @@ static void passthrough(GMarkupParseContext *context,
                 gpointer user_data,
                 GError **error)
 {
-    log_debug("passthrough");
+    VERB3 log("passthrough");
 }
 
 // Called on error, including one set by other
@@ -509,8 +463,8 @@ static void error(GMarkupParseContext *context,
 
 void load_event_description_from_file(event_config_t *event_config, const char* filename)
 {
-    log_notice("loading event: '%s'", filename);
-    struct my_parse_data parse_data = { {event_config, false, false, false}, {NULL, false, false}, NULL, NULL };
+    VERB1 log("loading event: '%s'", filename);
+    struct my_parse_data parse_data = { event_config, NULL, NULL, NULL };
     parse_data.cur_locale = setlocale(LC_ALL, NULL);
 
     GMarkupParser parser;

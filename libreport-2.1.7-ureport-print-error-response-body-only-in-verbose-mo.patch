@@ -1,0 +1,40 @@
+From f9a09ba38178e4d71e5a17326f2b9e1e4d664221 Mon Sep 17 00:00:00 2001
+From: Jakub Filak <jfilak@redhat.com>
+Date: Tue, 19 Nov 2013 10:19:37 +0100
+Subject: [LIBREPORT PATCH 37/37] ureport: print error response body only in
+ verbose mode
+
+Related to rhbz#1031701
+
+Signed-off-by: Jakub Filak <jfilak@redhat.com>
+---
+ src/plugins/ureport.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/plugins/ureport.c b/src/plugins/ureport.c
+index 5ce9811..5d32ae0 100644
+--- a/src/plugins/ureport.c
++++ b/src/plugins/ureport.c
+@@ -272,7 +272,8 @@ static struct ureport_server_response *get_server_response(post_state_t *post_st
+             && post_state->http_resp_code != 413)
+     {
+         /* can't print better error message */
+-        error_msg(_("Unexpected HTTP response from '%s': %d\n%s"), config->ur_url, post_state->http_resp_code, post_state->body);
++        error_msg(_("Unexpected HTTP response from '%s': %d"), config->ur_url, post_state->http_resp_code);
++        VERB1 log("%s", post_state->body);
+         return NULL;
+     }
+ 
+@@ -280,7 +281,8 @@ static struct ureport_server_response *get_server_response(post_state_t *post_st
+ 
+     if (is_error(json))
+     {
+-        error_msg(_("Unable to parse response from ureport server at '%s':\n%s"), config->ur_url, post_state->body);
++        error_msg(_("Unable to parse response from ureport server at '%s"), config->ur_url);
++        VERB1 log("%s", post_state->body);
+         json_object_put(json);
+         return NULL;
+     }
+-- 
+1.8.3.1
+

@@ -1,0 +1,24 @@
+From 1ec6f1844035a1fa33a2eea534661bd9d54f6cc6 Mon Sep 17 00:00:00 2001
+From: Jakub Filak <jfilak@redhat.com>
+Date: Tue, 22 Oct 2013 10:37:57 +0200
+Subject: [LIBREPORT PATCH 15/33] enable reporting to Red Hat Support tool for
+ anaconda bugs
+
+Related to rhbz#1015554
+
+Signed-off-by: Jakub Filak <jfilak@redhat.com>
+---
+ src/workflows/anaconda_event.conf | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/workflows/anaconda_event.conf b/src/workflows/anaconda_event.conf
+index f369acd..5828b5a 100644
+--- a/src/workflows/anaconda_event.conf
++++ b/src/workflows/anaconda_event.conf
+@@ -1,2 +1,3 @@
+ EVENT=workflow_AnacondaFedora component=anaconda
++#EVENT=workflow_AnacondaRHEL component=anaconda
+ EVENT=workflow_AnacondaUpload component=anaconda
+-- 
+1.8.3.1
+

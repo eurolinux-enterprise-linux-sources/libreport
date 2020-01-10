@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
     <name>Report a bug to Red Hat Support Tool</name>
-    <name xml:lang="fr">Rapporter une anomalie au Red Hat Support Tool</name>
-    <name xml:lang="ja">バグを Red Hat Support Tool に報告する</name>
-    <name xml:lang="nl">Rapporteer een bug aan Red Hat Support Tool</name>
-    <name xml:lang="pt_BR">Relatar um bug para Ferramenta de Suporte da Red Hat</name>
-    <name xml:lang="sv">Rapportera ett fel till Red Hats supportverktyg</name>
-    <name xml:lang="zh_CN">为红帽支持工具汇报一个问题</name>
-    <name xml:lang="zh_TW">向 Red Hat Support Tool 回報臭蟲</name>
     <description>Process the report using the Red Hat infrastructure</description>
-    <description xml:lang="ja">Red Hat インフラストラクチャーを使用して報告を処理する</description>
-    <description xml:lang="pl">Przetwarza zgłoszenie używając infrastruktury firmy Red Hat</description>
-    <description xml:lang="sv">Bearbeta rapporten med Red Hats infrastruktur</description>
-    <description xml:lang="uk">Обробити звіт за допомогою інфраструктури Red Hat</description>
-    <description xml:lang="zh_TW">使用 Red Hat 基礎設施處理回報</description>
 
     <events>
         <event>report_RHTSupport</event>

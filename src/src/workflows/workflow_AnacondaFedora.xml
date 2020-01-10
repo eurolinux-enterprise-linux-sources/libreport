@@ -1,38 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
     <name>Report a bug to Fedora maintainers</name>
-    <name xml:lang="de">Fehlermeldung an die Fedora-Maintainer</name>
-    <name xml:lang="es">Reportar un bug a los mantenedores Fedora</name>
-    <name xml:lang="fr">Rapporter un défaut aux mainteneurs Fedora</name>
-    <name xml:lang="gl">Informar dun fallo aos mantedores de Fedora</name>
+    <name xml:lang="as">Fedora ব্যৱস্থাপকসকললৈ এটা বাগ সংবাদন কৰক</name>
     <name xml:lang="hi">Fedora maintainers को बग रिपोर्ट कीजिए</name>
-    <name xml:lang="hu">Jelentse a hibát a Fedora karbantartóinak</name>
-    <name xml:lang="ja">Fedora メンテナーにバグを報告する</name>
-    <name xml:lang="nl">Rapporteert een bug aan Fedora beheerders</name>
-    <name xml:lang="pl">Zgłasza błąd opiekunom Fedory</name>
-    <name xml:lang="ru">Сообщить об ошибке разработчикам Fedora</name>
-    <name xml:lang="sk">Nahlásiť chybu správcom Fedory</name>
-    <name xml:lang="uk">Повідомити про помилку супровідникам Fedora</name>
-    <name xml:lang="zh_CN">汇报错误至 Fedora 维护者</name>
-    <name xml:lang="zh_TW">回報臭蟲給 Fedora 維護者</name>
+    <name xml:lang="pt_BR">Relatar um bug para os mantenedores do Fedora</name>
     <description>Process the report using the Fedora infrastructure</description>
-    <description xml:lang="as">Fedora আন্তঃগাথনি ব্যৱহাৰ কৰি সংবাদ প্ৰক্ৰিয়া কৰক</description>
-    <description xml:lang="bg">Обработка на рапорта, използвайки инфраструктурата на Fedora</description>
     <description xml:lang="de">Fehlerbericht mit Hilfe der Fedora-Infrastruktur bearbeiten</description>
-    <description xml:lang="es">Procesar el informe usando la infraestructura de Fedora</description>
-    <description xml:lang="fr">Traiter le rapport en utilisant l'infrastructure Fedora</description>
-    <description xml:lang="gl">Procesar o informe empregando a infraestrutura de Fedora</description>
-    <description xml:lang="hi">Fedora infrastructure का इस्तेमाल करके रिपोर्ट को प्रोसेस कीजिए</description>
-    <description xml:lang="hu">Dolgozza fel a jelentést a Fedora Infrastructure segítségével</description>
-    <description xml:lang="it">Processare il report usando la infrastruttura di Fedora</description>
-    <description xml:lang="ja">Fedora インフラストレクチャーを使用して報告を処理する</description>
-    <description xml:lang="pl">Przetwarza zgłoszenie używając infrastruktury Projektu Fedora</description>
-    <description xml:lang="pt_BR">Processar o relatório utilizando a infraestrutura do Fedora</description>
-    <description xml:lang="ru">Подготовить отчёт, используя средства Fedora</description>
-    <description xml:lang="sk">Spracovať oznámenie za použitia infraštrútury Fedory.</description>
-    <description xml:lang="sv">Bearbeta rapporten med Fedoras infrastruktur</description>
-    <description xml:lang="uk">Обробити звіт за допомогою інфраструктури Fedora</description>
-    <description xml:lang="zh_CN">使用 Fedora 基础设施处理报告</description>
+    <description xml:lang="nl">Verwerk het rapport met gebruik van de Fedora infrastructuur</description>
+    <description xml:lang="zh_TW">使用 Fedora 基礎架構處理回報</description>
 
     <events>
         <event>report_Bugzilla</event>

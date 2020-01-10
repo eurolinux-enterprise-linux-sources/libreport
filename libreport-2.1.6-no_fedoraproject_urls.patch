@@ -1,0 +1,36 @@
+diff -ruN libreport-2.1.6/src/plugins/report_EmergencyAnalysis.xml.in libreport-2.1.6.rhel7/src/plugins/report_EmergencyAnalysis.xml.in
+--- libreport-2.1.6/src/plugins/report_EmergencyAnalysis.xml.in	2013-07-10 13:20:16.000000000 +0200
++++ libreport-2.1.6.rhel7/src/plugins/report_EmergencyAnalysis.xml.in	2013-07-29 15:19:11.114687095 +0200
+@@ -15,7 +15,7 @@
+         <option type="text" name="Upload_URL">
+             <_label>URL</_label>
+             <allow-empty>no</allow-empty>
+-            <default-value>https://retrace.fedoraproject.org/faf/dumpdirs/new/</default-value>
++            <default-value>https://localhost/faf/dumpdirs/new/</default-value>
+         </option>
+         <advanced-options>
+             <option type="text" name="http_proxy">
+diff -ruN libreport-2.1.6/src/plugins/report_uReport.xml.in libreport-2.1.6.rhel7/src/plugins/report_uReport.xml.in
+--- libreport-2.1.6/src/plugins/report_uReport.xml.in	2013-07-10 13:20:16.000000000 +0200
++++ libreport-2.1.6.rhel7/src/plugins/report_uReport.xml.in	2013-07-29 15:19:19.273750627 +0200
+@@ -11,7 +11,7 @@
+             <_label>uReport Server URL</_label>
+             <allow-empty>no</allow-empty>
+             <_description>Address of uReport webservice</_description>
+-            <default-value>https://retrace.fedoraproject.org/faf</default-value>
++            <default-value>http://bug-report.itos.redhat.com</default-value>
+         </option>
+         <option type="bool" name="uReport_SSLVerify">
+             <_label>Verify SSL</_label>
+diff -ruN libreport-2.1.6/src/plugins/ureport.c libreport-2.1.6.rhel7/src/plugins/ureport.c
+--- libreport-2.1.6/src/plugins/ureport.c	2013-07-10 13:20:16.000000000 +0200
++++ libreport-2.1.6.rhel7/src/plugins/ureport.c	2013-07-29 15:19:23.601784298 +0200
+@@ -22,7 +22,7 @@
+ #include "ureport.h"
+ #include "libreport_curl.h"
+ 
+-#define SERVER_URL "https://retrace.fedoraproject.org/faf"
++#define SERVER_URL "http://bug-report.itos.redhat.com"
+ #define REPORT_URL_SFX "reports/new/"
+ #define ATTACH_URL_SFX "reports/attach/"
+ 

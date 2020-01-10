@@ -155,10 +155,6 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 AR = @AR@
 ASCIIDOC = @ASCIIDOC@
-AUGEAS_CFLAGS = @AUGEAS_CFLAGS@
-AUGEAS_LENS_LIB_DIR = @AUGEAS_LENS_LIB_DIR@
-AUGEAS_LIBS = @AUGEAS_LIBS@
-AUGPARSE = @AUGPARSE@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOM4TE = @AUTOM4TE@
@@ -222,8 +218,6 @@ INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
 INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
 INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
-JOURNAL_CFLAGS = @JOURNAL_CFLAGS@
-JOURNAL_LIBS = @JOURNAL_LIBS@
 JSON_C_CFLAGS = @JSON_C_CFLAGS@
 JSON_C_LIBS = @JSON_C_LIBS@
 JSON_C_PACKAGE = @JSON_C_PACKAGE@
@@ -386,9 +380,8 @@ MAN5_TXT = anaconda_event.conf.txt bugzilla_anaconda_event.conf.txt \
 	mailx.conf.txt mailx_event.conf.txt print_event.conf.txt \
 	report_Bugzilla.conf.txt report_event.conf.txt \
 	report_fedora.conf.txt report_Logger.conf.txt \
-	report_rhel.conf.txt report_rhel_bugzilla.conf.txt \
-	rhtsupport.conf.txt rhtsupport_event.conf.txt \
-	uploader_event.conf.txt ureport.conf.txt
+	report_rhel.conf.txt rhtsupport.conf.txt \
+	rhtsupport_event.conf.txt uploader_event.conf.txt
 
 # Manual pages are generated from .txt via Docbook
 man1_MANS = ${MAN1_TXT:%.txt=%.1}

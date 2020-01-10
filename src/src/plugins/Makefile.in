@@ -279,7 +279,7 @@ am__dist_reportpluginsconf_DATA_DIST = bugzilla.conf \
 	bugzilla_format.conf bugzilla_formatdup.conf \
 	bugzilla_format_libreport.conf bugzilla_format_kernel.conf \
 	bugzilla_format_anaconda.conf bugzilla_formatdup_anaconda.conf \
-	rhtsupport.conf mailx.conf ureport.conf
+	rhtsupport.conf mailx.conf
 DATA = $(dist_events_DATA) $(dist_eventsconf_DATA) \
 	$(dist_eventsdef_DATA) $(dist_reportpluginsconf_DATA)
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
@@ -308,10 +308,6 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 AR = @AR@
 ASCIIDOC = @ASCIIDOC@
-AUGEAS_CFLAGS = @AUGEAS_CFLAGS@
-AUGEAS_LENS_LIB_DIR = @AUGEAS_LENS_LIB_DIR@
-AUGEAS_LIBS = @AUGEAS_LIBS@
-AUGPARSE = @AUGPARSE@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOM4TE = @AUTOM4TE@
@@ -375,8 +371,6 @@ INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
 INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
 INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
-JOURNAL_CFLAGS = @JOURNAL_CFLAGS@
-JOURNAL_LIBS = @JOURNAL_LIBS@
 JSON_C_CFLAGS = @JSON_C_CFLAGS@
 JSON_C_LIBS = @JSON_C_LIBS@
 JSON_C_PACKAGE = @JSON_C_PACKAGE@
@@ -524,8 +518,7 @@ reportpluginsconfdir = $(REPORT_PLUGINS_CONF_DIR)
 reporters_plugin_conf = $(am__append_3)
 dist_reportpluginsconf_DATA = $(reporters_plugin_conf) \
     rhtsupport.conf \
-    mailx.conf \
-    ureport.conf
+    mailx.conf
 
 eventsdir = $(EVENTS_DIR)
 eventsconfdir = $(EVENTS_CONF_DIR)
@@ -721,7 +714,6 @@ reporter_print_LDADD = \
 @BUILD_UREPORT_TRUE@    -I$(srcdir)/../lib \
 @BUILD_UREPORT_TRUE@    $(GLIB_CFLAGS) \
 @BUILD_UREPORT_TRUE@    $(LIBREPORT_CFLAGS) \
-@BUILD_UREPORT_TRUE@    -DPLUGINS_CONF_DIR=\"$(REPORT_PLUGINS_CONF_DIR)\" \
 @BUILD_UREPORT_TRUE@    -D_GNU_SOURCE
 
 @BUILD_UREPORT_TRUE@reporter_ureport_LDADD = \

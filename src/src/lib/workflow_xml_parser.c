@@ -96,7 +96,7 @@ static void text(GMarkupParseContext *context,
 
     if(strcmp(inner_element, NAME_ELEMENT) == 0)
     {
-        log_debug("workflow name:'%s'", text);
+        VERB3 log("workflow name:'%s'", text);
 
         if (parse_data->attribute_lang != NULL) /* if it isn't for other locale */
         {
@@ -106,18 +106,14 @@ static void text(GMarkupParseContext *context,
             if (parse_data->attribute_lang[0] != '\0'
              || !wf_get_screen_name(workflow) /* && parse_data->attribute_lang is "" - always true */
             ) {
-                if (!parse_data->exact_name)
-                {
-                    parse_data->exact_name = (strcmp(parse_data->cur_locale, parse_data->attribute_lang) == 0);
-                    wf_set_screen_name(workflow, text);
-                }
+                wf_set_screen_name(workflow, text);
             }
         }
     }
 
     else if(strcmp(inner_element, DESCRIPTION_ELEMENT) == 0)
     {
-       log_debug("workflow description:'%s'", text);
+       VERB3 log("workflow description:'%s'", text);
 
         if (parse_data->attribute_lang != NULL) /* if it isn't for other locale */
         {
@@ -127,11 +123,7 @@ static void text(GMarkupParseContext *context,
             if (parse_data->attribute_lang[0] != '\0'
              || !wf_get_description(workflow) /* && parse_data->attribute_lang is "" - always true */
             ) {
-                if (!parse_data->exact_description)
-                {
-                    parse_data->exact_description = (strcmp(parse_data->cur_locale, parse_data->attribute_lang) == 0);
-                    wf_set_description(workflow, text);
-                }
+                wf_set_description(workflow, text);
             }
         }
 
@@ -149,7 +141,7 @@ static void passthrough(GMarkupParseContext *context,
                 gpointer user_data,
                 GError **error)
 {
-    log_debug("passthrough");
+    VERB3 log("passthrough");
 }
 
 // Called on error, including one set by other
@@ -163,8 +155,8 @@ static void error(GMarkupParseContext *context,
 
 void load_workflow_description_from_file(workflow_t *workflow, const char* filename)
 {
-    log_notice("loading workflow: '%s'", filename);
-    struct my_parse_data parse_data = { workflow, NULL, NULL, 0, 0, 0};
+    VERB1 log("loading workflow: '%s'", filename);
+    struct my_parse_data parse_data = { workflow, NULL, NULL, 0};
     parse_data.cur_locale = setlocale(LC_ALL, NULL);
 
     GMarkupParser parser;

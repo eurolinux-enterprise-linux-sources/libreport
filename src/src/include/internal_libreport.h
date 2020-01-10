@@ -33,7 +33,6 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <string.h>
-#include <syslog.h>
 #include <sys/poll.h>
 #include <sys/mman.h>
 #include <sys/socket.h>
@@ -433,7 +432,6 @@ enum {
     LOGMODE_SYSLOG = (1 << 1),
     LOGMODE_BOTH = LOGMODE_SYSLOG + LOGMODE_STDIO,
     LOGMODE_CUSTOM = (1 << 2),
-    LOGMODE_JOURNAL = (1 << 3),
 };
 
 #define g_custom_logger libreport_g_custom_logger
@@ -468,49 +466,24 @@ extern int g_verbose;
 #define  libreport_
 #define xfunc_die libreport_xfunc_die
 void xfunc_die(void) NORETURN;
-
+#define log_msg libreport_log_msg
+void log_msg(const char *s, ...) __attribute__ ((format (printf, 1, 2)));
+/* It's a macro, not function, since it collides with log() from math.h */
+#undef log
+#define log(...) log_msg(__VA_ARGS__)
+/* error_msg family will use g_custom_logger. log_msg does not. */
+#define error_msg libreport_error_msg
+void error_msg(const char *s, ...) __attribute__ ((format (printf, 1, 2)));
+#define error_msg_and_die libreport_error_msg_and_die
+void error_msg_and_die(const char *s, ...) __attribute__ ((noreturn, format (printf, 1, 2)));
+/* Reports error message with libc's errno error description attached. */
+#define perror_msg libreport_perror_msg
+void perror_msg(const char *s, ...) __attribute__ ((format (printf, 1, 2)));
+#define perror_msg_and_die libreport_perror_msg_and_die
+void perror_msg_and_die(const char *s, ...) __attribute__ ((noreturn, format (printf, 1, 2)));
 #define die_out_of_memory libreport_die_out_of_memory
 void die_out_of_memory(void) NORETURN;
 
-/* It's a macro, not function, since it collides with log() from math.h */
-#undef log
-#define log(...)         log_standard(LOG_WARNING, __FILE__, __LINE__, __func__, __VA_ARGS__)
-#define log_debug(...)   log_standard(LOG_DEBUG,   __FILE__, __LINE__, __func__, __VA_ARGS__)
-#define log_info(...)    log_standard(LOG_INFO,    __FILE__, __LINE__, __func__, __VA_ARGS__)
-#define log_notice(...)  log_standard(LOG_NOTICE,  __FILE__, __LINE__, __func__, __VA_ARGS__)
-#define log_warning(...) log_standard(LOG_WARNING, __FILE__, __LINE__, __func__, __VA_ARGS__)
-#define log_error(...)   log_standard(LOG_ERR,     __FILE__, __LINE__, __func__, __VA_ARGS__)
-
-#define log_standard(level, file, line, func, ...) log_wrapper(level, __FILE__, __LINE__, __func__, false, false, __VA_ARGS__)
-
-//                                            level,     file,     line,     func, perror, custom logger, format & args
-#define log_error_and_die(...)  log_wrapper(LOG_ERR, __FILE__, __LINE__, __func__, false, false,__VA_ARGS__)
-#define log_perror(...)         log_wrapper(LOG_ERR, __FILE__, __LINE__, __func__, true, false, __VA_ARGS__)
-#define log_perror_and_die(...) log_wrapper(LOG_ERR, __FILE__, __LINE__, __func__, true, false, __VA_ARGS__)
-
-#define error_msg(...)          log_wrapper(LOG_ERR, __FILE__, __LINE__, __func__, false, true, __VA_ARGS__)
-#define perror_msg(...)         log_wrapper(LOG_ERR, __FILE__, __LINE__, __func__, true, true, __VA_ARGS__)
-#define warn_msg(...)           log_wrapper(LOG_WARNING, __FILE__, __LINE__, __func__, false, true, __VA_ARGS__)
-#define pwarn_msg(...)          log_wrapper(LOG_WARNING, __FILE__, __LINE__, __func__, true, true, __VA_ARGS__)
-#define error_msg_and_die(...)  log_and_die_wrapper(LOG_ERR, __FILE__, __LINE__, __func__, false, true, __VA_ARGS__)
-#define perror_msg_and_die(...) log_and_die_wrapper(LOG_ERR, __FILE__, __LINE__, __func__, true, true, __VA_ARGS__)
-
-
-void log_wrapper(int level,
-                 const char *file,
-                 int line,
-                 const char *func,
-                 bool process_perror,
-                 bool use_custom_logger,
-                 const char *format, ...) __attribute__ ((format (printf, 7,8)));
-
-void log_and_die_wrapper(int level,
-                 const char *file,
-                 int line,
-                 const char *func,
-                 bool process_perror,
-                 bool use_custom_logger,
-                 const char *format, ...) __attribute__ ((noreturn, format (printf, 7,8)));
 
 struct strbuf
 {
@@ -631,8 +604,6 @@ enum {
     MAKEDESC_SHOW_MULTILINE = (1 << 1),
     MAKEDESC_SHOW_ONLY_LIST = (1 << 2),
     MAKEDESC_WHITELIST      = (1 << 3),
-    /* Include all URLs from FILENAME_REPORTED_TO element in the description text */
-    MAKEDESC_SHOW_URLS      = (1 << 4),
 };
 #define make_description libreport_make_description
 char *make_description(problem_data_t *problem_data, char **names_to_skip, unsigned max_text_size, unsigned desc_flags);
@@ -640,8 +611,9 @@ char *make_description(problem_data_t *problem_data, char **names_to_skip, unsig
 char* make_description_bz(problem_data_t *problem_data, unsigned max_text_size);
 #define make_description_logger libreport_make_description_logger
 char* make_description_logger(problem_data_t *problem_data, unsigned max_text_size);
-#define make_description_mailx libreport_make_description_mailx
-char* make_description_mailx(problem_data_t *problem_data, unsigned max_text_size);
+//UNUSED
+//#define make_description_mailx libreport_make_description_mailx
+//char* make_description_mailx(problem_data_t *problem_data);
 
 /* See man os-release(5) for details */
 #define OSINFO_ID "ID"
@@ -717,9 +689,6 @@ void parse_release_for_rhts(const char *pRelease, char **product, char **version
 #define load_conf_file libreport_load_conf_file
 bool load_conf_file(const char *pPath, map_string_t *settings, bool skipKeysWithoutValue);
 
-#define load_conf_file_from_dirs libreport_load_conf_file_from_dirs
-bool load_conf_file_from_dirs(const char *base_name, const char *const *directories, map_string_t *settings, bool skipKeysWithoutValue);
-
 #define save_conf_file libreport_save_conf_file
 bool save_conf_file(const char *path, map_string_t *settings);
 
@@ -741,11 +710,8 @@ void set_user_setting(const char *name, const char *value);
 #define get_user_setting libreport_get_user_setting
 const char *get_user_setting(const char *name);
 
-/* filename is expected to exist in CONF_DIR
- * usually /etc/libreport
- */
 #define load_forbidden_words libreport_load_forbidden_words
-GList *load_words_from_file(const char *filename);
+GList *load_forbidden_words();
 #define get_file_list libreport_get_file_list
 GList *get_file_list(const char *path, const char *ext);
 #define free_file_list libreport_free_file_list
@@ -901,7 +867,6 @@ struct dump_dir *open_directory_for_writing(
 #define FILENAME_PKG_ARCH      "pkg_arch"
 #define FILENAME_USERNAME      "username"
 #define FILENAME_ABRT_VERSION  "abrt_version"
-#define FILENAME_EXPLOITABLE   "exploitable"
 
 // Not stored as files, added "on the fly":
 #define CD_DUMPDIR            "Directory"

@@ -89,9 +89,8 @@ struct post_state *post_ureport(const char *json_ureport, struct ureport_server_
     return post_state;
 }
 
-static
-struct post_state *ureport_attach(const char *json_attachment,
-                                  struct ureport_server_config *config)
+struct post_state *ureport_attach_rhbz(const char *bthash, int rhbz_bug_id,
+                                       struct ureport_server_config *config)
 {
     int flags = POST_WANT_BODY | POST_WANT_ERROR_MSG;
 
@@ -106,29 +105,11 @@ struct post_state *ureport_attach(const char *json_attachment,
         NULL,
     };
 
-    post_string_as_form_data(post_state, config->ur_url, "application/json",
-                             headers, json_attachment);
-
-    return post_state;
-}
-
-struct post_state *ureport_attach_rhbz(const char *bthash, int rhbz_bug_id,
-                                       struct ureport_server_config *config)
-{
     char *str_bug_id = xasprintf("%d", rhbz_bug_id);
     char *json_attachment = new_json_attachment(bthash, "RHBZ", str_bug_id);
-    struct post_state *post_state = ureport_attach(json_attachment, config);
+    post_string_as_form_data(post_state, config->ur_url, "application/json",
+                             headers, json_attachment);
     free(str_bug_id);
-    free(json_attachment);
-
-    return post_state;
-}
-
-struct post_state *ureport_attach_email(const char *bthash, const char *email,
-                                       struct ureport_server_config *config)
-{
-    char *json_attachment = new_json_attachment(bthash, "email", email);
-    struct post_state *post_state = ureport_attach(json_attachment, config);
     free(json_attachment);
 
     return post_state;

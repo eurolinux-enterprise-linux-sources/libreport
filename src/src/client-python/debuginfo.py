@@ -487,12 +487,11 @@ class DebugInfoDownload(YumBase):
                 print (_("Downloading package {0} failed").format(pkg))
             else:
                 unpack_result = unpack_rpm(package_file_name, files, self.tmpdir,
-                                           self.cachedir, self.keeprpms,
-                                           exact_files=download_exact_files)
+                                           self.cachedir, self.keeprpms, exact_files=download_exact_files)
                 if unpack_result == RETURN_FAILURE:
                     # recursively delete the temp dir on failure
                     print _("Unpacking failed, aborting download...")
-                    clean_up()
+                    self.cleanup_tmp_dir()
                     return RETURN_FAILURE
 
             downloaded_pkgs += 1

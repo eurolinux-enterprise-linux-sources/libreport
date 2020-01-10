@@ -21,14 +21,11 @@
 #include "client.h"
 #include "internal_libreport_gtk.h"
 #include "wizard.h"
-#include "search_item.h"
 
 #define DEFAULT_WIDTH   800
 #define DEFAULT_HEIGHT  500
 
 #define EMERGENCY_ANALYSIS_EVENT_NAME "report_EmergencyAnalysis"
-#define FORBIDDEN_WORDS_BLACKLLIST "forbidden_words.conf"
-#define FORBIDDEN_WORDS_WHITELIST "ignored_words.conf"
 
 #if GTK_MAJOR_VERSION == 2 && GTK_MINOR_VERSION < 22
 # define gtk_assistant_commit(...) ((void)0)
@@ -117,6 +114,15 @@ static void add_workflow_buttons(GtkBox *box, GHashTable *workflows, GCallback f
 static void set_auto_event_chain(GtkButton *button, gpointer user_data);
 static void start_event_run(const char *event_name);
 
+typedef struct
+{
+    int page; //which tab in notepad
+    GtkTextBuffer *buffer;
+    GtkTextView *tev;
+    GtkTextIter start;
+    GtkTextIter end;
+} search_item_t;
+
 static GList *g_search_result_list;
 static guint g_current_highlighted_word;
 static bool g_first_highlight = true;
@@ -184,15 +190,6 @@ static const gchar *const page_names[] =
     PAGE_EVENT_PROGRESS,
     PAGE_EVENT_DONE,
     PAGE_NOT_SHOWN,
-    NULL
-};
-
-#define PRIVATE_TICKET_CB "private_ticket_cb"
-
-#define SENSITIVE_DATA_WARN "sensitive_data_warning"
-static const gchar *misc_widgets[] =
-{
-    SENSITIVE_DATA_WARN,
     NULL
 };
 
@@ -298,10 +295,14 @@ static void on_configure_event_cb(GtkWidget *button, gpointer user_data)
 static void show_event_opt_error_dialog(const char *event_name)
 {
     event_config_t *ec = get_event_config(event_name);
-    char *message = xasprintf(_("%s is not properly configured. You can configure it now or provide the required information later.\n\n"
+    char *message = xasprintf(_("Wrong settings detected for %s, "
+                              "reporting will probably fail if you continue "
+                              "with the current configuration.\n\n"
                               "Read more about the configuration at: https://fedorahosted.org/abrt/wiki/AbrtConfiguration"),
                                ec_get_screen_name(ec));
-    char *markup_message = xasprintf(_("<b>%s</b> is not properly configured. You can configure it now or provide the required information later.\n\n"
+    char *markup_message = xasprintf(_("Wrong settings detected for <b>%s</b>, "
+                              "reporting will probably fail if you continue "
+                              "with the current configuration.\n\n"
                               "<a href=\"https://fedorahosted.org/abrt/wiki/AbrtConfiguration\">Read more about the configuration</a>"),
                                ec_get_screen_name(ec));
     GtkWidget *wrong_settings = g_top_most_window = gtk_message_dialog_new(GTK_WINDOW(g_wnd_assistant),
@@ -974,7 +975,7 @@ static event_gui_data_t *add_event_buttons(GtkBox *box,
                 char *event_name,
                 GCallback func)
 {
-    //log_info("removing all buttons from box %p", box);
+    //VERB2 log("removing all buttons from box %p", box);
     gtk_container_foreach(GTK_CONTAINER(box), &remove_child_widget, NULL);
     g_list_foreach(*p_event_list, (GFunc)free_event_gui_data_t, NULL);
     g_list_free(*p_event_list);
@@ -1043,7 +1044,7 @@ static event_gui_data_t *add_event_buttons(GtkBox *box,
         if (!green_choice && !red_choice)
             g_black_event_count++;
 
-        //log_info("adding button '%s' to box %p", event_name, box);
+        //VERB2 log("adding button '%s' to box %p", event_name, box);
         char *event_label = xasprintf("%s%s%s",
                         event_screen_name,
                         (event_description ? " - " : ""),
@@ -1136,7 +1137,7 @@ static void save_items_from_notepad(void)
         tev = GTK_TEXT_VIEW(gtk_bin_get_child(GTK_BIN(notebook_child)));
         tab_lbl = gtk_notebook_get_tab_label(g_notebook, notebook_child);
         item_name = gtk_label_get_text(GTK_LABEL(tab_lbl));
-        log_notice("saving: '%s'", item_name);
+        VERB1 log("saving: '%s'", item_name);
 
         save_text_from_text_view(tev, item_name);
     }
@@ -1356,7 +1357,7 @@ void update_gui_state_from_problem_data(int flags)
         {
             g_event_selected = xstrdup(active_button->event_name);
         }
-        log_info("g_event_selected='%s'", g_event_selected);
+        VERB2 log("g_event_selected='%s'", g_event_selected);
     }
     /* We can't just do gtk_widget_show_all once in main:
      * We created new widgets (buttons). Need to make them visible.
@@ -1816,7 +1817,7 @@ static gboolean consume_cmd_output(GIOChannel *source, GIOCondition condition, g
      || retval != 0
      || spawn_next_command_in_evd(evd) < 0
     ) {
-        log_notice("done running event on '%s': %d", g_dump_dir_name, retval);
+        VERB1 log("done running event on '%s': %d", g_dump_dir_name, retval);
         append_to_textview(g_tv_event_log, "\n");
 
         /* Free child output buffer */
@@ -1964,7 +1965,7 @@ static void start_event_run(const char *event_name)
     );
 
     gtk_label_set_text(g_lbl_event_log, _("Processing..."));
-    log_notice("running event '%s' on '%s'", event_name, g_dump_dir_name);
+    VERB1 log("running event '%s' on '%s'", event_name, g_dump_dir_name);
     char *msg = xasprintf("--- Running %s ---\n", event_name);
     append_to_textview(g_tv_event_log, msg);
     free(msg);
@@ -1979,21 +1980,12 @@ static void start_event_run(const char *event_name)
     gtk_widget_set_sensitive(g_btn_next, false);
 }
 
-/*
- * the widget is added as a child of the VBox in the warning area
- *
- */
-static void add_widget_to_warning_area(GtkWidget *widget)
-{
-    g_warning_issued = true;
-    gtk_box_pack_start(g_box_warning_labels, widget, false, false, 0);
-    gtk_widget_show_all(widget);
-}
 
 /* Backtrace checkbox handling */
 
 static void add_warning(const char *warning)
 {
+    g_warning_issued = true;
     char *label_str = xasprintf("• %s", warning);
     GtkWidget *warning_lbl = gtk_label_new(NULL);
     gtk_label_set_markup(GTK_LABEL(warning_lbl), label_str);
@@ -2003,29 +1995,8 @@ static void add_warning(const char *warning)
     gtk_misc_set_alignment(GTK_MISC(warning_lbl), 0.0, 0.0);
     gtk_label_set_justify(GTK_LABEL(warning_lbl), GTK_JUSTIFY_LEFT);
     gtk_label_set_line_wrap(GTK_LABEL(warning_lbl), TRUE);
-
-    add_widget_to_warning_area(warning_lbl);
-}
-
-static void on_sensitive_ticket_clicked_cb(GtkWidget *button, gpointer user_data)
-{
-    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(button)))
-    {
-        xsetenv(CREATE_PRIVATE_TICKET, "1");
-    }
-    else
-    {
-        safe_unsetenv(CREATE_PRIVATE_TICKET);
-    }
-}
-
-static void add_sensitive_data_warning(void)
-{
-    GtkWidget *sens_data_warn = GTK_WIDGET(gtk_builder_get_object(g_builder, SENSITIVE_DATA_WARN));
-    GtkButton *sens_ticket_cb = GTK_BUTTON(gtk_builder_get_object(g_builder, PRIVATE_TICKET_CB));
-
-    g_signal_connect(sens_ticket_cb, "toggled", G_CALLBACK(on_sensitive_ticket_clicked_cb), NULL);
-    add_widget_to_warning_area(GTK_WIDGET(sens_data_warn));
+    gtk_box_pack_start(g_box_warning_labels, warning_lbl, false, false, 0);
+    gtk_widget_show(warning_lbl);
 }
 
 static void show_warnings(void)
@@ -2055,7 +2026,7 @@ static bool check_minimal_bt_rating(const char *event_name)
         error_msg_and_die(_("Cannot check backtrace rating because of invalid event name"));
     else if (prefixcmp(event_name, "report") != 0)
     {
-        log_info("No checks for bactrace rating because event '%s' doesn't report.", event_name);
+        VERB2 log("No checks for bactrace rating because event '%s' doesn't report.", event_name);
         return acceptable_rating;
     }
     else
@@ -2107,11 +2078,6 @@ static void on_no_comment_toggled(GtkToggleButton *togglebutton, gpointer user_d
     toggle_eb_comment();
 }
 
-static void on_log_changed(GtkTextBuffer *buffer, gpointer user_data)
-{
-    gtk_widget_show(GTK_WIDGET(g_exp_report_log));
-}
-
 
 static void on_show_event_list_cb(GtkWidget *button, gpointer user_data)
 {
@@ -2134,59 +2100,20 @@ static void log_ready_state(void)
 }
 #endif
 
-static GList *find_words_in_text_buffer(int page,
-                                        GtkTextView *tev,
-                                        GList *words,
-                                        GList *ignore_sitem_list,
-                                        GtkTextIter start_find,
-                                        GtkTextIter end_find
-                                        )
+static int compare_search_item(gconstpointer a, gconstpointer b)
 {
-    GtkTextBuffer *buffer = gtk_text_view_get_buffer(tev);
-    gtk_text_buffer_set_modified(buffer, FALSE);
-
-    GList *found_words = NULL;
-    GtkTextIter start_match;
-    GtkTextIter end_match;
-
-    for (GList *w = words; w; w = g_list_next(w))
-    {
-        gtk_text_buffer_get_start_iter(buffer, &start_find);
-
-        const char *search_word = w->data;
-        while (search_word && search_word[0] && gtk_text_iter_forward_search(&start_find, search_word,
-                    GTK_TEXT_SEARCH_TEXT_ONLY,
-                    &start_match,
-                    &end_match, NULL))
-        {
-            search_item_t *found_word = sitem_new(
-                    page,
-                    buffer,
-                    tev,
-                    start_match,
-                    end_match
-                );
-            int offset = gtk_text_iter_get_offset(&end_match);
-            gtk_text_buffer_get_iter_at_offset(buffer, &start_find, offset);
-
-            if (sitem_is_in_sitemlist(found_word, ignore_sitem_list))
-            {
-                sitem_free(found_word);
-                // don't count the word if it's part of some of the ignored words
-                continue;
-            }
-
-            found_words = g_list_prepend(found_words, found_word);
-        }
-    }
-
-    return found_words;
+    const search_item_t *lhs = a;
+    const search_item_t *rhs = b;
+    return gtk_text_iter_compare(&(lhs->start), &(rhs->start));
 }
 
-static bool highligh_words_in_textview(int page, GtkTextView *tev, GList *words, GList *ignored_words)
+static bool highligh_words_in_textview(int page, GtkTextView *tev, GList *words)
 {
     GtkTextBuffer *buffer = gtk_text_view_get_buffer(tev);
     gtk_text_buffer_set_modified(buffer, FALSE);
+
+    GtkTextIter start_find;
+    gtk_text_buffer_get_start_iter(buffer, &start_find);
 
     GtkWidget *notebook_child = gtk_notebook_get_nth_page(g_notebook, page);
     GtkWidget *tab_lbl = gtk_notebook_get_tab_label(g_notebook, notebook_child);
@@ -2216,8 +2143,6 @@ static bool highligh_words_in_textview(int page, GtkTextView *tev, GList *words,
              after_buffer = current;
     }
 
-    GtkTextIter start_find;
-    gtk_text_buffer_get_start_iter(buffer, &start_find);
     GtkTextIter end_find;
     gtk_text_buffer_get_end_iter(buffer, &end_find);
 
@@ -2228,46 +2153,50 @@ static bool highligh_words_in_textview(int page, GtkTextView *tev, GList *words,
     gtk_label_set_attributes(GTK_LABEL(tab_lbl), NULL);
     pango_attr_list_unref(attrs);
 
+    /* Find current words */
+    GtkTextIter start_match;
+    GtkTextIter end_match;
+    int found = 0;
     GList *result = NULL;
-    GList *ignored_words_in_buffer = NULL;
-
-    ignored_words_in_buffer = find_words_in_text_buffer(page,
-                                                        tev,
-                                                        ignored_words,
-                                                        NULL,
-                                                        start_find,
-                                                        end_find);
-
-
-    result = find_words_in_text_buffer(page,
-                                       tev,
-                                       words,
-                                       ignored_words_in_buffer,
-                                       start_find,
-                                       end_find
-                                        );
-    for (GList *w = result; w; w = g_list_next(w))
+    for (GList *w = words; w; w = g_list_next(w))
     {
-        search_item_t *item = (search_item_t *)w->data;
-        gtk_text_buffer_apply_tag_by_name(buffer, "search_result_bg",
-                                          sitem_get_start_iter(item),
-                                          sitem_get_end_iter(item));
+        gtk_text_buffer_get_start_iter(buffer, &start_find);
+
+        const char *search_word = w->data;
+        while (search_word && search_word[0] && gtk_text_iter_forward_search(&start_find, search_word,
+                    GTK_TEXT_SEARCH_TEXT_ONLY,
+                    &start_match,
+                    &end_match, NULL))
+        {
+            ++found;
+
+            search_item_t * found_word = (search_item_t *)xmalloc(sizeof(search_item_t));
+            found_word->start = start_match;
+            found_word->end = end_match;
+            found_word->buffer = buffer;
+            found_word->tev = tev;
+            found_word->page = page;
+            result = g_list_prepend(result, found_word);
+
+            gtk_text_buffer_apply_tag_by_name(buffer, "search_result_bg",
+                                              &start_match, &end_match);
+            int offset = gtk_text_iter_get_offset(&end_match);
+            gtk_text_buffer_get_iter_at_offset(buffer, &start_find, offset);
+        }
     }
 
-    if (result)
+    if (found)
     {
         PangoAttrList *attrs = pango_attr_list_new();
         PangoAttribute *foreground_attr = pango_attr_foreground_new(65535, 0, 0);
         pango_attr_list_insert(attrs, foreground_attr);
-        PangoAttribute *underline_attr = pango_attr_underline_new(PANGO_UNDERLINE_SINGLE);
-        pango_attr_list_insert(attrs, underline_attr);
         gtk_label_set_attributes(GTK_LABEL(tab_lbl), attrs);
 
         /* The current order of the found words is defined by order of words in the
          * passed list. We have to order the words according to their occurrence in
          * the buffer.
          */
-        result = g_list_sort(result, (GCompareFunc)sitem_compare);
+        result = g_list_sort(result, compare_search_item);
 
         /* Put words of the buffer at the correct place */
         if (after_buffer == g_search_result_list)
@@ -2310,12 +2239,12 @@ static bool highligh_words_in_textview(int page, GtkTextView *tev, GList *words,
      * the currently highlighted word will be the first word in a next buffer.
      */
     if (bufferpos >= 0)
-        g_current_highlighted_word -= (bufferpos + (result == NULL));
+        g_current_highlighted_word -= (bufferpos + (found == 0));
 
-    return result != NULL;
+    return found;
 }
 
-static gboolean highligh_words_in_tabs(GList *forbidden_words,  GList *allowed_words)
+static gboolean highligh_words_in_tabs(GList *words)
 {
     gboolean found = false;
 
@@ -2336,7 +2265,7 @@ static gboolean highligh_words_in_tabs(GList *forbidden_words,  GList *allowed_w
             continue;
 
         GtkTextView *tev = GTK_TEXT_VIEW(gtk_bin_get_child(GTK_BIN(notebook_child)));
-        found |= highligh_words_in_textview(page, tev, forbidden_words, allowed_words);
+        found |= highligh_words_in_textview(page, tev, words);
     }
 
     return found;
@@ -2344,16 +2273,26 @@ static gboolean highligh_words_in_tabs(GList *forbidden_words,  GList *allowed_w
 
 static void highlight_forbidden(void)
 {
-    GList *forbidden_words = load_words_from_file(FORBIDDEN_WORDS_BLACKLLIST);
-    GList *allowed_words = load_words_from_file(FORBIDDEN_WORDS_WHITELIST);
+    GList *forbidden_words = load_forbidden_words();
 
-    if (highligh_words_in_tabs(forbidden_words, allowed_words)) {
-        add_sensitive_data_warning();
-        show_warnings();
+    if (highligh_words_in_tabs(forbidden_words)) {
+        int response = run_ask_yes_no_save_result_dialog(
+            CREATE_PRIVATE_TICKET,
+            _("Possible sensitive data detected, "
+            "do you want to restrict access to the report?\n\n"
+            "<a href=\"https://github.com/abrt/abrt/wiki/FAQ#reports-with-restricted-access\">"
+            "Read more about reports with restricted access</a>"),
+            g_wnd_assistant);
+
+        if (response)
+        {
+            xsetenv(CREATE_PRIVATE_TICKET, "1");
+            add_warning(_("A private ticket has been requested."));
+        }
+        add_warning(_("Possible sensitive data detected, please review the highlighted tabs carefully."));
     }
 
     list_free_with_free(forbidden_words);
-    list_free_with_free(allowed_words);
 }
 
 static gint select_next_page_no(gint current_page_no, gpointer data);
@@ -2371,7 +2310,7 @@ static char *get_next_processed_event(GList **events_list)
 
     if (event_name[event_len - 1] == '*')
     {
-        log_info("Expanding event '%s'", event_name);
+        VERB2 log("Expanding event '%s'", event_name);
 
         struct dump_dir *dd = dd_opendir(g_dump_dir_name, DD_OPEN_READONLY);
         if (!dd)
@@ -2396,7 +2335,7 @@ static char *get_next_processed_event(GList **events_list)
 
             /* 'event1' */
             event_name = xstrdup(event_name);
-            log_debug("Adding a new expanded event '%s' to the processed list", event_name);
+            VERB3 log("Adding a new expanded event '%s' to the processed list", event_name);
 
             /* the last event is not added to the expanded list */
             ++next;
@@ -2417,7 +2356,7 @@ static char *get_next_processed_event(GList **events_list)
             *events_list = g_list_concat(expanded_list, *events_list);
         else
         {
-            log_info("No event was expanded, will continue with the next one.");
+            VERB2 log("No event was expanded, will continue with the next one.");
             /* no expanded event try the next event */
             return get_next_processed_event(events_list);
         }
@@ -2483,7 +2422,7 @@ static void on_page_prepare(GtkNotebook *assistant, GtkWidget *page, gpointer us
         {
             /* Skip intro screen */
             int n = select_next_page_no(pages[PAGENO_SUMMARY].page_no, NULL);
-            log_info("switching to page_no:%d", n);
+            VERB2 log("switching to page_no:%d", n);
             gtk_notebook_set_current_page(assistant, n);
             return;
         }
@@ -2527,7 +2466,7 @@ static void on_page_prepare(GtkNotebook *assistant, GtkWidget *page, gpointer us
 
     if (pages[PAGENO_EVENT_PROGRESS].page_widget == page)
     {
-        log_info("g_event_selected:'%s'", g_event_selected);
+        VERB2 log("g_event_selected:'%s'", g_event_selected);
         if (g_event_selected
          && g_event_selected[0]
         ) {
@@ -2551,7 +2490,7 @@ static void set_auto_event_chain(GtkButton *button, gpointer user_data)
 
     workflow_t *w = (workflow_t *)user_data;
     config_item_info_t *info = workflow_get_config_info(w);
-    log_notice("selected workflow '%s'", ci_get_screen_name(info));
+    VERB1 log("selected workflow '%s'", ci_get_screen_name(info));
 
     GList *wf_event_list = wf_get_event_list(w);
     while(wf_event_list)
@@ -2625,7 +2564,7 @@ static char *setup_next_processed_event(GList **events_list)
         return NULL;
     }
 
-    log_notice("selected -e EVENT:%s", event);
+    VERB1 log("selected -e EVENT:%s", event);
     return event;
 }
 
@@ -2650,7 +2589,7 @@ static gint select_next_page_no(gint current_page_no, gpointer data)
     GtkWidget *page;
 
  again:
-    log_notice("%s: current_page_no:%d", __func__, current_page_no);
+    VERB1 log("%s: current_page_no:%d", __func__, current_page_no);
     current_page_no++;
     page = gtk_notebook_get_nth_page(g_assistant, current_page_no);
 
@@ -2760,7 +2699,7 @@ static gint select_next_page_no(gint current_page_no, gpointer data)
         goto again;
     }
 
-    log_notice("%s: selected page #%d", __func__, current_page_no);
+    VERB1 log("%s: selected page #%d", __func__, current_page_no);
     return current_page_no;
 }
 
@@ -2778,11 +2717,9 @@ static void unhighlight_widget(GtkWidget *widget, gpointer *user_data)
 
 static void rehighlight_forbidden_words(int page, GtkTextView *tev)
 {
-    GList *forbidden_words = load_words_from_file(FORBIDDEN_WORDS_BLACKLLIST);
-    GList *allowed_words = load_words_from_file(FORBIDDEN_WORDS_WHITELIST);
-    highligh_words_in_textview(page, tev, forbidden_words, allowed_words);
+    GList *forbidden_words = load_forbidden_words();
+    highligh_words_in_textview(page, tev, forbidden_words);
     list_free_with_free(forbidden_words);
-    list_free_with_free(allowed_words);
 
     /* Don't increment resp. decrement in search_down() resp. search_up() */
     g_first_highlight = true;
@@ -2849,10 +2786,10 @@ static gboolean highlight_search(gpointer user_data)
 {
     GtkEntry *entry = GTK_ENTRY(user_data);
 
-    log_notice("searching: '%s'", gtk_entry_get_text(entry));
+    VERB1 log("searching: '%s'", gtk_entry_get_text(entry));
 
     GList *words = g_list_append(NULL, (gpointer)gtk_entry_get_text(entry));
-    highligh_words_in_tabs(words, NULL);
+    highligh_words_in_tabs(words);
     g_list_free(words);
 
     /* returning false will make glib to remove this event */
@@ -3061,18 +2998,12 @@ static void on_next_btn_cb(GtkWidget *btn, gpointer user_data)
 static void add_pages(void)
 {
     GError *error = NULL;
-    g_builder = gtk_builder_new();
     if (!g_glade_file)
     {
-        /* Load pages from internal string */
+        /* Load UI from internal string */
         gtk_builder_add_objects_from_string(g_builder,
                 WIZARD_GLADE_CONTENTS, sizeof(WIZARD_GLADE_CONTENTS) - 1,
                 (gchar**)page_names,
-                &error);
-        /* load additional widgets from glade */
-        gtk_builder_add_objects_from_string(g_builder,
-                WIZARD_GLADE_CONTENTS, sizeof(WIZARD_GLADE_CONTENTS) - 1,
-                (gchar**)misc_widgets,
                 &error);
         if (error != NULL)
             error_msg_and_die("Error loading glade data: %s", error->message);
@@ -3093,7 +3024,7 @@ static void add_pages(void)
         pages[i].page_widget = page;
         pages[i].page_no = page_no++;
         gtk_notebook_append_page(g_assistant, page, gtk_label_new(pages[i].title));
-        log_notice("added page: %s", page_names[i]);
+        VERB1 log("added page: %s", page_names[i]);
     }
 
     /* Set pointers to objects we might need to work with */
@@ -3298,6 +3229,7 @@ void create_assistant(bool expert_mode)
     g_expert_mode = expert_mode;
 
     g_monospace_font = pango_font_description_from_string("monospace");
+    g_builder = gtk_builder_new();
 
     g_assistant = GTK_NOTEBOOK(gtk_notebook_new());
 
@@ -3421,7 +3353,6 @@ void create_assistant(bool expert_mode)
     g_signal_connect (g_tv_event_log, "event-after", G_CALLBACK (event_after), NULL);
     g_signal_connect (g_tv_event_log, "motion-notify-event", G_CALLBACK (motion_notify_event), NULL);
     g_signal_connect (g_tv_event_log, "visibility-notify-event", G_CALLBACK (visibility_notify_event), NULL);
-    g_signal_connect (gtk_text_view_get_buffer(g_tv_event_log), "changed", G_CALLBACK (on_log_changed), NULL);
 
     hand_cursor = gdk_cursor_new (GDK_HAND2);
     regular_cursor = gdk_cursor_new (GDK_XTERM);

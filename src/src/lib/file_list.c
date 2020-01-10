@@ -63,7 +63,7 @@ GList *get_file_list(const char *path, const char *ext_filter)
             }
 
             gchar *target = g_path_get_basename(link);
-            log_debug("Symlink '%s' is pointing to '%s'", link, target);
+            VERB3 log("Symlink '%s' is pointing to '%s'", link, target);
             if (ext_filter)
             {
                 char *ext = strrchr(target, '.');

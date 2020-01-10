@@ -174,9 +174,9 @@ int main(int argc, char **argv)
     while (conf_file)
     {
         char *fn = (char *)conf_file->data;
-        log_notice("Loading settings from '%s'", fn);
+        VERB1 log("Loading settings from '%s'", fn);
         load_conf_file(fn, settings, /*skip key w/o values:*/ false);
-        log_debug("Loaded '%s'", fn);
+        VERB3 log("Loaded '%s'", fn);
         conf_file = g_list_remove(conf_file, fn);
     }
 

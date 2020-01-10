@@ -139,8 +139,7 @@ am_libreport_gtk_la_OBJECTS = libreport_gtk_la-event_config_dialog.lo \
 	libreport_gtk_la-autowrapped_label.lo \
 	libreport_gtk_la-workflow_config_dialog.lo \
 	libreport_gtk_la-config_dialog.lo \
-	libreport_gtk_la-ask_dialogs.lo \
-	libreport_gtk_la-search_item.lo
+	libreport_gtk_la-ask_dialogs.lo
 libreport_gtk_la_OBJECTS = $(am_libreport_gtk_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -219,10 +218,6 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 AR = @AR@
 ASCIIDOC = @ASCIIDOC@
-AUGEAS_CFLAGS = @AUGEAS_CFLAGS@
-AUGEAS_LENS_LIB_DIR = @AUGEAS_LENS_LIB_DIR@
-AUGEAS_LIBS = @AUGEAS_LIBS@
-AUGPARSE = @AUGPARSE@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOM4TE = @AUTOM4TE@
@@ -286,8 +281,6 @@ INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
 INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
 INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
-JOURNAL_CFLAGS = @JOURNAL_CFLAGS@
-JOURNAL_LIBS = @JOURNAL_LIBS@
 JSON_C_CFLAGS = @JSON_C_CFLAGS@
 JSON_C_LIBS = @JSON_C_LIBS@
 JSON_C_PACKAGE = @JSON_C_PACKAGE@
@@ -446,8 +439,7 @@ libreport_gtk_la_SOURCES = \
     autowrapped_label.c \
     workflow_config_dialog.c \
     config_dialog.c \
-    ask_dialogs.c \
-    search_item.c search_item.h
+    ask_dialogs.c
 
 libreport_gtk_la_CPPFLAGS = \
     -I$(srcdir)/../include \
@@ -556,7 +548,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_gtk_la-config_dialog.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_gtk_la-event_config_dialog.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_gtk_la-hyperlinks.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_gtk_la-search_item.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_gtk_la-secrets.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libreport_gtk_la-workflow_config_dialog.Plo@am__quote@
 
@@ -629,13 +620,6 @@ libreport_gtk_la-ask_dialogs.lo: ask_dialogs.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='ask_dialogs.c' object='libreport_gtk_la-ask_dialogs.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_gtk_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libreport_gtk_la-ask_dialogs.lo `test -f 'ask_dialogs.c' || echo '$(srcdir)/'`ask_dialogs.c
-
-libreport_gtk_la-search_item.lo: search_item.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_gtk_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libreport_gtk_la-search_item.lo -MD -MP -MF $(DEPDIR)/libreport_gtk_la-search_item.Tpo -c -o libreport_gtk_la-search_item.lo `test -f 'search_item.c' || echo '$(srcdir)/'`search_item.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libreport_gtk_la-search_item.Tpo $(DEPDIR)/libreport_gtk_la-search_item.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='search_item.c' object='libreport_gtk_la-search_item.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libreport_gtk_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libreport_gtk_la-search_item.lo `test -f 'search_item.c' || echo '$(srcdir)/'`search_item.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
